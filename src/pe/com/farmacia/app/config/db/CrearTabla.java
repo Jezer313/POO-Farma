@@ -1,0 +1,42 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pe.com.farmacia.app.config.db;
+
+import java.sql.*;
+/**
+ *
+ * @author crai.alumno
+ */
+public class CrearTabla {
+    
+    public static void inicio() {
+        Conectadb cn = new Conectadb();
+        String sql = """
+                     CREATE TABLE IF NOT EXISTS MEDICAMENTOS(
+                        ID_MEDICAMENTO      INTEGER PRIMARY KEY AUTOINCREMENT,
+                        NOMBRE_COMERCIAL    TXT NOT NULL,
+                        NOMBRE_GENERICO     TXT NOT NULL,
+                        CANTIDAD            INTEGER,
+                        PRECIO              REAL
+                     );
+                     """;
+        
+        try (   Connection c = cn.getConnection();
+                PreparedStatement pst = c.prepareStatement(sql);
+                ){
+            pst.executeUpdate();
+            System.out.println(">Se creo la tabla Medicamentos");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.out.println(">Porblemas al crear la tabla");
+        }
+    }
+    
+    public static void main(String[] args) {
+        inicio();
+    }
+}
