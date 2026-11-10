@@ -27,7 +27,7 @@ public class Conectadb {
             System.out.println(">Conexion problematica");
             System.exit(1);
         }
-        System.out.println("<< BASE DE DATOS " + DB + " >> OK");
+        System.out.println("<< " + DB + " >> OK");
         
         return c;
     }
