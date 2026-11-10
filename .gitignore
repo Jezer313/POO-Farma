@@ -1,0 +1,19 @@
+# --- Compilados y carpetas de NetBeans / Maven ---
+/build/
+/dist/
+/target/
+/nbproject/private/
+/nbproject/file-queries.properties
+*.class
+
+# --- Base de datos local de SQLite (DB Browser) ---
+# Recomendación: Ignora el archivo .db para que cada compañero 
+# tenga su propia base de datos de pruebas local y no se sobrescriban.
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Archivos del Sistema Operativo y Logs ---
+.DS_Store
+Thumbs.db
+*.log
