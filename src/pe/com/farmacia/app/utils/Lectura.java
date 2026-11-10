@@ -21,38 +21,40 @@ public class Lectura {
             entrada = teclado.nextLine().trim();
             
             if (entrada.isEmpty()) {
-                System.out.println(">No se aceptan respuestas vacias. Reintenta");
+                System.out.println("\n>No se aceptan respuestas vacias. Reintenta\n");
             }
         }
         return entrada;
     }
     
     public Integer entero(String mensaje) {
-        Integer numero = 0;
+        Integer numero = null;
         do {            
          
             try {
             numero = Integer.parseInt(cadena(mensaje));
             
             } catch (NumberFormatException e) {
-                System.out.println(">Solo se aceptan numeros. Reintenta");
+                System.out.println("\n>Solo se aceptan numeros. Reintenta\n");
             }
             
-        } while (numero == 0);
+        } while (numero == null);
         return numero;
     }
     
     public Double decimal(String mensaje) {
-        Double decimal = 0.0;
+        Double decimal = null;
         do {            
             try {
                 decimal = Double.parseDouble(cadena(mensaje));
             } catch (NumberFormatException e) {
-                System.out.println(">Solo se aceptan Numeros. Reintenta");
+                System.out.println("\n>Solo se aceptan Numeros. Reintenta\n");
             }
-        } while (decimal == 0.0);
+        } while (decimal == null);
         return decimal;
     }
-    
+    public void cerrar() {
+        teclado.close();
+    }
     
 }

@@ -9,5 +9,7 @@ package pe.com.farmacia.app.utils;
  * @author crai.alumno
  */
 public class Utilitarios {
-    
+    public static void salir() {
+        System.out.println("gracias por su visista");
+    }
 }

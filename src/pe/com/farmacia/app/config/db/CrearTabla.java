@@ -7,7 +7,7 @@ package pe.com.farmacia.app.config.db;
 import java.sql.*;
 /**
  *
- * @author crai.alumno
+ * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
 public class CrearTabla {
     
