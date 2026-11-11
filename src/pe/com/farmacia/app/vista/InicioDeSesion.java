@@ -176,12 +176,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
         // TODO add your handling code here:
         //eso se llama instaciar la ventana o el jframe, sirve para guardar los datos de esa ventana
-        RegistroUsusario ventanaRegistro = new RegistroUsusario();
+        RegistroUsuario ventanaRegistro = new RegistroUsuario();
         
         //mostrar la ventana
         ventanaRegistro.setVisible(true);
-        //centra la ventana
-        ventanaRegistro.setLocationRelativeTo(null);
         
         //cierra la esta ventana, es decir el del login
         this.dispose();
@@ -201,7 +199,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
             // SE abre panel de administración
             PanelAdmin adminPanel = new PanelAdmin();
             adminPanel.setVisible(true);
-            adminPanel.setLocationRelativeTo(null);
             this.dispose();
             
         } else if (claveAdmin != null) {
