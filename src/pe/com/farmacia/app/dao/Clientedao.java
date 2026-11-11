@@ -1,7 +1,6 @@
 package pe.com.farmacia.app.dao;
 
 import java.util.List;
-import pe.com.farmacia.app.modelo.Administrador;
 import pe.com.farmacia.app.modelo.Cliente;
 
 /**
@@ -10,7 +9,8 @@ import pe.com.farmacia.app.modelo.Cliente;
  */
 public interface Clientedao {
     public boolean agregar(Cliente cliente);
-    public boolean eliminar(String codigo);
+    public boolean eliminar(int id_cliente);
     public boolean editar(Cliente cliente);
-    public List<Administrador> listar();
+    public List<Cliente> listar();
+    public List<Cliente> buscar(String codigo);
 }

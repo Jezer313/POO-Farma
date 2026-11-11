@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package pe.com.farmacia.app.dao;
+
+import java.util.List;
+import pe.com.farmacia.app.modelo.Proveedor;
 
 /**
  *
- * @author USER
+ * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
 public interface Proveedordao {
-    
+    public boolean agregar(Proveedor proveedor);
+    public boolean eliminar(int id_farmaseutico);
+    public boolean editar(Proveedor proveedor);
+    public List<Proveedor> listar();
+    public List<Proveedor> buscar(String codigo);
 }

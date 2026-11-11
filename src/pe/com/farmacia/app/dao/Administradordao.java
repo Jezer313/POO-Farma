@@ -9,7 +9,8 @@ import pe.com.farmacia.app.modelo.Administrador;
  */
 public interface Administradordao {
     public boolean agregar(Administrador admin);
-    public boolean eliminar(String codigo);
+    public boolean eliminar(int id_admin);
     public boolean editar(Administrador admin);
     public List<Administrador> listar();
+    public List<Administrador> buscar(String codigo);
 }
