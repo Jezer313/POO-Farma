@@ -155,7 +155,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
             Venta panelDeVenta = new Venta();
             
             panelDeVenta.setVisible(true);
-            panelDeVenta.setLocationRelativeTo(null);
             
             
         } else {
