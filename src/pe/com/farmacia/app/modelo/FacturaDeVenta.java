@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FacturaDeVenta {
+    private int id_factura;
     private String codigo;
     private String descripcion;
     private String fecha;

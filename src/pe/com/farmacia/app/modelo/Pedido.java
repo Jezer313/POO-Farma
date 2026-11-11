@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedido {
+    private int id_pedido;
     private String codigo;
     private String descripcion;
     private String fecha;

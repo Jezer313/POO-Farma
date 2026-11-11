@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Medicamento {
+    private int id_medicamento;
     private String codigo;
     private String nombre;
     private String descripcion;
