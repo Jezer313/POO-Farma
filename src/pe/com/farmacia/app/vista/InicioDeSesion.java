@@ -146,10 +146,12 @@ public class InicioDeSesion extends javax.swing.JFrame {
         }
         
         if (usuario.equals("roska") && contraseña.equals("1234")) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-            "¡Bienvenido al sistema POO-Farma!", 
-            "Acceso Concedido", 
-            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema!");
+            
+            Venta panelDeVenta = new Venta();
+            
+            panelDeVenta.setVisible(true);
+            panelDeVenta.setLocationRelativeTo(null);
             
             
         } else {
