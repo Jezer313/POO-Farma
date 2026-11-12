@@ -4,6 +4,16 @@
  */
 package pe.com.farmacia.app.vista;
 
+import java.awt.BorderLayout;
+import java.io.File;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+
 /**
  *
  * @author alum.fial1
@@ -12,13 +22,49 @@ public class InicioDeSesion extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InicioDeSesion.class.getName());
 
-    /**
-     * Creates new form InicioDeSesion
-     */
+    /*
+    JFXPanel es una libreia externa, sirve para insertar videos en el JFrame
+    */
+    private final JFXPanel jfxPanel = new JFXPanel();
+    
+    
     public InicioDeSesion() {
         
         initComponents();
+        //se llama al metodo
+        escenaAND();
+        setTitle("Video AND");
+        
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
+        FondoAND.setLayout(new BorderLayout());
+        FondoAND.add(jfxPanel, BorderLayout.CENTER);
+        this.setLocationRelativeTo(null);
+        
     }
+    
+    private void escenaAND() {
+        Platform.runLater(new Runnable() {
+            
+            @Override
+            public void run() {
+                File file = new File("C:\\Users\\alum.l6\\Documents\\NetBeansProjects\\POO-Farma\\media\\iniciarSesion\\videos\\VideoADN.mp4");
+                MediaPlayer oracleVid = new MediaPlayer(
+                        new Media(file.toURI().toString())
+                );
+                
+                //se añade el video al Jpanel
+                jfxPanel.setScene(new Scene(new Group(new MediaView(oracleVid))));
+                oracleVid.setVolume(0.7);
+                oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
+                oracleVid.play();
+                
+            }
+        });
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,102 +75,63 @@ public class InicioDeSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        FondoAND = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        btnSingUp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         btnContinuar = new javax.swing.JButton();
         btnAdmin = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JPasswordField();
+        btnSingUp = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Usuario:");
-
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Contraseña:");
+        FondoAND.setBackground(new java.awt.Color(102, 204, 255));
+        FondoAND.setMaximumSize(new java.awt.Dimension(600, 320));
+        FondoAND.setMinimumSize(new java.awt.Dimension(600, 320));
+        FondoAND.setName(""); // NOI18N
+        FondoAND.setPreferredSize(new java.awt.Dimension(600, 320));
+        FondoAND.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("SignIn");
+        FondoAND.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        FondoAND.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 88, -1));
 
-        btnSingUp.setText("SignUp");
-        btnSingUp.addActionListener(this::btnSingUpActionPerformed);
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Contraseña:");
+        FondoAND.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
+        FondoAND.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 88, -1));
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Usuario:");
+        FondoAND.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(this::btnContinuarActionPerformed);
+        FondoAND.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
         btnAdmin.setText("Admin");
         btnAdmin.addActionListener(this::btnAdminActionPerformed);
+        FondoAND.add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnSingUp))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnContinuar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                            .addComponent(txtContraseña))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSingUp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnContinuar)
-                    .addComponent(btnAdmin))
-                .addContainerGap())
-        );
+        btnSingUp.setText("SignUp");
+        btnSingUp.addActionListener(this::btnSingUpActionPerformed);
+        FondoAND.add(btnSingUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
+        FondoAND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoAND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -132,81 +139,78 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
-        
+
         /*
-        ojo aca se uso un txt tipo password field, se usa ya que la clve lo va 
+        ojo aca se uso un txt tipo password field, se usa ya que la clve lo va
         convertir en un arreglo de caracteres
         */
         String usuario = txtUsuario.getText().trim();
         String contraseña = new String(txtContraseña.getPassword()).trim();
-        
+
         if (usuario.isEmpty() || contraseña.isEmpty()) {
             // JOptionPane.showMessageDIalog muesta un cuadro en el centro con mensajes
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Por favor rellena los campos",
-                    "Campos vacios",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Por favor rellena los campos",
+                "Campos vacios",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         if (usuario.equals("roska") && contraseña.equals("1234")) {
             javax.swing.JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema!");
-            
+
             Venta panelDeVenta = new Venta();
-            
+
             panelDeVenta.setVisible(true);
-            
-            
+
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-            "Usuario o contraseña incorrectos.", 
-            "Error de Autenticación", 
-            javax.swing.JOptionPane.ERROR_MESSAGE);
-            
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Usuario o contraseña incorrectos.",
+                "Error de Autenticación",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+
             // Limpiar el campo de contraseña por seguridad y devolver el cursor
             txtContraseña.setText("");
             txtContraseña.requestFocus();
         }
-        
-        
-        
+
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+        String claveAdmin = javax.swing.JOptionPane.showInputDialog(this,
+            "Ingrsa la clve del admin",
+            "Acceso restringido",
+            javax.swing.JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (claveAdmin != null && claveAdmin.equals("1234")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Modo Administrador activado.");
+
+            // SE abre panel de administración
+            PanelAdmin adminPanel = new PanelAdmin();
+            adminPanel.setVisible(true);
+            this.dispose();
+
+        } else if (claveAdmin != null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "Clave incorrecta.",
+                "Acceso Denegado",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
         // TODO add your handling code here:
         //eso se llama instaciar la ventana o el jframe, sirve para guardar los datos de esa ventana
         RegistroUsuario ventanaRegistro = new RegistroUsuario();
-        
+
         //mostrar la ventana
         ventanaRegistro.setVisible(true);
-        
+
         //cierra la esta ventana, es decir el del login
         this.dispose();
     }//GEN-LAST:event_btnSingUpActionPerformed
-
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        // TODO add your handling code here:
-        String claveAdmin = javax.swing.JOptionPane.showInputDialog(this,
-                "Ingrsa la clve del admin",
-                "Acceso restringido",
-                javax.swing.JOptionPane.QUESTION_MESSAGE
-                );
-        
-        if (claveAdmin != null && claveAdmin.equals("1234")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Modo Administrador activado.");
-        
-            // SE abre panel de administración
-            PanelAdmin adminPanel = new PanelAdmin();
-            adminPanel.setVisible(true);
-            this.dispose();
-            
-        } else if (claveAdmin != null) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-            "Clave incorrecta.", 
-            "Acceso Denegado", 
-            javax.swing.JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_btnAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,13 +247,14 @@ public class InicioDeSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FondoAND;
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnSingUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
