@@ -32,34 +32,51 @@ public class InicioDeSesion extends javax.swing.JFrame {
         
         initComponents();
         //se llama al metodo
+        configurarPanelVideo();
         escenaAND();
-        setTitle("Video AND");
         
+        setTitle("Video ADN");
         setResizable(false);
         setLocationRelativeTo(null);
         
-        FondoAND.setLayout(new BorderLayout());
-        FondoAND.add(jfxPanel, BorderLayout.CENTER);
-        this.setLocationRelativeTo(null);
+    }
+    
+    private void configurarPanelVideo() {
+        // Configurar tamaño y posición exacta del jfxPanel cubriendo todo el fondo (600x320)
+        jfxPanel.setBounds(0, 0, 600, 320);
         
+        // Añadir el jfxPanel respetando el AbsoluteLayout de NetBeans
+        FondoAND.add(jfxPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 320));
+        
+        // Enviar el video al fondo absoluto (detrás de los botones y campos de texto)
+        FondoAND.setComponentZOrder(jfxPanel, FondoAND.getComponentCount() - 1);
     }
     
     private void escenaAND() {
         Platform.runLater(new Runnable() {
-            
             @Override
             public void run() {
-                File file = new File("C:\\Users\\alum.l6\\Documents\\NetBeansProjects\\POO-Farma\\media\\iniciarSesion\\videos\\VideoADN.mp4");
+                File file = new File("media/iniciarSesion/videos/VideoADN.mp4");
                 MediaPlayer oracleVid = new MediaPlayer(
                         new Media(file.toURI().toString())
                 );
                 
-                //se añade el video al Jpanel
-                jfxPanel.setScene(new Scene(new Group(new MediaView(oracleVid))));
+                MediaView mediaView = new MediaView(oracleVid);
+                
+                // Ajustar dimensiones del video y mantener proporción centrada
+                mediaView.setFitWidth(600);
+                mediaView.setFitHeight(320);
+                mediaView.setPreserveRatio(true); 
+                
+                // StackPane centra el video automáticamente dentro del JFXPanel
+                javafx.scene.layout.StackPane root = new javafx.scene.layout.StackPane();
+                root.getChildren().add(mediaView);
+                
+                jfxPanel.setScene(new Scene(root));
+                
                 oracleVid.setVolume(0.7);
                 oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
                 oracleVid.play();
-                
             }
         });
     }
@@ -76,15 +93,16 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoAND = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        btnContinuar = new javax.swing.JButton();
-        btnAdmin = new javax.swing.JButton();
-        btnSingUp = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        btnContinuar = new javax.swing.JButton();
+        btnSingUp = new javax.swing.JButton();
+        btnAdmin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,44 +112,102 @@ public class InicioDeSesion extends javax.swing.JFrame {
         FondoAND.setName(""); // NOI18N
         FondoAND.setPreferredSize(new java.awt.Dimension(600, 320));
         FondoAND.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        FondoAND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+
+        jPanel1.setOpaque(false);
+
+        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("SignIn");
-        FondoAND.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
-        FondoAND.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 88, -1));
-
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Contraseña:");
-        FondoAND.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
-        FondoAND.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 88, -1));
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Usuario:");
-        FondoAND.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
         btnContinuar.setText("Continuar");
         btnContinuar.addActionListener(this::btnContinuarActionPerformed);
-        FondoAND.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
-
-        btnAdmin.setText("Admin");
-        btnAdmin.addActionListener(this::btnAdminActionPerformed);
-        FondoAND.add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
         btnSingUp.setText("SignUp");
         btnSingUp.addActionListener(this::btnSingUpActionPerformed);
-        FondoAND.add(btnSingUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
-        FondoAND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+
+        btnAdmin.setText("Admin");
+        btnAdmin.addActionListener(this::btnAdminActionPerformed);
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Contraseña:");
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Usuario:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(26, 26, 26)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnContinuar)
+                        .addGap(21, 21, 21))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btnSingUp)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(btnSingUp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnContinuar)
+                            .addComponent(btnAdmin)))
+                    .addComponent(jLabel2))
+                .addContainerGap())
+        );
+
+        FondoAND.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 250, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoAND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +288,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSingUpActionPerformed
 
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,6 +335,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
