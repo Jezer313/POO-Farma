@@ -140,6 +140,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
         btnAdmin = new javax.swing.JButton();
         lblContraseña = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,7 +154,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         FondoAND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         panelLogin.setBackground(new java.awt.Color(13, 33, 45));
-        panelLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 140, 160)));
+        panelLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 120, 140)));
         panelLogin.setOpaque(false);
 
         txtIngresarUsuario.setBackground(new java.awt.Color(65, 82, 95));
@@ -248,6 +250,33 @@ public class InicioDeSesion extends javax.swing.JFrame {
         );
 
         FondoAND.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 305, 260));
+
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoHD.png"))); // NOI18N
+        try {
+            java.net.URL urlImg = getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoHD.png");
+            if (urlImg != null) {
+                javax.swing.ImageIcon iconOriginal = new javax.swing.ImageIcon(urlImg);
+
+                // Usamos dimensiones fijas (130x130) para evitar que falle por el ancho en cero
+                int tamaño = 130;
+                java.awt.Image imgEscalada = iconOriginal.getImage().getScaledInstance(tamaño, tamaño, java.awt.Image.SCALE_SMOOTH);
+
+                lblLogo.setIcon(new javax.swing.ImageIcon(imgEscalada));
+                lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lblLogo.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+            } else {
+                System.out.println("No se encontró la imagen en la ruta.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen: " + e.getMessage());
+        }
+        FondoAND.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 150, 150));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("FARMACIA TILIN");
+        FondoAND.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -385,9 +414,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnSingUp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblInciarSesion;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPasswordField txtContraseña;
