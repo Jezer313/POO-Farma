@@ -29,6 +29,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
         configurarPanelVideo();
         escenaAND();
         
+        txtContraseña.setEchoChar((char) 0);
+        
         setTitle("Video ADN");
         setResizable(false);
         setLocationRelativeTo(null);
@@ -136,6 +138,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         btnAdmin = new javax.swing.JButton();
         lblContraseña = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        btnVerContrseña = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
 
@@ -154,15 +157,33 @@ public class InicioDeSesion extends javax.swing.JFrame {
         panelLogin.setOpaque(false);
 
         txtIngresarUsuario.setBackground(new java.awt.Color(65, 82, 95));
-        txtIngresarUsuario.setForeground(new java.awt.Color(160, 170, 180));
+        txtIngresarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtIngresarUsuario.setText("Ingresa tu usuario");
         txtIngresarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
+        txtIngresarUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIngresarUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIngresarUsuarioFocusLost(evt);
+            }
+        });
         txtIngresarUsuario.addActionListener(this::txtIngresarUsuarioActionPerformed);
 
         txtContraseña.setBackground(new java.awt.Color(65, 82, 95));
         txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setText("********");
+        txtContraseña.setText("Ingresa tu contraseña");
         txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
+        txtContraseña.setEchoChar('*');
+        txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContraseñaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContraseñaFocusLost(evt);
+            }
+        });
+        txtContraseña.addActionListener(this::txtContraseñaActionPerformed);
 
         lblInciarSesion.setBackground(new java.awt.Color(0, 0, 0));
         lblInciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -182,7 +203,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         btnSingUp.setText("<html><u>Registrarse</u><html>");
         btnSingUp.setBorderPainted(false);
         btnSingUp.setContentAreaFilled(false);
-        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSingUp.addActionListener(this::btnSingUpActionPerformed);
 
         btnAdmin.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -190,7 +211,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         btnAdmin.setText("<html><u>Acceso Admin</u><html>");
         btnAdmin.setBorderPainted(false);
         btnAdmin.setContentAreaFilled(false);
-        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdmin.addActionListener(this::btnAdminActionPerformed);
 
         lblContraseña.setForeground(new java.awt.Color(230, 235, 240));
@@ -199,30 +220,34 @@ public class InicioDeSesion extends javax.swing.JFrame {
         lblUsuario.setForeground(new java.awt.Color(230, 235, 240));
         lblUsuario.setText("Usuario");
 
+        btnVerContrseña.setText("ver");
+        btnVerContrseña.addActionListener(this::btnVerContrseñaActionPerformed);
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblInciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLoginLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLoginLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtIngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGap(13, 13, 13)
+                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIngresarUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLoginLayout.createSequentialGroup()
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblInciarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,17 +261,19 @@ public class InicioDeSesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        FondoAND.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 305, 260));
+        FondoAND.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 320, 260));
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoHD.png"))); // NOI18N
@@ -280,12 +307,13 @@ public class InicioDeSesion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -303,14 +331,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         String usuario = txtIngresarUsuario.getText().trim();
         String contraseña = new String(txtContraseña.getPassword()).trim();
 
-        if (usuario.isEmpty() || contraseña.isEmpty()) {
-            // JOptionPane.showMessageDIalog muesta un cuadro en el centro con mensajes
-            javax.swing.JOptionPane.showMessageDialog(this,
-                "Por favor rellena los campos",
-                "Campos vacios",
-                javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        
 
         if (usuario.equals("roska") && contraseña.equals("1234")) {
             javax.swing.JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema!");
@@ -320,14 +341,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
             panelDeVenta.setVisible(true);
 
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                "Usuario o contraseña incorrectos.",
-                "Error de Autenticación",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
-
-            // Limpiar el campo de contraseña por seguridad y devolver el cursor
-            txtContraseña.setText("");
-            txtContraseña.requestFocus();
+            txtContraseña.setEchoChar((char) 0);
+            txtContraseña.setForeground(java.awt.Color.RED);
+            txtContraseña.setText("¡Usuario o Contraseña Incorrecto!");
+            
         }
 
     }//GEN-LAST:event_btnContinuarActionPerformed
@@ -370,7 +387,71 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void txtIngresarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioActionPerformed
         // TODO add your handling code here:
+        txtContraseña.requestFocusInWindow();
     }//GEN-LAST:event_txtIngresarUsuarioActionPerformed
+
+    private void txtIngresarUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioFocusGained
+        // TODO add your handling code here:
+        if (txtIngresarUsuario.getText().equals("Ingresa tu usuario")) {
+            txtIngresarUsuario.setForeground(java.awt.Color.WHITE);
+            txtIngresarUsuario.setText("  ");}
+    }//GEN-LAST:event_txtIngresarUsuarioFocusGained
+
+    private void txtContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusLost
+        // TODO add your handling code here:
+        String contra = new String(txtContraseña.getPassword());
+        if (contra.trim().isEmpty()) {
+            txtContraseña.setForeground(java.awt.Color.gray);
+            txtContraseña.setText("Ingresa tu contraseña");
+            txtContraseña.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_txtContraseñaFocusLost
+
+    private void txtContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusGained
+        // TODO add your handling code here:
+        String contra = new String(txtContraseña.getPassword());
+        
+        if (contra.equals("Ingresa tu contraseña") || contra.equals("¡Usuario o Contraseña Incorrecto!")) {
+            txtContraseña.setForeground(java.awt.Color.WHITE);
+            txtContraseña.setText("");
+            txtContraseña.setEchoChar('*');
+        }
+    }//GEN-LAST:event_txtContraseñaFocusGained
+
+    private void txtIngresarUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioFocusLost
+        // TODO add your handling code here:
+        if (txtIngresarUsuario.getText().trim().isEmpty()) {
+            txtIngresarUsuario.setForeground(java.awt.Color.GRAY);
+            txtIngresarUsuario.setText("Ingresa tu usuario");
+        }
+    }//GEN-LAST:event_txtIngresarUsuarioFocusLost
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+        btnContinuar.requestFocusInWindow();
+        btnContinuar.doClick();
+        
+    }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private boolean contraseñaVisible = false;
+    private void btnVerContrseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerContrseñaActionPerformed
+        // TODO add your handling code here:
+        char contraOculta = '*';
+        String contra = new String(txtContraseña.getPassword());
+        
+        if (contra.equals("Ingresa tu contraseña")) {
+        txtContraseña.setEchoChar((char) 0);
+        return;
+        }
+        
+        contraseñaVisible = !contraseñaVisible;
+        
+        if (contraseñaVisible) {
+            txtContraseña.setEchoChar((char) 0);
+        } else {
+            txtContraseña.setEchoChar(contraOculta);
+        }
+    }//GEN-LAST:event_btnVerContrseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,6 +492,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnSingUp;
+    private javax.swing.JButton btnVerContrseña;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblInciarSesion;
