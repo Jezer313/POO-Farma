@@ -128,13 +128,30 @@ public class CrearTabla {
                 FOREIGN KEY (ID_MEDICAMENTO)
                     REFERENCES MEDICAMENTOS(ID_MEDICAMENTO)
             );
+            """,
+            
+            //Usuario y contraseña de admin
+            """
+            CREATE TABLE IF NOT EXISTS ADMINS (
+                USUARIO_ADMIN   TEXT NOT NULL,
+                CONTRA_ADMIN    TEXT NOT NULL
+            );
+            """,
+            
+            //Usuario y contraseña de usuario
+            """
+            CREATE TABLE IF NOT EXISTS USERS (
+                USUARIO_USER    TEXT NOT NULL,
+                CONTRA_USER     TEXT NOT NULL
+            );
             """
         };
 
         try (Connection c = cn.getConnection();
              Statement st = c.createStatement()) {
 
-            //activar las claves foraneas es para que se conecten las tablas entre si, le estamos diciendo a SQLite que compruebe las relaciones entre las tablas
+            //activar las claves foraneas es para que se conecten las tablas entre si, le estamos diciendo 
+            //a SQLite que compruebe las relaciones entre las tablas
             st.execute("PRAGMA foreign_keys = ON;");
 
             for (String consulta : sql) {

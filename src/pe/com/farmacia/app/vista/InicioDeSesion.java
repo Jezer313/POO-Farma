@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
 import java.io.File;
@@ -14,7 +10,7 @@ import javafx.scene.media.MediaView;
 
 /**
  *
- * @author alum.fial1
+ * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»   
  */
 public class InicioDeSesion extends javax.swing.JFrame {
     

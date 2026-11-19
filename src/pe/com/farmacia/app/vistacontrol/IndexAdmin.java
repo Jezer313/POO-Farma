@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.com.farmacia.app.vistacontrol;
 
 /**
  *
- * @author USER
+ * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
 public class IndexAdmin {
-    
+
+    public static void inicio() {
+
+    }
 }
