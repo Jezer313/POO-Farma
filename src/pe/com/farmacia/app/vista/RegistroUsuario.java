@@ -27,7 +27,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         btnRegistrarse = new javax.swing.JButton();
@@ -43,12 +43,13 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtDireccion = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
 
-        Titulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setText("REGISTRAR USUARIO");
-        Titulo.setToolTipText("");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("REGISTRAR USUARIO");
+        lblTitulo.setToolTipText("");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(this::btnRegresarActionPerformed);
 
         lblNombre.setText("Nombre:");
 
@@ -72,7 +73,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegistrarse))
                 .addGap(178, 178, 178))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -104,7 +105,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(btnRegresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Titulo)
+                .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,9 +153,23 @@ public class RegistroUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        //Instanciamos
+        InicioDeSesion ventanaLogin = new InicioDeSesion();
+        //Centramos respecto a la pantalla
+        ventanaLogin.setLocationRelativeTo(null);
+        //Hace visible la pantalla
+        ventanaLogin.setVisible(true);
+        //Obtiene la ventana (JFrame) que contiene el panel de registro para poder cerrarla después
+        javax.swing.JFrame ventanaActual = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        //Verifica que se haya encontrado el JFrame y cierra la ventana anterior
+        if (ventanaActual != null) {
+            ventanaActual.dispose();
+        }
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Titulo;
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel jPanel1;
@@ -164,6 +179,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDNI;
