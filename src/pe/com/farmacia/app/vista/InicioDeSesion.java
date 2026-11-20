@@ -10,44 +10,43 @@ import javafx.scene.media.MediaView;
 
 /**
  *
- * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»   
+ * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
 public class InicioDeSesion extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InicioDeSesion.class.getName());
 
     /*
     JFXPanel es una libreia externa, sirve para insertar videos en el JFrame
-    */
+     */
     private final JFXPanel jfxPanel = new JFXPanel();
-    
-    
+
     public InicioDeSesion() {
-        
+
         initComponents();
         //se llama al metodo
         configurarPanelVideo();
         escenaAND();
-        
+
         txtContraseña.setEchoChar((char) 0);
-        
+
         setTitle("Video ADN");
         setResizable(false);
         setLocationRelativeTo(null);
-        
+
     }
- 
+
     private void configurarPanelVideo() {
         // Configurar tamaño y posición exacta del jfxPanel cubriendo todo el fondo (600x320)
         jfxPanel.setBounds(0, 0, 600, 320);
-        
+
         // Añadir el jfxPanel respetando el AbsoluteLayout de NetBeans
         FondoAND.add(jfxPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 320));
-        
+
         // Enviar el video al fondo absoluto (detrás de los botones y campos de texto)
         FondoAND.setComponentZOrder(jfxPanel, FondoAND.getComponentCount() - 1);
     }
-    
+
     private void escenaAND() {
         Platform.runLater(new Runnable() {
             @Override
@@ -56,28 +55,26 @@ public class InicioDeSesion extends javax.swing.JFrame {
                 MediaPlayer oracleVid = new MediaPlayer(
                         new Media(file.toURI().toString())
                 );
-                
+
                 MediaView mediaView = new MediaView(oracleVid);
-                
+
                 // Ajustar dimensiones del video y mantener proporción centrada
                 mediaView.setFitWidth(600);
                 mediaView.setFitHeight(320);
-                mediaView.setPreserveRatio(true); 
-                
+                mediaView.setPreserveRatio(true);
+
                 // StackPane centra el video automáticamente dentro del JFXPanel
                 javafx.scene.layout.StackPane root = new javafx.scene.layout.StackPane();
                 root.getChildren().add(mediaView);
-                
+
                 jfxPanel.setScene(new Scene(root));
-                
+
                 oracleVid.setVolume(0.7);
                 oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
                 oracleVid.play();
             }
         });
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,6 +201,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
         btnSingUp.setBorderPainted(false);
         btnSingUp.setContentAreaFilled(false);
         btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSingUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSingUpMouseClicked(evt);
+            }
+        });
         btnSingUp.addActionListener(this::btnSingUpActionPerformed);
 
         btnAdmin.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -327,11 +329,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
         /*
         ojo aca se uso un txt tipo password field, se usa ya que la clve lo va
         convertir en un arreglo de caracteres
-        */
+         */
         String usuario = txtIngresarUsuario.getText().trim();
         String contraseña = new String(txtContraseña.getPassword()).trim();
-
-        
 
         if (usuario.equals("roska") && contraseña.equals("1234")) {
             javax.swing.JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema!");
@@ -344,7 +344,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
             txtContraseña.setEchoChar((char) 0);
             txtContraseña.setForeground(java.awt.Color.RED);
             txtContraseña.setText("¡Usuario o Contraseña Incorrecto!");
-            
+
         }
 
     }//GEN-LAST:event_btnContinuarActionPerformed
@@ -352,9 +352,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
         // TODO add your handling code here:
         String claveAdmin = javax.swing.JOptionPane.showInputDialog(this,
-            "Ingresa la clve del admin",
-            "Acceso restringido",
-            javax.swing.JOptionPane.QUESTION_MESSAGE
+                "Ingresa la clave del admin",
+                "Acceso restringido",
+                javax.swing.JOptionPane.QUESTION_MESSAGE
         );
 
         if (claveAdmin != null && claveAdmin.equals("1234")) {
@@ -367,9 +367,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         } else if (claveAdmin != null) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Clave incorrecta.",
-                "Acceso Denegado",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+                    "Clave incorrecta.",
+                    "Acceso Denegado",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAdminActionPerformed
 
@@ -377,12 +377,16 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         //eso se llama instaciar la ventana o el jframe, sirve para guardar los datos de esa ventana
         RegistroUsuario ventanaRegistro = new RegistroUsuario();
-
-        //mostrar la ventana
-        ventanaRegistro.setVisible(true);
-
-        //cierra la esta ventana, es decir el del login
-        this.dispose();
+        
+        //Cambiar el titulo que esta puesto "Video ADN XDD"
+        setTitle("Registro de Usuario - Farmacia El Tilín");
+        
+        //Cambia a la ventana de Registro
+        setContentPane(ventanaRegistro);
+        
+        //Refrescan ventanita para que se haga el nuevo panel
+        revalidate();
+        repaint();
     }//GEN-LAST:event_btnSingUpActionPerformed
 
     private void txtIngresarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioActionPerformed
@@ -394,7 +398,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (txtIngresarUsuario.getText().equals("Ingresa tu usuario")) {
             txtIngresarUsuario.setForeground(java.awt.Color.WHITE);
-            txtIngresarUsuario.setText("  ");}
+            txtIngresarUsuario.setText("  ");
+        }
     }//GEN-LAST:event_txtIngresarUsuarioFocusGained
 
     private void txtContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusLost
@@ -410,7 +415,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void txtContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusGained
         // TODO add your handling code here:
         String contra = new String(txtContraseña.getPassword());
-        
+
         if (contra.equals("Ingresa tu contraseña") || contra.equals("¡Usuario o Contraseña Incorrecto!")) {
             txtContraseña.setForeground(java.awt.Color.WHITE);
             txtContraseña.setText("");
@@ -430,7 +435,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnContinuar.requestFocusInWindow();
         btnContinuar.doClick();
-        
+
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private boolean contraseñaVisible = false;
@@ -438,20 +443,24 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         char contraOculta = '*';
         String contra = new String(txtContraseña.getPassword());
-        
+
         if (contra.equals("Ingresa tu contraseña")) {
-        txtContraseña.setEchoChar((char) 0);
-        return;
+            txtContraseña.setEchoChar((char) 0);
+            return;
         }
-        
+
         contraseñaVisible = !contraseñaVisible;
-        
+
         if (contraseñaVisible) {
             txtContraseña.setEchoChar((char) 0);
         } else {
             txtContraseña.setEchoChar(contraOculta);
         }
     }//GEN-LAST:event_btnVerContrseñaActionPerformed
+
+    private void btnSingUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSingUpMouseClicked
+
+    }//GEN-LAST:event_btnSingUpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -473,18 +482,18 @@ public class InicioDeSesion extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-             //definimos las ventana
+            //definimos las ventana
             InicioDeSesion ventanaLogin = new InicioDeSesion();
             //lo centramos
             ventanaLogin.setLocationRelativeTo(null);
             //se muestra la ventana
             ventanaLogin.setVisible(true);
-                });
-        
+        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
