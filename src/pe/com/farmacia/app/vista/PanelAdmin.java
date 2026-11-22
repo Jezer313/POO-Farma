@@ -126,6 +126,7 @@ public class PanelAdmin extends javax.swing.JPanel {
         btnContinuarAdmin.setForeground(new java.awt.Color(224, 224, 224));
         btnContinuarAdmin.setText("CONTINUAR");
         btnContinuarAdmin.setFocusable(false);
+        btnContinuarAdmin.addActionListener(this::btnContinuarAdminActionPerformed);
 
         lblSubtitulo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(200, 210, 220));
@@ -251,6 +252,10 @@ public class PanelAdmin extends javax.swing.JPanel {
             ventanaLogin.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnContinuarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnContinuarAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
