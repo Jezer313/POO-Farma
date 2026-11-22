@@ -20,6 +20,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
     JFXPanel es una libreia externa, sirve para insertar videos en el JFrame
      */
     private final JFXPanel jfxPanel = new JFXPanel();
+// Guarda el reproductor de video para poder controlarlo desde otros métodos.
+    private MediaPlayer oracleVid;
 
     public InicioDeSesion() {
 
@@ -46,8 +48,9 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // Enviar el video al fondo absoluto (detrás de los botones y campos de texto)
         FondoAND.setComponentZOrder(jfxPanel, FondoAND.getComponentCount() - 1);
     }
-    
-    public void volverALogin(javax.swing.JPanel panelRegistro){
+
+    // Recupera la pantalla de inicio de sesión después de salir del panel de administrador.
+    public void volverALogin(javax.swing.JPanel panelRegistro) {
         //Elimina el panel de registro recibido del contenedor principal de la ventana.
         getContentPane().remove(panelRegistro);
         //Vuelve a hacer visible el panel de inicio
@@ -57,15 +60,75 @@ public class InicioDeSesion extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
-    
+
+    public void volverDesdeAdmin() {
+
+        // Obtiene la distribución de tarjetas de la ventana.
+        java.awt.CardLayout tarjetas
+                = (java.awt.CardLayout) getContentPane().getLayout();
+
+        // Muestra nuevamente la pantalla de inicio de sesión.
+        tarjetas.show(getContentPane(), "LOGIN");
+
+        // Restablece el título de la ventana.
+        setTitle("Video ADN");
+
+        // Recupera el tamaño original de la ventana.
+        setSize(600, 320);
+
+        // Centra la ventana en la pantalla.
+        setLocationRelativeTo(null);
+
+        // Actualiza la distribución y redibuja la ventana.
+        revalidate();
+        repaint();
+    }
+
     private void escenaAND() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                // Comprueba si ya existe un reproductor anterior.
+                if (oracleVid != null) {
+
+                    // Detiene la reproducción anterior.
+                    oracleVid.stop();
+
+                    // Libera los recursos del reproductor anterior.
+                    oracleVid.dispose();
+                }
                 File file = new File("media/iniciarSesion/videos/VideoADN.mp4");
-                MediaPlayer oracleVid = new MediaPlayer(
+                // Crea el reproductor de video y lo guarda en el atributo de la clase.
+                oracleVid = new MediaPlayer(
                         new Media(file.toURI().toString())
                 );
+                // Muestra un mensaje cuando el video presenta un error.
+                oracleVid.setOnError(() -> {
+                    System.out.println("ERROR DEL VIDEO: " + oracleVid.getError());
+                });
+
+// Muestra un mensaje cuando el video termina de prepararse.
+                oracleVid.setOnReady(() -> {
+                    System.out.println("VIDEO LISTO PARA REPRODUCIR");
+                });
+// Muestra el estado del reproductor cuando ocurre un error.
+                oracleVid.setOnError(() -> {
+                    System.out.println("ERROR: " + oracleVid.getError());
+                });
+
+// Muestra cuando el video comienza a reproducirse.
+                oracleVid.setOnPlaying(() -> {
+                    System.out.println("VIDEO REPRODUCIENDOSE");
+                });
+
+// Muestra cuando el video se detiene.
+                oracleVid.setOnStopped(() -> {
+                    System.out.println("VIDEO DETENIDO");
+                });
+// Muestra un mensaje si ocurre un error durante la reproducción.
+                oracleVid.setOnHalted(() -> {
+                    System.out.println("EL REPRODUCTOR SE HA DETENIDO");
+                });
 
                 MediaView mediaView = new MediaView(oracleVid);
 
@@ -83,6 +146,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
                 oracleVid.setVolume(0.7);
                 oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
                 oracleVid.play();
+                // Muestra el estado actual del reproductor.
+                System.out.println("ESTADO DEL VIDEO: " + oracleVid.getStatus());
             }
         });
     }
@@ -330,14 +395,14 @@ public class InicioDeSesion extends javax.swing.JFrame {
         String usuario = txtIngresarUsuario.getText().trim();
         String contraseña = new String(txtContraseña.getPassword()).trim();
 
-        if (usuario.equals("roska") && contraseña.equals("1234") 
+        if (usuario.equals("roska") && contraseña.equals("1234")
                 || usuario.equals("Ingresa tu usuario") && contraseña.equals("Ingresa tu contraseña")) {
             FondoAND.setVisible(false);
             PanelVentas panelVentas = new PanelVentas();
 
             getContentPane().add(panelVentas, java.awt.BorderLayout.CENTER);
             setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-            
+
             revalidate();
             repaint();
 
@@ -351,38 +416,49 @@ public class InicioDeSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        // TODO add your handling code here:
+
+        // Oculta el panel de inicio de sesión sin destruirlo.
         FondoAND.setVisible(false);
-        PanelAdmin ventanaAdmin = new PanelAdmin();
 
-        getContentPane().removeAll();
-        getContentPane().setLayout(new java.awt.BorderLayout());
-        getContentPane().add(ventanaAdmin, java.awt.BorderLayout.CENTER);
+        // Crea el panel de administrador y le pasa esta ventana.
+        PanelAdmin ventanaAdmin = new PanelAdmin(this);
 
-        setTitle("Iniciar de Sesión - Administrador");
+        // Establece el tamaño de la ventana para el panel de administrador.
         setSize(400, 550);
+
+// Centra la ventana en la pantalla.
         setLocationRelativeTo(null);
 
+// Ajusta el tamaño del panel de administrador.
+        ventanaAdmin.setBounds(0, 0, 400, 550);
+
+        // Agrega el panel de administrador a la ventana.
+        getContentPane().add(ventanaAdmin);
+
+        // Cambia el título de la ventana.
+        setTitle("Administrador - Farmacia El Tilín");
+
+        // Actualiza la distribución y redibuja la ventana.
         revalidate();
         repaint();
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
         // TODO add your handling code here:
-        
+
         // Oculta el panel del video/login sin destruirlo para mantener el video vivo
         FondoAND.setVisible(false);
-        
+
         // Instancia el panel de registro pasándole esta ventana (InicioDeSesion)
         RegistroUsuario ventanaRegistro = new RegistroUsuario(this);
         ventanaRegistro.setBounds(0, 0, getWidth(), getHeight());
-        
+
         // Agrega el panel de registro sobre la ventana actual
         getContentPane().add(ventanaRegistro);
-        
+
         //Cambiar el titulo que esta puesto "Video ADN XDD"
         setTitle("Registro de Usuario - Farmacia El Tilín");
-        
+
         //Refrescan ventanita para que se haga el nuevo panel
         revalidate();
         repaint();

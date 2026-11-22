@@ -10,10 +10,13 @@ package pe.com.farmacia.app.vista;
  */
 public class PanelAdmin extends javax.swing.JPanel {
 
+    private InicioDeSesion ventanaLogin;
+
     /**
      * Creates new form PanelAdmin
      */
-    public PanelAdmin() {
+    public PanelAdmin(InicioDeSesion ventanaLogin) {
+        this.ventanaLogin = ventanaLogin;
         initComponents();
     }
 
@@ -189,17 +192,17 @@ public class PanelAdmin extends javax.swing.JPanel {
         pnlFondoAdminLayout.setHorizontalGroup(
             pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoAdminLayout.createSequentialGroup()
-                .addGap(0, 41, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFondoAdminLayout.createSequentialGroup()
                         .addComponent(lblTitulo)
                         .addGap(30, 30, 30)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoAdminLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
@@ -223,22 +226,30 @@ public class PanelAdmin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(pnlFondoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(pnlFondoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(pnlFondoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(pnlFondoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+
+        // Comprueba que exista una referencia a la ventana de inicio de sesión.
+        if (ventanaLogin != null) {
+
+            // Elimina el panel de administrador y recupera la pantalla de inicio.
+            ventanaLogin.volverALogin(this);
+
+            // Recupera el tamaño original de la ventana de inicio de sesión.
+            ventanaLogin.setSize(600, 320);
+
+            // Centra nuevamente la ventana en la pantalla.
+            ventanaLogin.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
 
