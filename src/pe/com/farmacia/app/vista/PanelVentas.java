@@ -27,11 +27,14 @@ public class PanelVentas extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         pnlFondoVentas = new javax.swing.JPanel();
         pnlFondoLogo = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         pnlBotonesSuperior = new javax.swing.JPanel();
         btnMedicamentos = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
         btnFarmaceuticos = new javax.swing.JButton();
         pnlUsuario = new javax.swing.JPanel();
+        lblAvatar = new javax.swing.JLabel();
         pnlPedido = new javax.swing.JPanel();
         pnlCabeceraTicket = new javax.swing.JPanel();
         lblVenta = new javax.swing.JLabel();
@@ -86,16 +89,20 @@ public class PanelVentas extends javax.swing.JPanel {
 
         pnlFondoVentas.setBackground(new java.awt.Color(102, 153, 255));
 
-        javax.swing.GroupLayout pnlFondoLogoLayout = new javax.swing.GroupLayout(pnlFondoLogo);
-        pnlFondoLogo.setLayout(pnlFondoLogoLayout);
-        pnlFondoLogoLayout.setHorizontalGroup(
-            pnlFondoLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-        pnlFondoLogoLayout.setVerticalGroup(
-            pnlFondoLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
+        pnlFondoLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pnlFondoLogo.setPreferredSize(new java.awt.Dimension(150, 185));
+        pnlFondoLogo.setLayout(new java.awt.GridLayout(2, 1, 0, 4));
+
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/Logo80x81.png"))); // NOI18N
+        lblLogo.setText("Insete el logo aki");
+        lblLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblLogo.setAlignmentX(0.5F);
+        pnlFondoLogo.add(lblLogo);
+
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblName.setText("<html><div style=´txt-aligin: center;´>FARMACIA <br>\"EL TILIN\"</div></html>");
+        pnlFondoLogo.add(lblName);
 
         pnlBotonesSuperior.setLayout(new java.awt.GridBagLayout());
 
@@ -131,16 +138,14 @@ public class PanelVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(54, 30, 58, 118);
         pnlBotonesSuperior.add(btnFarmaceuticos, gridBagConstraints);
 
-        javax.swing.GroupLayout pnlUsuarioLayout = new javax.swing.GroupLayout(pnlUsuario);
-        pnlUsuario.setLayout(pnlUsuarioLayout);
-        pnlUsuarioLayout.setHorizontalGroup(
-            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlUsuarioLayout.setVerticalGroup(
-            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
-        );
+        pnlUsuario.setBackground(new java.awt.Color(45, 65, 78));
+        pnlUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 12, 8, 12));
+        pnlUsuario.setPreferredSize(new java.awt.Dimension(280, 65));
+        pnlUsuario.setLayout(new java.awt.BorderLayout(10, 0));
+
+        lblAvatar.setText("avar aki");
+        lblAvatar.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnlUsuario.add(lblAvatar, java.awt.BorderLayout.LINE_START);
 
         pnlPedido.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         pnlPedido.setLayout(new java.awt.BorderLayout());
@@ -245,7 +250,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +263,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +276,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +289,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +302,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +315,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +328,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +341,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +354,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +367,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +380,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +393,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,6 +443,8 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(pnlPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        pnlFondoLogo.getAccessibleContext().setAccessibleName("");
+
         add(pnlFondoVentas, java.awt.BorderLayout.CENTER);
 
         getAccessibleContext().setAccessibleName("");
@@ -483,9 +490,12 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblIGV;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblVenta;
