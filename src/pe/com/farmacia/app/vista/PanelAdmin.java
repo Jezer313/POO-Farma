@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
 /**
@@ -279,8 +275,11 @@ public class PanelAdmin extends javax.swing.JPanel {
 // Comprueba si el usuario y la contraseña son correctos.
         if (usuario.equals(usuarioAdmin) && contraseña.equals(contraseñaAdmin)) {
 
-            // Crea una nueva ventana para administrar la farmacia.
-            VentanaAdministracion ventana = new VentanaAdministracion();
+            // Crea el panel de administración y la ventana contenedora
+            VentanaAdministracion panelAdmin = new VentanaAdministracion();
+            javax.swing.JFrame ventana = new javax.swing.JFrame("Administracion de farmacia \"El Tilin\"");
+            ventana.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+            ventana.setContentPane(panelAdmin);
 
 // Establece el tamaño de la ventana.
             ventana.setSize(900, 600);
