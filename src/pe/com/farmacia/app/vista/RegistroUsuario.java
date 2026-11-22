@@ -29,11 +29,10 @@ public class RegistroUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
+        PanelRegistro = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        btnRegistrarse = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         lblApellido = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
@@ -42,117 +41,131 @@ public class RegistroUsuario extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         lblTelefono = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
+        lblDireccion = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
-        lblDireccion = new javax.swing.JLabel();
+        btnRegistrarse = new javax.swing.JButton();
+        PanelFondo = new javax.swing.JPanel(){
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(new java.awt.Color(255, 255, 255, 195));
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 24, 24);
+                g2.dispose();
+            }
+        };
+        FondoRegistro = new javax.swing.JLabel();
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("REGISTRAR USUARIO");
-        lblTitulo.setToolTipText("");
+        PanelRegistro.setPreferredSize(new java.awt.Dimension(600, 320));
+        PanelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(this::btnRegresarActionPerformed);
+        PanelRegistro.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        lblTitulo.setBackground(new java.awt.Color(25, 35, 45));
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(15, 23, 42));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("REGISTRAR USUARIO");
+        lblTitulo.setToolTipText("");
+        PanelRegistro.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 220, -1));
+
+        lblNombre.setBackground(new java.awt.Color(0, 0, 0));
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(30, 41, 59));
         lblNombre.setText("Nombre:");
+        PanelRegistro.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
+        txtNombre.setBackground(new java.awt.Color(102, 102, 102));
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, -1));
+
+        lblApellido.setBackground(new java.awt.Color(0, 0, 0));
+        lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblApellido.setForeground(new java.awt.Color(30, 41, 59));
+        lblApellido.setText("Apellido:");
+        PanelRegistro.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+
+        txtApellido.setBackground(new java.awt.Color(102, 102, 102));
+        txtApellido.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 150, -1));
+
+        lblDNI.setBackground(new java.awt.Color(0, 0, 0));
+        lblDNI.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDNI.setForeground(new java.awt.Color(30, 41, 59));
+        lblDNI.setText("DNI:");
+        PanelRegistro.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        txtDNI.setBackground(new java.awt.Color(102, 102, 102));
+        txtDNI.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 150, -1));
+
+        txtTelefono.setBackground(new java.awt.Color(102, 102, 102));
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 150, -1));
+
+        lblTelefono.setBackground(new java.awt.Color(0, 0, 0));
+        lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(30, 41, 59));
+        lblTelefono.setText("Teléfono:");
+        PanelRegistro.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+
+        lblCorreo.setBackground(new java.awt.Color(0, 0, 0));
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(30, 41, 59));
+        lblCorreo.setText("Correo:");
+        PanelRegistro.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        lblDireccion.setBackground(new java.awt.Color(0, 0, 0));
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(30, 41, 59));
+        lblDireccion.setText("Dirección:");
+        PanelRegistro.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
+
+        txtCorreo.setBackground(new java.awt.Color(102, 102, 102));
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 150, -1));
+
+        txtDireccion.setBackground(new java.awt.Color(102, 102, 102));
+        txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        PanelRegistro.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 150, -1));
+
+        btnRegistrarse.setBackground(new java.awt.Color(13, 148, 136));
         btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegistrarse.setText("REGISTRARSE");
+        PanelRegistro.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
-        lblApellido.setText("Apellido:");
+        PanelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        PanelFondo.setOpaque(false);
 
-        lblDNI.setText("DNI:");
-
-        lblTelefono.setText("Teléfono:");
-
-        lblCorreo.setText("Correo:");
-
-        lblDireccion.setText("Dirección:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrarse))
-                .addGap(178, 178, 178))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnRegresar)
-                .addGap(466, 466, 466))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDNI)
-                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCorreo)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblApellido)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelefono)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68))
+        javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);
+        PanelFondo.setLayout(PanelFondoLayout);
+        PanelFondoLayout.setHorizontalGroup(
+            PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblApellido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTelefono)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDNI)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCorreo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDireccion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(btnRegistrarse)
-                .addContainerGap(19, Short.MAX_VALUE))
+        PanelFondoLayout.setVerticalGroup(
+            PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
         );
+
+        PanelRegistro.add(PanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 530, 260));
+
+        FondoRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/Fondo_Registro.jpg"))); // NOI18N
+        PanelRegistro.add(FondoRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,9 +179,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FondoRegistro;
+    private javax.swing.JPanel PanelFondo;
+    private javax.swing.JPanel PanelRegistro;
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblDNI;
