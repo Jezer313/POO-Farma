@@ -46,7 +46,18 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // Enviar el video al fondo absoluto (detrás de los botones y campos de texto)
         FondoAND.setComponentZOrder(jfxPanel, FondoAND.getComponentCount() - 1);
     }
-
+    
+    public void volverALogin(javax.swing.JPanel panelRegistro){
+        //Elimina el panel de registro recibido del contenedor principal de la ventana.
+        getContentPane().remove(panelRegistro);
+        //Vuelve a hacer visible el panel de inicio
+        FondoAND.setVisible(true);
+        setTitle("Video ADN");
+        //Recalculca distribucion y redibuja la ventana
+        revalidate();
+        repaint();
+    }
+    
     private void escenaAND() {
         Platform.runLater(new Runnable() {
             @Override
@@ -375,14 +386,19 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
         // TODO add your handling code here:
-        //eso se llama instaciar la ventana o el jframe, sirve para guardar los datos de esa ventana
-        RegistroUsuario ventanaRegistro = new RegistroUsuario();
+        
+        // Oculta el panel del video/login sin destruirlo para mantener el video vivo
+        FondoAND.setVisible(false);
+        
+        // Instancia el panel de registro pasándole esta ventana (InicioDeSesion)
+        RegistroUsuario ventanaRegistro = new RegistroUsuario(this);
+        ventanaRegistro.setBounds(0, 0, getWidth(), getHeight());
+        
+        // Agrega el panel de registro sobre la ventana actual
+        getContentPane().add(ventanaRegistro);
         
         //Cambiar el titulo que esta puesto "Video ADN XDD"
         setTitle("Registro de Usuario - Farmacia El Tilín");
-        
-        //Cambia a la ventana de Registro
-        setContentPane(ventanaRegistro);
         
         //Refrescan ventanita para que se haga el nuevo panel
         revalidate();

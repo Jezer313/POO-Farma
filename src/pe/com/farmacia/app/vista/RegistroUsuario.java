@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
 /**
@@ -13,7 +9,14 @@ public class RegistroUsuario extends javax.swing.JPanel {
     /**
      * Creates new form RegistroUsuario
      */
+    private InicioDeSesion ventanaLogin;
+
     public RegistroUsuario() {
+        initComponents();
+    }
+
+    public RegistroUsuario(InicioDeSesion ventanaLogin) {
+        this.ventanaLogin = ventanaLogin;
         initComponents();
     }
 
@@ -154,17 +157,10 @@ public class RegistroUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        //Instanciamos
-        InicioDeSesion ventanaLogin = new InicioDeSesion();
-        //Centramos respecto a la pantalla
-        ventanaLogin.setLocationRelativeTo(null);
-        //Hace visible la pantalla
-        ventanaLogin.setVisible(true);
-        //Obtiene la ventana (JFrame) que contiene el panel de registro para poder cerrarla después
-        javax.swing.JFrame ventanaActual = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        //Verifica que se haya encontrado el JFrame y cierra la ventana anterior
-        if (ventanaActual != null) {
-            ventanaActual.dispose();
+        //Comprueba que exista una referencia a la ventana InicioDeSesion
+        if (ventanaLogin != null) {
+            //Llama al método de la ventana de login para pasar este panel, quitarlo y volver a mostrar el video de fondo
+            ventanaLogin.volverALogin(this);
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
