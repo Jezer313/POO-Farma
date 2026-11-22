@@ -27,6 +27,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         pnlFondoVentas = new javax.swing.JPanel();
         pnlFondoLogo = new javax.swing.JPanel();
         pnlBotonesSuperior = new javax.swing.JPanel();
@@ -36,8 +38,23 @@ public class PanelVentas extends javax.swing.JPanel {
         pnlUsuario = new javax.swing.JPanel();
         pnlPedido = new javax.swing.JPanel();
         pnlCabeceraTicket = new javax.swing.JPanel();
+        lblVenta = new javax.swing.JLabel();
+        pnlDatosCliente = new javax.swing.JPanel();
+        lblDNI = new javax.swing.JLabel();
+        lblCliente = new javax.swing.JLabel();
+        txtDNI = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
         pnlPieTicket = new javax.swing.JPanel();
-        scrollPane2 = new java.awt.ScrollPane();
+        pnlMontos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSubtotal = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblIGV = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        btnGenerarFactura = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlListaItems = new javax.swing.JPanel();
         pnlProductos = new javax.swing.JPanel();
         scrollPane1 = new java.awt.ScrollPane();
         pnlContenedorTarjetas = new javax.swing.JPanel();
@@ -54,6 +71,19 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -74,6 +104,7 @@ public class PanelVentas extends javax.swing.JPanel {
         pnlBotonesSuperior.setLayout(new java.awt.GridBagLayout());
 
         btnMedicamentos.setText("Medicamentos");
+        btnMedicamentos.addActionListener(this::btnMedicamentosActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -84,6 +115,7 @@ public class PanelVentas extends javax.swing.JPanel {
         pnlBotonesSuperior.add(btnMedicamentos, gridBagConstraints);
 
         btnPedidos.setText("Pedidos");
+        btnPedidos.addActionListener(this::btnPedidosActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -118,27 +150,91 @@ public class PanelVentas extends javax.swing.JPanel {
         pnlPedido.setLayout(new java.awt.BorderLayout());
 
         pnlCabeceraTicket.setBackground(new java.awt.Color(255, 102, 102));
-        pnlCabeceraTicket.setPreferredSize(new java.awt.Dimension(280, 65));
-        pnlCabeceraTicket.setLayout(new java.awt.GridLayout(2, 1, 0, 5));
-        pnlPedido.add(pnlCabeceraTicket, java.awt.BorderLayout.CENTER);
+        pnlCabeceraTicket.setPreferredSize(new java.awt.Dimension(280, 95));
+        pnlCabeceraTicket.setLayout(new java.awt.BorderLayout(0, 8));
+
+        lblVenta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVenta.setText("NUEVA VENTA");
+        pnlCabeceraTicket.add(lblVenta, java.awt.BorderLayout.CENTER);
+
+        pnlDatosCliente.setLayout(new java.awt.GridLayout(2, 2, 10, 4));
+
+        lblDNI.setText("DNI");
+        pnlDatosCliente.add(lblDNI);
+
+        lblCliente.setText("Cliente");
+        pnlDatosCliente.add(lblCliente);
+
+        txtDNI.setText("Nro DNI");
+        pnlDatosCliente.add(txtDNI);
+
+        txtCliente.setText("Nombre Cliente");
+        pnlDatosCliente.add(txtCliente);
+
+        pnlCabeceraTicket.add(pnlDatosCliente, java.awt.BorderLayout.PAGE_END);
+
+        pnlPedido.add(pnlCabeceraTicket, java.awt.BorderLayout.NORTH);
 
         pnlPieTicket.setBackground(new java.awt.Color(204, 255, 204));
+        pnlPieTicket.setPreferredSize(new java.awt.Dimension(280, 145));
+        pnlPieTicket.setLayout(new java.awt.GridLayout(2, 1, 0, 8));
 
-        javax.swing.GroupLayout pnlPieTicketLayout = new javax.swing.GroupLayout(pnlPieTicket);
-        pnlPieTicket.setLayout(pnlPieTicketLayout);
-        pnlPieTicketLayout.setHorizontalGroup(
-            pnlPieTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
-        );
-        pnlPieTicketLayout.setVerticalGroup(
-            pnlPieTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        pnlMontos.setBackground(new java.awt.Color(255, 255, 204));
+        pnlMontos.setLayout(new java.awt.GridLayout(3, 2, 0, 4));
+
+        jLabel1.setText("Subtotal");
+        jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        pnlMontos.add(jLabel1);
+
+        lblSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSubtotal.setText("S/. 0.00");
+        pnlMontos.add(lblSubtotal);
+
+        jLabel2.setText("IGV");
+        pnlMontos.add(jLabel2);
+
+        lblIGV.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblIGV.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblIGV.setText("S/. 0.00");
+        pnlMontos.add(lblIGV);
+
+        jLabel5.setText("TOTAL:");
+        pnlMontos.add(jLabel5);
+
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotal.setText("S/. 0.00");
+        pnlMontos.add(lblTotal);
+
+        pnlPieTicket.add(pnlMontos);
+
+        btnGenerarFactura.setBackground(new java.awt.Color(16, 185, 129));
+        btnGenerarFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarFactura.setText("GENERAR FACTURA");
+        btnGenerarFactura.addActionListener(this::btnGenerarFacturaActionPerformed);
+        pnlPieTicket.add(btnGenerarFactura);
 
         pnlPedido.add(pnlPieTicket, java.awt.BorderLayout.PAGE_END);
 
-        scrollPane2.setBackground(new java.awt.Color(255, 255, 204));
-        pnlPedido.add(scrollPane2, java.awt.BorderLayout.PAGE_START);
+        jScrollPane1.setBackground(new java.awt.Color(204, 204, 0));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        pnlListaItems.setBackground(new java.awt.Color(255, 255, 255));
+        pnlListaItems.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        pnlListaItems.setLayout(new javax.swing.BoxLayout(pnlListaItems, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(pnlListaItems);
+
+        pnlPedido.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pnlProductos.setBackground(new java.awt.Color(255, 153, 153));
         pnlProductos.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -153,7 +249,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +262,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +275,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +288,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +301,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +314,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +327,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +340,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +353,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +366,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +379,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +392,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 258, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,11 +447,31 @@ public class PanelVentas extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMedicamentosActionPerformed
+
+    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPedidosActionPerformed
+
+    private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1AncestorAdded
+
+    private void btnGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerarFacturaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFarmaceuticos;
+    private javax.swing.JButton btnGenerarFactura;
     private javax.swing.JButton btnMedicamentos;
     private javax.swing.JButton btnPedidos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -368,17 +484,30 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblDNI;
+    private javax.swing.JLabel lblIGV;
+    private javax.swing.JLabel lblSubtotal;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblVenta;
     private javax.swing.JPanel pnlBotonesSuperior;
     private javax.swing.JPanel pnlCabeceraTicket;
     private javax.swing.JPanel pnlContenedorTarjetas;
+    private javax.swing.JPanel pnlDatosCliente;
     private javax.swing.JPanel pnlFondoLogo;
     private javax.swing.JPanel pnlFondoVentas;
+    private javax.swing.JPanel pnlListaItems;
+    private javax.swing.JPanel pnlMontos;
     private javax.swing.JPanel pnlPedido;
     private javax.swing.JPanel pnlPieTicket;
     private javax.swing.JPanel pnlProductos;
     private javax.swing.JPanel pnlUsuario;
     private java.awt.ScrollPane scrollPane1;
-    private java.awt.ScrollPane scrollPane2;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtDNI;
     // End of variables declaration//GEN-END:variables
 }
