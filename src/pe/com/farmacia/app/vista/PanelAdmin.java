@@ -26,10 +26,77 @@ public class PanelAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlFondoAdmin = new javax.swing.JPanel();
+        pnlFondoAdmin = 
+        new javax.swing.JPanel() {
+
+            // Cargar imagen de fondo
+            private final java.awt.Image fondo =
+            new javax.swing.ImageIcon(
+                getClass().getResource(
+                    "/pe/com/farmacia/app/media/imagenes/fondo_admin.png"
+                )
+            ).getImage();
+
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+
+                // Obtener dimensiones de la imagen
+                int anchoImagen = fondo.getWidth(this);
+                int altoImagen = fondo.getHeight(this);
+
+                // Ajustar imagen al tamaño del panel
+                double escala = Math.max(
+                    (double) getWidth() / anchoImagen,
+                    (double) getHeight() / altoImagen
+                );
+
+                int ancho = (int) (anchoImagen * escala);
+                int alto = (int) (altoImagen * escala);
+
+                // Centrar imagen
+                int x = (getWidth() - ancho) / 2;
+                int y = (getHeight() - alto) / 2;
+
+                // Dibujar fondo
+                g.drawImage(fondo, x, y, ancho, alto, this);
+            }
+        }
+        ;
         lblTitulo = new javax.swing.JLabel();
         btnContinuarAdmin = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel() {
+            {
+                setOpaque(false);
+            }
+
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+
+                java.awt.Graphics2D g2 =
+                (java.awt.Graphics2D) g.create();
+
+                g2.setRenderingHint(
+                    java.awt.RenderingHints.KEY_ANTIALIASING,
+                    java.awt.RenderingHints.VALUE_ANTIALIAS_ON
+                );
+
+                g2.setColor(new java.awt.Color(30, 50, 75, 190));
+
+                g2.fillRoundRect(
+                    0, 0, getWidth(), getHeight(), 18, 18
+                );
+
+                g2.setColor(new java.awt.Color(90, 130, 170, 100));
+
+                g2.drawRoundRect(
+                    0, 0, getWidth() - 1, getHeight() - 1, 18, 18
+                );
+
+                g2.dispose();
+            }
+        };
         lblSubtitulo = new javax.swing.JLabel();
         lblContraseña = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
@@ -45,26 +112,30 @@ public class PanelAdmin extends javax.swing.JPanel {
         pnlFondoAdmin.setName(""); // NOI18N
         pnlFondoAdmin.setPreferredSize(new java.awt.Dimension(100, 644));
 
+        lblTitulo.setBackground(new java.awt.Color(204, 204, 204));
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("ACCESO ADMINISTRADOR");
 
-        btnContinuarAdmin.setBackground(new java.awt.Color(46, 204, 113));
+        btnContinuarAdmin.setBackground(new java.awt.Color(51, 153, 0));
         btnContinuarAdmin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnContinuarAdmin.setForeground(new java.awt.Color(224, 224, 224));
         btnContinuarAdmin.setText("CONTINUAR");
         btnContinuarAdmin.setFocusable(false);
 
         lblSubtitulo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(200, 200, 200));
+        lblSubtitulo.setForeground(new java.awt.Color(200, 210, 220));
         lblSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSubtitulo.setText("Ingresa tus credenciales de administrador");
 
         lblContraseña.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        lblContraseña.setForeground(new java.awt.Color(255, 255, 255));
         lblContraseña.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblContraseña.setText("Contraseña");
 
         lblUsuario.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblUsuario.setText("Usuario");
 
@@ -108,7 +179,7 @@ public class PanelAdmin extends javax.swing.JPanel {
         );
 
         btnRegresar.setBackground(new java.awt.Color(52, 73, 94));
-        btnRegresar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRegresar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setFocusable(false);
         btnRegresar.addActionListener(this::btnRegresarActionPerformed);
@@ -119,28 +190,31 @@ public class PanelAdmin extends javax.swing.JPanel {
             pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoAdminLayout.createSequentialGroup()
                 .addGap(0, 41, Short.MAX_VALUE)
-                .addGroup(pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitulo)
-                    .addGroup(pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnlFondoAdminLayout.createSequentialGroup()
-                            .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlFondoAdminLayout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(30, 30, 30)))
                 .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFondoAdminLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         pnlFondoAdminLayout.setVerticalGroup(
             pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoAdminLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(93, 93, 93)
                 .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(pnlFondoAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnContinuarAdmin)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnContinuarAdmin))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -59,40 +59,46 @@
           <Dimension value="[100, 644]"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="&#xd;&#xa;new javax.swing.JPanel() {&#xd;&#xa;&#xd;&#xa;    // Cargar imagen de fondo&#xd;&#xa;    private final java.awt.Image fondo =&#xd;&#xa;        new javax.swing.ImageIcon(&#xd;&#xa;            getClass().getResource(&#xd;&#xa;                &quot;/pe/com/farmacia/app/media/imagenes/fondo_admin.png&quot;&#xd;&#xa;            )&#xd;&#xa;        ).getImage();&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;&#xd;&#xa;        // Obtener dimensiones de la imagen&#xd;&#xa;        int anchoImagen = fondo.getWidth(this);&#xd;&#xa;        int altoImagen = fondo.getHeight(this);&#xd;&#xa;&#xd;&#xa;        // Ajustar imagen al tama&#xf1;o del panel&#xd;&#xa;        double escala = Math.max(&#xd;&#xa;            (double) getWidth() / anchoImagen,&#xd;&#xa;            (double) getHeight() / altoImagen&#xd;&#xa;        );&#xd;&#xa;&#xd;&#xa;        int ancho = (int) (anchoImagen * escala);&#xd;&#xa;        int alto = (int) (altoImagen * escala);&#xd;&#xa;&#xd;&#xa;        // Centrar imagen&#xd;&#xa;        int x = (getWidth() - ancho) / 2;&#xd;&#xa;        int y = (getHeight() - alto) / 2;&#xd;&#xa;&#xd;&#xa;        // Dibujar fondo&#xd;&#xa;        g.drawImage(fondo, x, y, ancho, alto, this);&#xd;&#xa;    }&#xd;&#xa;}&#xd;&#xa;"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnRegresar" min="-2" pref="110" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnContinuarAdmin" min="-2" pref="119" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="43" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <Component id="btnRegresar" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnContinuarAdmin" min="-2" pref="119" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                   <Component id="lblTitulo" min="-2" pref="31" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnContinuarAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnRegresar" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="btnContinuarAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="165" max="32767" attributes="0"/>
+                  <EmptySpace pref="178" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -100,8 +106,14 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblTitulo">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="20" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="ACCESO ADMINISTRADOR"/>
@@ -110,7 +122,7 @@
         <Component class="javax.swing.JButton" name="btnContinuarAdmin">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="71" green="cc" red="2e" type="rgb"/>
+              <Color blue="0" green="99" red="33" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
@@ -123,6 +135,9 @@
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    {&#xa;        setOpaque(false);&#xa;    }&#xa;&#xa;    @Override&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xa;        super.paintComponent(g);&#xa;&#xa;        java.awt.Graphics2D g2 =&#xa;            (java.awt.Graphics2D) g.create();&#xa;&#xa;        g2.setRenderingHint(&#xa;            java.awt.RenderingHints.KEY_ANTIALIASING,&#xa;            java.awt.RenderingHints.VALUE_ANTIALIAS_ON&#xa;        );&#xa;&#xa;        g2.setColor(new java.awt.Color(30, 50, 75, 190));&#xa;&#xa;        g2.fillRoundRect(&#xa;            0, 0, getWidth(), getHeight(), 18, 18&#xa;        );&#xa;&#xa;        g2.setColor(new java.awt.Color(90, 130, 170, 100));&#xa;&#xa;        g2.drawRoundRect(&#xa;            0, 0, getWidth() - 1, getHeight() - 1, 18, 18&#xa;        );&#xa;&#xa;        g2.dispose();&#xa;    }&#xa;}"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -175,7 +190,7 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c8" green="c8" red="c8" type="rgb"/>
+                  <Color blue="dc" green="d2" red="c8" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Ingresa tus credenciales de administrador"/>
@@ -186,6 +201,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="13" style="1"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
               </Properties>
@@ -194,6 +212,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="Usuario"/>
@@ -221,7 +242,7 @@
               <Color blue="5e" green="49" red="34" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="12" style="1"/>
+              <Font name="Arial" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="REGRESAR"/>
             <Property name="focusable" type="boolean" value="false"/>
