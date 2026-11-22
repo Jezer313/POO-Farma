@@ -362,26 +362,19 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
         // TODO add your handling code here:
-        String claveAdmin = javax.swing.JOptionPane.showInputDialog(this,
-                "Ingresa la clave del admin",
-                "Acceso restringido",
-                javax.swing.JOptionPane.QUESTION_MESSAGE
-        );
+        FondoAND.setVisible(false);
+        PanelAdmin ventanaAdmin = new PanelAdmin();
 
-        if (claveAdmin != null && claveAdmin.equals("1234")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Modo Administrador activado.");
+        getContentPane().removeAll();
+        getContentPane().setLayout(new java.awt.BorderLayout());
+        getContentPane().add(ventanaAdmin, java.awt.BorderLayout.CENTER);
 
-            // SE abre panel de administración
-            PanelAdmin adminPanel = new PanelAdmin();
-            adminPanel.setVisible(true);
-            this.dispose();
+        setTitle("Iniciar de Sesión - Administrador");
+        setSize(400, 550);
+        setLocationRelativeTo(null);
 
-        } else if (claveAdmin != null) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "Clave incorrecta.",
-                    "Acceso Denegado",
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+        revalidate();
+        repaint();
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
