@@ -422,6 +422,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         // Crea el panel de administrador y le pasa esta ventana.
         PanelAdmin ventanaAdmin = new PanelAdmin(this);
+        // Permite ejecutar el botón CONTINUAR al presionar Enter.
+        getRootPane().setDefaultButton(ventanaAdmin.getBtnContinuarAdmin());
 
         // Establece el tamaño de la ventana para el panel de administrador.
         setSize(400, 550);

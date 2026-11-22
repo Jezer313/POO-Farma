@@ -11,6 +11,13 @@ package pe.com.farmacia.app.vista;
 public class PanelAdmin extends javax.swing.JPanel {
 
     private InicioDeSesion ventanaLogin;
+    // Guarda la cantidad de intentos fallidos permitidos para el administrador.
+    private int intentosRestantes = 3;
+    // Guarda el usuario temporal autorizado para ingresar como administrador.
+    private final String usuarioAdmin = "admin";
+
+// Guarda la contraseña temporal del administrador.
+    private final String contraseñaAdmin = "admin123";
 
     /**
      * Creates new form PanelAdmin
@@ -18,6 +25,15 @@ public class PanelAdmin extends javax.swing.JPanel {
     public PanelAdmin(InicioDeSesion ventanaLogin) {
         this.ventanaLogin = ventanaLogin;
         initComponents();
+        // Al presionar Enter en el usuario, pasa al campo de contraseña.
+        txtUsuarioAdmin.addActionListener(e -> txtContraseñaAdmin.requestFocus());
+        // Al presionar Enter en la contraseña, ejecuta el botón CONTINUAR.
+        txtContraseñaAdmin.addActionListener(e -> btnContinuarAdmin.doClick());
+    }
+    // Devuelve el botón de continuar para configurarlo desde la ventana principal.
+
+    public javax.swing.JButton getBtnContinuarAdmin() {
+        return btnContinuarAdmin;
     }
 
     /**
@@ -126,6 +142,7 @@ public class PanelAdmin extends javax.swing.JPanel {
         btnContinuarAdmin.setForeground(new java.awt.Color(224, 224, 224));
         btnContinuarAdmin.setText("CONTINUAR");
         btnContinuarAdmin.setFocusable(false);
+        btnContinuarAdmin.addActionListener(this::btnContinuarAdminActionPerformed);
 
         lblSubtitulo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(200, 210, 220));
@@ -251,6 +268,69 @@ public class PanelAdmin extends javax.swing.JPanel {
             ventanaLogin.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnContinuarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarAdminActionPerformed
+// Obtiene el usuario ingresado y elimina espacios al inicio y al final.
+        String usuario = txtUsuarioAdmin.getText().trim();
+
+// Obtiene la contraseña ingresada.
+        String contraseña = new String(txtContraseñaAdmin.getPassword());
+
+// Comprueba si el usuario y la contraseña son correctos.
+        if (usuario.equals(usuarioAdmin) && contraseña.equals(contraseñaAdmin)) {
+
+            // Crea una nueva ventana para administrar la farmacia.
+            VentanaAdministracion ventana = new VentanaAdministracion();
+
+// Establece el tamaño de la ventana.
+            ventana.setSize(900, 600);
+
+// Centra la ventana en la pantalla.
+            ventana.setLocationRelativeTo(null);
+
+// Evita que la ventana cambie de tamaño.
+            ventana.setResizable(false);
+
+// Muestra la ventana de administración.
+            ventana.setVisible(true);
+
+// Oculta la ventana de inicio de sesión.
+            ventanaLogin.dispose();
+        } else {
+
+            // Descuenta un intento cuando las credenciales son incorrectas.
+            intentosRestantes--;
+
+            // Comprueba si todavía quedan intentos disponibles.
+            if (intentosRestantes > 0) {
+
+                // Muestra un mensaje con la cantidad de intentos restantes.
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Usuario o contraseña incorrectos.\nIntentos restantes: " + intentosRestantes,
+                        "Acceso denegado",
+                        javax.swing.JOptionPane.WARNING_MESSAGE
+                );
+
+            } else {
+
+                // Muestra el mensaje cuando se agotan los tres intentos.
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Has agotado los 3 intentos. El acceso ha sido bloqueado.",
+                        "Acceso bloqueado",
+                        javax.swing.JOptionPane.ERROR_MESSAGE
+                );
+
+                // Deshabilita los campos de acceso.
+                txtUsuarioAdmin.setEnabled(false);
+                txtContraseñaAdmin.setEnabled(false);
+
+                // Deshabilita el botón para impedir nuevos intentos.
+                btnContinuarAdmin.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_btnContinuarAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
