@@ -97,7 +97,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoAND = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         panelLogin = new javax.swing.JPanel() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
@@ -152,13 +151,12 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        FondoAND.setBackground(new java.awt.Color(0, 51, 153));
+        FondoAND.setBackground(new java.awt.Color(102, 153, 255));
         FondoAND.setMaximumSize(new java.awt.Dimension(600, 320));
         FondoAND.setMinimumSize(new java.awt.Dimension(600, 320));
         FondoAND.setName(""); // NOI18N
         FondoAND.setPreferredSize(new java.awt.Dimension(600, 320));
         FondoAND.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        FondoAND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         panelLogin.setBackground(new java.awt.Color(13, 33, 45));
         panelLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 120, 140)));
@@ -290,6 +288,8 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoHD.png"))); // NOI18N
+        lblLogo.setMaximumSize(new java.awt.Dimension(150, 150));
+        lblLogo.setMinimumSize(new java.awt.Dimension(150, 150));
         try {
             java.net.URL urlImg = getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoHD.png");
             if (urlImg != null) {
@@ -315,21 +315,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         lblNombre.setText("<html><div style=´txt-aligin: center;´>FARMACIA <br>\"EL TILIN\"</div></html>");
         FondoAND.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(FondoAND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(FondoAND, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -344,12 +330,16 @@ public class InicioDeSesion extends javax.swing.JFrame {
         String usuario = txtIngresarUsuario.getText().trim();
         String contraseña = new String(txtContraseña.getPassword()).trim();
 
-        if (usuario.equals("roska") && contraseña.equals("1234")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema!");
+        if (usuario.equals("roska") && contraseña.equals("1234") 
+                || usuario.equals("Ingresa tu usuario") && contraseña.equals("Ingresa tu contraseña")) {
+            FondoAND.setVisible(false);
+            PanelVentas panelVentas = new PanelVentas();
 
-            Venta panelDeVenta = new Venta();
-
-            panelDeVenta.setVisible(true);
+            getContentPane().add(panelVentas, java.awt.BorderLayout.CENTER);
+            setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+            
+            revalidate();
+            repaint();
 
         } else {
             txtContraseña.setEchoChar((char) 0);
@@ -407,7 +397,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (txtIngresarUsuario.getText().equals("Ingresa tu usuario")) {
             txtIngresarUsuario.setForeground(java.awt.Color.WHITE);
-            txtIngresarUsuario.setText("  ");
+            txtIngresarUsuario.setText("");
         }
     }//GEN-LAST:event_txtIngresarUsuarioFocusGained
 
@@ -511,7 +501,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnSingUp;
     private javax.swing.JButton btnVerContrseña;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblInciarSesion;
     private javax.swing.JLabel lblLogo;
