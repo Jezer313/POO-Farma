@@ -21,33 +21,7 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
-        pnlUsuario = new javax.swing.JPanel();
-        lblAvatar = new javax.swing.JLabel();
-        pnlDatosUsuario = new javax.swing.JPanel();
-        lblRolUsuario = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        pnlPedido = new javax.swing.JPanel();
-        pnlCabeceraTicket = new javax.swing.JPanel();
-        lblVenta = new javax.swing.JLabel();
-        pnlDatosCliente = new javax.swing.JPanel();
-        lblDNI = new javax.swing.JLabel();
-        lblCliente = new javax.swing.JLabel();
-        txtDNI = new javax.swing.JTextField();
-        txtCliente = new javax.swing.JTextField();
-        pnlPieTicket = new javax.swing.JPanel();
-        pnlMontos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblSubtotal = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblIGV = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
-        btnGenerarFactura = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pnlListaItems = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
         lblIconoPersonas = new javax.swing.JLabel();
@@ -59,149 +33,12 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         txtBuscarFarmaceutico = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(185, 220, 250));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(80, 150, 210)));
         setMaximumSize(new java.awt.Dimension(950, 533));
         setMinimumSize(new java.awt.Dimension(950, 533));
-        setPreferredSize(new java.awt.Dimension(950, 533));
-
-        pnlUsuario.setBackground(new java.awt.Color(45, 65, 78));
-        pnlUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 12, 8, 12));
-        pnlUsuario.setPreferredSize(new java.awt.Dimension(280, 65));
-        pnlUsuario.setLayout(new java.awt.BorderLayout(10, 0));
-
-        lblAvatar.setText("avar aki");
-        lblAvatar.setPreferredSize(new java.awt.Dimension(45, 45));
-        pnlUsuario.add(lblAvatar, java.awt.BorderLayout.LINE_START);
-
-        pnlDatosUsuario.setLayout(new java.awt.GridLayout(2, 1));
-
-        lblRolUsuario.setBackground(new java.awt.Color(200, 215, 225));
-        lblRolUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblRolUsuario.setText("Nombre usuario");
-        pnlDatosUsuario.add(lblRolUsuario);
-
-        jLabel4.setText("Cliente");
-        pnlDatosUsuario.add(jLabel4);
-
-        pnlUsuario.add(pnlDatosUsuario, java.awt.BorderLayout.CENTER);
-
-        pnlPedido.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        pnlPedido.setLayout(new java.awt.BorderLayout());
-
-        pnlCabeceraTicket.setBackground(new java.awt.Color(255, 102, 102));
-        pnlCabeceraTicket.setPreferredSize(new java.awt.Dimension(280, 95));
-        pnlCabeceraTicket.setLayout(new java.awt.BorderLayout(0, 8));
-
-        lblVenta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVenta.setText("NUEVA VENTA");
-        pnlCabeceraTicket.add(lblVenta, java.awt.BorderLayout.CENTER);
-
-        pnlDatosCliente.setLayout(new java.awt.GridLayout(2, 2, 10, 4));
-
-        lblDNI.setText("DNI");
-        pnlDatosCliente.add(lblDNI);
-
-        lblCliente.setText("Cliente");
-        pnlDatosCliente.add(lblCliente);
-
-        txtDNI.setText("Nro DNI");
-        pnlDatosCliente.add(txtDNI);
-
-        txtCliente.setText("Nombre Cliente");
-        pnlDatosCliente.add(txtCliente);
-
-        pnlCabeceraTicket.add(pnlDatosCliente, java.awt.BorderLayout.PAGE_END);
-
-        pnlPedido.add(pnlCabeceraTicket, java.awt.BorderLayout.NORTH);
-
-        pnlPieTicket.setBackground(new java.awt.Color(204, 255, 204));
-        pnlPieTicket.setPreferredSize(new java.awt.Dimension(280, 145));
-        pnlPieTicket.setLayout(new java.awt.GridLayout(2, 1, 0, 8));
-
-        pnlMontos.setBackground(new java.awt.Color(255, 255, 204));
-        pnlMontos.setLayout(new java.awt.GridLayout(3, 2, 0, 4));
-
-        jLabel1.setText("Subtotal");
-        jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel1AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        pnlMontos.add(jLabel1);
-
-        lblSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblSubtotal.setText("S/. 0.00");
-        pnlMontos.add(lblSubtotal);
-
-        jLabel2.setText("IGV");
-        pnlMontos.add(jLabel2);
-
-        lblIGV.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblIGV.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblIGV.setText("S/. 0.00");
-        pnlMontos.add(lblIGV);
-
-        jLabel5.setText("TOTAL:");
-        pnlMontos.add(jLabel5);
-
-        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTotal.setText("S/. 0.00");
-        pnlMontos.add(lblTotal);
-
-        pnlPieTicket.add(pnlMontos);
-
-        btnGenerarFactura.setBackground(new java.awt.Color(16, 185, 129));
-        btnGenerarFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
-        btnGenerarFactura.setText("GENERAR FACTURA");
-        btnGenerarFactura.addActionListener(this::btnGenerarFacturaActionPerformed);
-        pnlPieTicket.add(btnGenerarFactura);
-
-        pnlPedido.add(pnlPieTicket, java.awt.BorderLayout.PAGE_END);
-
-        jScrollPane1.setBackground(new java.awt.Color(204, 204, 0));
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        pnlListaItems.setBackground(new java.awt.Color(255, 255, 255));
-        pnlListaItems.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
-        pnlListaItems.setLayout(new javax.swing.BoxLayout(pnlListaItems, javax.swing.BoxLayout.Y_AXIS));
-        jScrollPane1.setViewportView(pnlListaItems);
-
-        pnlPedido.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(pnlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
-        );
+        setPreferredSize(new java.awt.Dimension(900, 533));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(27, 77, 62));
@@ -272,23 +109,22 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
         pnlContenedorFarmaceuticosLayout.setHorizontalGroup(
             pnlContenedorFarmaceuticosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContenedorFarmaceuticosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlFarmaceutico1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlFarmaceutico2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlFarmaceutico3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlFarmaceutico3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlContenedorFarmaceuticosLayout.setVerticalGroup(
             pnlContenedorFarmaceuticosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContenedorFarmaceuticosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlContenedorFarmaceuticosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlContenedorFarmaceuticosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlFarmaceutico3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlFarmaceutico2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlFarmaceutico1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         txtBuscarFarmaceutico.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,7 +143,8 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
                 .addGap(0, 11, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscarFarmaceutico, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtBuscarFarmaceutico, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,51 +153,34 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
                 .addComponent(jLabel3))
         );
 
-        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/Logo80x81.png"))); // NOI18N
-        lblLogo.setText("Insete el logo aki");
-        lblLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblLogo.setAlignmentX(0.5F);
-
-        lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblName.setText("<html><div style=´txt-aligin: center;´>FARMACIA <br>\"EL TILIN\"</div></html>");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlContenedorFarmaceuticos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblIconoPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSeparador)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTitulo)
-                                    .addComponent(lblSubtitulo))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblSubtitulo)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(pnlContenedorFarmaceuticos, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -369,67 +189,27 @@ public class PanelFarmaceuticos extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblSeparador)
                             .addComponent(lblSubtitulo)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIconoPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lblIconoPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlContenedorFarmaceuticos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlContenedorFarmaceuticos, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1AncestorAdded
-
-    private void btnGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarFacturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGenerarFacturaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGenerarFactura;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAvatar;
-    private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblDNI;
-    private javax.swing.JLabel lblIGV;
     private javax.swing.JLabel lblIconoPersonas;
-    private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblRolUsuario;
     private javax.swing.JLabel lblSeparador;
     private javax.swing.JLabel lblSubtitulo;
-    private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblVenta;
-    private javax.swing.JPanel pnlCabeceraTicket;
     private javax.swing.JPanel pnlContenedorFarmaceuticos;
-    private javax.swing.JPanel pnlDatosCliente;
-    private javax.swing.JPanel pnlDatosUsuario;
     private javax.swing.JPanel pnlFarmaceutico1;
     private javax.swing.JPanel pnlFarmaceutico2;
     private javax.swing.JPanel pnlFarmaceutico3;
-    private javax.swing.JPanel pnlListaItems;
-    private javax.swing.JPanel pnlMontos;
-    private javax.swing.JPanel pnlPedido;
-    private javax.swing.JPanel pnlPieTicket;
-    private javax.swing.JPanel pnlUsuario;
     private javax.swing.JTextField txtBuscarFarmaceutico;
-    private javax.swing.JTextField txtCliente;
-    private javax.swing.JTextField txtDNI;
     // End of variables declaration//GEN-END:variables
 }
