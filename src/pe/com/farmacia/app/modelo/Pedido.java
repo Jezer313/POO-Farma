@@ -20,4 +20,6 @@ public class Pedido {
     private double preciounitario;
     private double costototal;
     private int cantidad;
+    private int id_proveedor;
+    private int id_administrador;
 }

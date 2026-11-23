@@ -1,4 +1,4 @@
-package pe.com.farmacia.app.modelo;
+    package pe.com.farmacia.app.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +20,6 @@ public class FacturaDeVenta {
     private double preciounitario;
     private double costototal;
     private int cantidad;
+    private int id_cliente;
+    private int id_farmaceutico;
 }

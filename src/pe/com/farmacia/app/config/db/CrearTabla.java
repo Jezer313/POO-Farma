@@ -12,79 +12,86 @@ public class CrearTabla {
 
             //tabla Medicamentos chipis
             """
-            CREATE TABLE IF NOT EXISTS MEDICAMENTOS (
-                ID_MEDICAMENTO INTEGER PRIMARY KEY AUTOINCREMENT,
-                NOMBRE_COMERCIAL TEXT NOT NULL,
-                NOMBRE_GENERICO TEXT NOT NULL,
-                CANTIDAD INTEGER NOT NULL,
-                PRECIO REAL NOT NULL
+            CREATE TABLE IF NOT EXISTS MEDICAMENTO (
+                ID_MEDICAMENTO      INTEGER PRIMARY KEY AUTOINCREMENT,
+                CODIGO              TEXT NOT NULL,
+                NOMBRE_COMERCIAL    TEXT NOT NULL,
+                NOMBRE_GENERICO     TEXT NOT NULL,
+                DESCRIPCION         TEXT NOT NULL,
+                CANTIDAD            INTEGER NOT NULL,
+                CURA                TEXT NOT NULL,
+                PRECIO_UNITARIO     REAL NOT NULL
             );
             """,
 
             // tabla Farmaceuticos :v
             """
-            CREATE TABLE IF NOT EXISTS FARMACEUTICOS (
+            CREATE TABLE IF NOT EXISTS FARMACEUTICO (
                 ID_FARMACEUTICO INTEGER PRIMARY KEY AUTOINCREMENT,
-                NOMBRE TEXT NOT NULL,
-                APELLIDO TEXT NOT NULL,
-                TELEFONO TEXT,
-                DIRECCION TEXT
+                DNI             TEXT NOT NULL,
+                NOMBRE          TEXT NOT NULL,
+                APELLIDO        TEXT NOT NULL,
+                TELEFONO        TEXT,
+                DIRECCION       TEXT
             );
             """,
 
             //tabla Administradores seran 3 o uno nose
             """
-            CREATE TABLE IF NOT EXISTS ADMINISTRADORES (
-                ID_ADMINISTRADOR INTEGER PRIMARY KEY AUTOINCREMENT,
-                NOMBRE TEXT NOT NULL,
-                APELLIDO TEXT NOT NULL,
-                TELEFONO TEXT,
-                DIRECCION TEXT
+            CREATE TABLE IF NOT EXISTS ADMINISTRADOR (
+                ID_ADMINISTRADOR    INTEGER PRIMARY KEY AUTOINCREMENT,
+                DNI                 TEXT NOT NULL,
+                NOMBRE              TEXT NOT NULL,
+                APELLIDO            TEXT NOT NULL,
+                TELEFONO            TEXT,
+                DIRECCION           TEXT
             );
             """,
 
             //tabla Clientes toco inventar
             """
-            CREATE TABLE IF NOT EXISTS CLIENTES (
-                ID_CLIENTE INTEGER PRIMARY KEY AUTOINCREMENT,
-                NOMBRE TEXT NOT NULL,
-                APELLIDO TEXT NOT NULL,
-                TELEFONO TEXT,
-                DIRECCION TEXT
+            CREATE TABLE IF NOT EXISTS CLIENTE (
+                ID_CLIENTE  INTEGER PRIMARY KEY AUTOINCREMENT,
+                DNI         TEXT NOT NULL,
+                NOMBRE      TEXT NOT NULL,
+                APELLIDO    TEXT NOT NULL,
+                TELEFONO    TEXT,
+                DIRECCION   TEXT
             );
             """,
 
             //tabla Proveedores a buscar para rellenar
             """
-            CREATE TABLE IF NOT EXISTS PROVEEDORES (
-                ID_PROVEEDOR INTEGER PRIMARY KEY AUTOINCREMENT,
-                NOMBRE TEXT NOT NULL,
-                TELEFONO TEXT,
-                DIRECCION TEXT
+            CREATE TABLE IF NOT EXISTS PROVEEDOR (
+                ID_PROVEEDOR    INTEGER PRIMARY KEY AUTOINCREMENT,
+                NOMBRE          TEXT NOT NULL,
+                TELEFONO        TEXT,
+                RUC             TEXT NOT NULL,
+                DIRECCION       TEXT NOT NULL
             );
             """,
 
             //tabla Facturas oño
             """
             CREATE TABLE IF NOT EXISTS FACTURAS (
-                ID_FACTURA INTEGER PRIMARY KEY AUTOINCREMENT,
-                DESCRIPCION TEXT,
-                FECHA TEXT NOT NULL,
+                ID_FACTURA      INTEGER PRIMARY KEY AUTOINCREMENT,
+                DESCRIPCION     TEXT,
+                FECHA           TEXT NOT NULL,
                 PRECIO_UNITARIO REAL,
-                TOTAL REAL NOT NULL,
-                CANTIDAD INTEGER NOT NULL,
-                ID_CLIENTE INTEGER NOT NULL,
+                TOTAL           REAL NOT NULL,
+                CANTIDAD        INTEGER NOT NULL,
+                ID_CLIENTE      INTEGER NOT NULL,
                 ID_FARMACEUTICO INTEGER NOT NULL,
                 FOREIGN KEY (ID_CLIENTE)
-                    REFERENCES CLIENTES(ID_CLIENTE),
+                    REFERENCES CLIENTE(ID_CLIENTE),
                 FOREIGN KEY (ID_FARMACEUTICO)
-                    REFERENCES FARMACEUTICOS(ID_FARMACEUTICO)
+                    REFERENCES FARMACEUTICO(ID_FARMACEUTICO)
             );
             """,
 
             //tabla Pedidos
             """
-            CREATE TABLE IF NOT EXISTS PEDIDOS (
+            CREATE TABLE IF NOT EXISTS PEDIDO (
                 ID_PEDIDO INTEGER PRIMARY KEY AUTOINCREMENT,
                 DESCRIPCION TEXT,
                 FECHA TEXT NOT NULL,
@@ -94,9 +101,9 @@ public class CrearTabla {
                 ID_PROVEEDOR INTEGER NOT NULL,
                 ID_ADMINISTRADOR INTEGER NOT NULL,
                 FOREIGN KEY (ID_PROVEEDOR)
-                    REFERENCES PROVEEDORES(ID_PROVEEDOR),
+                    REFERENCES PROVEEDORE(ID_PROVEEDOR),
                 FOREIGN KEY (ID_ADMINISTRADOR)
-                    REFERENCES ADMINISTRADORES(ID_ADMINISTRADOR)
+                    REFERENCES ADMINISTRADOR(ID_ADMINISTRADOR)
             );
             """,
 
@@ -109,9 +116,9 @@ public class CrearTabla {
                 CANTIDAD INTEGER NOT NULL,
                 PRECIO REAL NOT NULL,
                 FOREIGN KEY (ID_FACTURA)
-                    REFERENCES FACTURAS(ID_FACTURA),
+                    REFERENCES FACTURA(ID_FACTURA),
                 FOREIGN KEY (ID_MEDICAMENTO)
-                    REFERENCES MEDICAMENTOS(ID_MEDICAMENTO)
+                    REFERENCES MEDICAMENTO(ID_MEDICAMENTO)
             );
             """,
 
@@ -124,15 +131,15 @@ public class CrearTabla {
                 CANTIDAD INTEGER NOT NULL,
                 PRECIO REAL NOT NULL,
                 FOREIGN KEY (ID_PEDIDO)
-                    REFERENCES PEDIDOS(ID_PEDIDO),
+                    REFERENCES PEDIDO(ID_PEDIDO),
                 FOREIGN KEY (ID_MEDICAMENTO)
-                    REFERENCES MEDICAMENTOS(ID_MEDICAMENTO)
+                    REFERENCES MEDICAMENTO(ID_MEDICAMENTO)
             );
             """,
             
             //Usuario y contraseña de admin
             """
-            CREATE TABLE IF NOT EXISTS ADMINS (
+            CREATE TABLE IF NOT EXISTS ADMIN (
                 USUARIO_ADMIN   TEXT NOT NULL,
                 CONTRA_ADMIN    TEXT NOT NULL
             );
@@ -140,7 +147,7 @@ public class CrearTabla {
             
             //Usuario y contraseña de usuario
             """
-            CREATE TABLE IF NOT EXISTS USERS (
+            CREATE TABLE IF NOT EXISTS USER (
                 USUARIO_USER    TEXT NOT NULL,
                 CONTRA_USER     TEXT NOT NULL
             );

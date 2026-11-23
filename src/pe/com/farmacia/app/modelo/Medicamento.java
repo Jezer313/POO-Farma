@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 public class Medicamento {
     private int id_medicamento;
     private String codigo;
-    private String nombre;
+    private String nombre_comercial;
+    private String nombre_generico;
     private String descripcion;
     private int cantidad;
     private String cura;
