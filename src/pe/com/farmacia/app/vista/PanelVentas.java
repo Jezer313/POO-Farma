@@ -6,11 +6,33 @@ package pe.com.farmacia.app.vista;
  */
 public class PanelVentas extends javax.swing.JPanel {
 
+    private InicioDeSesion ventanaLogin;
+
     /**
      * Creates new form Venta
      */
     public PanelVentas() {
         initComponents();
+        marcarBotonActivo(btnMedicamentos);
+    }
+
+    public PanelVentas(InicioDeSesion ventanaLogin) {
+        this.ventanaLogin = ventanaLogin;
+        initComponents();
+        marcarBotonActivo(btnMedicamentos);
+    }
+
+    private void marcarBotonActivo(javax.swing.JButton botonActivo) {
+        javax.swing.JButton[] botones = {btnMedicamentos, btnFarmaceuticos};
+        for (javax.swing.JButton btn : botones) {
+            if (btn == botonActivo) {
+                btn.setBackground(new java.awt.Color(16, 185, 129));
+                btn.setForeground(java.awt.Color.WHITE);
+            } else {
+                btn.setBackground(java.awt.Color.WHITE);
+                btn.setForeground(new java.awt.Color(30, 41, 59));
+            }
+        }
     }
 
     /**
@@ -31,10 +53,12 @@ public class PanelVentas extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         pnlBotonesSuperior = new javax.swing.JPanel();
         btnMedicamentos = new javax.swing.JButton();
-        btnPedidos = new javax.swing.JButton();
         btnFarmaceuticos = new javax.swing.JButton();
         pnlUsuario = new javax.swing.JPanel();
         lblAvatar = new javax.swing.JLabel();
+        pnlDatosUsuario = new javax.swing.JPanel();
+        lblRolUsuario = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnlPedido = new javax.swing.JPanel();
         pnlCabeceraTicket = new javax.swing.JPanel();
         lblVenta = new javax.swing.JLabel();
@@ -70,6 +94,8 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
+        jPanel13 = new javax.swing.JPanel();
+        btnCerrarSesion = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,18 +143,8 @@ public class PanelVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(54, 116, 58, 0);
         pnlBotonesSuperior.add(btnMedicamentos, gridBagConstraints);
 
-        btnPedidos.setText("Pedidos");
-        btnPedidos.addActionListener(this::btnPedidosActionPerformed);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 108;
-        gridBagConstraints.ipady = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(54, 30, 58, 0);
-        pnlBotonesSuperior.add(btnPedidos, gridBagConstraints);
-
         btnFarmaceuticos.setText("Farmaceuticos");
+        btnFarmaceuticos.addActionListener(this::btnFarmaceuticosActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -146,6 +162,18 @@ public class PanelVentas extends javax.swing.JPanel {
         lblAvatar.setText("avar aki");
         lblAvatar.setPreferredSize(new java.awt.Dimension(45, 45));
         pnlUsuario.add(lblAvatar, java.awt.BorderLayout.LINE_START);
+
+        pnlDatosUsuario.setLayout(new java.awt.GridLayout(2, 1));
+
+        lblRolUsuario.setBackground(new java.awt.Color(200, 215, 225));
+        lblRolUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblRolUsuario.setText("Nombre usuario");
+        pnlDatosUsuario.add(lblRolUsuario);
+
+        jLabel4.setText("Cliente");
+        pnlDatosUsuario.add(jLabel4);
+
+        pnlUsuario.add(pnlDatosUsuario, java.awt.BorderLayout.CENTER);
 
         pnlPedido.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         pnlPedido.setLayout(new java.awt.BorderLayout());
@@ -250,7 +278,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +291,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +304,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +317,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +330,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +343,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +356,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +369,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +382,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +395,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,7 +408,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +421,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 206, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,12 +438,34 @@ public class PanelVentas extends javax.swing.JPanel {
         txtBuscar.setPreferredSize(new java.awt.Dimension(680, 42));
         pnlProductos.add(txtBuscar, java.awt.BorderLayout.NORTH);
 
+        btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCerrarSesion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnlFondoVentasLayout = new javax.swing.GroupLayout(pnlFondoVentas);
         pnlFondoVentas.setLayout(pnlFondoVentasLayout);
         pnlFondoVentasLayout.setHorizontalGroup(
             pnlFondoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoVentasLayout.createSequentialGroup()
-                .addComponent(pnlFondoLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlFondoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlFondoLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(pnlFondoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlBotonesSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -429,7 +479,8 @@ public class PanelVentas extends javax.swing.JPanel {
             pnlFondoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFondoVentasLayout.createSequentialGroup()
                 .addComponent(pnlFondoLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlFondoVentasLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(pnlFondoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +491,7 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addGroup(pnlFondoVentasLayout.createSequentialGroup()
                         .addComponent(pnlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(pnlPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(pnlPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))))
         );
 
         pnlFondoLogo.getAccessibleContext().setAccessibleName("");
@@ -452,11 +503,16 @@ public class PanelVentas extends javax.swing.JPanel {
 
     private void btnMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentosActionPerformed
         // TODO add your handling code here:
+        //Marca visualmente el botón Medicamentos como activo
+        marcarBotonActivo(btnMedicamentos);
+        //Limpia el contenido actual del panel central y restaura el buscador con las tarjetas
+        pnlProductos.removeAll();
+        pnlProductos.add(txtBuscar, java.awt.BorderLayout.NORTH);
+        pnlProductos.add(scrollPane1, java.awt.BorderLayout.CENTER);
+        //Recalcula la distribución y redibuja el panel
+        pnlProductos.revalidate();
+        pnlProductos.repaint();
     }//GEN-LAST:event_btnMedicamentosActionPerformed
-
-    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPedidosActionPerformed
 
     private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
         // TODO add your handling code here:
@@ -466,19 +522,47 @@ public class PanelVentas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarFacturaActionPerformed
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        //Comprueba que exista una referencia a la ventana InicioDeSesion
+        if (ventanaLogin != null) {
+            //Llama al metodo de la ventana de login para quitar el panel de ventas y restaurar el inicio
+            ventanaLogin.volverDesdeVentas(this);
+        }
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private PanelFarmaceuticos vistaFarmaceuticos;
+    private void btnFarmaceuticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmaceuticosActionPerformed
+        // TODO add your handling code here:
+        //Marca visualmente el botón Farmaceuticos como activo
+        marcarBotonActivo(btnFarmaceuticos);
+        //Crea la instancia de PanelFarmaceuticos una sola vez si aún no existe
+        if (vistaFarmaceuticos == null) {
+            vistaFarmaceuticos = new PanelFarmaceuticos();
+        }
+        //Reemplaza el contenido del panel central por la vista de farmacéuticos
+        pnlProductos.removeAll();
+        pnlProductos.add(vistaFarmaceuticos, java.awt.BorderLayout.CENTER);
+        //Recalcula la distribución y redibuja el panel
+        pnlProductos.revalidate();
+        pnlProductos.repaint();
+    }//GEN-LAST:event_btnFarmaceuticosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnFarmaceuticos;
     private javax.swing.JButton btnGenerarFactura;
     private javax.swing.JButton btnMedicamentos;
-    private javax.swing.JButton btnPedidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -496,6 +580,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel lblIGV;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblRolUsuario;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblVenta;
@@ -503,6 +588,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel pnlCabeceraTicket;
     private javax.swing.JPanel pnlContenedorTarjetas;
     private javax.swing.JPanel pnlDatosCliente;
+    private javax.swing.JPanel pnlDatosUsuario;
     private javax.swing.JPanel pnlFondoLogo;
     private javax.swing.JPanel pnlFondoVentas;
     private javax.swing.JPanel pnlListaItems;

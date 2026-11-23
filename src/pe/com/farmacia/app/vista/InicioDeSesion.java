@@ -60,6 +60,26 @@ public class InicioDeSesion extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    
+    public void volverDesdeVentas(javax.swing.JPanel panelVentas) {
+        //Elimina el panel de ventas recibido del contenedor principal de la ventana
+        getContentPane().remove(panelVentas);
+        //Vuelve a hacer visible el panel de inicio
+        FondoAND.setVisible(true);
+        setTitle("Video ADN");
+        //Restaura el tamaño exacto de FondoAND sin destruir el contexto de JavaFX
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            setResizable(true);
+            setExtendedState(javax.swing.JFrame.NORMAL);
+            setSize(FondoAND.getWidth() + 16, FondoAND.getHeight() + 39);
+            setLocationRelativeTo(null);
+            setResizable(false);
+            revalidate();
+            repaint();
+        });
+    }
+
+    
 
     public void volverDesdeAdmin() {
 
@@ -398,7 +418,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         if (usuario.equals("roska") && contraseña.equals("1234")
                 || usuario.equals("Ingresa tu usuario") && contraseña.equals("Ingresa tu contraseña")) {
             FondoAND.setVisible(false);
-            PanelVentas panelVentas = new PanelVentas();
+            PanelVentas panelVentas = new PanelVentas(this);
 
             getContentPane().add(panelVentas, java.awt.BorderLayout.CENTER);
             setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
