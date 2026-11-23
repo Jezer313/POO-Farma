@@ -282,7 +282,7 @@ public class PanelAdmin extends javax.swing.JPanel {
             ventana.setContentPane(panelAdmin);
 
 // Establece el tamaño de la ventana.
-            ventana.setSize(900, 600);
+            ventana.setSize(1110, 685);
 
 // Centra la ventana en la pantalla.
             ventana.setLocationRelativeTo(null);

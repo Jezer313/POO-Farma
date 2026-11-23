@@ -21,20 +21,223 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        pnlBase = new javax.swing.JPanel();
+        pnlCabecera = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        btnCerrarSesion = new javax.swing.JButton();
+        pnlFondito = new javax.swing.JPanel();
+        pnlInventario = new javax.swing.JPanel();
+        lblInventario = new javax.swing.JLabel();
+        pnlProveedores = new javax.swing.JPanel();
+        lblProveedores = new javax.swing.JLabel();
+        pnlFarmaceuticos = new javax.swing.JPanel();
+        lblFarmaceuticos = new javax.swing.JLabel();
+        pnlListaAdmins = new javax.swing.JPanel();
+        lblAdmins = new javax.swing.JLabel();
+        pnlFacturas = new javax.swing.JPanel();
+        lblFacturas = new javax.swing.JLabel();
+        pnlUsuarios = new javax.swing.JPanel();
+        lblUsuarios = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+
+        setRequestFocusEnabled(false);
+        setLayout(new java.awt.BorderLayout());
+
+        pnlBase.setBackground(new java.awt.Color(15, 18, 17));
+        pnlBase.setPreferredSize(new java.awt.Dimension(1100, 650));
+        pnlBase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlCabecera.setBackground(new java.awt.Color(20, 54, 40));
+        pnlCabecera.setPreferredSize(new java.awt.Dimension(1100, 100));
+        pnlCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Administracion de farmacia \"El Tilin\"");
+        pnlCabecera.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 18, -1, -1));
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(184, 212, 200));
+        lblSubtitulo.setText("Panel de administración");
+        pnlCabecera.add(lblSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 50, -1, -1));
+
+        btnCerrarSesion.setBackground(new java.awt.Color(15, 48, 28));
+        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
+        pnlCabecera.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 15, -1, -1));
+
+        pnlBase.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pnlFondito.setBackground(new java.awt.Color(15, 18, 17));
+        pnlFondito.setForeground(new java.awt.Color(15, 18, 17));
+        pnlFondito.setMinimumSize(new java.awt.Dimension(10, 358));
+        pnlFondito.setPreferredSize(new java.awt.Dimension(225, 550));
+        pnlFondito.setLayout(new java.awt.GridLayout(6, 1, 8, 8));
+
+        pnlInventario.setBackground(new java.awt.Color(18, 24, 22));
+        pnlInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlInventarioMouseClicked(evt);
+            }
+        });
+        pnlInventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblInventario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblInventario.setForeground(new java.awt.Color(255, 255, 255));
+        lblInventario.setText("Inventario");
+        pnlInventario.add(lblInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlInventario);
+
+        pnlProveedores.setBackground(new java.awt.Color(18, 24, 22));
+        pnlProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlProveedoresMouseClicked(evt);
+            }
+        });
+        pnlProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblProveedores.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblProveedores.setForeground(new java.awt.Color(255, 255, 255));
+        lblProveedores.setText("Proveedores");
+        pnlProveedores.add(lblProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlProveedores);
+
+        pnlFarmaceuticos.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFarmaceuticos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFarmaceuticosMouseClicked(evt);
+            }
+        });
+        pnlFarmaceuticos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblFarmaceuticos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblFarmaceuticos.setForeground(new java.awt.Color(255, 255, 255));
+        lblFarmaceuticos.setText("Farmaceuticos");
+        pnlFarmaceuticos.add(lblFarmaceuticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlFarmaceuticos);
+
+        pnlListaAdmins.setBackground(new java.awt.Color(18, 24, 22));
+        pnlListaAdmins.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlListaAdminsMouseClicked(evt);
+            }
+        });
+        pnlListaAdmins.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAdmins.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblAdmins.setText("Lista de administradores");
+        pnlListaAdmins.add(lblAdmins, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlListaAdmins);
+
+        pnlFacturas.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFacturasMouseClicked(evt);
+            }
+        });
+        pnlFacturas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblFacturas.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblFacturas.setForeground(new java.awt.Color(255, 255, 255));
+        lblFacturas.setText("Facturas");
+        pnlFacturas.add(lblFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlFacturas);
+
+        pnlUsuarios.setBackground(new java.awt.Color(18, 24, 22));
+        pnlUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlUsuariosMouseClicked(evt);
+            }
+        });
+        pnlUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarios.setText("Usuarios");
+        pnlUsuarios.add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
+
+        pnlFondito.add(pnlUsuarios);
+
+        pnlBase.add(pnlFondito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(15, 18, 17));
+        jPanel1.setMinimumSize(new java.awt.Dimension(850, 550));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 882, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
+
+        pnlBase.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+
+        add(pnlBase, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlInventarioMouseClicked
+
+    private void pnlFarmaceuticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmaceuticosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlFarmaceuticosMouseClicked
+
+    private void pnlProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlProveedoresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlProveedoresMouseClicked
+
+    private void pnlListaAdminsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlListaAdminsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlListaAdminsMouseClicked
+
+    private void pnlFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFacturasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlFacturasMouseClicked
+
+    private void pnlUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUsuariosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlUsuariosMouseClicked
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAdmins;
+    private javax.swing.JLabel lblFacturas;
+    private javax.swing.JLabel lblFarmaceuticos;
+    private javax.swing.JLabel lblInventario;
+    private javax.swing.JLabel lblProveedores;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUsuarios;
+    private javax.swing.JPanel pnlBase;
+    private javax.swing.JPanel pnlCabecera;
+    private javax.swing.JPanel pnlFacturas;
+    private javax.swing.JPanel pnlFarmaceuticos;
+    private javax.swing.JPanel pnlFondito;
+    private javax.swing.JPanel pnlInventario;
+    private javax.swing.JPanel pnlListaAdmins;
+    private javax.swing.JPanel pnlProveedores;
+    private javax.swing.JPanel pnlUsuarios;
     // End of variables declaration//GEN-END:variables
 }
