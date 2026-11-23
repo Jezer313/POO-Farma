@@ -13,11 +13,13 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
     public VentanaAdministracion() {
         initComponents();
+        configurarCursoresMenu();
     }
 
     public VentanaAdministracion(FrameInicioSesion ventanaLogin) {
         initComponents();
         this.ventanaLogin = ventanaLogin;
+        configurarCursoresMenu();
     }
 
     /**
@@ -47,7 +49,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         lblFacturas = new javax.swing.JLabel();
         pnlUsuarios = new javax.swing.JPanel();
         lblUsuarios = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlBase1 = new javax.swing.JPanel();
 
         setRequestFocusEnabled(false);
         setLayout(new java.awt.BorderLayout());
@@ -177,49 +179,102 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlBase.add(pnlFondito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(15, 18, 17));
-        jPanel1.setMinimumSize(new java.awt.Dimension(850, 550));
-        jPanel1.setPreferredSize(new java.awt.Dimension(850, 550));
+        pnlBase1.setBackground(new java.awt.Color(15, 18, 17));
+        pnlBase1.setMinimumSize(new java.awt.Dimension(850, 550));
+        pnlBase1.setPreferredSize(new java.awt.Dimension(850, 550));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlBase1Layout = new javax.swing.GroupLayout(pnlBase1);
+        pnlBase1.setLayout(pnlBase1Layout);
+        pnlBase1Layout.setHorizontalGroup(
+            pnlBase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 870, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlBase1Layout.setVerticalGroup(
+            pnlBase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        pnlBase.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 870, -1));
+        pnlBase.add(pnlBase1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 870, -1));
 
         add(pnlBase, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void marcarSeleccionado(javax.swing.JPanel panelActivo) {
+        javax.swing.JPanel[] panelesMenu = {
+            pnlInventario,
+            pnlProveedores,
+            pnlFarmaceuticos,
+            pnlListaAdmins,
+            pnlFacturas,
+            pnlUsuarios
+        };
+
+        java.awt.Color colorNormal = new java.awt.Color(18, 24, 22);
+        java.awt.Color colorActivo = new java.awt.Color(28, 72, 54);
+
+        for (javax.swing.JPanel panel : panelesMenu) {
+            panel.setBackground(panel == panelActivo ? colorActivo : colorNormal);
+        }
+    }
+
+    private void configurarCursoresMenu() {
+        java.awt.Cursor cursorMano = new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR);
+        javax.swing.JPanel[] panelesMenu = {
+            pnlInventario,
+            pnlProveedores,
+            pnlFarmaceuticos,
+            pnlListaAdmins,
+            pnlFacturas,
+            pnlUsuarios
+        };
+
+        for (javax.swing.JPanel panel : panelesMenu) {
+            panel.setCursor(cursorMano);
+        }
+    }
+
     private void pnlInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlInventarioMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlInventario);
+        mostrarModulo(new PanelInventario());
     }//GEN-LAST:event_pnlInventarioMouseClicked
 
     private void pnlFarmaceuticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmaceuticosMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlFarmaceuticos);
+        mostrarModulo(new PaneladministracionFarmaceuticos());
     }//GEN-LAST:event_pnlFarmaceuticosMouseClicked
 
     private void pnlProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlProveedoresMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlProveedores);
+        mostrarModulo(new PanelProveedores());
     }//GEN-LAST:event_pnlProveedoresMouseClicked
 
     private void pnlListaAdminsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlListaAdminsMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlListaAdmins);
+        mostrarModulo(new PanelListaAdminitradores());
     }//GEN-LAST:event_pnlListaAdminsMouseClicked
 
     private void pnlFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFacturasMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlFacturas);
+        mostrarModulo(new PanelFacturas());
     }//GEN-LAST:event_pnlFacturasMouseClicked
 
     private void pnlUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUsuariosMouseClicked
-        // TODO add your handling code here:
+        marcarSeleccionado(pnlUsuarios);
+        mostrarModulo(new PanelUsuarios());
     }//GEN-LAST:event_pnlUsuariosMouseClicked
+
+    private void mostrarModulo(javax.swing.JPanel nuevoPanel) {
+        //Borra cualquier panel que esté dentro de pnlBase 1
+        pnlBase1.removeAll();
+        //Asignamos un BorderLayout al contenedor, permite que un panel ocupe todo el espacio
+        pnlBase1.setLayout(new java.awt.BorderLayout());
+        //Mete al nuevo JPanel dentro del contenedor (pnlBase1), haciendo que se ajuste a su tamaño
+        pnlBase1.add(nuevoPanel, java.awt.BorderLayout.CENTER);
+        //Recalcula el tamaño y vuelve a dibujar
+        pnlBase1.revalidate();
+        pnlBase1.repaint();
+    }
+
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         // Comprueba que exista una referencia a la ventana InicioDeSesion
@@ -232,7 +287,6 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAdmins;
     private javax.swing.JLabel lblFacturas;
     private javax.swing.JLabel lblFarmaceuticos;
@@ -242,6 +296,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuarios;
     private javax.swing.JPanel pnlBase;
+    private javax.swing.JPanel pnlBase1;
     private javax.swing.JPanel pnlCabecera;
     private javax.swing.JPanel pnlFacturas;
     private javax.swing.JPanel pnlFarmaceuticos;
