@@ -68,6 +68,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
         pnlCabecera.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 15, -1, -1));
 
         pnlBase.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -212,6 +213,10 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     private void pnlUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUsuariosMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlUsuariosMouseClicked
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
