@@ -4,19 +4,19 @@ package pe.com.farmacia.app.vista;
  *
  * @author USER
  */
-public class PanelVentas extends javax.swing.JPanel {
+public class VentanaVentas extends javax.swing.JPanel {
 
-    private InicioDeSesion ventanaLogin;
+    private FrameInicioSesion ventanaLogin;
 
     /**
      * Creates new form Venta
      */
-    public PanelVentas() {
+    public VentanaVentas() {
         initComponents();
         marcarBotonActivo(btnMedicamentos);
     }
 
-    public PanelVentas(InicioDeSesion ventanaLogin) {
+    public VentanaVentas(FrameInicioSesion ventanaLogin) {
         this.ventanaLogin = ventanaLogin;
         initComponents();
         marcarBotonActivo(btnMedicamentos);
@@ -531,14 +531,14 @@ public class PanelVentas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
-    private PanelFarmaceuticos vistaFarmaceuticos;
+    private PanelVentasFarmaceuticos vistaFarmaceuticos;
     private void btnFarmaceuticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmaceuticosActionPerformed
         // TODO add your handling code here:
         //Marca visualmente el botón Farmaceuticos como activo
         marcarBotonActivo(btnFarmaceuticos);
         //Crea la instancia de PanelFarmaceuticos una sola vez si aún no existe
         if (vistaFarmaceuticos == null) {
-            vistaFarmaceuticos = new PanelFarmaceuticos();
+            vistaFarmaceuticos = new PanelVentasFarmaceuticos();
         }
         //Reemplaza el contenido del panel central por la vista de farmacéuticos
         pnlProductos.removeAll();

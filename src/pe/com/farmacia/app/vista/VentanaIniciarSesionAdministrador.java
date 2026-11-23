@@ -4,9 +4,9 @@ package pe.com.farmacia.app.vista;
  *
  * @author USER
  */
-public class PanelAdmin extends javax.swing.JPanel {
+public class VentanaIniciarSesionAdministrador extends javax.swing.JPanel {
 
-    private InicioDeSesion ventanaLogin;
+    private FrameInicioSesion ventanaLogin;
     // Guarda la cantidad de intentos fallidos permitidos para el administrador.
     private int intentosRestantes = 3;
     // Guarda el usuario temporal autorizado para ingresar como administrador.
@@ -18,7 +18,7 @@ public class PanelAdmin extends javax.swing.JPanel {
     /**
      * Creates new form PanelAdmin
      */
-    public PanelAdmin(InicioDeSesion ventanaLogin) {
+    public VentanaIniciarSesionAdministrador(FrameInicioSesion ventanaLogin) {
         this.ventanaLogin = ventanaLogin;
         initComponents();
         // Al presionar Enter en el usuario, pasa al campo de contraseña.

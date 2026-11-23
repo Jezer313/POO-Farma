@@ -12,9 +12,9 @@ import javafx.scene.media.MediaView;
  *
  * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
-public class InicioDeSesion extends javax.swing.JFrame {
+public class FrameInicioSesion extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InicioDeSesion.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameInicioSesion.class.getName());
 
     /*
     JFXPanel es una libreia externa, sirve para insertar videos en el JFrame
@@ -23,7 +23,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
 // Guarda el reproductor de video para poder controlarlo desde otros métodos.
     private MediaPlayer oracleVid;
 
-    public InicioDeSesion() {
+    public FrameInicioSesion() {
 
         initComponents();
         //se llama al metodo
@@ -439,7 +439,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         if (usuario.equals("roska") && contraseña.equals("1234")
                 || usuario.equals("Ingresa tu usuario") && contraseña.equals("Ingresa tu contraseña")) {
             FondoAND.setVisible(false);
-            PanelVentas panelVentas = new PanelVentas(this);
+            VentanaVentas panelVentas = new VentanaVentas(this);
 
             getContentPane().add(panelVentas, java.awt.BorderLayout.CENTER);
             setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
@@ -462,7 +462,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         FondoAND.setVisible(false);
 
         // Crea el panel de administrador y le pasa esta ventana.
-        PanelAdmin ventanaAdmin = new PanelAdmin(this);
+        VentanaIniciarSesionAdministrador ventanaAdmin = new VentanaIniciarSesionAdministrador(this);
         // Permite ejecutar el botón CONTINUAR al presionar Enter.
         getRootPane().setDefaultButton(ventanaAdmin.getBtnContinuarAdmin());
 
@@ -493,7 +493,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         FondoAND.setVisible(false);
 
         // Instancia el panel de registro pasándole esta ventana (InicioDeSesion)
-        RegistroUsuario ventanaRegistro = new RegistroUsuario(this);
+        VentanaRegistroUsuario ventanaRegistro = new VentanaRegistroUsuario(this);
         ventanaRegistro.setBounds(0, 0, getWidth(), getHeight());
 
         // Agrega el panel de registro sobre la ventana actual
@@ -605,7 +605,7 @@ public class InicioDeSesion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             //definimos las ventana
-            InicioDeSesion ventanaLogin = new InicioDeSesion();
+            FrameInicioSesion ventanaLogin = new FrameInicioSesion();
             //lo centramos
             ventanaLogin.setLocationRelativeTo(null);
             //se muestra la ventana

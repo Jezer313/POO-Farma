@@ -9,13 +9,13 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     /**
      * Creates new form VentanaAdministracion
      */
-    private InicioDeSesion ventanaLogin;
+    private FrameInicioSesion ventanaLogin;
 
     public VentanaAdministracion() {
         initComponents();
     }
 
-    public VentanaAdministracion(InicioDeSesion ventanaLogin) {
+    public VentanaAdministracion(FrameInicioSesion ventanaLogin) {
         initComponents();
         this.ventanaLogin = ventanaLogin;
     }

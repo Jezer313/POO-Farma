@@ -4,18 +4,18 @@ package pe.com.farmacia.app.vista;
  *
  * @author USER
  */
-public class RegistroUsuario extends javax.swing.JPanel {
+public class VentanaRegistroUsuario extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistroUsuario
      */
-    private InicioDeSesion ventanaLogin;
+    private FrameInicioSesion ventanaLogin;
 
-    public RegistroUsuario() {
+    public VentanaRegistroUsuario() {
         initComponents();
     }
 
-    public RegistroUsuario(InicioDeSesion ventanaLogin) {
+    public VentanaRegistroUsuario(FrameInicioSesion ventanaLogin) {
         this.ventanaLogin = ventanaLogin;
         initComponents();
     }

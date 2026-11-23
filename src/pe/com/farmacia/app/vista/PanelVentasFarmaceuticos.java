@@ -4,12 +4,12 @@ package pe.com.farmacia.app.vista;
  *
  * @author Wentex Rex
  */
-public class PanelFarmaceuticos extends javax.swing.JPanel {
+public class PanelVentasFarmaceuticos extends javax.swing.JPanel {
 
     /**
      * Creates new form Farmaceuticos
      */
-    public PanelFarmaceuticos() {
+    public PanelVentasFarmaceuticos() {
         initComponents();
     }
 
