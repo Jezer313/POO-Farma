@@ -274,27 +274,25 @@ public class PanelAdmin extends javax.swing.JPanel {
 
 // Comprueba si el usuario y la contraseña son correctos.
         if (usuario.equals(usuarioAdmin) && contraseña.equals(contraseñaAdmin)) {
+            if (ventanaLogin != null) {
+                // Quita el PanelAdmin actual de InicioDeSesion
+                ventanaLogin.getContentPane().remove(this);
 
-            // Crea el panel de administración y la ventana contenedora
-            VentanaAdministracion panelAdmin = new VentanaAdministracion();
-            javax.swing.JFrame ventana = new javax.swing.JFrame("Administracion de farmacia \"El Tilin\"");
-            ventana.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
-            ventana.setContentPane(panelAdmin);
+                // Crea VentanaAdministracion como JPanel pasándole ventanaLogin
+                VentanaAdministracion panelAdministracion = new VentanaAdministracion(ventanaLogin);
 
-// Establece el tamaño de la ventana.
-            ventana.setSize(1110, 685);
+                // Ajusta el tamaño y posición de InicioDeSesion para el panel de administración
+                ventanaLogin.setResizable(true);
+                ventanaLogin.setSize(1110, 685);
+                ventanaLogin.setLocationRelativeTo(null);
+                ventanaLogin.setResizable(false);
+                ventanaLogin.setTitle("Administracion de farmacia \"El Tilin\"");
 
-// Centra la ventana en la pantalla.
-            ventana.setLocationRelativeTo(null);
-
-// Evita que la ventana cambie de tamaño.
-            ventana.setResizable(false);
-
-// Muestra la ventana de administración.
-            ventana.setVisible(true);
-
-// Oculta la ventana de inicio de sesión.
-            ventanaLogin.dispose();
+                // Agrega el JPanel al contenedor principal de InicioDeSesion
+                ventanaLogin.getContentPane().add(panelAdministracion, java.awt.BorderLayout.CENTER);
+                ventanaLogin.getContentPane().revalidate();
+                ventanaLogin.getContentPane().repaint();
+            }
         } else {
 
             // Descuenta un intento cuando las credenciales son incorrectas.

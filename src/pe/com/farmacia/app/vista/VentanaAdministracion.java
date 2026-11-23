@@ -5,18 +5,20 @@ package pe.com.farmacia.app.vista;
  * @author USER
  */
 public class VentanaAdministracion extends javax.swing.JPanel {
-    
-    private InicioDeSesion ventanaLogin;
 
     /**
      * Creates new form VentanaAdministracion
      */
-    
+    private InicioDeSesion ventanaLogin;
+
     public VentanaAdministracion() {
         initComponents();
     }
-    
-    
+
+    public VentanaAdministracion(InicioDeSesion ventanaLogin) {
+        initComponents();
+        this.ventanaLogin = ventanaLogin;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,16 +222,10 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlUsuariosMouseClicked
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // Comprueba que exista una referencia a la ventana InicioDeSesion
         if (ventanaLogin != null) {
-
-            // Elimina el panel de administrador y recupera la pantalla de inicio.
+            // Llama al método de la ventana de login para pasar este panel, quitarlo y volver a mostrar el video de fondo
             ventanaLogin.volverALogin(this);
-
-            // Recupera el tamaño original de la ventana de inicio de sesión.
-            ventanaLogin.setSize(600, 320);
-
-            // Centra nuevamente la ventana en la pantalla.
-            ventanaLogin.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 

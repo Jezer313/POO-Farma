@@ -51,16 +51,39 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     // Recupera la pantalla de inicio de sesión después de salir del panel de administrador.
     public void volverALogin(javax.swing.JPanel panelRegistro) {
-        //Elimina el panel de registro recibido del contenedor principal de la ventana.
+        // Elimina el panel de registro recibido del contenedor principal de la ventana.
         getContentPane().remove(panelRegistro);
-        //Vuelve a hacer visible el panel de inicio
+
+        // Vuelve a hacer visible el panel de inicio
         FondoAND.setVisible(true);
         setTitle("Video ADN");
-        //Recalculca distribucion y redibuja la ventana
+
+        // Restaura el tamaño original del login y lo centra
+        setResizable(true); 
+        setSize(600, 320);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
+        // Recalcula distribución y redibuja la ventana
         revalidate();
         repaint();
     }
-    
+
+    public void volverALogin() {
+        // Vuelve a mostrar el JFrame de inicio de sesión y su panel con el video
+        FondoAND.setVisible(true);
+        setTitle("Video ADN");
+        setResizable(true);
+        setExtendedState(javax.swing.JFrame.NORMAL);
+        setSize(600, 320);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);
+
+        revalidate();
+        repaint();
+    }
+
     public void volverDesdeVentas(javax.swing.JPanel panelVentas) {
         //Elimina el panel de ventas recibido del contenedor principal de la ventana
         getContentPane().remove(panelVentas);
@@ -78,8 +101,6 @@ public class InicioDeSesion extends javax.swing.JFrame {
             repaint();
         });
     }
-
-    
 
     public void volverDesdeAdmin() {
 
