@@ -5,13 +5,18 @@ package pe.com.farmacia.app.vista;
  * @author USER
  */
 public class VentanaAdministracion extends javax.swing.JPanel {
+    
+    private InicioDeSesion ventanaLogin;
 
     /**
      * Creates new form VentanaAdministracion
      */
+    
     public VentanaAdministracion() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -21,7 +26,6 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         pnlBase = new javax.swing.JPanel();
         pnlCabecera = new javax.swing.JPanel();
@@ -173,19 +177,20 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(15, 18, 17));
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 550));
+        jPanel1.setPreferredSize(new java.awt.Dimension(850, 550));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 882, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        pnlBase.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+        pnlBase.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 870, -1));
 
         add(pnlBase, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -215,7 +220,17 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlUsuariosMouseClicked
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        // TODO add your handling code here:
+        if (ventanaLogin != null) {
+
+            // Elimina el panel de administrador y recupera la pantalla de inicio.
+            ventanaLogin.volverALogin(this);
+
+            // Recupera el tamaño original de la ventana de inicio de sesión.
+            ventanaLogin.setSize(600, 320);
+
+            // Centra nuevamente la ventana en la pantalla.
+            ventanaLogin.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 

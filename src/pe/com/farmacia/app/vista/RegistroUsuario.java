@@ -79,7 +79,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         lblNombre.setText("Nombre:");
         PanelRegistro.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-        txtNombre.setBackground(new java.awt.Color(102, 102, 102));
+        txtNombre.setBackground(new java.awt.Color(65, 82, 95));
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, -1));
 
@@ -89,7 +89,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
         lblApellido.setText("Apellido:");
         PanelRegistro.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
-        txtApellido.setBackground(new java.awt.Color(102, 102, 102));
+        txtApellido.setBackground(new java.awt.Color(65, 82, 95));
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 150, -1));
 
@@ -99,11 +99,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
         lblDNI.setText("DNI:");
         PanelRegistro.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        txtDNI.setBackground(new java.awt.Color(102, 102, 102));
+        txtDNI.setBackground(new java.awt.Color(65, 82, 95));
         txtDNI.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 150, -1));
 
-        txtTelefono.setBackground(new java.awt.Color(102, 102, 102));
+        txtTelefono.setBackground(new java.awt.Color(65, 82, 95));
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 150, -1));
 
@@ -125,11 +125,11 @@ public class RegistroUsuario extends javax.swing.JPanel {
         lblDireccion.setText("Dirección:");
         PanelRegistro.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
 
-        txtCorreo.setBackground(new java.awt.Color(102, 102, 102));
+        txtCorreo.setBackground(new java.awt.Color(65, 82, 95));
         txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 150, -1));
 
-        txtDireccion.setBackground(new java.awt.Color(102, 102, 102));
+        txtDireccion.setBackground(new java.awt.Color(65, 82, 95));
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         PanelRegistro.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 150, -1));
 
