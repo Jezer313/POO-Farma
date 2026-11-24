@@ -37,37 +37,40 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         tblAdministradores = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         lblTotalAdministradores = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout(10, 10));
 
-        fondolistaAdministradores.setBackground(new java.awt.Color(255, 255, 255));
+        fondolistaAdministradores.setBackground(new java.awt.Color(245, 248, 247));
         fondolistaAdministradores.setMinimumSize(new java.awt.Dimension(850, 550));
         fondolistaAdministradores.setPreferredSize(new java.awt.Dimension(850, 550));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
         lblTitulo.setText("Administradores");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
         lblSubtitulo.setText("Gestiona los usuarios con acceso al sistema.");
 
-        btnAgregar.setBackground(new java.awt.Color(51, 153, 0));
+        btnAgregar.setBackground(new java.awt.Color(8, 122, 69));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("+ Agregar administrador");
         btnAgregar.setFocusable(false);
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
-        btnEditar.setBackground(new java.awt.Color(59, 130, 246));
+        btnEditar.setBackground(new java.awt.Color(37, 99, 166));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar administrador");
         btnEditar.setFocusable(false);
+        btnEditar.setPreferredSize(new java.awt.Dimension(157, 40));
         btnEditar.addActionListener(this::btnEditarActionPerformed);
 
-        btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
+        btnEliminar.setBackground(new java.awt.Color(6, 78, 54));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar administrador");
@@ -75,7 +78,10 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         JScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         JScrollPane.setForeground(new java.awt.Color(30, 41, 59));
 
-        tblAdministradores.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblAdministradores.setBackground(new java.awt.Color(255, 255, 255));
+        tblAdministradores.setForeground(new java.awt.Color(23, 59, 99));
         tblAdministradores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -100,63 +106,73 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
 
         JScrollPane.setViewportView(jScrollPane1);
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(6, 78, 54));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoListaAdministradores.png"))); // NOI18N
         jLabel2.setText("Imagen");
 
         lblTotalAdministradores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblTotalAdministradores.setForeground(new java.awt.Color(30, 58, 86));
+        lblTotalAdministradores.setForeground(new java.awt.Color(6, 78, 54));
         lblTotalAdministradores.setText("Total de administradores: 0");
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout fondolistaAdministradoresLayout = new javax.swing.GroupLayout(fondolistaAdministradores);
         fondolistaAdministradores.setLayout(fondolistaAdministradoresLayout);
         fondolistaAdministradoresLayout.setHorizontalGroup(
             fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondolistaAdministradoresLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotalAdministradores)
-                    .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondolistaAdministradoresLayout.createSequentialGroup()
-                            .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
-                                    .addGap(296, 296, 296)
-                                    .addComponent(lblTitulo))
-                                .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
-                                    .addGap(28, 28, 28)
-                                    .addComponent(jLabel2)
-                                    .addGap(202, 202, 202)
-                                    .addComponent(lblSubtitulo)))
-                            .addGap(26, 26, 26))
+                    .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+            .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(btnAgregar)
+                .addGap(85, 85, 85)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(77, 77, 77))
+            .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
+                .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
-                                .addGap(131, 131, 131)
-                                .addComponent(btnAgregar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEliminar)))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(lblSubtitulo)
+                            .addComponent(lblTitulo)))
+                    .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         fondolistaAdministradoresLayout.setVerticalGroup(
             fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblTitulo)
+                .addGap(16, 16, 16)
+                .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addGroup(fondolistaAdministradoresLayout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSubtitulo)
-                    .addComponent(jLabel2))
-                .addGap(29, 29, 29)
-                .addGroup(fondolistaAdministradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTotalAdministradores)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         add(fondolistaAdministradores, java.awt.BorderLayout.CENTER);
@@ -181,6 +197,8 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
     private javax.swing.JPanel fondolistaAdministradores;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalAdministradores;
