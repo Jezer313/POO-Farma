@@ -9,7 +9,7 @@ package pe.com.farmacia.app.ventanasEmergentes;
  * @author Playe
  */
 public class DialogAgregarFactura extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarFactura.class.getName());
 
     /**
@@ -73,6 +73,7 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         btnCancelar.setForeground(new java.awt.Color(30, 41, 59));
         btnCancelar.setText("Cancelar");
         btnCancelar.setFocusable(false);
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         lblSeccionProductos.setBackground(new java.awt.Color(219, 234, 247));
         lblSeccionProductos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -86,6 +87,7 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         btnGuardarFactura.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarFactura.setText("Guardar");
         btnGuardarFactura.setFocusable(false);
+        btnGuardarFactura.addActionListener(this::btnGuardarFacturaActionPerformed);
 
         lblSeleccionarProducto.setForeground(new java.awt.Color(30, 41, 59));
         lblSeleccionarProducto.setText("Producto:");
@@ -297,6 +299,15 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+// Cierra la ventana emergente sin guardar los cambios.
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarFacturaActionPerformed
 
     /**
      * @param args the command line arguments
