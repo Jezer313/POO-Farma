@@ -308,6 +308,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
         btnContinuar.setText("Continuar");
         btnContinuar.setBorderPainted(false);
+        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnContinuar.addActionListener(this::btnContinuarActionPerformed);
 
         btnSingUp.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -315,7 +316,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         btnSingUp.setText("<html><u>Registrarse</u><html>");
         btnSingUp.setBorderPainted(false);
         btnSingUp.setContentAreaFilled(false);
-        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSingUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSingUpMouseClicked(evt);
@@ -328,7 +329,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         btnAdmin.setText("<html><u>Acceso Admin</u><html>");
         btnAdmin.setBorderPainted(false);
         btnAdmin.setContentAreaFilled(false);
-        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdmin.addActionListener(this::btnAdminActionPerformed);
 
         lblContraseña.setForeground(new java.awt.Color(230, 235, 240));
@@ -338,6 +339,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         lblUsuario.setText("Usuario");
 
         btnVerContrseña.setText("ver");
+        btnVerContrseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVerContrseña.addActionListener(this::btnVerContrseñaActionPerformed);
 
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);

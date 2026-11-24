@@ -76,6 +76,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
         pnlCabecera.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 15, -1, -1));
 
@@ -182,18 +183,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlBase1.setBackground(new java.awt.Color(15, 18, 17));
         pnlBase1.setMinimumSize(new java.awt.Dimension(850, 550));
         pnlBase1.setPreferredSize(new java.awt.Dimension(850, 550));
-
-        javax.swing.GroupLayout pnlBase1Layout = new javax.swing.GroupLayout(pnlBase1);
-        pnlBase1.setLayout(pnlBase1Layout);
-        pnlBase1Layout.setHorizontalGroup(
-            pnlBase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
-        pnlBase1Layout.setVerticalGroup(
-            pnlBase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-
+        pnlBase1.setLayout(new java.awt.BorderLayout());
         pnlBase.add(pnlBase1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 870, -1));
 
         add(pnlBase, java.awt.BorderLayout.CENTER);

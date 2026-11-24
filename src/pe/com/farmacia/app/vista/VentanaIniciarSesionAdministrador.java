@@ -137,6 +137,7 @@ public class VentanaIniciarSesionAdministrador extends javax.swing.JPanel {
         btnContinuarAdmin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnContinuarAdmin.setForeground(new java.awt.Color(224, 224, 224));
         btnContinuarAdmin.setText("CONTINUAR");
+        btnContinuarAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnContinuarAdmin.setFocusable(false);
         btnContinuarAdmin.addActionListener(this::btnContinuarAdminActionPerformed);
 
@@ -197,6 +198,7 @@ public class VentanaIniciarSesionAdministrador extends javax.swing.JPanel {
         btnRegresar.setBackground(new java.awt.Color(52, 73, 94));
         btnRegresar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnRegresar.setText("REGRESAR");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.setFocusable(false);
         btnRegresar.addActionListener(this::btnRegresarActionPerformed);
 

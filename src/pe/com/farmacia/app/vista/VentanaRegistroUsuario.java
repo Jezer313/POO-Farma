@@ -62,6 +62,7 @@ public class VentanaRegistroUsuario extends javax.swing.JPanel {
         PanelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegresar.setText("Regresar");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(this::btnRegresarActionPerformed);
         PanelRegistro.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -136,6 +137,7 @@ public class VentanaRegistroUsuario extends javax.swing.JPanel {
         btnRegistrarse.setBackground(new java.awt.Color(13, 148, 136));
         btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegistrarse.setText("REGISTRARSE");
+        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PanelRegistro.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
         PanelFondo.setBackground(new java.awt.Color(255, 255, 255));

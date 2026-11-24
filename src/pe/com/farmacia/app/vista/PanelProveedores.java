@@ -26,19 +26,192 @@ public class PanelProveedores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        pnlFondoProveedores = new javax.swing.JPanel();
+        pnlSuperior = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btngenerarFactura = new javax.swing.JButton();
+        pnlCentro = new javax.swing.JPanel();
+        scrollTabla = new javax.swing.JScrollPane();
+        tblProveedores = new javax.swing.JTable();
+        pnlInferior = new javax.swing.JPanel();
+        lblTotalProveedores = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout());
+
+        pnlFondoProveedores.setMinimumSize(new java.awt.Dimension(870, 550));
+        pnlFondoProveedores.setLayout(new java.awt.BorderLayout(10, 10));
+
+        pnlSuperior.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSuperior.setPreferredSize(new java.awt.Dimension(870, 155));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(24, 38, 53));
+        lblTitulo.setText("Proveedores");
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(90, 105, 120));
+        lblSubtitulo.setText("Gestiona los proveedores y genera facturas de pedido.");
+
+        btnAgregar.setBackground(new java.awt.Color(18, 152, 112));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEditar.setText("Editar");
+        btnEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53)));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53)));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btngenerarFactura.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btngenerarFactura.setForeground(new java.awt.Color(24, 38, 53));
+        btngenerarFactura.setText("Generar Factura");
+        btngenerarFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53)));
+        btngenerarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
+        pnlSuperior.setLayout(pnlSuperiorLayout);
+        pnlSuperiorLayout.setHorizontalGroup(
+            pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(lblTitulo))
+                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(lblSubtitulo))
+                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btngenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pnlSuperiorLayout.setVerticalGroup(
+            pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSubtitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btngenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
+
+        pnlFondoProveedores.add(pnlSuperior, java.awt.BorderLayout.NORTH);
+
+        pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 25, 0, 25));
+        pnlCentro.setLayout(new java.awt.BorderLayout());
+
+        tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nro", "Nombre", "RUC", "Direccion", "Acciones"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblProveedores.setGridColor(new java.awt.Color(226, 232, 240));
+        tblProveedores.setRowHeight(38);
+        tblProveedores.setSelectionBackground(new java.awt.Color(224, 242, 254));
+        tblProveedores.setSelectionForeground(new java.awt.Color(24, 38, 53));
+        tblProveedores.setShowVerticalLines(true);
+        scrollTabla.setViewportView(tblProveedores);
+        if (tblProveedores.getColumnModel().getColumnCount() > 0) {
+            tblProveedores.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tblProveedores.getColumnModel().getColumn(0).setHeaderValue("Nro");
+            tblProveedores.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tblProveedores.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            tblProveedores.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tblProveedores.getColumnModel().getColumn(2).setHeaderValue("RUC");
+            tblProveedores.getColumnModel().getColumn(3).setPreferredWidth(260);
+            tblProveedores.getColumnModel().getColumn(3).setHeaderValue("Direccion");
+            tblProveedores.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblProveedores.getColumnModel().getColumn(4).setHeaderValue("Acciones");
+        }
+
+        pnlCentro.add(scrollTabla, java.awt.BorderLayout.CENTER);
+
+        pnlFondoProveedores.add(pnlCentro, java.awt.BorderLayout.CENTER);
+
+        pnlInferior.setBackground(new java.awt.Color(248, 250, 252));
+        pnlInferior.setPreferredSize(new java.awt.Dimension(870, 40));
+
+        lblTotalProveedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalProveedores.setForeground(new java.awt.Color(24, 38, 53));
+        lblTotalProveedores.setText("Total de proveedores: 0");
+
+        javax.swing.GroupLayout pnlInferiorLayout = new javax.swing.GroupLayout(pnlInferior);
+        pnlInferior.setLayout(pnlInferiorLayout);
+        pnlInferiorLayout.setHorizontalGroup(
+            pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInferiorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTotalProveedores)
+                .addContainerGap(732, Short.MAX_VALUE))
+        );
+        pnlInferiorLayout.setVerticalGroup(
+            pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInferiorLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblTotalProveedores)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        pnlFondoProveedores.add(pnlInferior, java.awt.BorderLayout.SOUTH);
+
+        add(pnlFondoProveedores, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btngenerarFactura;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotalProveedores;
+    private javax.swing.JPanel pnlCentro;
+    private javax.swing.JPanel pnlFondoProveedores;
+    private javax.swing.JPanel pnlInferior;
+    private javax.swing.JPanel pnlSuperior;
+    private javax.swing.JScrollPane scrollTabla;
+    private javax.swing.JTable tblProveedores;
     // End of variables declaration//GEN-END:variables
 }

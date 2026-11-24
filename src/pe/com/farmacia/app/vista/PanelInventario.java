@@ -29,7 +29,6 @@ public class PanelInventario extends javax.swing.JPanel {
         pnlFondoInventario = new javax.swing.JPanel();
         pnlEncabezado = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         pnlCuerpo = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -50,21 +49,7 @@ public class PanelInventario extends javax.swing.JPanel {
         pnlEncabezado.setPreferredSize(new java.awt.Dimension(870, 80));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("INVENTARIO DE MEDICAMENTOS");
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(155, 42));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 42, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
         pnlEncabezado.setLayout(pnlEncabezadoLayout);
@@ -73,34 +58,32 @@ public class PanelInventario extends javax.swing.JPanel {
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
         pnlEncabezadoLayout.setVerticalGroup(
             pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTitulo))
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pnlFondoInventario.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
         btnAgregar.setText("Agregar Medicamento");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
+        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnMalos.setText("<html>Medicamentos<br>Caducados</html>");
+        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         tblMedicamentos.setBackground(new java.awt.Color(236, 253, 245));
         tblMedicamentos.setForeground(new java.awt.Color(15, 23, 42));
@@ -111,7 +94,15 @@ public class PanelInventario extends javax.swing.JPanel {
             new String [] {
                 "ID", "Codigo", "Nombre Generico", "Nombre Comercial", "Cura", "Precio Unitario", "Precio x Caja", "Stock", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblMedicamentos.setGridColor(new java.awt.Color(241, 245, 249));
         tblMedicamentos.setRowHeight(38);
         tblMedicamentos.setShowGrid(true);
@@ -145,18 +136,15 @@ public class PanelInventario extends javax.swing.JPanel {
         pnlCuerpoLayout.setVerticalGroup(
             pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCuerpoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCuerpoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlCuerpoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBuenos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMalos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBuenos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMalos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -176,7 +164,6 @@ public class PanelInventario extends javax.swing.JPanel {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMalos;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlCuerpo;

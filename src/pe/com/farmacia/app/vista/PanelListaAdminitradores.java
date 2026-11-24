@@ -117,6 +117,7 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("+ Agregar administrador");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.setFocusable(false);
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
@@ -124,12 +125,14 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar administrador");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.setFocusable(false);
 
         btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar administrador");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         JScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         JScrollPane.setForeground(new java.awt.Color(30, 41, 59));
@@ -163,7 +166,6 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         lblAdminConectado.setForeground(new java.awt.Color(100, 116, 139));
         lblAdminConectado.setText("Administrador");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Imagen");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -187,7 +189,6 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Imagen");
 
         lblTotalAdministradores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N

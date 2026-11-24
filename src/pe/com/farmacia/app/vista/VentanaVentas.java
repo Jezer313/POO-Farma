@@ -133,6 +133,7 @@ public class VentanaVentas extends javax.swing.JPanel {
         pnlBotonesSuperior.setLayout(new java.awt.GridBagLayout());
 
         btnMedicamentos.setText("Medicamentos");
+        btnMedicamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMedicamentos.addActionListener(this::btnMedicamentosActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -144,6 +145,7 @@ public class VentanaVentas extends javax.swing.JPanel {
         pnlBotonesSuperior.add(btnMedicamentos, gridBagConstraints);
 
         btnFarmaceuticos.setText("Farmaceuticos");
+        btnFarmaceuticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFarmaceuticos.addActionListener(this::btnFarmaceuticosActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -250,6 +252,7 @@ public class VentanaVentas extends javax.swing.JPanel {
         btnGenerarFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerarFactura.setText("GENERAR FACTURA");
+        btnGenerarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGenerarFactura.addActionListener(this::btnGenerarFacturaActionPerformed);
         pnlPieTicket.add(btnGenerarFactura);
 
@@ -439,6 +442,7 @@ public class VentanaVentas extends javax.swing.JPanel {
         pnlProductos.add(txtBuscar, java.awt.BorderLayout.NORTH);
 
         btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
