@@ -60,7 +60,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
         // Restaura el tamaño original del login y lo centra
         setResizable(true); 
-        setSize(612, 357);
+        setSize(613, 357);
         setLocationRelativeTo(null);
         setResizable(false);
 
