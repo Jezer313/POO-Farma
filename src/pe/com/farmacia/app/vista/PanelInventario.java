@@ -138,7 +138,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar Medicamento");
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
@@ -146,7 +146,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEditar.addActionListener(this::btnEditarActionPerformed);
 
@@ -154,7 +154,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -162,7 +162,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnBuenos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnBuenos.setForeground(new java.awt.Color(6, 78, 54));
         btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
-        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuenos.setPreferredSize(new java.awt.Dimension(130, 34));
         btnBuenos.addActionListener(this::btnBuenosActionPerformed);
 
@@ -170,7 +170,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMalos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnMalos.setForeground(new java.awt.Color(23, 59, 99));
         btnMalos.setText("<html>Medicamentos<br>Caducados</html>");
-        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMalos.setPreferredSize(new java.awt.Dimension(130, 34));
         btnMalos.addActionListener(this::btnMalosActionPerformed);
 
