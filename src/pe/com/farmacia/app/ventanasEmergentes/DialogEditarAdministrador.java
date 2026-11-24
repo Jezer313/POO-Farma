@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
@@ -8,12 +8,15 @@ package pe.com.farmacia.app.ventanasEmergentes;
  *
  * @author Playe
  */
-public class PanelEditarAdministrador extends javax.swing.JPanel {
+public class DialogEditarAdministrador extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarAdministrador.class.getName());
 
     /**
-     * Creates new form PanelEditarAdministrador
+     * Creates new form DialogEditarAdministrador
      */
-    public PanelEditarAdministrador() {
+    public DialogEditarAdministrador(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -27,49 +30,40 @@ public class PanelEditarAdministrador extends javax.swing.JPanel {
     private void initComponents() {
 
         FondoEditarAdministrador = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        lblSubtitulo = new javax.swing.JLabel();
-        lblDatosAdministradorEditar = new javax.swing.JLabel();
-        lblNombreEditar = new javax.swing.JLabel();
+        lblConfirmarContrasenaEditar = new javax.swing.JLabel();
         txtNombreEditar = new javax.swing.JTextField();
+        txtConfirmarContrasenaEditar = new javax.swing.JPasswordField();
         lblUsuarioEditar = new javax.swing.JLabel();
         txtUsuarioEditar = new javax.swing.JTextField();
         btnCancelarEditar = new javax.swing.JButton();
         btnActualizarAdministrador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblContrasenaEditar = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         txtContrasenaEditar = new javax.swing.JPasswordField();
+        lblSubtitulo = new javax.swing.JLabel();
         lblCorreoElectronicoEditar = new javax.swing.JLabel();
+        lblDatosAdministradorEditar = new javax.swing.JLabel();
         txtCorreoElectronicoEditar = new javax.swing.JTextField();
-        lblConfirmarContrasenaEditar = new javax.swing.JLabel();
-        txtConfirmarContrasenaEditar = new javax.swing.JPasswordField();
+        lblNombreEditar = new javax.swing.JLabel();
 
-        setLayout(new java.awt.BorderLayout(450, 500));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoEditarAdministrador.setBackground(new java.awt.Color(225, 225, 225));
         FondoEditarAdministrador.setMinimumSize(new java.awt.Dimension(450, 500));
+        FondoEditarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
-        lblTitulo.setText("Editar Administrador");
-
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
-        lblSubtitulo.setText("Modifique la informacion del administrador.");
-
-        lblDatosAdministradorEditar.setBackground(new java.awt.Color(219, 234, 247));
-        lblDatosAdministradorEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblDatosAdministradorEditar.setForeground(new java.awt.Color(30, 58, 86));
-        lblDatosAdministradorEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblDatosAdministradorEditar.setText("Datos del administrador");
-        lblDatosAdministradorEditar.setOpaque(true);
-
-        lblNombreEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblNombreEditar.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreEditar.setText("Nombre:");
+        lblConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblConfirmarContrasenaEditar.setText("Confirmar contraseña:");
 
         txtNombreEditar.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        txtConfirmarContrasenaEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
 
         lblUsuarioEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblUsuarioEditar.setForeground(new java.awt.Color(30, 41, 59));
@@ -98,24 +92,35 @@ public class PanelEditarAdministrador extends javax.swing.JPanel {
         lblContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
         lblContrasenaEditar.setText("Contraseña:");
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setText("Editar Administrador");
+
         txtContrasenaEditar.setBackground(new java.awt.Color(255, 255, 255));
         txtContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
+        lblSubtitulo.setText("Modifique la informacion del administrador.");
 
         lblCorreoElectronicoEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblCorreoElectronicoEditar.setForeground(new java.awt.Color(30, 41, 59));
         lblCorreoElectronicoEditar.setText("Correo electronico:");
 
+        lblDatosAdministradorEditar.setBackground(new java.awt.Color(219, 234, 247));
+        lblDatosAdministradorEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDatosAdministradorEditar.setForeground(new java.awt.Color(30, 58, 86));
+        lblDatosAdministradorEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDatosAdministradorEditar.setText("Datos del administrador");
+        lblDatosAdministradorEditar.setOpaque(true);
+
         txtCorreoElectronicoEditar.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreoElectronicoEditar.setForeground(new java.awt.Color(30, 41, 59));
 
-        lblConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
-        lblConfirmarContrasenaEditar.setText("Confirmar contraseña:");
-
-        txtConfirmarContrasenaEditar.setBackground(new java.awt.Color(255, 255, 255));
-        txtConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombreEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblNombreEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombreEditar.setText("Nombre:");
 
         javax.swing.GroupLayout FondoEditarAdministradorLayout = new javax.swing.GroupLayout(FondoEditarAdministrador);
         FondoEditarAdministrador.setLayout(FondoEditarAdministradorLayout);
@@ -210,13 +215,51 @@ public class PanelEditarAdministrador extends javax.swing.JPanel {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        add(FondoEditarAdministrador, java.awt.BorderLayout.CENTER);
+        getContentPane().add(FondoEditarAdministrador, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarEditarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                DialogEditarAdministrador dialog = new DialogEditarAdministrador(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoEditarAdministrador;

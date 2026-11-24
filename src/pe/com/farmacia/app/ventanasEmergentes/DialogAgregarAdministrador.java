@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
@@ -8,12 +8,15 @@ package pe.com.farmacia.app.ventanasEmergentes;
  *
  * @author Playe
  */
-public class PanelAgregarAdministrador extends javax.swing.JPanel {
+public class DialogAgregarAdministrador extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarAdministrador.class.getName());
 
     /**
-     * Creates new form PanelAgregarAdministrador
+     * Creates new form DialogAgregarAdministrador
      */
-    public PanelAgregarAdministrador() {
+    public DialogAgregarAdministrador(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -27,10 +30,6 @@ public class PanelAgregarAdministrador extends javax.swing.JPanel {
     private void initComponents() {
 
         FondoAgregarAdministrador = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        lblSubtitulo = new javax.swing.JLabel();
-        lblDatosAdministrador = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -38,35 +37,22 @@ public class PanelAgregarAdministrador extends javax.swing.JPanel {
         btnGuardarAdministrador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblContrasena = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
+        lblSubtitulo = new javax.swing.JLabel();
         lblCorreoElectronico = new javax.swing.JLabel();
+        lblDatosAdministrador = new javax.swing.JLabel();
         txtCorreoElectronico = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
         lblConfirmarContrasena = new javax.swing.JLabel();
         txtConfirmarContrasena = new javax.swing.JPasswordField();
 
-        setLayout(new java.awt.BorderLayout(450, 500));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoAgregarAdministrador.setBackground(new java.awt.Color(225, 225, 225));
         FondoAgregarAdministrador.setMinimumSize(new java.awt.Dimension(450, 500));
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
-        lblTitulo.setText("Agregar Administrador");
-
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
-        lblSubtitulo.setText("Complete la informacion del administrador.");
-
-        lblDatosAdministrador.setBackground(new java.awt.Color(219, 234, 247));
-        lblDatosAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblDatosAdministrador.setForeground(new java.awt.Color(30, 58, 86));
-        lblDatosAdministrador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblDatosAdministrador.setText("Datos del administrador");
-        lblDatosAdministrador.setOpaque(true);
-
-        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombre.setText("Nombre:");
+        FondoAgregarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setForeground(new java.awt.Color(30, 41, 59));
@@ -98,16 +84,35 @@ public class PanelAgregarAdministrador extends javax.swing.JPanel {
         lblContrasena.setForeground(new java.awt.Color(30, 41, 59));
         lblContrasena.setText("Contraseña:");
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setText("Agregar Administrador");
+
         txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
         txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
+        lblSubtitulo.setText("Complete la informacion del administrador.");
 
         lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
         lblCorreoElectronico.setText("Correo electronico:");
 
+        lblDatosAdministrador.setBackground(new java.awt.Color(219, 234, 247));
+        lblDatosAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDatosAdministrador.setForeground(new java.awt.Color(30, 58, 86));
+        lblDatosAdministrador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDatosAdministrador.setText("Datos del administrador");
+        lblDatosAdministrador.setOpaque(true);
+
         txtCorreoElectronico.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombre.setText("Nombre:");
 
         lblConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblConfirmarContrasena.setForeground(new java.awt.Color(30, 41, 59));
@@ -177,7 +182,7 @@ public class PanelAgregarAdministrador extends javax.swing.JPanel {
                     .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSubtitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDatosAdministrador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FondoAgregarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -203,16 +208,54 @@ public class PanelAgregarAdministrador extends javax.swing.JPanel {
                 .addGroup(FondoAgregarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        add(FondoAgregarAdministrador, java.awt.BorderLayout.CENTER);
+        getContentPane().add(FondoAgregarAdministrador, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                DialogAgregarAdministrador dialog = new DialogAgregarAdministrador(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAgregarAdministrador;

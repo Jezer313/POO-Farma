@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
@@ -8,12 +8,15 @@ package pe.com.farmacia.app.ventanasEmergentes;
  *
  * @author Playe
  */
-public class PanelAgregarFactura extends javax.swing.JPanel {
+public class DialogAgregarFactura extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarFactura.class.getName());
 
     /**
-     * Creates new form PanelAgregarFactura
+     * Creates new form DialogAgregarFactura
      */
-    public PanelAgregarFactura() {
+    public DialogAgregarFactura(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -27,63 +30,49 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
     private void initComponents() {
 
         FondoAgregarFactura = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        lblSubtitulo = new javax.swing.JLabel();
-        lblDatosCliente = new javax.swing.JLabel();
-        lblNombreCliente = new javax.swing.JLabel();
-        txtNombreCliente = new javax.swing.JTextField();
-        lblDniCliente = new javax.swing.JLabel();
+        lblTotalFactura = new javax.swing.JLabel();
         txtDniCliente = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
         lblSeccionProductos = new javax.swing.JLabel();
+        btnGuardarFactura = new javax.swing.JButton();
         lblSeleccionarProducto = new javax.swing.JLabel();
+        lblPrecioUnitario = new javax.swing.JLabel();
         cmbProductos = new javax.swing.JComboBox<>();
+        txtPrecioUnitario = new javax.swing.JTextField();
         lblCantidad = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
+        lblSubtitulo = new javax.swing.JLabel();
         btnAgregarProducto = new javax.swing.JButton();
+        lblDatosCliente = new javax.swing.JLabel();
         scrollProductosFactura = new javax.swing.JScrollPane();
         tblProductosFactura = new javax.swing.JTable();
+        lblNombreCliente = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
         lblEtiquetaTotal = new javax.swing.JLabel();
-        lblTotalFactura = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
-        btnGuardarFactura = new javax.swing.JButton();
-        lblPrecioUnitario = new javax.swing.JLabel();
-        txtPrecioUnitario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblDniCliente = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(450, 500));
-        setPreferredSize(new java.awt.Dimension(450, 500));
-        setLayout(new java.awt.BorderLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoAgregarFactura.setBackground(new java.awt.Color(225, 225, 225));
         FondoAgregarFactura.setMinimumSize(new java.awt.Dimension(450, 500));
         FondoAgregarFactura.setPreferredSize(new java.awt.Dimension(450, 500));
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
-        lblTitulo.setText("Agregar Factura");
-
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
-        lblSubtitulo.setText("Registre una nueva factura de venta.");
-
-        lblDatosCliente.setBackground(new java.awt.Color(219, 234, 247));
-        lblDatosCliente.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblDatosCliente.setForeground(new java.awt.Color(30, 58, 86));
-        lblDatosCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblDatosCliente.setText("Datos del cliente");
-        lblDatosCliente.setOpaque(true);
-
-        lblNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
-        lblNombreCliente.setText("Nombre:");
-
-        txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
-
-        lblDniCliente.setForeground(new java.awt.Color(30, 41, 59));
-        lblDniCliente.setText("DNI:");
+        lblTotalFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalFactura.setForeground(new java.awt.Color(51, 153, 0));
+        lblTotalFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalFactura.setText("S/ 0.00");
 
         txtDniCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtDniCliente.setForeground(new java.awt.Color(30, 41, 59));
+
+        btnCancelar.setBackground(new java.awt.Color(220, 226, 232));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(30, 41, 59));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setFocusable(false);
 
         lblSeccionProductos.setBackground(new java.awt.Color(219, 234, 247));
         lblSeccionProductos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -92,26 +81,59 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
         lblSeccionProductos.setText("Productos");
         lblSeccionProductos.setOpaque(true);
 
+        btnGuardarFactura.setBackground(new java.awt.Color(51, 153, 0));
+        btnGuardarFactura.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnGuardarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarFactura.setText("Guardar");
+        btnGuardarFactura.setFocusable(false);
+
         lblSeleccionarProducto.setForeground(new java.awt.Color(30, 41, 59));
         lblSeleccionarProducto.setText("Producto:");
+
+        lblPrecioUnitario.setForeground(new java.awt.Color(30, 41, 59));
+        lblPrecioUnitario.setText("Precio (S/):");
 
         cmbProductos.setBackground(new java.awt.Color(255, 255, 255));
         cmbProductos.setForeground(new java.awt.Color(30, 41, 59));
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar producto..." }));
 
+        txtPrecioUnitario.setEditable(false);
+        txtPrecioUnitario.setBackground(new java.awt.Color(248, 250, 252));
+        txtPrecioUnitario.setForeground(new java.awt.Color(100, 116, 139));
+        txtPrecioUnitario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecioUnitario.setText("0.00");
+
         lblCantidad.setForeground(new java.awt.Color(30, 41, 59));
         lblCantidad.setText("Cantidad:");
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Imagen");
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setText("Agregar Factura");
 
         txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
         txtCantidad.setForeground(new java.awt.Color(30, 41, 59));
         txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidad.setText("1");
 
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
+        lblSubtitulo.setText("Registre una nueva factura de venta.");
+
         btnAgregarProducto.setBackground(new java.awt.Color(51, 153, 0));
         btnAgregarProducto.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnAgregarProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProducto.setText("+ Agregar producto");
         btnAgregarProducto.setFocusable(false);
+
+        lblDatosCliente.setBackground(new java.awt.Color(219, 234, 247));
+        lblDatosCliente.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDatosCliente.setForeground(new java.awt.Color(30, 58, 86));
+        lblDatosCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDatosCliente.setText("Datos del cliente");
+        lblDatosCliente.setOpaque(true);
 
         tblProductosFactura.setBackground(new java.awt.Color(255, 255, 255));
         tblProductosFactura.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
@@ -138,38 +160,18 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
         tblProductosFactura.setRowHeight(22);
         scrollProductosFactura.setViewportView(tblProductosFactura);
 
+        lblNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombreCliente.setText("Nombre:");
+
+        txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
+
         lblEtiquetaTotal.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblEtiquetaTotal.setForeground(new java.awt.Color(30, 58, 86));
         lblEtiquetaTotal.setText("Total a pagar:");
 
-        lblTotalFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblTotalFactura.setForeground(new java.awt.Color(51, 153, 0));
-        lblTotalFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTotalFactura.setText("S/ 0.00");
-
-        btnCancelar.setBackground(new java.awt.Color(220, 226, 232));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(30, 41, 59));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setFocusable(false);
-
-        btnGuardarFactura.setBackground(new java.awt.Color(51, 153, 0));
-        btnGuardarFactura.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        btnGuardarFactura.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarFactura.setText("Guardar");
-        btnGuardarFactura.setFocusable(false);
-
-        lblPrecioUnitario.setForeground(new java.awt.Color(30, 41, 59));
-        lblPrecioUnitario.setText("Precio (S/):");
-
-        txtPrecioUnitario.setEditable(false);
-        txtPrecioUnitario.setBackground(new java.awt.Color(248, 250, 252));
-        txtPrecioUnitario.setForeground(new java.awt.Color(100, 116, 139));
-        txtPrecioUnitario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtPrecioUnitario.setText("0.00");
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Imagen");
+        lblDniCliente.setForeground(new java.awt.Color(30, 41, 59));
+        lblDniCliente.setText("DNI:");
 
         javax.swing.GroupLayout FondoAgregarFacturaLayout = new javax.swing.GroupLayout(FondoAgregarFactura);
         FondoAgregarFactura.setLayout(FondoAgregarFacturaLayout);
@@ -198,7 +200,6 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
                                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(scrollProductosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
-                                        .addGap(241, 241, 241)
                                         .addComponent(lblEtiquetaTotal)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblTotalFactura)
@@ -267,7 +268,7 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSeccionProductos)
                 .addGap(18, 18, 18)
-                .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSeleccionarProducto)
                     .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -292,9 +293,47 @@ public class PanelAgregarFactura extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        add(FondoAgregarFactura, java.awt.BorderLayout.CENTER);
+        getContentPane().add(FondoAgregarFactura, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                DialogAgregarFactura dialog = new DialogAgregarFactura(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAgregarFactura;
