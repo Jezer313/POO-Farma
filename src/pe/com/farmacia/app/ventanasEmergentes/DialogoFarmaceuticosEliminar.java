@@ -4,20 +4,46 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import pe.com.farmacia.app.dao.Farmaceuticodao;
+import pe.com.farmacia.app.daoimplement.Farmaceuticodaoimpl;
+import pe.com.farmacia.app.modelo.Farmaceutico;
+
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoFarmaceuticosEliminar.class.getName());
 
     /**
      * Creates new form DialogoFarmaceuticosEliminar
      */
+    private final Farmaceuticodao farmaceuticodao = new Farmaceuticodaoimpl();
+    private boolean eliminado = false;
+    private int idFarmaceutico;
+
     public DialogoFarmaceuticosEliminar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void cargarDatosFarmaceutico(Farmaceutico f) {
+        if (f == null) {
+            return;
+        }
+        this.idFarmaceutico = f.getId_farmaceutico();
+        txtId.setText(String.valueOf(f.getId_farmaceutico()));
+        txtDNI.setText(f.getDni());
+        txtNombre.setText(f.getNombre());
+        txtApellido.setText(f.getApellido());
+        txtDireccion.setText(f.getDireccion());
+        txtTelefono.setText(f.getTelefono());
     }
 
     /**
@@ -52,8 +78,6 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
         txtApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
 
@@ -157,6 +181,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
@@ -242,17 +267,6 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
         txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCampos.add(txtDireccion);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel6.setText("Correo:");
-        jLabel6.setIconTextGap(10);
-        pnlCampos.add(jLabel6);
-
-        txtCorreo.setEditable(false);
-        txtCorreo.setBackground(new java.awt.Color(235, 238, 242));
-        txtCorreo.addActionListener(this::txtCorreoActionPerformed);
-        pnlCampos.add(txtCorreo);
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(18, 15, 94));
         jLabel7.setText("Telefono:");
@@ -312,18 +326,44 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
-        txtCorreo.requestFocusInWindow();
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
         txtTelefono.requestFocusInWindow();
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
         btnEliminar.doClick();
     }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (idFarmaceutico <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se identificó el farmacéutico a eliminar.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        if (farmaceuticodao.eliminar(idFarmaceutico)) {
+            eliminado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Farmacéutico eliminado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo eliminar el farmacéutico de la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,7 +410,6 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblAdvertencia;
     private javax.swing.JLabel lblIcono;
@@ -384,7 +423,6 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
     private javax.swing.JSeparator sepHorizoltal1;
     private javax.swing.JSeparator sepVertical;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtId;

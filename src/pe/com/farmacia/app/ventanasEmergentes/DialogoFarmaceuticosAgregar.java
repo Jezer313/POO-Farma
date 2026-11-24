@@ -4,12 +4,16 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import pe.com.farmacia.app.dao.Farmaceuticodao;
+import pe.com.farmacia.app.daoimplement.Farmaceuticodaoimpl;
+import pe.com.farmacia.app.modelo.Farmaceutico;
+
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoFarmaceuticosAgregar.class.getName());
 
     /**
@@ -48,8 +52,6 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         txtApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
@@ -179,15 +181,6 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCampos.add(txtDireccion);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel6.setText("Correo:");
-        jLabel6.setIconTextGap(10);
-        pnlCampos.add(jLabel6);
-
-        txtCorreo.addActionListener(this::txtCorreoActionPerformed);
-        pnlCampos.add(txtCorreo);
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(18, 15, 94));
         jLabel7.setText("Telefono:");
@@ -208,6 +201,7 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         btnGuardar.setText("Guardar");
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
@@ -263,6 +257,13 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private final Farmaceuticodao farmaceuticodao = new Farmaceuticodaoimpl();
+    private boolean guardado = false;
+
+    public boolean isGuardado() {
+        return guardado;
+    }
+
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
         txtNombre.requestFocusInWindow();
@@ -280,13 +281,8 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
-        txtCorreo.requestFocusInWindow();
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
         txtTelefono.requestFocusInWindow();
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
@@ -297,6 +293,45 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        String dni = txtDNI.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+
+        if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos obligatorios.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Farmaceutico farmaceutico = new Farmaceutico(0, dni, nombre, apellido, telefono, direccion);
+
+        if (farmaceuticodao.agregar(farmaceutico)) {
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Farmacéutico guardado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo guardar el farmacéutico en la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +378,6 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblSubtitulo;
@@ -355,7 +389,6 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
     private javax.swing.JSeparator sepHorizontal;
     private javax.swing.JSeparator sepVertical;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtId;

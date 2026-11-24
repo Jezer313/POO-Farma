@@ -4,6 +4,14 @@
  */
 package pe.com.farmacia.app.vista;
 
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Farmaceuticodao;
+import pe.com.farmacia.app.daoimplement.Farmaceuticodaoimpl;
+import pe.com.farmacia.app.modelo.Farmaceutico;
+import pe.com.farmacia.app.ventanasEmergentes.DialogoFarmaceuticosAgregar;
+import pe.com.farmacia.app.ventanasEmergentes.DialogoFarmaceuticosEditar;
+import pe.com.farmacia.app.ventanasEmergentes.DialogoFarmaceuticosEliminar;
+
 /**
  *
  * @author USER
@@ -15,6 +23,25 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
      */
     public PaneladministracionFarmaceuticos() {
         initComponents();
+        cargarTabla();
+    }
+    private final Farmaceuticodao farmaceuticodao = new Farmaceuticodaoimpl();
+
+    private void cargarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tblFarmaceuticos.getModel();
+        modelo.setRowCount(0);
+        var lista = farmaceuticodao.listar();
+        for (Farmaceutico f : lista) {
+            modelo.addRow(new Object[]{
+                f.getId_farmaceutico(),
+                f.getDni(),
+                f.getNombre(),
+                f.getApellido(),
+                f.getTelefono(),
+                f.getDireccion()
+            });
+        }
+        lblTotalFarmaceuticos.setText("Total de farmacéuticos: " + lista.size());
     }
 
     /**
@@ -140,17 +167,17 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
         tblFarmaceuticos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DNI", "Nombre", "Apellido", "Direccion", "Correo", "telefono"
+                "ID", "DNI", "Nombre", "Apellido", "telefono", "Direccion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -167,9 +194,8 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
             tblFarmaceuticos.getColumnModel().getColumn(1).setPreferredWidth(85);
             tblFarmaceuticos.getColumnModel().getColumn(2).setPreferredWidth(110);
             tblFarmaceuticos.getColumnModel().getColumn(3).setPreferredWidth(110);
-            tblFarmaceuticos.getColumnModel().getColumn(4).setPreferredWidth(135);
-            tblFarmaceuticos.getColumnModel().getColumn(5).setPreferredWidth(140);
-            tblFarmaceuticos.getColumnModel().getColumn(6).setPreferredWidth(95);
+            tblFarmaceuticos.getColumnModel().getColumn(4).setPreferredWidth(95);
+            tblFarmaceuticos.getColumnModel().getColumn(5).setPreferredWidth(135);
         }
 
         pnlCentro.add(scrollTabla, java.awt.BorderLayout.CENTER);
@@ -206,20 +232,77 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        DialogoFarmaceuticosAgregar dialog = new DialogoFarmaceuticosAgregar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+        );
+        dialog.setVisible(true);
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEditar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        int fila = tblFarmaceuticos.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un farmacéutico de la tabla.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Farmaceutico f = new Farmaceutico(
+                Integer.parseInt(
+                        tblFarmaceuticos.getValueAt(fila, 0).toString()),
+                tblFarmaceuticos.getValueAt(fila, 1).toString(),
+                tblFarmaceuticos.getValueAt(fila, 2).toString(),
+                tblFarmaceuticos.getValueAt(fila, 3).toString(),
+                tblFarmaceuticos.getValueAt(fila, 4).toString(),
+                tblFarmaceuticos.getValueAt(fila, 5).toString()
+        );
+
+        DialogoFarmaceuticosEditar dialog = new DialogoFarmaceuticosEditar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true, f
+        );
+        dialog.setVisible(true);
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEliminar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        int fila = tblFarmaceuticos.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un farmacéutico de la tabla.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Farmaceutico f = new Farmaceutico(
+                Integer.parseInt(tblFarmaceuticos.getValueAt(fila, 0).toString()),
+                tblFarmaceuticos.getValueAt(fila, 1).toString(),
+                tblFarmaceuticos.getValueAt(fila, 2).toString(),
+                tblFarmaceuticos.getValueAt(fila, 3).toString(),
+                tblFarmaceuticos.getValueAt(fila, 4).toString(),
+                tblFarmaceuticos.getValueAt(fila, 5).toString()
+        );
+
+        DialogoFarmaceuticosEliminar dialog = new DialogoFarmaceuticosEliminar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+        );
+        dialog.cargarDatosFarmaceutico(f);
+        dialog.setVisible(true);
+        if (dialog.isEliminado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
