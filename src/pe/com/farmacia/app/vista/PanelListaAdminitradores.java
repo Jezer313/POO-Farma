@@ -15,63 +15,6 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
      */
     public PanelListaAdminitradores() {
         initComponents();
-
-        // =====================================================
-        // CONFIGURACIÓN DEL ENCABEZADO DE LA TABLA
-        // =====================================================
-        // Establecemos el color azul oscuro del encabezado.
-        tblAdministradores.getTableHeader().setBackground(
-                new java.awt.Color(30, 58, 86)
-        );
-
-        // Establecemos el color blanco para los títulos de las columnas.
-        tblAdministradores.getTableHeader().setForeground(
-                java.awt.Color.WHITE
-        );
-
-        // Configuramos el tipo de letra, estilo negrita y tamaño del encabezado.
-        tblAdministradores.getTableHeader().setFont(
-                new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 12)
-        );
-
-        // =====================================================
-        // CONFIGURACIÓN GENERAL DE LA TABLA
-        // =====================================================
-        // Establecemos el color oscuro para el texto de las filas.
-        tblAdministradores.setForeground(
-                new java.awt.Color(30, 41, 59)
-        );
-
-        // Establecemos el fondo blanco de la tabla.
-        tblAdministradores.setBackground(
-                java.awt.Color.WHITE
-        );
-
-        // Definimos el color azul claro que aparecerá al seleccionar una fila.
-        tblAdministradores.setSelectionBackground(
-                new java.awt.Color(219, 234, 254)
-        );
-
-        // Definimos el color del texto cuando una fila esté seleccionada.
-        tblAdministradores.setSelectionForeground(
-                new java.awt.Color(30, 58, 86)
-        );
-
-        // Configuramos el tipo de letra y tamaño del contenido de la tabla.
-        tblAdministradores.setFont(
-                new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12)
-        );
-
-        // =====================================================
-        // CONFIGURACIÓN DEL ANCHO DE LAS COLUMNAS
-        // =====================================================
-        // Ajustamos el ancho de cada columna según el tipo de información.
-        tblAdministradores.getColumnModel().getColumn(0).setPreferredWidth(40);  // ID
-        tblAdministradores.getColumnModel().getColumn(1).setPreferredWidth(180); // Nombre completo
-        tblAdministradores.getColumnModel().getColumn(2).setPreferredWidth(120); // Usuario
-        tblAdministradores.getColumnModel().getColumn(3).setPreferredWidth(180); // Correo electrónico
-        tblAdministradores.getColumnModel().getColumn(4).setPreferredWidth(100); // DNI
-        tblAdministradores.getColumnModel().getColumn(5).setPreferredWidth(120); // Contraseña
     }
 
     /**
@@ -220,33 +163,13 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // Obtenemos la ventana principal desde este panel.
-        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
-        // Creamos la ventana emergente para agregar un administrador.
-        pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador ventana
-                = new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador(parent, true);
-
-        // Centramos la ventana emergente respecto a la ventana principal.
-        ventana.setLocationRelativeTo(parent);
-
-        // Mostramos la ventana emergente.
-        ventana.setVisible(true);
+        new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // Obtenemos la ventana principal desde este panel.
-        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
-        // Creamos la ventana emergente para editar un administrador.
-        pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador ventana
-                = new pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador(parent, true);
-
-        // Centramos la ventana respecto a la ventana principal.
-        ventana.setLocationRelativeTo(parent);
-
-        // Mostramos la ventana emergente.
-        ventana.setVisible(true);
+        new pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
 
