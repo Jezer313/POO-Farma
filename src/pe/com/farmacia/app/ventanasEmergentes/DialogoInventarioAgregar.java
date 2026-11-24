@@ -62,12 +62,15 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         txtPrecioCaja = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtFechaCaducidad = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
@@ -111,7 +114,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
                         .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         pnlEncabezadoLayout.setVerticalGroup(
             pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +141,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
         pnlCampos.setBackground(new java.awt.Color(255, 255, 255));
         pnlCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
-        pnlCampos.setLayout(new java.awt.GridLayout(9, 2, 0, 8));
+        pnlCampos.setLayout(new java.awt.GridLayout(10, 2, 0, 8));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(18, 15, 94));
@@ -191,7 +194,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel6.setText("Que cura:");
+        jLabel6.setText("Que Cura:");
         jLabel6.setIconTextGap(10);
         pnlCampos.add(jLabel6);
 
@@ -225,6 +228,15 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         txtCantidad.addActionListener(this::txtCantidadActionPerformed);
         pnlCampos.add(txtCantidad);
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel10.setText("Fecha de Caducidad:");
+        jLabel10.setIconTextGap(10);
+        pnlCampos.add(jLabel10);
+
+        txtFechaCaducidad.addActionListener(this::txtFechaCaducidadActionPerformed);
+        pnlCampos.add(txtFechaCaducidad);
+
         pnlFondoDialog.add(pnlCampos, java.awt.BorderLayout.CENTER);
 
         pnlPie.setBackground(new java.awt.Color(218, 248, 255));
@@ -234,14 +246,14 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
@@ -250,7 +262,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         pnlPieLayout.setHorizontalGroup(
             pnlPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPieLayout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addContainerGap(151, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,7 +306,6 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // Obtiene los valores escritos por el usuario y elimina espacios en blanco a los lados.
         String codigo = txtCodigo.getText().trim();
         String nombreGenerico = txtNobregenerico.getText().trim();
         String nombreComercial = txtNombreComercial.getText().trim();
@@ -303,11 +314,12 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         String precioUnitStr = txtPrecioUnitario.getText().trim();
         String precioCajaStr = txtPrecioCaja.getText().trim();
         String cantidadStr = txtCantidad.getText().trim();
+        String fecha = txtFechaCaducidad.getText().trim();
 
-        // Verifica que ningún campo obligatorio haya quedado vacío.
         if (codigo.isEmpty() || nombreGenerico.isEmpty() || nombreComercial.isEmpty()
                 || descripcion.isEmpty() || cura.isEmpty()
-                || precioUnitStr.isEmpty() || precioCajaStr.isEmpty() || cantidadStr.isEmpty()) {
+                || precioUnitStr.isEmpty() || precioCajaStr.isEmpty()
+                || cantidadStr.isEmpty() || fecha.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Completa todos los campos obligatorios.",
@@ -321,7 +333,6 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         double precioCaja;
         int cantidad;
 
-        // Convierte los textos numéricos a double e int; si hay letras o formato inválido, avisa y detiene.
         try {
             precioUnitario = Double.parseDouble(precioUnitStr);
             precioCaja = Double.parseDouble(precioCajaStr);
@@ -336,7 +347,6 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
             return;
         }
 
-        // Evita que se registren precios o cantidades negativas.
         if (precioUnitario < 0 || precioCaja < 0 || cantidad < 0) {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -347,12 +357,9 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
             return;
         }
 
-        // Construye el objeto Medicamento
-        Medicamento medicamento = new Medicamento(0, codigo, nombreComercial, nombreGenerico, descripcion, cantidad, cura, precioUnitario, precioCaja);
+        Medicamento medicamento = new Medicamento(0, codigo, nombreComercial, nombreGenerico, descripcion, cantidad, cura, precioUnitario, precioCaja, fecha);
 
-        // Envía el medicamento a la base de datos mediante el DAO
         if (medicamentodao.agregar(medicamento)) {
-            // Marca que hubo inserción exitosa para refrescar la tabla en PanelInventario.
             guardado = true;
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -360,10 +367,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
                     "Éxito",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE
             );
-            // Cierra y libera la ventana emergente.
             this.dispose();
         } else {
-            // Informa si ocurrió algún fallo al insertar en SQLite.
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "No se pudo guardar el medicamento en la base de datos.",
@@ -395,8 +400,13 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
-        btnGuardar.doClick();;
+        txtFechaCaducidad.requestFocusInWindow();
     }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void txtFechaCaducidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaCaducidadActionPerformed
+        // TODO add your handling code here:
+        btnGuardar.doClick();;
+    }//GEN-LAST:event_txtFechaCaducidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,6 +449,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -459,6 +470,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtFechaCaducidad;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNobregenerico;
     private javax.swing.JTextField txtNombreComercial;

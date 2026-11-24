@@ -45,7 +45,10 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         sepHorizoltal = new javax.swing.JSeparator();
         lblAdvertencia = new javax.swing.JLabel();
         sepHorizoltal1 = new javax.swing.JSeparator();
-        pnlCuerpo = new javax.swing.JPanel();
+        pnlBotones = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        pnlCampos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -64,12 +67,12 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtPrecioCaja = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        pnlBotones = new javax.swing.JPanel();
-        btnCancelar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txtFechaCaducidad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
@@ -113,7 +116,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                         .addComponent(lblAdvertencia)
@@ -152,130 +155,13 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
 
         pnlFondoDialog.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
-        pnlCuerpo.setBackground(new java.awt.Color(255, 255, 255));
-        pnlCuerpo.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 1, 20));
-        pnlCuerpo.setLayout(new java.awt.GridLayout(9, 2, 0, 8));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel1.setText("ID:");
-        jLabel1.setIconTextGap(10);
-        pnlCuerpo.add(jLabel1);
-
-        txtId.setEditable(false);
-        txtId.setBackground(new java.awt.Color(235, 238, 242));
-        txtId.setForeground(new java.awt.Color(90, 105, 120));
-        txtId.setText("ID automático");
-        txtId.setFocusable(false);
-        pnlCuerpo.add(txtId);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel2.setText("Codigo:");
-        jLabel2.setIconTextGap(10);
-        pnlCuerpo.add(jLabel2);
-
-        txtCodigo.setEditable(false);
-        txtCodigo.setBackground(new java.awt.Color(235, 238, 242));
-        txtCodigo.setForeground(new java.awt.Color(90, 105, 120));
-        txtCodigo.setFocusable(false);
-        pnlCuerpo.add(txtCodigo);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel3.setText("Nombre Generico:");
-        jLabel3.setIconTextGap(10);
-        pnlCuerpo.add(jLabel3);
-
-        txtNobregenerico.setEditable(false);
-        txtNobregenerico.setBackground(new java.awt.Color(235, 238, 242));
-        txtNobregenerico.setForeground(new java.awt.Color(90, 105, 120));
-        txtNobregenerico.setFocusable(false);
-        pnlCuerpo.add(txtNobregenerico);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel4.setText("Nombre Comercial:");
-        jLabel4.setIconTextGap(10);
-        pnlCuerpo.add(jLabel4);
-
-        txtNombreComercial.setEditable(false);
-        txtNombreComercial.setBackground(new java.awt.Color(235, 238, 242));
-        txtNombreComercial.setForeground(new java.awt.Color(90, 105, 120));
-        txtNombreComercial.setFocusable(false);
-        pnlCuerpo.add(txtNombreComercial);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel5.setText("Descripcion:");
-        jLabel5.setIconTextGap(10);
-        pnlCuerpo.add(jLabel5);
-
-        txtDescripcion.setEditable(false);
-        txtDescripcion.setBackground(new java.awt.Color(235, 238, 242));
-        txtDescripcion.setForeground(new java.awt.Color(90, 105, 120));
-        txtDescripcion.setFocusable(false);
-        pnlCuerpo.add(txtDescripcion);
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel6.setText("Que cura:");
-        jLabel6.setIconTextGap(10);
-        pnlCuerpo.add(jLabel6);
-
-        txtQueCura.setEditable(false);
-        txtQueCura.setBackground(new java.awt.Color(235, 238, 242));
-        txtQueCura.setForeground(new java.awt.Color(90, 105, 120));
-        txtQueCura.setFocusable(false);
-        pnlCuerpo.add(txtQueCura);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel7.setText("Precio Unitario:");
-        jLabel7.setIconTextGap(10);
-        pnlCuerpo.add(jLabel7);
-
-        txtPrecioUnitario.setEditable(false);
-        txtPrecioUnitario.setBackground(new java.awt.Color(235, 238, 242));
-        txtPrecioUnitario.setForeground(new java.awt.Color(90, 105, 120));
-        txtPrecioUnitario.setFocusable(false);
-        txtPrecioUnitario.addActionListener(this::txtPrecioUnitarioActionPerformed);
-        pnlCuerpo.add(txtPrecioUnitario);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel8.setText("Precio por Caja:");
-        jLabel8.setIconTextGap(10);
-        pnlCuerpo.add(jLabel8);
-
-        txtPrecioCaja.setEditable(false);
-        txtPrecioCaja.setBackground(new java.awt.Color(235, 238, 242));
-        txtPrecioCaja.setForeground(new java.awt.Color(90, 105, 120));
-        txtPrecioCaja.setFocusable(false);
-        txtPrecioCaja.addActionListener(this::txtPrecioCajaActionPerformed);
-        pnlCuerpo.add(txtPrecioCaja);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel9.setText("Cantidad:");
-        jLabel9.setIconTextGap(10);
-        pnlCuerpo.add(jLabel9);
-
-        txtCantidad.setEditable(false);
-        txtCantidad.setBackground(new java.awt.Color(235, 238, 242));
-        txtCantidad.setForeground(new java.awt.Color(90, 105, 120));
-        txtCantidad.setFocusable(false);
-        pnlCuerpo.add(txtCantidad);
-
-        pnlFondoDialog.add(pnlCuerpo, java.awt.BorderLayout.CENTER);
-
         pnlBotones.setBackground(new java.awt.Color(218, 248, 255));
         pnlBotones.setPreferredSize(new java.awt.Dimension(400, 52));
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
@@ -283,16 +169,15 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
         pnlBotonesLayout.setHorizontalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,6 +194,124 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         );
 
         pnlFondoDialog.add(pnlBotones, java.awt.BorderLayout.SOUTH);
+
+        pnlCampos.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
+        pnlCampos.setLayout(new java.awt.GridLayout(10, 2, 0, 8));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel1.setText("ID:");
+        jLabel1.setIconTextGap(10);
+        pnlCampos.add(jLabel1);
+
+        txtId.setEditable(false);
+        txtId.setBackground(new java.awt.Color(235, 238, 242));
+        txtId.setForeground(new java.awt.Color(120, 130, 145));
+        txtId.setText("ID automático");
+        txtId.setFocusable(false);
+        pnlCampos.add(txtId);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel2.setText("Codigo:");
+        jLabel2.setIconTextGap(10);
+        pnlCampos.add(jLabel2);
+
+        txtCodigo.setEditable(false);
+        txtCodigo.setBackground(new java.awt.Color(235, 238, 242));
+        txtCodigo.setFocusable(false);
+        pnlCampos.add(txtCodigo);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel3.setText("Nombre Generico:");
+        jLabel3.setIconTextGap(10);
+        pnlCampos.add(jLabel3);
+
+        txtNobregenerico.setEditable(false);
+        txtNobregenerico.setBackground(new java.awt.Color(235, 238, 242));
+        txtNobregenerico.setFocusable(false);
+        pnlCampos.add(txtNobregenerico);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel4.setText("Nombre Comercial:");
+        jLabel4.setIconTextGap(10);
+        pnlCampos.add(jLabel4);
+
+        txtNombreComercial.setEditable(false);
+        txtNombreComercial.setBackground(new java.awt.Color(235, 238, 242));
+        txtNombreComercial.setFocusable(false);
+        pnlCampos.add(txtNombreComercial);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel5.setText("Descripcion:");
+        jLabel5.setIconTextGap(10);
+        pnlCampos.add(jLabel5);
+
+        txtDescripcion.setEditable(false);
+        txtDescripcion.setBackground(new java.awt.Color(235, 238, 242));
+        txtDescripcion.setFocusable(false);
+        pnlCampos.add(txtDescripcion);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel6.setText("Que Cura:");
+        jLabel6.setIconTextGap(10);
+        pnlCampos.add(jLabel6);
+
+        txtQueCura.setEditable(false);
+        txtQueCura.setBackground(new java.awt.Color(235, 238, 242));
+        txtQueCura.setFocusable(false);
+        pnlCampos.add(txtQueCura);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel7.setText("Precio Unitario:");
+        jLabel7.setIconTextGap(10);
+        pnlCampos.add(jLabel7);
+
+        txtPrecioUnitario.setEditable(false);
+        txtPrecioUnitario.setBackground(new java.awt.Color(235, 238, 242));
+        txtPrecioUnitario.setFocusable(false);
+        pnlCampos.add(txtPrecioUnitario);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel8.setText("Precio por Caja:");
+        jLabel8.setIconTextGap(10);
+        pnlCampos.add(jLabel8);
+
+        txtPrecioCaja.setEditable(false);
+        txtPrecioCaja.setBackground(new java.awt.Color(235, 238, 242));
+        txtPrecioCaja.setFocusable(false);
+        pnlCampos.add(txtPrecioCaja);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel9.setText("Cantidad:");
+        jLabel9.setIconTextGap(10);
+        pnlCampos.add(jLabel9);
+
+        txtCantidad.setEditable(false);
+        txtCantidad.setBackground(new java.awt.Color(235, 238, 242));
+        txtCantidad.setFocusable(false);
+        pnlCampos.add(txtCantidad);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel10.setText("Fecha de Caducidad:");
+        jLabel10.setIconTextGap(10);
+        pnlCampos.add(jLabel10);
+
+        txtFechaCaducidad.setEditable(false);
+        txtFechaCaducidad.setBackground(new java.awt.Color(235, 238, 242));
+        txtFechaCaducidad.setFocusable(false);
+        pnlCampos.add(txtFechaCaducidad);
+
+        pnlFondoDialog.add(pnlCampos, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlFondoDialog, java.awt.BorderLayout.CENTER);
 
@@ -330,54 +333,13 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtPrecioUnitario.setText(String.valueOf(m.getPreciounitario()));
         txtPrecioCaja.setText(String.valueOf(m.getPreciocaja()));
         txtCantidad.setText(String.valueOf(m.getCantidad()));
+        txtFechaCaducidad.setText(String.valueOf(m.getFecha_caducidad()));
     }
-
-    private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
-        // TODO add your handling code here:
-        txtPrecioCaja.requestFocusInWindow();
-    }//GEN-LAST:event_txtPrecioUnitarioActionPerformed
-
-    private void txtPrecioCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioCajaActionPerformed
-        // TODO add your handling code here:
-        txtCantidad.requestFocusInWindow();
-    }//GEN-LAST:event_txtPrecioCajaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // Verifica que exista un ID válido antes de eliminar
-        if (idMedicamento <= 0) {
-            javax.swing.JOptionPane.showMessageDialog(
-                    this,
-                    "No se identificó el medicamento a eliminar.",
-                    "Error",
-                    javax.swing.JOptionPane.ERROR_MESSAGE
-            );
-            return;
-        }
-        
-        // Ejecuta el borrado en la base de datos y cierra el diálogo si se pudo
-        if (medicamentodao.eliminar(idMedicamento)) {
-            eliminado = true;
-            javax.swing.JOptionPane.showMessageDialog(
-                    this,
-                    "Medicamento eliminado correctamente.",
-                    "Éxito",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE
-            );
-            this.dispose();
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(
-                    this,
-                    "No se pudo eliminar el medicamento de la base de datos.",
-                    "Error",
-                    javax.swing.JOptionPane.ERROR_MESSAGE
-            );
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
          * @param args the command line arguments
@@ -420,6 +382,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -433,7 +396,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JPanel pnlBotones;
-    private javax.swing.JPanel pnlCuerpo;
+    private javax.swing.JPanel pnlCampos;
     private javax.swing.JPanel pnlEncabezado;
     private javax.swing.JPanel pnlFondoDialog;
     private javax.swing.JSeparator sepHorizoltal;
@@ -442,6 +405,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtFechaCaducidad;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNobregenerico;
     private javax.swing.JTextField txtNombreComercial;

@@ -45,7 +45,8 @@ import pe.com.farmacia.app.modelo.Medicamento;
                     m.getPreciounitario(),
                     m.getPreciocaja(),
                     m.getCantidad(),
-                    m.getDescripcion()
+                    m.getDescripcion(),
+                    m.getFecha_caducidad()
                 });
             }
 
@@ -138,7 +139,7 @@ import pe.com.farmacia.app.modelo.Medicamento;
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar Medicamento");
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
@@ -146,7 +147,7 @@ import pe.com.farmacia.app.modelo.Medicamento;
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEditar.addActionListener(this::btnEditarActionPerformed);
 
@@ -154,7 +155,7 @@ import pe.com.farmacia.app.modelo.Medicamento;
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -162,14 +163,14 @@ import pe.com.farmacia.app.modelo.Medicamento;
         btnBuenos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnBuenos.setForeground(new java.awt.Color(6, 78, 54));
         btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
-        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuenos.setPreferredSize(new java.awt.Dimension(130, 34));
 
         btnMalos.setBackground(new java.awt.Color(232, 241, 250));
         btnMalos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnMalos.setForeground(new java.awt.Color(23, 59, 99));
         btnMalos.setText("<html>Medicamentos<br>Caducados</html>");
-        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMalos.setPreferredSize(new java.awt.Dimension(130, 34));
 
         scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,11 +182,11 @@ import pe.com.farmacia.app.modelo.Medicamento;
 
             },
             new String [] {
-                "ID", "Codigo", "Nombre Generico", "Nombre Comercial", "Cura", "Precio Unitario", "Precio x Caja", "Stock", "Estado"
+                "ID", "Codigo", "Nombre Generico", "Nombre Comercial", "Cura", "Precio Unitario", "Precio x Caja", "Stock", "Descripcion", "F. Caducidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -196,6 +197,18 @@ import pe.com.farmacia.app.modelo.Medicamento;
         tblMedicamentos.setRowHeight(38);
         tblMedicamentos.setShowGrid(true);
         scrollTabla.setViewportView(tblMedicamentos);
+        if (tblMedicamentos.getColumnModel().getColumnCount() > 0) {
+            tblMedicamentos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblMedicamentos.getColumnModel().getColumn(1).setPreferredWidth(65);
+            tblMedicamentos.getColumnModel().getColumn(2).setPreferredWidth(125);
+            tblMedicamentos.getColumnModel().getColumn(3).setPreferredWidth(125);
+            tblMedicamentos.getColumnModel().getColumn(4).setPreferredWidth(75);
+            tblMedicamentos.getColumnModel().getColumn(5).setPreferredWidth(95);
+            tblMedicamentos.getColumnModel().getColumn(6).setPreferredWidth(85);
+            tblMedicamentos.getColumnModel().getColumn(7).setPreferredWidth(55);
+            tblMedicamentos.getColumnModel().getColumn(8).setPreferredWidth(95);
+            tblMedicamentos.getColumnModel().getColumn(9).setPreferredWidth(85);
+        }
 
         javax.swing.GroupLayout pnlCuerpoLayout = new javax.swing.GroupLayout(pnlCuerpo);
         pnlCuerpo.setLayout(pnlCuerpoLayout);

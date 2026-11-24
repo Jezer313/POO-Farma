@@ -281,7 +281,7 @@ import pe.com.farmacia.app.modelo.Administrador;
                     javax.swing.JOptionPane.ERROR_MESSAGE
             );
         }
-    }
+    
     }//GEN-LAST:event_btnGuardarAdministradorActionPerformed
 
     /**

@@ -16,15 +16,15 @@ import java.util.ArrayList;
  */
 public class Medicamentodaoimpl implements Medicamentodao {
 
-    private final Conectadb cn = new Conectadb();
+   private final Conectadb cn = new Conectadb();
 
     @Override
     public boolean agregar(Medicamento medicamento) {
         String sql = """
-                     INSERT INTO MEDICAMENTO(CODIGO, NOMBRE_COMERCIAL, NOMBRE_GENERICO, DESCRIPCION, CANTIDAD, CURA, PRECIO_UNITARIO, PRECIO_CAJA)
-                     VALUES(?,?,?,?,?,?,?,?);
+                     INSERT INTO MEDICAMENTO(CODIGO, NOMBRE_COMERCIAL, NOMBRE_GENERICO, DESCRIPCION, CANTIDAD, CURA, PRECIO_UNITARIO, PRECIO_CAJA, FECHA_CADUCIDAD)
+                     VALUES(?,?,?,?,?,?,?,?,?);
                      """;
-        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
+        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql)) {
             pst.setString(1, medicamento.getCodigo());
             pst.setString(2, medicamento.getNombre_comercial());
             pst.setString(3, medicamento.getNombre_generico());
@@ -33,50 +33,49 @@ public class Medicamentodaoimpl implements Medicamentodao {
             pst.setString(6, medicamento.getCura());
             pst.setDouble(7, medicamento.getPreciounitario());
             pst.setDouble(8, medicamento.getPreciocaja());
+            pst.setString(9, medicamento.getFecha_caducidad());
             pst.executeUpdate();
             System.out.println("<< SE AGREGÓ UN NUEVO MEDICAMENTO >>");
+            return true;
         } catch (SQLException e) {
-            System.out.println("<< NO SE PUDO AGREGAR EL MEDICAMENTO >>");
+            System.out.println("<< NO SE PUDO AGREGAR EL MEDICAMENTO: " + e.getMessage() + " >>");
             return false;
         }
-        return true;
     }
 
     @Override
     public boolean eliminar(int id_medicamento) {
         String sql = """
                      DELETE FROM MEDICAMENTO
-                     WHERE
-                        ID_MEDICAMENTO = ?;
+                     WHERE ID_MEDICAMENTO = ?;
                      """;
-        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
+        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql)) {
             pst.setInt(1, id_medicamento);
             pst.executeUpdate();
             System.out.println("<< SE ELIMINÓ UN MEDICAMENTO >>");
+            return true;
         } catch (SQLException e) {
-            System.out.println("<< NO SE PUDO ELIMINAR EL MEDICAMENTO >>");
+            System.out.println("<< NO SE PUDO ELIMINAR EL MEDICAMENTO: " + e.getMessage() + " >>");
             return false;
         }
-        return true;
     }
 
     @Override
     public boolean editar(Medicamento medicamento) {
         String sql = """
                      UPDATE MEDICAMENTO
-                     SET
-                        CODIGO = ?,
-                        NOMBRE_COMERCIAL = ?,
-                        NOMBRE_GENERICO = ?,
-                        DESCRIPCION = ?,
-                        CANTIDAD = ?,
-                        CURA = ?,
-                        PRECIO_UNITARIO = ?,
-                        PRECIO_CAJA = ?
-                     WHERE
-                        ID_MEDICAMENTO = ?;
+                     SET CODIGO = ?,
+                         NOMBRE_COMERCIAL = ?,
+                         NOMBRE_GENERICO = ?,
+                         DESCRIPCION = ?,
+                         CANTIDAD = ?,
+                         CURA = ?,
+                         PRECIO_UNITARIO = ?,
+                         PRECIO_CAJA = ?,
+                         FECHA_CADUCIDAD = ?
+                     WHERE ID_MEDICAMENTO = ?;
                      """;
-        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
+        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql)) {
             pst.setString(1, medicamento.getCodigo());
             pst.setString(2, medicamento.getNombre_comercial());
             pst.setString(3, medicamento.getNombre_generico());
@@ -85,24 +84,22 @@ public class Medicamentodaoimpl implements Medicamentodao {
             pst.setString(6, medicamento.getCura());
             pst.setDouble(7, medicamento.getPreciounitario());
             pst.setDouble(8, medicamento.getPreciocaja());
-            pst.setInt(9, medicamento.getId_medicamento());
+            pst.setString(9, medicamento.getFecha_caducidad());
+            pst.setInt(10, medicamento.getId_medicamento());
             pst.executeUpdate();
             System.out.println("<< SE EDITARON LOS DATOS DEL MEDICAMENTO >>");
+            return true;
         } catch (SQLException e) {
-            System.out.println("<< NO SE PUDO EDITAR EL MEDICAMENTO >>");
+            System.out.println("<< NO SE PUDO EDITAR EL MEDICAMENTO: " + e.getMessage() + " >>");
             return false;
         }
-        return true;
     }
 
     @Override
     public List<Medicamento> listar() {
         List<Medicamento> lista = new ArrayList<>();
-        String sql = """
-                     SELECT *
-                     FROM MEDICAMENTO;
-                     """;
-        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql); ResultSet rs = pst.executeQuery();) {
+        String sql = "SELECT * FROM MEDICAMENTO;";
+        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 lista.add(new Medicamento(
                         rs.getInt("ID_MEDICAMENTO"),
@@ -113,27 +110,26 @@ public class Medicamentodaoimpl implements Medicamentodao {
                         rs.getInt("CANTIDAD"),
                         rs.getString("CURA"),
                         rs.getDouble("PRECIO_UNITARIO"),
-                        rs.getDouble("PRECIO_CAJA")
+                        rs.getDouble("PRECIO_CAJA"),
+                        rs.getString("FECHA_CADUCIDAD")
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("<< NO SE PUDO LISTAR MEDICAMENTOS >>");
+            System.out.println("<< NO SE PUDO LISTAR MEDICAMENTOS: " + e.getMessage() + " >>");
         }
         return lista;
     }
 
     @Override
-    public List<Medicamento> buscar(String codigo) {
+    public List<Medicamento> buscar(String texto) {
         List<Medicamento> lista = new ArrayList<>();
-        String sql = """
-                     SELECT *
-                     FROM MEDICAMENTO
-                     WHERE
-                        CODIGO LIKE ?;
-                     """;
-        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
-            pst.setString(1, "%" + codigo + "%");
-            try (ResultSet rs = pst.executeQuery();) {
+        String sql = "SELECT * FROM MEDICAMENTO WHERE CODIGO LIKE ? OR NOMBRE_COMERCIAL LIKE ? OR NOMBRE_GENERICO LIKE ?;";
+        try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql)) {
+            String filtro = "%" + texto + "%";
+            pst.setString(1, filtro);
+            pst.setString(2, filtro);
+            pst.setString(3, filtro);
+            try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     lista.add(new Medicamento(
                             rs.getInt("ID_MEDICAMENTO"),
@@ -144,12 +140,13 @@ public class Medicamentodaoimpl implements Medicamentodao {
                             rs.getInt("CANTIDAD"),
                             rs.getString("CURA"),
                             rs.getDouble("PRECIO_UNITARIO"),
-                            rs.getDouble("PRECIO_CAJA")
+                            rs.getDouble("PRECIO_CAJA"),
+                            rs.getString("FECHA_CADUCIDAD")
                     ));
                 }
             }
         } catch (SQLException e) {
-            System.out.println("<< ERROR AL BUSCAR MEDICAMENTO POR CÓDIGO >>");
+            System.out.println("<< ERROR AL BUSCAR MEDICAMENTO: " + e.getMessage() + " >>");
         }
         return lista;
     }

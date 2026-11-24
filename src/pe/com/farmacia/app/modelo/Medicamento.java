@@ -22,4 +22,5 @@ public class Medicamento {
     private String cura;
     private double preciounitario;
     private double preciocaja;
+    private String fecha_caducidad;
 }

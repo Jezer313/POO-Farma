@@ -21,7 +21,8 @@ public class CrearTabla {
                 CANTIDAD            INTEGER NOT NULL,
                 CURA                TEXT NOT NULL,
                 PRECIO_UNITARIO     REAL NOT NULL,
-                PRECIO_CAJA         REAL NOT NULL
+                PRECIO_CAJA         REAL NOT NULL,
+                FECHA_CADUCIDAD     TEXT NOT NULL
             );
             """,
 
