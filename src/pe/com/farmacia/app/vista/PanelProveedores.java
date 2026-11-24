@@ -33,7 +33,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btngenerarFactura = new javax.swing.JButton();
         pnlCentro = new javax.swing.JPanel();
         scrollTabla = new javax.swing.JScrollPane();
         tblProveedores = new javax.swing.JTable();
@@ -61,6 +60,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(24, 38, 53));
@@ -73,12 +73,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53)));
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btngenerarFactura.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btngenerarFactura.setForeground(new java.awt.Color(24, 38, 53));
-        btngenerarFactura.setText("Generar Factura");
-        btngenerarFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53)));
-        btngenerarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
         pnlSuperior.setLayout(pnlSuperiorLayout);
@@ -98,10 +92,8 @@ public class PanelProveedores extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btngenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         pnlSuperiorLayout.setVerticalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +106,7 @@ public class PanelProveedores extends javax.swing.JPanel {
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btngenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -135,7 +126,7 @@ public class PanelProveedores extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nro", "Nombre", "RUC", "Direccion", "Acciones"
+                "Nro", "Nombre", "Telefono", "RUC", "Direccion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -154,15 +145,10 @@ public class PanelProveedores extends javax.swing.JPanel {
         scrollTabla.setViewportView(tblProveedores);
         if (tblProveedores.getColumnModel().getColumnCount() > 0) {
             tblProveedores.getColumnModel().getColumn(0).setPreferredWidth(60);
-            tblProveedores.getColumnModel().getColumn(0).setHeaderValue("Nro");
             tblProveedores.getColumnModel().getColumn(1).setPreferredWidth(250);
-            tblProveedores.getColumnModel().getColumn(1).setHeaderValue("Nombre");
-            tblProveedores.getColumnModel().getColumn(2).setPreferredWidth(150);
-            tblProveedores.getColumnModel().getColumn(2).setHeaderValue("RUC");
-            tblProveedores.getColumnModel().getColumn(3).setPreferredWidth(260);
-            tblProveedores.getColumnModel().getColumn(3).setHeaderValue("Direccion");
-            tblProveedores.getColumnModel().getColumn(4).setPreferredWidth(100);
-            tblProveedores.getColumnModel().getColumn(4).setHeaderValue("Acciones");
+            tblProveedores.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tblProveedores.getColumnModel().getColumn(3).setPreferredWidth(150);
+            tblProveedores.getColumnModel().getColumn(4).setPreferredWidth(260);
         }
 
         pnlCentro.add(scrollTabla, java.awt.BorderLayout.CENTER);
@@ -198,12 +184,17 @@ public class PanelProveedores extends javax.swing.JPanel {
         add(pnlFondoProveedores, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btngenerarFactura;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalProveedores;

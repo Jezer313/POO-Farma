@@ -346,10 +346,8 @@ public class PanelFacturas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        DialogAgregarFactura ventana = new DialogAgregarFactura(parent, true);
-        ventana.setLocationRelativeTo(parent);
-        ventana.setVisible(true);
+        new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarFactura(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
