@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Proveedordao;
+import pe.com.farmacia.app.daoimplement.Proveedordaoimpl;
 
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoProveedoresEditar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoProveedoresEditar.class.getName());
+    private final Proveedordao proveedordao = new Proveedordaoimpl();
+    private boolean actualizado = false;
+    private int idProveedor;
 
     /**
      * Creates new form DialogoProveedoresEditar
@@ -19,6 +21,10 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    public boolean isActualizado() {
+        return actualizado;
     }
 
     /**
@@ -189,6 +195,7 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnActualizar.addActionListener(this::btnActualizarActionPerformed);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
         pnlPie.setLayout(pnlPieLayout);
@@ -237,6 +244,18 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cargarDatosProveedor(pe.com.farmacia.app.modelo.Proveedor p) {
+        if (p == null) {
+            return;
+        }
+        this.idProveedor = p.getId_proveedor();
+        txtId.setText(String.valueOf(p.getId_proveedor()));
+        txtNombre.setText(p.getNombre());
+        txtRUC.setText(p.getRuc());
+        txtDireccion.setText(p.getDireccion());
+        txtFelefono.setText(p.getTelefono());
+    }
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -261,6 +280,51 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
         // TODO add your handling code here:
         btnActualizar.requestFocusInWindow();
     }//GEN-LAST:event_txtFelefonoActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        String nombre = txtNombre.getText().trim();
+        String ruc = txtRUC.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+        String telefono = txtFelefono.getText().trim();
+
+        // Verifica que los campos obligatorios no estén vacíos.
+        if (nombre.isEmpty() || ruc.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos del proveedor.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Arma el objeto actualizado conservando el ID original.
+        pe.com.farmacia.app.modelo.Proveedor p = new pe.com.farmacia.app.modelo.Proveedor();
+        p.setId_proveedor(idProveedor);
+        p.setNombre(nombre);
+        p.setRuc(ruc);
+        p.setDireccion(direccion);
+        p.setTelefono(telefono);
+
+        // Actualiza en la base de datos y cierra el diálogo si tuvo éxito.
+        if (proveedordao.editar(p)) {
+            actualizado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Proveedor actualizado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo actualizar el proveedor.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments

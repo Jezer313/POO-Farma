@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Proveedordao;
+import pe.com.farmacia.app.daoimplement.Proveedordaoimpl;
 
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoProveedoresEliminar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoProveedoresEliminar.class.getName());
+    private final Proveedordao proveedordao = new Proveedordaoimpl();
+    private boolean eliminado = false;
+    private int idProveedor;
 
     /**
      * Creates new form DialogoProveedoresEliminar
@@ -19,6 +21,10 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
     }
 
     /**
@@ -147,6 +153,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         jLabel1.setIconTextGap(10);
         pnlCuerpo.add(jLabel1);
 
+        txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(235, 238, 242));
         txtId.setForeground(new java.awt.Color(120, 130, 145));
         txtId.setText("ID automático");
@@ -159,6 +166,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         jLabel2.setIconTextGap(10);
         pnlCuerpo.add(jLabel2);
 
+        txtNombre.setEditable(false);
         txtNombre.setBackground(new java.awt.Color(235, 238, 242));
         txtNombre.addActionListener(this::txtNombreActionPerformed);
         pnlCuerpo.add(txtNombre);
@@ -169,6 +177,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         jLabel3.setIconTextGap(10);
         pnlCuerpo.add(jLabel3);
 
+        txtRUC.setEditable(false);
         txtRUC.setBackground(new java.awt.Color(235, 238, 242));
         txtRUC.addActionListener(this::txtRUCActionPerformed);
         pnlCuerpo.add(txtRUC);
@@ -179,6 +188,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         jLabel4.setIconTextGap(10);
         pnlCuerpo.add(jLabel4);
 
+        txtDireccion.setEditable(false);
         txtDireccion.setBackground(new java.awt.Color(235, 238, 242));
         txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCuerpo.add(txtDireccion);
@@ -189,6 +199,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         jLabel5.setIconTextGap(10);
         pnlCuerpo.add(jLabel5);
 
+        txtFelefono.setEditable(false);
         txtFelefono.setBackground(new java.awt.Color(235, 238, 242));
         txtFelefono.addActionListener(this::txtFelefonoActionPerformed);
         pnlCuerpo.add(txtFelefono);
@@ -211,6 +222,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
@@ -259,6 +271,18 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cargarDatosProveedor(pe.com.farmacia.app.modelo.Proveedor p) {
+        if (p == null) {
+            return;
+        }
+        this.idProveedor = p.getId_proveedor();
+        txtId.setText(String.valueOf(p.getId_proveedor()));
+        txtNombre.setText(p.getNombre());
+        txtRUC.setText(p.getRuc());
+        txtDireccion.setText(p.getDireccion());
+        txtFelefono.setText(p.getTelefono());
+    }
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -283,6 +307,38 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         // TODO add your handling code here:
         btnEliminar.requestFocusInWindow();
     }//GEN-LAST:event_txtFelefonoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // Verifica que exista un ID válido.
+        if (idProveedor <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se identificó el proveedor a eliminar.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        // Ejecuta el borrado y cierra el diálogo si tuvo éxito.
+        if (proveedordao.eliminar(idProveedor)) {
+            eliminado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Proveedor eliminado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo eliminar el proveedor.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
