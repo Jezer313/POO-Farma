@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
 
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoInventarioEliminar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoInventarioEliminar.class.getName());
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    private boolean eliminado = false;
+    private int idMedicamento;
 
     /**
      * Creates new form DialogoInventarioEliminar
@@ -19,6 +21,10 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
     }
 
     /**
@@ -279,6 +285,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
         pnlBotones.setLayout(pnlBotonesLayout);
@@ -308,6 +315,23 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Rellena los campos de solo lectura con los datos del medicamento seleccionado
+    public void cargarDatosMedicamento(pe.com.farmacia.app.modelo.Medicamento m) {
+        if (m == null) {
+            return;
+        }
+        this.idMedicamento = m.getId_medicamento();
+        txtId.setText(String.valueOf(m.getId_medicamento()));
+        txtCodigo.setText(m.getCodigo());
+        txtNobregenerico.setText(m.getNombre_generico());
+        txtNombreComercial.setText(m.getNombre_comercial());
+        txtDescripcion.setText(m.getDescripcion());
+        txtQueCura.setText(m.getCura());
+        txtPrecioUnitario.setText(String.valueOf(m.getPreciounitario()));
+        txtPrecioCaja.setText(String.valueOf(m.getPreciocaja()));
+        txtCantidad.setText(String.valueOf(m.getCantidad()));
+    }
+
     private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
         // TODO add your handling code here:
         txtPrecioCaja.requestFocusInWindow();
@@ -323,9 +347,41 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // Verifica que exista un ID válido antes de eliminar
+        if (idMedicamento <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se identificó el medicamento a eliminar.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        
+        // Ejecuta el borrado en la base de datos y cierra el diálogo si se pudo
+        if (medicamentodao.eliminar(idMedicamento)) {
+            eliminado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Medicamento eliminado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo eliminar el medicamento de la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

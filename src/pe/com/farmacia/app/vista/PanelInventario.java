@@ -242,10 +242,46 @@ public class PanelInventario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar(
-                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
-        ).setVisible(true);
+        // Verifica que haya una fila seleccionada en la tabla antes de abrir el diálogo.
+        int filaSeleccionada = tblMedicamentos.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un medicamento de la tabla para eliminar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Obtiene el ID del medicamento desde la columna 0 ("ID") de la fila seleccionada.
+        int idSeleccionado = Integer.parseInt(tblMedicamentos.getValueAt(filaSeleccionada, 0).toString());
+
+        // Busca el Medicamento completo desde el DAO para mostrar todos sus datos en el diálogo.
+        Medicamento medicamentoAEliminar = null;
+        for (Medicamento m : medicamentodao.listar()) {
+            if (m.getId_medicamento() == idSeleccionado) {
+                medicamentoAEliminar = m;
+                break;
+            }
+        }
+        
+        pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+                );
+
+        // Carga los datos del medicamento seleccionado en las cajas de texto.
+        if (medicamentoAEliminar != null) {
+            dialogo.cargarDatosMedicamento(medicamentoAEliminar);
+        }
+
+        dialogo.setVisible(true);
+
+        // Si se eliminó de la base de datos, refresca la tabla y el total.
+        if (dialogo.isEliminado()) {
+            cargarMedicamentos();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
