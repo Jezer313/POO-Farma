@@ -9,7 +9,7 @@ package pe.com.farmacia.app.ventanasEmergentes;
  * @author Playe
  */
 public class DialogAgregarAdministrador extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarAdministrador.class.getName());
 
     /**
@@ -217,7 +217,8 @@ public class DialogAgregarAdministrador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Cerramos la ventana emergente sin guardar los datos.
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**

@@ -9,7 +9,7 @@ package pe.com.farmacia.app.ventanasEmergentes;
  * @author Playe
  */
 public class DialogEditarAdministrador extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarAdministrador.class.getName());
 
     /**
@@ -221,7 +221,8 @@ public class DialogEditarAdministrador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarActionPerformed
-        // TODO add your handling code here:
+        // Cerramos la ventana de edición sin guardar los cambios.
+        dispose();
     }//GEN-LAST:event_btnCancelarEditarActionPerformed
 
     /**

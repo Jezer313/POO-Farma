@@ -4,6 +4,8 @@
  */
 package pe.com.farmacia.app.vista;
 
+import pe.com.farmacia.app.ventanasEmergentes.DialogAgregarFactura;
+
 /**
  *
  * @author USER
@@ -70,12 +72,14 @@ public class PanelFacturas extends javax.swing.JPanel {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("+ Agregar factura");
         btnAgregar.setFocusable(false);
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
         btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.setFocusable(false);
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         pnlListadoFacturas.setBackground(new java.awt.Color(248, 250, 252));
 
@@ -336,6 +340,17 @@ public class PanelFacturas extends javax.swing.JPanel {
 
         add(FondoPanelFacturas, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        DialogAgregarFactura ventana = new DialogAgregarFactura(parent, true);
+        ventana.setLocationRelativeTo(parent);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -122,6 +122,7 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar administrador");
         btnEditar.setFocusable(false);
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -219,8 +220,34 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        // Obtenemos la ventana principal desde este panel.
+        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        // Creamos la ventana emergente para agregar un administrador.
+        pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador ventana
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador(parent, true);
+
+        // Centramos la ventana emergente respecto a la ventana principal.
+        ventana.setLocationRelativeTo(parent);
+
+        // Mostramos la ventana emergente.
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // Obtenemos la ventana principal desde este panel.
+        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        // Creamos la ventana emergente para editar un administrador.
+        pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador ventana
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador(parent, true);
+
+        // Centramos la ventana respecto a la ventana principal.
+        ventana.setLocationRelativeTo(parent);
+
+        // Mostramos la ventana emergente.
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
