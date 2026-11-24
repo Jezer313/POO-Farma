@@ -18,6 +18,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
     public DialogoProveedoresEliminar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
     }
 
     /**
@@ -29,21 +30,259 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlFondoDialog = new javax.swing.JPanel();
+        pnlEncabezado = new javax.swing.JPanel();
+        lblIcono = new javax.swing.JLabel();
+        sepVertical = new javax.swing.JSeparator();
+        lbltitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        sepHorizoltal = new javax.swing.JSeparator();
+        lblAdvertencia = new javax.swing.JLabel();
+        sepHorizoltal1 = new javax.swing.JSeparator();
+        pnlCuerpo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtRUC = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtFelefono = new javax.swing.JTextField();
+        pnlBotones = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
+        pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
+        pnlFondoDialog.setMinimumSize(new java.awt.Dimension(450, 500));
+        pnlFondoDialog.setPreferredSize(new java.awt.Dimension(450, 500));
+        pnlFondoDialog.setLayout(new java.awt.BorderLayout());
+
+        pnlEncabezado.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEncabezado.setPreferredSize(new java.awt.Dimension(400, 75));
+
+        lblIcono.setText("imagen");
+        lblIcono.setPreferredSize(new java.awt.Dimension(48, 48));
+
+        sepVertical.setForeground(new java.awt.Color(100, 116, 139));
+        sepVertical.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        lbltitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbltitulo.setForeground(new java.awt.Color(18, 36, 58));
+        lbltitulo.setText("Eliminar Proveedor");
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
+        lblSubtitulo.setText("¿Esta seguro de eliminar este medicamento?");
+
+        sepHorizoltal.setForeground(new java.awt.Color(203, 213, 225));
+
+        lblAdvertencia.setForeground(new java.awt.Color(204, 0, 0));
+        lblAdvertencia.setText("Esta accion no se puede deshacer.");
+
+        sepHorizoltal1.setForeground(new java.awt.Color(203, 213, 225));
+
+        javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
+        pnlEncabezado.setLayout(pnlEncabezadoLayout);
+        pnlEncabezadoLayout.setHorizontalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lblAdvertencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbltitulo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(20, 20, 20))
+        );
+        pnlEncabezadoLayout.setVerticalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lbltitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAdvertencia)))
+                    .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
+        );
+
+        pnlFondoDialog.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
+
+        pnlCuerpo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCuerpo.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 1, 20));
+        pnlCuerpo.setLayout(new java.awt.GridLayout(5, 2, 0, 20));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel1.setText("ID:");
+        jLabel1.setIconTextGap(10);
+        pnlCuerpo.add(jLabel1);
+
+        txtId.setBackground(new java.awt.Color(235, 238, 242));
+        txtId.setForeground(new java.awt.Color(120, 130, 145));
+        txtId.setText("ID automático");
+        txtId.setFocusable(false);
+        pnlCuerpo.add(txtId);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel2.setText("Nombre:");
+        jLabel2.setIconTextGap(10);
+        pnlCuerpo.add(jLabel2);
+
+        txtNombre.setBackground(new java.awt.Color(235, 238, 242));
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
+        pnlCuerpo.add(txtNombre);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel3.setText("RUC:");
+        jLabel3.setIconTextGap(10);
+        pnlCuerpo.add(jLabel3);
+
+        txtRUC.setBackground(new java.awt.Color(235, 238, 242));
+        txtRUC.addActionListener(this::txtRUCActionPerformed);
+        pnlCuerpo.add(txtRUC);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel4.setText("Direccion:");
+        jLabel4.setIconTextGap(10);
+        pnlCuerpo.add(jLabel4);
+
+        txtDireccion.setBackground(new java.awt.Color(235, 238, 242));
+        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
+        pnlCuerpo.add(txtDireccion);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel5.setText("Telefono:");
+        jLabel5.setIconTextGap(10);
+        pnlCuerpo.add(jLabel5);
+
+        txtFelefono.setBackground(new java.awt.Color(235, 238, 242));
+        txtFelefono.addActionListener(this::txtFelefonoActionPerformed);
+        pnlCuerpo.add(txtFelefono);
+
+        pnlFondoDialog.add(pnlCuerpo, java.awt.BorderLayout.CENTER);
+
+        pnlBotones.setBackground(new java.awt.Color(218, 248, 255));
+        pnlBotones.setPreferredSize(new java.awt.Dimension(400, 52));
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        btnEliminar.setBackground(new java.awt.Color(198, 40, 40));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
+
+        javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
+        pnlBotones.setLayout(pnlBotonesLayout);
+        pnlBotonesLayout.setHorizontalGroup(
+            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBotonesLayout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+        pnlBotonesLayout.setVerticalGroup(
+            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        pnlFondoDialog.add(pnlBotones, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlFondoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlFondoDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        txtRUC.requestFocusInWindow();
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtRUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRUCActionPerformed
+        // TODO add your handling code here:
+        txtDireccion.requestFocusInWindow();
+    }//GEN-LAST:event_txtRUCActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+        txtFelefono.requestFocusInWindow();
+    }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void txtFelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFelefonoActionPerformed
+        // TODO add your handling code here:
+        btnEliminar.requestFocusInWindow();
+    }//GEN-LAST:event_txtFelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +322,28 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblAdvertencia;
+    private javax.swing.JLabel lblIcono;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lbltitulo;
+    private javax.swing.JPanel pnlBotones;
+    private javax.swing.JPanel pnlCuerpo;
+    private javax.swing.JPanel pnlEncabezado;
+    private javax.swing.JPanel pnlFondoDialog;
+    private javax.swing.JSeparator sepHorizoltal;
+    private javax.swing.JSeparator sepHorizoltal1;
+    private javax.swing.JSeparator sepVertical;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtFelefono;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtRUC;
     // End of variables declaration//GEN-END:variables
 }
