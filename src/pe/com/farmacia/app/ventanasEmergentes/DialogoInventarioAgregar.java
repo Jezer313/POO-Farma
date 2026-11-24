@@ -54,6 +54,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         txtPrecioUnitario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtPrecioCaja = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -129,7 +131,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
         pnlCampos.setBackground(new java.awt.Color(255, 255, 255));
         pnlCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
-        pnlCampos.setLayout(new java.awt.GridLayout(8, 2, 0, 8));
+        pnlCampos.setLayout(new java.awt.GridLayout(9, 2, 0, 8));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(18, 15, 94));
@@ -197,6 +199,13 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
         txtPrecioCaja.addActionListener(this::txtPrecioCajaActionPerformed);
         pnlCampos.add(txtPrecioCaja);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel9.setText("Cantidad:");
+        jLabel9.setIconTextGap(10);
+        pnlCampos.add(jLabel9);
+        pnlCampos.add(txtCantidad);
 
         pnlFondoDialog.add(pnlCampos, java.awt.BorderLayout.CENTER);
 
@@ -310,6 +319,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
@@ -319,6 +329,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
     private javax.swing.JPanel pnlPie;
     private javax.swing.JSeparator sepHorizontal;
     private javax.swing.JSeparator sepVertical;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtId;
