@@ -7,10 +7,10 @@ import pe.com.farmacia.app.modelo.Farmaceutico;
  *
  * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
-public interface Farmaseuticodao {
+public interface Farmaceuticodao {
     public boolean agregar(Farmaceutico farmaseutico);
     public boolean eliminar(int id_farmaseutico);
     public boolean editar(Farmaceutico farmaseutico);
     public List<Farmaceutico> listar();
-    public List<Farmaceutico> buscar(String codigo);
+    public List<Farmaceutico> buscar(String dni);
 }

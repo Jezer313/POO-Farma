@@ -7,7 +7,7 @@ import pe.com.farmacia.app.modelo.Factura;
  *
  * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
-public interface FacturaDeVentadao {
+public interface Facturadao {
     public boolean agregar(Factura factura);
     public boolean eliminar(int id_factura);
     public boolean editar(Factura factura);
