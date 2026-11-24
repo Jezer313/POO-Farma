@@ -17,9 +17,9 @@ import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar;
  * @author USER
  */
 public class PanelInventario extends javax.swing.JPanel {
-    
+
     private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
-    
+
     /**
      * Creates new form PanelInventario
      */
@@ -28,7 +28,7 @@ public class PanelInventario extends javax.swing.JPanel {
         // Carga los medicamentos en la tabla y actualiza el contador al abrir el panel
         cargarMedicamentos();
     }
-    
+
     public void cargarMedicamentos() {
         // Obtiene el modelo de la tabla y limpia las filas previas para evitar duplicados.
         DefaultTableModel modelo = (DefaultTableModel) tblMedicamentos.getModel();
@@ -199,10 +199,46 @@ public class PanelInventario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar(
-                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
-        ).setVisible(true);
+
+        // Verifica que haya una fila seleccionada en la tabla antes de abrir el diálogo.
+        int filaSeleccionada = tblMedicamentos.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un medicamento de la tabla para editar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Busca el Medicamento completo usando el ID de la fila seleccionada.
+        int idSeleccionado = Integer.parseInt(tblMedicamentos.getValueAt(filaSeleccionada, 0).toString());
+        Medicamento medicamentoAEditar = null;
+        for (Medicamento m : medicamentodao.listar()) {
+            if (m.getId_medicamento() == idSeleccionado) {
+                medicamentoAEditar = m;
+                break;
+            }
+
+        }
+
+        pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+                );
+
+        // Le pasa los datos del medicamento seleccionado para rellenar los campos.
+        if (medicamentoAEditar != null) {
+            dialogo.cargarDatosMedicamento(medicamentoAEditar);
+        }
+
+        dialogo.setVisible(true);
+        
+        // Si se guardaron cambios, actualiza la tabla del inventario.
+        if (dialogo.isActualizado()) {
+            cargarMedicamentos();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
