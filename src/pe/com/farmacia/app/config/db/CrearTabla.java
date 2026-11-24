@@ -20,7 +20,8 @@ public class CrearTabla {
                 DESCRIPCION         TEXT NOT NULL,
                 CANTIDAD            INTEGER NOT NULL,
                 CURA                TEXT NOT NULL,
-                PRECIO_UNITARIO     REAL NOT NULL
+                PRECIO_UNITARIO     REAL NOT NULL,
+                PRECIO_CAJA         REAL NOT NULL
             );
             """,
 

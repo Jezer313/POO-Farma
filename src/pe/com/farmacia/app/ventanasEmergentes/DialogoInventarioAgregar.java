@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
+import pe.com.farmacia.app.modelo.Medicamento;
 
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoInventarioAgregar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoInventarioAgregar.class.getName());
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    private boolean guardado = false;
 
     /**
      * Creates new form DialogoInventarioAgregar
@@ -19,6 +21,10 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    public boolean isGuardado() {
+        return guardado;
     }
 
     /**
@@ -57,7 +63,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -212,12 +218,13 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         pnlPie.setBackground(new java.awt.Color(218, 248, 255));
         pnlPie.setPreferredSize(new java.awt.Dimension(450, 52));
 
-        jButton1.setBackground(new java.awt.Color(26, 135, 75));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Guardar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnGuardar.setBackground(new java.awt.Color(26, 135, 75));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
@@ -234,7 +241,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
                 .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         pnlPieLayout.setVerticalGroup(
@@ -242,7 +249,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
             .addGroup(pnlPieLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -270,6 +277,86 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // Obtiene los valores escritos por el usuario y elimina espacios en blanco a los lados.
+        String codigo = txtCodigo.getText().trim();
+        String nombreGenerico = txtNobregenerico.getText().trim();
+        String nombreComercial = txtNombreComercial.getText().trim();
+        String descripcion = txtDescripcion.getText().trim();
+        String cura = txtQueCura.getText().trim();
+        String precioUnitStr = txtPrecioUnitario.getText().trim();
+        String precioCajaStr = txtPrecioCaja.getText().trim();
+        String cantidadStr = txtCantidad.getText().trim();
+
+        // Verifica que ningún campo obligatorio haya quedado vacío.
+        if (codigo.isEmpty() || nombreGenerico.isEmpty() || nombreComercial.isEmpty()
+                || descripcion.isEmpty() || cura.isEmpty()
+                || precioUnitStr.isEmpty() || precioCajaStr.isEmpty() || cantidadStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos obligatorios.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        double precioUnitario;
+        double precioCaja;
+        int cantidad;
+
+        // Convierte los textos numéricos a double e int; si hay letras o formato inválido, avisa y detiene.
+        try {
+            precioUnitario = Double.parseDouble(precioUnitStr);
+            precioCaja = Double.parseDouble(precioCajaStr);
+            cantidad = Integer.parseInt(cantidadStr);
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Revisa que Precio Unitario y Precio por Caja sean números válidos y Cantidad un entero.",
+                    "Formato inválido",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        // Evita que se registren precios o cantidades negativas.
+        if (precioUnitario < 0 || precioCaja < 0 || cantidad < 0) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Los precios y la cantidad no pueden ser negativos.",
+                    "Valor inválido",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Construye el objeto Medicamento
+        Medicamento medicamento = new Medicamento(0, codigo, nombreComercial, nombreGenerico, descripcion, cantidad, cura, precioUnitario, precioCaja);
+
+        // Envía el medicamento a la base de datos mediante el DAO
+        if (medicamentodao.agregar(medicamento)) {
+            // Marca que hubo inserción exitosa para refrescar la tabla en PanelInventario.
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Medicamento guardado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            // Cierra y libera la ventana emergente.
+            this.dispose();
+        } else {
+            // Informa si ocurrió algún fallo al insertar en SQLite.
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo guardar el medicamento en la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,7 +397,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
