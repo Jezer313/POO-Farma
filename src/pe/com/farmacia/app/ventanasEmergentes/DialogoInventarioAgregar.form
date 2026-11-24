@@ -209,6 +209,7 @@
                   <Color blue="91" green="82" red="78" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID autom&#xe1;tico"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">

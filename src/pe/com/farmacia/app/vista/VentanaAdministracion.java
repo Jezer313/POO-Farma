@@ -14,12 +14,18 @@ public class VentanaAdministracion extends javax.swing.JPanel {
     public VentanaAdministracion() {
         initComponents();
         configurarCursoresMenu();
+        //para que se muestre lo de inventario al principio
+        marcarSeleccionado(pnlInventario);
+    mostrarModulo(new PanelInventario());
     }
 
     public VentanaAdministracion(FrameInicioSesion ventanaLogin) {
         initComponents();
         this.ventanaLogin = ventanaLogin;
         configurarCursoresMenu();
+        //para mostrar inventario al inicio noma
+        marcarSeleccionado(pnlInventario);
+        mostrarModulo(new PanelInventario());
     }
 
     /**

@@ -150,6 +150,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         txtId.setBackground(new java.awt.Color(235, 238, 242));
         txtId.setForeground(new java.awt.Color(120, 130, 145));
         txtId.setText("ID automático");
+        txtId.setFocusable(false);
         pnlCampos.add(txtId);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N

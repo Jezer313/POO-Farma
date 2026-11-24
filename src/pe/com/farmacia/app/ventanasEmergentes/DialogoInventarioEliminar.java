@@ -160,6 +160,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtId.setBackground(new java.awt.Color(235, 238, 242));
         txtId.setForeground(new java.awt.Color(90, 105, 120));
         txtId.setText("ID automático");
+        txtId.setFocusable(false);
         pnlCuerpo.add(txtId);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -171,7 +172,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(235, 238, 242));
         txtCodigo.setForeground(new java.awt.Color(90, 105, 120));
-        txtCodigo.addActionListener(this::txtCodigoActionPerformed);
+        txtCodigo.setFocusable(false);
         pnlCuerpo.add(txtCodigo);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -183,7 +184,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtNobregenerico.setEditable(false);
         txtNobregenerico.setBackground(new java.awt.Color(235, 238, 242));
         txtNobregenerico.setForeground(new java.awt.Color(90, 105, 120));
-        txtNobregenerico.addActionListener(this::txtNobregenericoActionPerformed);
+        txtNobregenerico.setFocusable(false);
         pnlCuerpo.add(txtNobregenerico);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -195,7 +196,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtNombreComercial.setEditable(false);
         txtNombreComercial.setBackground(new java.awt.Color(235, 238, 242));
         txtNombreComercial.setForeground(new java.awt.Color(90, 105, 120));
-        txtNombreComercial.addActionListener(this::txtNombreComercialActionPerformed);
+        txtNombreComercial.setFocusable(false);
         pnlCuerpo.add(txtNombreComercial);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -207,7 +208,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtDescripcion.setEditable(false);
         txtDescripcion.setBackground(new java.awt.Color(235, 238, 242));
         txtDescripcion.setForeground(new java.awt.Color(90, 105, 120));
-        txtDescripcion.addActionListener(this::txtDescripcionActionPerformed);
+        txtDescripcion.setFocusable(false);
         pnlCuerpo.add(txtDescripcion);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -219,7 +220,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtQueCura.setEditable(false);
         txtQueCura.setBackground(new java.awt.Color(235, 238, 242));
         txtQueCura.setForeground(new java.awt.Color(90, 105, 120));
-        txtQueCura.addActionListener(this::txtQueCuraActionPerformed);
+        txtQueCura.setFocusable(false);
         pnlCuerpo.add(txtQueCura);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -231,6 +232,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtPrecioUnitario.setEditable(false);
         txtPrecioUnitario.setBackground(new java.awt.Color(235, 238, 242));
         txtPrecioUnitario.setForeground(new java.awt.Color(90, 105, 120));
+        txtPrecioUnitario.setFocusable(false);
         txtPrecioUnitario.addActionListener(this::txtPrecioUnitarioActionPerformed);
         pnlCuerpo.add(txtPrecioUnitario);
 
@@ -243,6 +245,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtPrecioCaja.setEditable(false);
         txtPrecioCaja.setBackground(new java.awt.Color(235, 238, 242));
         txtPrecioCaja.setForeground(new java.awt.Color(90, 105, 120));
+        txtPrecioCaja.setFocusable(false);
         txtPrecioCaja.addActionListener(this::txtPrecioCajaActionPerformed);
         pnlCuerpo.add(txtPrecioCaja);
 
@@ -255,7 +258,7 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         txtCantidad.setEditable(false);
         txtCantidad.setBackground(new java.awt.Color(235, 238, 242));
         txtCantidad.setForeground(new java.awt.Color(90, 105, 120));
-        txtCantidad.addActionListener(this::txtCantidadActionPerformed);
+        txtCantidad.setFocusable(false);
         pnlCuerpo.add(txtCantidad);
 
         pnlFondoDialog.add(pnlCuerpo, java.awt.BorderLayout.CENTER);
@@ -305,31 +308,6 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-        txtNobregenerico.requestFocusInWindow();
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
-    private void txtNobregenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNobregenericoActionPerformed
-        // TODO add your handling code here:
-        txtNombreComercial.requestFocusInWindow();
-    }//GEN-LAST:event_txtNobregenericoActionPerformed
-
-    private void txtNombreComercialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComercialActionPerformed
-        // TODO add your handling code here:
-        txtDescripcion.requestFocusInWindow();
-    }//GEN-LAST:event_txtNombreComercialActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-        txtQueCura.requestFocusInWindow();
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
-    private void txtQueCuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQueCuraActionPerformed
-        // TODO add your handling code here:
-        txtPrecioUnitario.requestFocusInWindow();
-    }//GEN-LAST:event_txtQueCuraActionPerformed
-
     private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
         // TODO add your handling code here:
         txtPrecioCaja.requestFocusInWindow();
@@ -339,11 +317,6 @@ public class DialogoInventarioEliminar extends javax.swing.JDialog {
         // TODO add your handling code here:
         txtCantidad.requestFocusInWindow();
     }//GEN-LAST:event_txtPrecioCajaActionPerformed
-
-    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
