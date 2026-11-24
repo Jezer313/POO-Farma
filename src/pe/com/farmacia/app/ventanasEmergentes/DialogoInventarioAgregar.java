@@ -67,6 +67,7 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
@@ -156,6 +157,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel2.setText("Codigo:");
         jLabel2.setIconTextGap(10);
         pnlCampos.add(jLabel2);
+
+        txtCodigo.addActionListener(this::txtCodigoActionPerformed);
         pnlCampos.add(txtCodigo);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -172,6 +175,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel4.setText("Nombre Comercial:");
         jLabel4.setIconTextGap(10);
         pnlCampos.add(jLabel4);
+
+        txtNombreComercial.addActionListener(this::txtNombreComercialActionPerformed);
         pnlCampos.add(txtNombreComercial);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -179,6 +184,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel5.setText("Descripcion:");
         jLabel5.setIconTextGap(10);
         pnlCampos.add(jLabel5);
+
+        txtDescripcion.addActionListener(this::txtDescripcionActionPerformed);
         pnlCampos.add(txtDescripcion);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -195,6 +202,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel7.setText("Precio Unitario:");
         jLabel7.setIconTextGap(10);
         pnlCampos.add(jLabel7);
+
+        txtPrecioUnitario.addActionListener(this::txtPrecioUnitarioActionPerformed);
         pnlCampos.add(txtPrecioUnitario);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -211,6 +220,8 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
         jLabel9.setText("Cantidad:");
         jLabel9.setIconTextGap(10);
         pnlCampos.add(jLabel9);
+
+        txtCantidad.addActionListener(this::txtCantidadActionPerformed);
         pnlCampos.add(txtCantidad);
 
         pnlFondoDialog.add(pnlCampos, java.awt.BorderLayout.CENTER);
@@ -263,14 +274,17 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
 
     private void txtNobregenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNobregenericoActionPerformed
         // TODO add your handling code here:
+        txtNombreComercial.requestFocusInWindow();
     }//GEN-LAST:event_txtNobregenericoActionPerformed
 
     private void txtQueCuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQueCuraActionPerformed
         // TODO add your handling code here:
+        txtPrecioUnitario.requestFocusInWindow();
     }//GEN-LAST:event_txtQueCuraActionPerformed
 
     private void txtPrecioCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioCajaActionPerformed
         // TODO add your handling code here:
+        txtCantidad.requestFocusInWindow();
     }//GEN-LAST:event_txtPrecioCajaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -357,6 +371,31 @@ public class DialogoInventarioAgregar extends javax.swing.JDialog {
             );
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+        txtNobregenerico.requestFocusInWindow();
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtNombreComercialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComercialActionPerformed
+        // TODO add your handling code here:
+        txtDescripcion.requestFocusInWindow();
+    }//GEN-LAST:event_txtNombreComercialActionPerformed
+
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
+        // TODO add your handling code here:
+        txtQueCura.requestFocusInWindow();
+    }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
+        // TODO add your handling code here:
+        txtPrecioCaja.requestFocusInWindow();
+    }//GEN-LAST:event_txtPrecioUnitarioActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+        btnGuardar.doClick();;
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     /**
      * @param args the command line arguments

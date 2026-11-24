@@ -91,6 +91,7 @@ public class PanelInventario extends javax.swing.JPanel {
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnBuenos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
@@ -186,6 +187,13 @@ public class PanelInventario extends javax.swing.JPanel {
                 (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
         ).setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+        ).setVisible(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
