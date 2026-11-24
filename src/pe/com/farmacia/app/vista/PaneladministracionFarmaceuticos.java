@@ -66,18 +66,21 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
         btnAgregar.setText("Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.setPreferredSize(new java.awt.Dimension(135, 36));
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(24, 38, 53));
         btnEditar.setText("Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.setPreferredSize(new java.awt.Dimension(135, 36));
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(24, 38, 53));
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(135, 36));
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         sepLineaVerde.setBackground(new java.awt.Color(18, 148, 118));
         sepLineaVerde.setForeground(new java.awt.Color(18, 148, 118));
@@ -200,6 +203,24 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
         add(pnlFondoFarmaceuticos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEditar(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEliminar(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
