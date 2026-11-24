@@ -21,8 +21,8 @@ public class Medicamentodaoimpl implements Medicamentodao {
     @Override
     public boolean agregar(Medicamento medicamento) {
         String sql = """
-                     INSERT INTO MEDICAMENTO(CODIGO, NOMBRE_COMERCIAL, NOMBRE_GENERICO, DESCRIPCION, CANTIDAD, CURA, PRECIO_UNITARIO)
-                     VALUES(?,?,?,?,?,?,?);
+                     INSERT INTO MEDICAMENTO(CODIGO, NOMBRE_COMERCIAL, NOMBRE_GENERICO, DESCRIPCION, CANTIDAD, CURA, PRECIO_UNITARIO, PRECIO_CAJA)
+                     VALUES(?,?,?,?,?,?,?,?);
                      """;
         try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
             pst.setString(1, medicamento.getCodigo());
@@ -32,6 +32,7 @@ public class Medicamentodaoimpl implements Medicamentodao {
             pst.setInt(5, medicamento.getCantidad());
             pst.setString(6, medicamento.getCura());
             pst.setDouble(7, medicamento.getPreciounitario());
+            pst.setDouble(8, medicamento.getPreciocaja());
             pst.executeUpdate();
             System.out.println("<< SE AGREGÓ UN NUEVO MEDICAMENTO >>");
         } catch (SQLException e) {
@@ -70,7 +71,8 @@ public class Medicamentodaoimpl implements Medicamentodao {
                         DESCRIPCION = ?,
                         CANTIDAD = ?,
                         CURA = ?,
-                        PRECIO_UNITARIO = ?
+                        PRECIO_UNITARIO = ?,
+                        PRECIO_CAJA = ?
                      WHERE
                         ID_MEDICAMENTO = ?;
                      """;
@@ -82,7 +84,8 @@ public class Medicamentodaoimpl implements Medicamentodao {
             pst.setInt(5, medicamento.getCantidad());
             pst.setString(6, medicamento.getCura());
             pst.setDouble(7, medicamento.getPreciounitario());
-            pst.setInt(8, medicamento.getId_medicamento());
+            pst.setDouble(8, medicamento.getPreciocaja());
+            pst.setInt(9, medicamento.getId_medicamento());
             pst.executeUpdate();
             System.out.println("<< SE EDITARON LOS DATOS DEL MEDICAMENTO >>");
         } catch (SQLException e) {
@@ -109,7 +112,8 @@ public class Medicamentodaoimpl implements Medicamentodao {
                         rs.getString("DESCRIPCION"),
                         rs.getInt("CANTIDAD"),
                         rs.getString("CURA"),
-                        rs.getDouble("PRECIO_UNITARIO")
+                        rs.getDouble("PRECIO_UNITARIO"),
+                        rs.getDouble("PRECIO_CAJA")
                 ));
             }
         } catch (SQLException e) {
@@ -139,7 +143,8 @@ public class Medicamentodaoimpl implements Medicamentodao {
                             rs.getString("DESCRIPCION"),
                             rs.getInt("CANTIDAD"),
                             rs.getString("CURA"),
-                            rs.getDouble("PRECIO_UNITARIO")
+                            rs.getDouble("PRECIO_UNITARIO"),
+                            rs.getDouble("PRECIO_CAJA")
                     ));
                 }
             }
