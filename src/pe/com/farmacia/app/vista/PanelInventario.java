@@ -73,21 +73,34 @@ public class PanelInventario extends javax.swing.JPanel {
 
         pnlFondoInventario.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
+        btnAgregar.setBackground(new java.awt.Color(26, 135, 75));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar Medicamento");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
 
+        btnBuenos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
         btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuenos.setPreferredSize(new java.awt.Dimension(130, 34));
 
+        btnMalos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnMalos.setText("<html>Medicamentos<br>Caducados</html>");
         btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMalos.setPreferredSize(new java.awt.Dimension(130, 34));
 
         tblMedicamentos.setBackground(new java.awt.Color(236, 253, 245));
         tblMedicamentos.setForeground(new java.awt.Color(15, 23, 42));
@@ -164,8 +177,15 @@ public class PanelInventario extends javax.swing.JPanel {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
+        ).setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
