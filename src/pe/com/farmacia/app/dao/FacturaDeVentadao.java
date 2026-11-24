@@ -1,16 +1,16 @@
 package pe.com.farmacia.app.dao;
 
 import java.util.List;
-import pe.com.farmacia.app.modelo.FacturaDeVenta;
+import pe.com.farmacia.app.modelo.Factura;
 
 /**
  *
  * @author «Equipo Alfa Buena Maravilla Onda Dinamita Escuadrón Lobo»
  */
 public interface FacturaDeVentadao {
-    public boolean agregar(FacturaDeVenta factura);
+    public boolean agregar(Factura factura);
     public boolean eliminar(int id_factura);
-    public boolean editar(FacturaDeVenta factura);
-    public List<FacturaDeVenta> listar();
-    public List<FacturaDeVenta> buscar(String codigo);
+    public boolean editar(Factura factura);
+    public List<Factura> listar();
+    public List<Factura> buscar(String codigo);
 }
