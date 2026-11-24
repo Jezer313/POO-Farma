@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Proveedordao;
+import pe.com.farmacia.app.daoimplement.Proveedordaoimpl;
 
 /**
  *
@@ -11,7 +10,9 @@ package pe.com.farmacia.app.ventanasEmergentes;
 public class DialogoProveedoresAgregar extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoProveedoresAgregar.class.getName());
-
+    private final Proveedordao proveedordao = new Proveedordaoimpl();
+    private boolean guardado = false;
+    
     /**
      * Creates new form DialogoProveedoresAgregar
      */
@@ -19,6 +20,10 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+    
+    public boolean isGuardado(){
+        return guardado;
     }
 
     /**
@@ -47,7 +52,7 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtFelefono = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -171,8 +176,8 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
         jLabel5.setIconTextGap(10);
         pnlCampos.add(jLabel5);
 
-        txtFelefono.addActionListener(this::txtFelefonoActionPerformed);
-        pnlCampos.add(txtFelefono);
+        txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
+        pnlCampos.add(txtTelefono);
 
         pnlFondoDialog.add(pnlCampos, java.awt.BorderLayout.CENTER);
 
@@ -185,6 +190,7 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
         btnGuardar.setText("Guardar");
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
@@ -252,18 +258,62 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
-        txtFelefono.requestFocusInWindow();
+        txtTelefono.requestFocusInWindow();
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void txtFelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFelefonoActionPerformed
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
         btnGuardar.requestFocusInWindow();
-    }//GEN-LAST:event_txtFelefonoActionPerformed
+    }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String nombre = txtNombre.getText().trim();
+        String ruc = txtRUC.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+
+        // Verifica que no queden campos obligatorios vacíos.
+        if (nombre.isEmpty() || ruc.isEmpty() || direccion.isEmpty() || telefono.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos del proveedor.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Construye el modelo Proveedor con los datos ingresados.
+        pe.com.farmacia.app.modelo.Proveedor p = new pe.com.farmacia.app.modelo.Proveedor();
+        p.setNombre(nombre);
+        p.setRuc(ruc);
+        p.setDireccion(direccion);
+        p.setTelefono(telefono);
+
+        // Guarda en la base de datos y cierra el diálogo si tuvo éxito.
+        if (proveedordao.agregar(p)) {
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Proveedor guardado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo guardar el proveedor.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,9 +370,9 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
     private javax.swing.JSeparator sepHorizontal;
     private javax.swing.JSeparator sepVertical;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtFelefono;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRUC;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

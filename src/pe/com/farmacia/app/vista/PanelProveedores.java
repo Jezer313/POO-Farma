@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
+
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Proveedordao;
+import pe.com.farmacia.app.daoimplement.Proveedordaoimpl;
+import pe.com.farmacia.app.modelo.Proveedor;
 
 /**
  *
@@ -10,11 +12,14 @@ package pe.com.farmacia.app.vista;
  */
 public class PanelProveedores extends javax.swing.JPanel {
 
+    private final Proveedordao proveedordao = new Proveedordaoimpl();
+
     /**
      * Creates new form PanelProveedores
      */
     public PanelProveedores() {
         initComponents();
+        cargarProveedores();
     }
 
     /**
@@ -197,22 +202,119 @@ public class PanelProveedores extends javax.swing.JPanel {
         add(pnlFondoProveedores, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cargarProveedores() {
+        // Obtiene el modelo de la tabla y borra las filas actuales.
+        DefaultTableModel modelo = (DefaultTableModel) tblProveedores.getModel();
+        modelo.setRowCount(0);
+
+        // Obtiene todos los proveedores registrados.
+        List<Proveedor> lista = proveedordao.listar();
+
+        // Llena la tabla respetando las 5 columnas: Nro, Nombre, Telefono, RUC, Direccion.
+        for (Proveedor p : lista) {
+            modelo.addRow(new Object[]{
+                p.getId_proveedor(),
+                p.getNombre(),
+                p.getTelefono(),
+                p.getRuc(),
+                p.getDireccion()
+            });
+        }
+
+        // Actualiza el texto del total de proveedores en el panel inferior.
+        lblTotalProveedores.setText("Total de proveedores: " + lista.size());
+    }
+
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresAgregar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialogo.setVisible(true);
+
+        if (dialogo.isGuardado()) {
+            cargarProveedores();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEditar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        // Valida que exista una fila seleccionada en la tabla antes de editar.
+        int filaSeleccionada = tblProveedores.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un proveedor de la tabla para editar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Busca el proveedor completo según el ID de la columna 0 ("Nro").
+        int idSeleccionado = Integer.parseInt(tblProveedores.getValueAt(filaSeleccionada, 0).toString());
+        Proveedor proveedorAEditar = null;
+        for (Proveedor p : proveedordao.listar()) {
+            if (p.getId_proveedor() == idSeleccionado) {
+                proveedorAEditar = p;
+                break;
+            }
+        }
+
+        // Abre el diálogo de edición precargando los datos del proveedor.
+        pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEditar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEditar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+
+        if (proveedorAEditar != null) {
+            dialogo.cargarDatosProveedor(proveedorAEditar);
+        }
+
+        dialogo.setVisible(true);
+
+        // Actualiza la tabla si se guardaron cambios.
+        if (dialogo.isActualizado()) {
+            cargarProveedores();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEliminar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        // Valida que exista una fila seleccionada en la tabla antes de eliminar.
+        int filaSeleccionada = tblProveedores.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un proveedor de la tabla para eliminar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Busca el proveedor completo según el ID de la columna 0 ("Nro").
+        int idSeleccionado = Integer.parseInt(tblProveedores.getValueAt(filaSeleccionada, 0).toString());
+        Proveedor proveedorAEliminar = null;
+        for (Proveedor p : proveedordao.listar()) {
+            if (p.getId_proveedor() == idSeleccionado) {
+                proveedorAEliminar = p;
+                break;
+            }
+        }
+
+        // Abre el diálogo de confirmación precargando los datos del proveedor.
+        pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEliminar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoProveedoresEliminar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+
+        if (proveedorAEliminar != null) {
+            dialogo.cargarDatosProveedor(proveedorAEliminar);
+        }
+
+        dialogo.setVisible(true);
+
+        // Refresca la tabla y el contador si se eliminó el registro.
+        if (dialogo.isEliminado()) {
+            cargarProveedores();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
