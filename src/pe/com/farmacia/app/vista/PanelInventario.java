@@ -297,7 +297,6 @@ import pe.com.farmacia.app.modelo.Medicamento;
         if (dialogo.isActualizado()) {
             cargarMedicamentos();
         }
-    }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

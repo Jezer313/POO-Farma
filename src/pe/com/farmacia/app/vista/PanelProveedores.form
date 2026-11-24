@@ -18,6 +18,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlFondoProveedores">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f7" green="f8" red="f5" type="rgb"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[870, 550]"/>
         </Property>
@@ -103,7 +106,7 @@
                   <Font name="Segoe UI" size="26" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="35" green="26" red="18" type="rgb"/>
+                  <Color blue="a6" green="63" red="25" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Proveedores"/>
               </Properties>
@@ -114,7 +117,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="78" green="69" red="5a" type="rgb"/>
+                  <Color blue="8b" green="74" red="64" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestiona los proveedores y genera facturas de pedido."/>
               </Properties>
