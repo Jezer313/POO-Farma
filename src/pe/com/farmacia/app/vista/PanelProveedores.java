@@ -47,6 +47,7 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
+        pnlFondoProveedores.setBackground(new java.awt.Color(245, 248, 247));
         pnlFondoProveedores.setMinimumSize(new java.awt.Dimension(870, 550));
         pnlFondoProveedores.setLayout(new java.awt.BorderLayout(10, 10));
 
@@ -54,11 +55,11 @@ public class PanelProveedores extends javax.swing.JPanel {
         pnlSuperior.setPreferredSize(new java.awt.Dimension(870, 155));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(24, 38, 53));
+        lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
         lblTitulo.setText("Proveedores");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(90, 105, 120));
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
         lblSubtitulo.setText("Gestiona los proveedores y genera facturas de pedido.");
 
         btnAgregar.setBackground(new java.awt.Color(18, 152, 112));
