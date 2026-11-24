@@ -58,6 +58,7 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
@@ -263,7 +264,7 @@ public class DialogoProveedoresAgregar extends javax.swing.JDialog {
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
-        btnGuardar.requestFocusInWindow();
+        btnGuardar.doClick();
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

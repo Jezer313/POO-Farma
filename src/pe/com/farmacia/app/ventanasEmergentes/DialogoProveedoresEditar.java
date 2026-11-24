@@ -59,6 +59,7 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
         btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
         pnlFondoDialog.setMinimumSize(new java.awt.Dimension(450, 550));
@@ -278,7 +279,7 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
 
     private void txtFelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFelefonoActionPerformed
         // TODO add your handling code here:
-        btnActualizar.requestFocusInWindow();
+        btnActualizar.doClick();
     }//GEN-LAST:event_txtFelefonoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

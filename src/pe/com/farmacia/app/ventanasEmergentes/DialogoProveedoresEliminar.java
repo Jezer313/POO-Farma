@@ -61,6 +61,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         pnlFondoDialog.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
@@ -168,7 +169,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
 
         txtNombre.setEditable(false);
         txtNombre.setBackground(new java.awt.Color(235, 238, 242));
-        txtNombre.addActionListener(this::txtNombreActionPerformed);
+        txtNombre.setFocusable(false);
         pnlCuerpo.add(txtNombre);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -179,7 +180,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
 
         txtRUC.setEditable(false);
         txtRUC.setBackground(new java.awt.Color(235, 238, 242));
-        txtRUC.addActionListener(this::txtRUCActionPerformed);
+        txtRUC.setFocusable(false);
         pnlCuerpo.add(txtRUC);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -190,7 +191,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
 
         txtDireccion.setEditable(false);
         txtDireccion.setBackground(new java.awt.Color(235, 238, 242));
-        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
+        txtDireccion.setFocusable(false);
         pnlCuerpo.add(txtDireccion);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -201,7 +202,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
 
         txtFelefono.setEditable(false);
         txtFelefono.setBackground(new java.awt.Color(235, 238, 242));
-        txtFelefono.addActionListener(this::txtFelefonoActionPerformed);
+        txtFelefono.setFocusable(false);
         pnlCuerpo.add(txtFelefono);
 
         pnlFondoDialog.add(pnlCuerpo, java.awt.BorderLayout.CENTER);
@@ -287,26 +288,6 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-        txtRUC.requestFocusInWindow();
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtRUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRUCActionPerformed
-        // TODO add your handling code here:
-        txtDireccion.requestFocusInWindow();
-    }//GEN-LAST:event_txtRUCActionPerformed
-
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-        txtFelefono.requestFocusInWindow();
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
-    private void txtFelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFelefonoActionPerformed
-        // TODO add your handling code here:
-        btnEliminar.requestFocusInWindow();
-    }//GEN-LAST:event_txtFelefonoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // Verifica que exista un ID válido.
