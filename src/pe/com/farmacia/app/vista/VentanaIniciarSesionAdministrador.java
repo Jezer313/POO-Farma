@@ -1,5 +1,9 @@
 package pe.com.farmacia.app.vista;
 
+import pe.com.farmacia.app.dao.Admindao;
+import pe.com.farmacia.app.daoimplement.Admindaoimpl;
+import pe.com.farmacia.app.modelo.Admin;
+
 /**
  *
  * @author USER
@@ -9,11 +13,8 @@ public class VentanaIniciarSesionAdministrador extends javax.swing.JPanel {
     private FrameInicioSesion ventanaLogin;
     // Guarda la cantidad de intentos fallidos permitidos para el administrador.
     private int intentosRestantes = 3;
-    // Guarda el usuario temporal autorizado para ingresar como administrador.
-    private final String usuarioAdmin = "admin";
-
-// Guarda la contraseña temporal del administrador.
-    private final String contraseñaAdmin = "admin123";
+    //Validar admin con SQLite
+    private final Admindao admindao = new Admindaoimpl();
 
     /**
      * Creates new form PanelAdmin
@@ -273,9 +274,25 @@ public class VentanaIniciarSesionAdministrador extends javax.swing.JPanel {
 
 // Obtiene la contraseña ingresada.
         String contraseña = new String(txtContraseñaAdmin.getPassword());
-
+        
+        //Valida que no estén vacíos
+        if(usuario.isEmpty()||contraseña.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Ingresa usuario y contraseña",
+                    "Error: Campo vacíos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+        
+        //Creamos el modelo Admin y conectamos con SQLite con Admindao
+        Admin admin = new Admin(usuario, contraseña);
+        boolean accesoValido = admindao.iniciarsesion(admin);
+        txtContraseñaAdmin.setText("");
+        
 // Comprueba si el usuario y la contraseña son correctos.
-        if (usuario.equals(usuarioAdmin) && contraseña.equals(contraseñaAdmin)) {
+        if (accesoValido) {
             if (ventanaLogin != null) {
                 // Quita el PanelAdmin actual de InicioDeSesion
                 ventanaLogin.getContentPane().remove(this);
