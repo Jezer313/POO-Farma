@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
 import java.util.List;
@@ -193,9 +189,17 @@ public class PanelInventario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar(
-                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar dialogo
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+
+        // Muestra el diálogo y pausa la ejecución hasta que se cierre.
+        dialogo.setVisible(true);
+
+        // Si se guardó un medicamento en la BD, recarga la tabla y el contador total.
+        if (dialogo.isGuardado()) {
+            cargarMedicamentos();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -234,7 +238,7 @@ public class PanelInventario extends javax.swing.JPanel {
         }
 
         dialogo.setVisible(true);
-        
+
         // Si se guardaron cambios, actualiza la tabla del inventario.
         if (dialogo.isActualizado()) {
             cargarMedicamentos();
@@ -265,7 +269,7 @@ public class PanelInventario extends javax.swing.JPanel {
                 break;
             }
         }
-        
+
         pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar dialogo
                 = new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEliminar(
                         (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true
