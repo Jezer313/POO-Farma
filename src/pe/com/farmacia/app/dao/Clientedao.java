@@ -12,5 +12,5 @@ public interface Clientedao {
     public boolean eliminar(int id_cliente);
     public boolean editar(Cliente cliente);
     public List<Cliente> listar();
-    public List<Cliente> buscar(String codigo);
+    public List<Cliente> buscar(String dni);
 }

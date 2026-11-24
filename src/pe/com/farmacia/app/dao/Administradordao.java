@@ -12,5 +12,5 @@ public interface Administradordao {
     public boolean eliminar(int id_admin);
     public boolean editar(Administrador admin);
     public List<Administrador> listar();
-    public List<Administrador> buscar(String codigo);
+    public List<Administrador> buscar(String dni);
 }

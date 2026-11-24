@@ -9,8 +9,8 @@ import pe.com.farmacia.app.modelo.Proveedor;
  */
 public interface Proveedordao {
     public boolean agregar(Proveedor proveedor);
-    public boolean eliminar(int id_farmaseutico);
+    public boolean eliminar(int id_proveedor);
     public boolean editar(Proveedor proveedor);
     public List<Proveedor> listar();
-    public List<Proveedor> buscar(String codigo);
+    public List<Proveedor> buscar(String ruc);
 }

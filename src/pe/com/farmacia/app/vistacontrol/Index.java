@@ -7,6 +7,5 @@ package pe.com.farmacia.app.vistacontrol;
 public class Index {
 
     public static void main(String[] args) {
-        IndexPrincipal.inicio();
     }
 }
