@@ -1,4 +1,4 @@
-package pe.com.farmacia.app.modelo;
+    package pe.com.farmacia.app.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido {
-    private int id_pedido;
+public class Factura {
+    private int id_factura;
     private String codigo;
     private String descripcion;
     private String fecha;
     private double preciounitario;
     private double costototal;
     private int cantidad;
-    private int id_proveedor;
-    private int id_administrador;
+    private int id_cliente;
+    private int id_farmaceutico;
 }

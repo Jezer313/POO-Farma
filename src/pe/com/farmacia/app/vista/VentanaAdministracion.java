@@ -89,6 +89,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.setLayout(new java.awt.GridLayout(6, 1, 8, 8));
 
         pnlInventario.setBackground(new java.awt.Color(18, 24, 22));
+        pnlInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlInventarioMouseClicked(evt);
@@ -104,6 +105,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.add(pnlInventario);
 
         pnlProveedores.setBackground(new java.awt.Color(18, 24, 22));
+        pnlProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlProveedoresMouseClicked(evt);
@@ -119,6 +121,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.add(pnlProveedores);
 
         pnlFarmaceuticos.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFarmaceuticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlFarmaceuticos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlFarmaceuticosMouseClicked(evt);
@@ -134,6 +137,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.add(pnlFarmaceuticos);
 
         pnlListaAdmins.setBackground(new java.awt.Color(18, 24, 22));
+        pnlListaAdmins.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlListaAdmins.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlListaAdminsMouseClicked(evt);
@@ -149,6 +153,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.add(pnlListaAdmins);
 
         pnlFacturas.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFacturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlFacturasMouseClicked(evt);
@@ -164,6 +169,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.add(pnlFacturas);
 
         pnlUsuarios.setBackground(new java.awt.Color(18, 24, 22));
+        pnlUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlUsuariosMouseClicked(evt);

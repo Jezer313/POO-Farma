@@ -73,11 +73,12 @@ public class CrearTabla {
 
             //tabla Facturas oño
             """
-            CREATE TABLE IF NOT EXISTS FACTURAS (
+            CREATE TABLE IF NOT EXISTS FACTURA (
                 ID_FACTURA      INTEGER PRIMARY KEY AUTOINCREMENT,
-                DESCRIPCION     TEXT,
+                CODIGO          TEXT NOT NULL,
+                DESCRIPCION     TEXT NOT NULL,
                 FECHA           TEXT NOT NULL,
-                PRECIO_UNITARIO REAL,
+                PRECIO_UNITARIO REAL NOT NULL,
                 TOTAL           REAL NOT NULL,
                 CANTIDAD        INTEGER NOT NULL,
                 ID_CLIENTE      INTEGER NOT NULL,
@@ -89,32 +90,14 @@ public class CrearTabla {
             );
             """,
 
-            //tabla Pedidos
-            """
-            CREATE TABLE IF NOT EXISTS PEDIDO (
-                ID_PEDIDO INTEGER PRIMARY KEY AUTOINCREMENT,
-                DESCRIPCION TEXT,
-                FECHA TEXT NOT NULL,
-                PRECIO_UNITARIO REAL,
-                TOTAL REAL NOT NULL,
-                CANTIDAD INTEGER NOT NULL,
-                ID_PROVEEDOR INTEGER NOT NULL,
-                ID_ADMINISTRADOR INTEGER NOT NULL,
-                FOREIGN KEY (ID_PROVEEDOR)
-                    REFERENCES PROVEEDORE(ID_PROVEEDOR),
-                FOREIGN KEY (ID_ADMINISTRADOR)
-                    REFERENCES ADMINISTRADOR(ID_ADMINISTRADOR)
-            );
-            """,
-
             //detalle de factura
             """
             CREATE TABLE IF NOT EXISTS DETALLE_FACTURA (
-                ID_DETALLE INTEGER PRIMARY KEY AUTOINCREMENT,
-                ID_FACTURA INTEGER NOT NULL,
-                ID_MEDICAMENTO INTEGER NOT NULL,
-                CANTIDAD INTEGER NOT NULL,
-                PRECIO REAL NOT NULL,
+                ID_DETALLE      INTEGER PRIMARY KEY AUTOINCREMENT,
+                ID_FACTURA      INTEGER NOT NULL,
+                ID_MEDICAMENTO  INTEGER NOT NULL,
+                CANTIDAD        INTEGER NOT NULL,
+                PRECIO          REAL NOT NULL,
                 FOREIGN KEY (ID_FACTURA)
                     REFERENCES FACTURA(ID_FACTURA),
                 FOREIGN KEY (ID_MEDICAMENTO)
@@ -125,11 +108,11 @@ public class CrearTabla {
             //detalle de pedido toco provar
             """
             CREATE TABLE IF NOT EXISTS DETALLE_PEDIDO (
-                ID_DETALLE INTEGER PRIMARY KEY AUTOINCREMENT,
-                ID_PEDIDO INTEGER NOT NULL,
-                ID_MEDICAMENTO INTEGER NOT NULL,
-                CANTIDAD INTEGER NOT NULL,
-                PRECIO REAL NOT NULL,
+                ID_DETALLE      INTEGER PRIMARY KEY AUTOINCREMENT,
+                ID_PEDIDO       INTEGER NOT NULL,
+                ID_MEDICAMENTO  INTEGER NOT NULL,
+                CANTIDAD        INTEGER NOT NULL,
+                PRECIO          REAL NOT NULL,
                 FOREIGN KEY (ID_PEDIDO)
                     REFERENCES PEDIDO(ID_PEDIDO),
                 FOREIGN KEY (ID_MEDICAMENTO)

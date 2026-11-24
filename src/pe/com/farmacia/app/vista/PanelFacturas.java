@@ -26,19 +26,342 @@ public class PanelFacturas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        FondoPanelFacturas = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        pnlListadoFacturas = new javax.swing.JPanel();
+        lblTituloListado = new javax.swing.JLabel();
+        scrollFacturas = new javax.swing.JScrollPane();
+        tblFacturas = new javax.swing.JTable();
+        lblTotalFacturas = new javax.swing.JLabel();
+        pnlVistaPrevia = new javax.swing.JPanel();
+        lblTituloVistaPrevia = new javax.swing.JLabel();
+        pnlDocumentoFactura = new javax.swing.JPanel();
+        lblNombreFarmacia = new javax.swing.JLabel();
+        lblNumeroFactura = new javax.swing.JLabel();
+        lblFechaFactura = new javax.swing.JLabel();
+        lblEtiquetaCliente = new javax.swing.JLabel();
+        lblNombreCliente = new javax.swing.JLabel();
+        scrollDetalleFactura = new javax.swing.JScrollPane();
+        tblDetalleFactura = new javax.swing.JTable();
+        lblEtiquetaTotal = new javax.swing.JLabel();
+        lblTotalFactura = new javax.swing.JLabel();
+        btnImprimirFactura = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout(850, 550));
+
+        FondoPanelFacturas.setBackground(new java.awt.Color(225, 225, 225));
+        FondoPanelFacturas.setMinimumSize(new java.awt.Dimension(850, 550));
+        FondoPanelFacturas.setPreferredSize(new java.awt.Dimension(850, 550));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setText("Facturas");
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
+        lblSubtitulo.setText("Panel de administración de facturas");
+
+        btnAgregar.setBackground(new java.awt.Color(51, 153, 0));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("+ Agregar factura");
+        btnAgregar.setFocusable(false);
+
+        btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setFocusable(false);
+
+        pnlListadoFacturas.setBackground(new java.awt.Color(248, 250, 252));
+
+        lblTituloListado.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblTituloListado.setForeground(new java.awt.Color(30, 58, 86));
+        lblTituloListado.setText("Facturas registradas");
+
+        tblFacturas.setBackground(new java.awt.Color(255, 255, 255));
+        tblFacturas.setForeground(new java.awt.Color(30, 41, 59));
+        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "N.º Factura", "Cliente", "Fecha", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblFacturas.setRowHeight(32);
+        scrollFacturas.setViewportView(tblFacturas);
+
+        lblTotalFacturas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalFacturas.setForeground(new java.awt.Color(100, 116, 139));
+        lblTotalFacturas.setText("Total de facturas: 0");
+
+        javax.swing.GroupLayout pnlListadoFacturasLayout = new javax.swing.GroupLayout(pnlListadoFacturas);
+        pnlListadoFacturas.setLayout(pnlListadoFacturasLayout);
+        pnlListadoFacturasLayout.setHorizontalGroup(
+            pnlListadoFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoFacturasLayout.createSequentialGroup()
+                .addGroup(pnlListadoFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlListadoFacturasLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(lblTituloListado))
+                    .addGroup(pnlListadoFacturasLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlListadoFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTotalFacturas)
+                            .addComponent(scrollFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pnlListadoFacturasLayout.setVerticalGroup(
+            pnlListadoFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoFacturasLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblTituloListado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTotalFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pnlVistaPrevia.setBackground(new java.awt.Color(248, 250, 252));
+
+        lblTituloVistaPrevia.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblTituloVistaPrevia.setForeground(new java.awt.Color(30, 58, 86));
+        lblTituloVistaPrevia.setText("Vista previa de factura");
+
+        pnlDocumentoFactura.setBackground(new java.awt.Color(255, 255, 255));
+        pnlDocumentoFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 226, 232)));
+        pnlDocumentoFactura.setPreferredSize(new java.awt.Dimension(350, 320));
+
+        lblNombreFarmacia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNombreFarmacia.setForeground(new java.awt.Color(30, 58, 86));
+        lblNombreFarmacia.setText("FARMACIA");
+
+        lblNumeroFactura.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblNumeroFactura.setForeground(new java.awt.Color(30, 41, 59));
+        lblNumeroFactura.setText("N.º: F001-000001");
+
+        lblFechaFactura.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblFechaFactura.setForeground(new java.awt.Color(100, 116, 139));
+        lblFechaFactura.setText("Fecha: 23/11/2026");
+
+        lblEtiquetaCliente.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblEtiquetaCliente.setForeground(new java.awt.Color(30, 58, 86));
+        lblEtiquetaCliente.setText("DATOS DEL CLIENTE");
+
+        lblNombreCliente.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombreCliente.setText("Cliente: Nombre del cliente");
+
+        scrollDetalleFactura.setPreferredSize(new java.awt.Dimension(320, 125));
+
+        tblDetalleFactura.setBackground(new java.awt.Color(255, 255, 255));
+        tblDetalleFactura.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tblDetalleFactura.setForeground(new java.awt.Color(30, 41, 59));
+        tblDetalleFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Producto", "Cant.", "Precio", "Subtotal"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblDetalleFactura.setRowHeight(25);
+        scrollDetalleFactura.setViewportView(tblDetalleFactura);
+
+        lblEtiquetaTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblEtiquetaTotal.setForeground(new java.awt.Color(30, 58, 86));
+        lblEtiquetaTotal.setText("TOTAL A PAGAR:");
+
+        lblTotalFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalFactura.setForeground(new java.awt.Color(51, 153, 0));
+        lblTotalFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalFactura.setText("S/ 0.00");
+
+        javax.swing.GroupLayout pnlDocumentoFacturaLayout = new javax.swing.GroupLayout(pnlDocumentoFactura);
+        pnlDocumentoFactura.setLayout(pnlDocumentoFacturaLayout);
+        pnlDocumentoFacturaLayout.setHorizontalGroup(
+            pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDocumentoFacturaLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumeroFactura)
+                    .addComponent(lblNombreFarmacia))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDocumentoFacturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlDocumentoFacturaLayout.createSequentialGroup()
+                        .addComponent(lblEtiquetaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTotalFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblFechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEtiquetaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+        pnlDocumentoFacturaLayout.setVerticalGroup(
+            pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDocumentoFacturaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNombreFarmacia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(lblEtiquetaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDocumentoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEtiquetaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        btnImprimirFactura.setBackground(new java.awt.Color(51, 153, 0));
+        btnImprimirFactura.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnImprimirFactura.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimirFactura.setText("Imprimir factura");
+        btnImprimirFactura.setFocusable(false);
+
+        javax.swing.GroupLayout pnlVistaPreviaLayout = new javax.swing.GroupLayout(pnlVistaPrevia);
+        pnlVistaPrevia.setLayout(pnlVistaPreviaLayout);
+        pnlVistaPreviaLayout.setHorizontalGroup(
+            pnlVistaPreviaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVistaPreviaLayout.createSequentialGroup()
+                .addGroup(pnlVistaPreviaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlVistaPreviaLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(lblTituloVistaPrevia))
+                    .addGroup(pnlVistaPreviaLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(pnlVistaPreviaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnImprimirFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlDocumentoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 14, 14))
+        );
+        pnlVistaPreviaLayout.setVerticalGroup(
+            pnlVistaPreviaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVistaPreviaLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(lblTituloVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDocumentoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnImprimirFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Imagen");
+
+        javax.swing.GroupLayout FondoPanelFacturasLayout = new javax.swing.GroupLayout(FondoPanelFacturas);
+        FondoPanelFacturas.setLayout(FondoPanelFacturasLayout);
+        FondoPanelFacturasLayout.setHorizontalGroup(
+            FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)
+                        .addGap(47, 47, 47)
+                        .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubtitulo)
+                            .addComponent(lblTitulo)))
+                    .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(pnlListadoFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlVistaPrevia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        FondoPanelFacturasLayout.setVerticalGroup(
+            FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                        .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitulo)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo))
+                    .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlListadoFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlVistaPrevia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        add(FondoPanelFacturas, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FondoPanelFacturas;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnImprimirFactura;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblEtiquetaCliente;
+    private javax.swing.JLabel lblEtiquetaTotal;
+    private javax.swing.JLabel lblFechaFactura;
+    private javax.swing.JLabel lblNombreCliente;
+    private javax.swing.JLabel lblNombreFarmacia;
+    private javax.swing.JLabel lblNumeroFactura;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTituloListado;
+    private javax.swing.JLabel lblTituloVistaPrevia;
+    private javax.swing.JLabel lblTotalFactura;
+    private javax.swing.JLabel lblTotalFacturas;
+    private javax.swing.JPanel pnlDocumentoFactura;
+    private javax.swing.JPanel pnlListadoFacturas;
+    private javax.swing.JPanel pnlVistaPrevia;
+    private javax.swing.JScrollPane scrollDetalleFactura;
+    private javax.swing.JScrollPane scrollFacturas;
+    private javax.swing.JTable tblDetalleFactura;
+    private javax.swing.JTable tblFacturas;
     // End of variables declaration//GEN-END:variables
 }

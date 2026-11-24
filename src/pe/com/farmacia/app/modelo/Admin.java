@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
  */
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Admin {
     private String usuario_admin;
     private String contra_admin;
