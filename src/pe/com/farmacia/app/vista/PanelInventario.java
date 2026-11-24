@@ -4,6 +4,11 @@
  */
 package pe.com.farmacia.app.vista;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
+import pe.com.farmacia.app.modelo.Medicamento;
 import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar;
 import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar;
 
@@ -12,12 +17,43 @@ import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar;
  * @author USER
  */
 public class PanelInventario extends javax.swing.JPanel {
-
+    
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    
     /**
      * Creates new form PanelInventario
      */
     public PanelInventario() {
         initComponents();
+        // Carga los medicamentos en la tabla y actualiza el contador al abrir el panel
+        cargarMedicamentos();
+    }
+    
+    public void cargarMedicamentos() {
+        // Obtiene el modelo de la tabla y limpia las filas previas para evitar duplicados.
+        DefaultTableModel modelo = (DefaultTableModel) tblMedicamentos.getModel();
+        modelo.setRowCount(0);
+
+        // Obtiene todos los registros de MEDICAMENTO.
+        List<Medicamento> lista = medicamentodao.listar();
+
+        // Inserta cada medicamento respetando el orden de las 9 columnas de la tabla.
+        for (Medicamento m : lista) {
+            modelo.addRow(new Object[]{
+                m.getId_medicamento(),
+                m.getCodigo(),
+                m.getNombre_generico(),
+                m.getNombre_comercial(),
+                m.getCura(),
+                m.getPreciounitario(),
+                m.getPreciocaja(),
+                m.getCantidad(),
+                m.getDescripcion()
+            });
+        }
+
+        // Muestra el total de medicamentos listados en el inventario.
+        lblTotal.setText("Total de medicamentos en el inventario: " + lista.size());
     }
 
     /**
@@ -36,8 +72,6 @@ public class PanelInventario extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnBuenos = new javax.swing.JButton();
-        btnMalos = new javax.swing.JButton();
         scrollTabla = new javax.swing.JScrollPane();
         tblMedicamentos = new javax.swing.JTable();
         lblTotal = new javax.swing.JLabel();
@@ -93,16 +127,6 @@ public class PanelInventario extends javax.swing.JPanel {
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
-        btnBuenos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnBuenos.setText("<html>Medicamentos<br>Disponibles</html> ");
-        btnBuenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuenos.setPreferredSize(new java.awt.Dimension(130, 34));
-
-        btnMalos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnMalos.setText("<html>Medicamentos<br>Caducados</html>");
-        btnMalos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMalos.setPreferredSize(new java.awt.Dimension(130, 34));
-
         tblMedicamentos.setBackground(new java.awt.Color(236, 253, 245));
         tblMedicamentos.setForeground(new java.awt.Color(15, 23, 42));
         tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
@@ -110,7 +134,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo", "Nombre Generico", "Nombre Comercial", "Cura", "Precio Unitario", "Precio x Caja", "Stock", "Estado"
+                "ID", "Codigo", "Nombre Generico", "Nombre Comercial", "Cura", "Precio Unitario", "Precio x Caja", "Stock", "Descripción"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -145,24 +169,17 @@ public class PanelInventario extends javax.swing.JPanel {
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                        .addComponent(btnBuenos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMalos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(163, 472, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlCuerpoLayout.setVerticalGroup(
             pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCuerpoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBuenos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMalos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -198,10 +215,8 @@ public class PanelInventario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuenos;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnMalos;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlCuerpo;
