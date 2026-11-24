@@ -27,28 +27,214 @@ public class PanelEditarAdministrador extends javax.swing.JPanel {
     private void initComponents() {
 
         FondoEditarAdministrador = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        lblDatosAdministradorEditar = new javax.swing.JLabel();
+        lblNombreEditar = new javax.swing.JLabel();
+        txtNombreEditar = new javax.swing.JTextField();
+        lblUsuarioEditar = new javax.swing.JLabel();
+        txtUsuarioEditar = new javax.swing.JTextField();
+        btnCancelarEditar = new javax.swing.JButton();
+        btnActualizarAdministrador = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblContrasenaEditar = new javax.swing.JLabel();
+        txtContrasenaEditar = new javax.swing.JPasswordField();
+        lblCorreoElectronicoEditar = new javax.swing.JLabel();
+        txtCorreoElectronicoEditar = new javax.swing.JTextField();
+        lblConfirmarContrasenaEditar = new javax.swing.JLabel();
+        txtConfirmarContrasenaEditar = new javax.swing.JPasswordField();
 
         setLayout(new java.awt.BorderLayout(450, 500));
 
+        FondoEditarAdministrador.setBackground(new java.awt.Color(225, 225, 225));
         FondoEditarAdministrador.setMinimumSize(new java.awt.Dimension(450, 500));
-        FondoEditarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
+        lblTitulo.setText("Editar Administrador");
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
+        lblSubtitulo.setText("Modifique la informacion del administrador.");
+
+        lblDatosAdministradorEditar.setBackground(new java.awt.Color(219, 234, 247));
+        lblDatosAdministradorEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDatosAdministradorEditar.setForeground(new java.awt.Color(30, 58, 86));
+        lblDatosAdministradorEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDatosAdministradorEditar.setText("Datos del administrador");
+        lblDatosAdministradorEditar.setOpaque(true);
+
+        lblNombreEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblNombreEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblNombreEditar.setText("Nombre:");
+
+        txtNombreEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblUsuarioEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblUsuarioEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblUsuarioEditar.setText("Usuario:");
+
+        txtUsuarioEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuarioEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        btnCancelarEditar.setBackground(new java.awt.Color(220, 226, 232));
+        btnCancelarEditar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnCancelarEditar.setForeground(new java.awt.Color(30, 41, 59));
+        btnCancelarEditar.setText("Cancelar");
+        btnCancelarEditar.setFocusable(false);
+        btnCancelarEditar.addActionListener(this::btnCancelarEditarActionPerformed);
+
+        btnActualizarAdministrador.setBackground(new java.awt.Color(51, 153, 0));
+        btnActualizarAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        btnActualizarAdministrador.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarAdministrador.setText("Guardar");
+        btnActualizarAdministrador.setFocusable(false);
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Imagen");
+
+        lblContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblContrasenaEditar.setText("Contraseña:");
+
+        txtContrasenaEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblCorreoElectronicoEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblCorreoElectronicoEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblCorreoElectronicoEditar.setText("Correo electronico:");
+
+        txtCorreoElectronicoEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreoElectronicoEditar.setForeground(new java.awt.Color(30, 41, 59));
+
+        lblConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
+        lblConfirmarContrasenaEditar.setText("Confirmar contraseña:");
+
+        txtConfirmarContrasenaEditar.setBackground(new java.awt.Color(255, 255, 255));
+        txtConfirmarContrasenaEditar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtConfirmarContrasenaEditar.setForeground(new java.awt.Color(30, 41, 59));
 
         javax.swing.GroupLayout FondoEditarAdministradorLayout = new javax.swing.GroupLayout(FondoEditarAdministrador);
         FondoEditarAdministrador.setLayout(FondoEditarAdministradorLayout);
         FondoEditarAdministradorLayout.setHorizontalGroup(
             FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(btnCancelarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizarAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
+            .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUsuarioEditar)
+                            .addComponent(lblNombreEditar))
+                        .addGap(18, 18, 18)
+                        .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuarioEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                            .addComponent(txtNombreEditar)))
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(lblDatosAdministradorEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
+                        .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addComponent(lblSubtitulo)))
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(lblContrasenaEditar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoEditarAdministradorLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblCorreoElectronicoEditar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCorreoElectronicoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FondoEditarAdministradorLayout.createSequentialGroup()
+                                .addComponent(lblConfirmarContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConfirmarContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         FondoEditarAdministradorLayout.setVerticalGroup(
             FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoEditarAdministradorLayout.createSequentialGroup()
+                        .addContainerGap(28, Short.MAX_VALUE)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(lblDatosAdministradorEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombreEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuarioEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuarioEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCorreoElectronicoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreoElectronicoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblConfirmarContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConfirmarContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(FondoEditarAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelarEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizarAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         add(FondoEditarAdministrador, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoEditarAdministrador;
+    private javax.swing.JButton btnActualizarAdministrador;
+    private javax.swing.JButton btnCancelarEditar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblConfirmarContrasenaEditar;
+    private javax.swing.JLabel lblContrasenaEditar;
+    private javax.swing.JLabel lblCorreoElectronicoEditar;
+    private javax.swing.JLabel lblDatosAdministradorEditar;
+    private javax.swing.JLabel lblNombreEditar;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUsuarioEditar;
+    private javax.swing.JPasswordField txtConfirmarContrasenaEditar;
+    private javax.swing.JPasswordField txtContrasenaEditar;
+    private javax.swing.JTextField txtCorreoElectronicoEditar;
+    private javax.swing.JTextField txtNombreEditar;
+    private javax.swing.JTextField txtUsuarioEditar;
     // End of variables declaration//GEN-END:variables
 }
