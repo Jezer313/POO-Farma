@@ -21,7 +21,7 @@ public class Clientedaoimpl implements Clientedao {
     @Override
     public boolean agregar(Cliente cliente) {
         String sql = """
-                     INSERT INTO CLIENTE(DNI, NOMBRE, APELLIDO, TELEFONO, DIRECCION)
+                     INSERT INTO CLIENTE(DNI, NOMBRE, APELLIDO, CORREO, TELEFONO, DIRECCION)
                      VALUES(?,?,?,?,?);
                      """;
         try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {

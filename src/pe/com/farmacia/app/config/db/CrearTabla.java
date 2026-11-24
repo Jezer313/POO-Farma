@@ -55,8 +55,9 @@ public class CrearTabla {
                 DNI         TEXT NOT NULL,
                 NOMBRE      TEXT NOT NULL,
                 APELLIDO    TEXT NOT NULL,
-                TELEFONO    TEXT,
-                DIRECCION   TEXT
+                CORREO      TEXT NOT NULL,
+                TELEFONO    TEXT NOT NULL,
+                DIRECCION   TEXT NOT NULL
             );
             """,
 

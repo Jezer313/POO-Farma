@@ -21,4 +21,5 @@ public class Medicamento {
     private int cantidad;
     private String cura;
     private double preciounitario;
+    private double preciocaja;
 }
