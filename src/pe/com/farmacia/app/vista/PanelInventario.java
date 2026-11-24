@@ -4,6 +4,9 @@
  */
 package pe.com.farmacia.app.vista;
 
+import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar;
+import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioEditar;
+
 /**
  *
  * @author USER
@@ -72,6 +75,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
         btnAgregar.setText("Agregar Medicamento");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
         btnEditar.setText("Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -156,6 +160,12 @@ public class PanelInventario extends javax.swing.JPanel {
 
         add(pnlFondoInventario, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar(
+        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
