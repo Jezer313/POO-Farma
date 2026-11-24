@@ -1,16 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
+import pe.com.farmacia.app.modelo.Medicamento;
 
 /**
  *
  * @author Wentex Rex
  */
 public class DialogoInventarioEditar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoInventarioEditar.class.getName());
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    private boolean actualizado = false;
+    private int idMedicamento;
 
     /**
      * Creates new form DialogoInventarioEditar
@@ -19,6 +22,17 @@ public class DialogoInventarioEditar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    // Constructor que abre el diálogo precargando los datos del medicamento seleccionado
+    public DialogoInventarioEditar(java.awt.Frame parent, boolean modal, pe.com.farmacia.app.modelo.Medicamento medicamento) {
+        this(parent, modal);
+        cargarDatosMedicamento(medicamento);
+    }
+
+    // Permite que PanelInventario sepa si hubo cambios guardados al cerrar el diálogo
+    public boolean isActualizado() {
+        return actualizado;
     }
 
     /**
@@ -63,7 +77,6 @@ public class DialogoInventarioEditar extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(450, 500));
 
         pnlFondoDialog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2));
         pnlFondoDialog.setMinimumSize(new java.awt.Dimension(450, 550));
@@ -144,6 +157,7 @@ public class DialogoInventarioEditar extends javax.swing.JDialog {
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.setPreferredSize(new java.awt.Dimension(130, 34));
+        btnActualizar.addActionListener(this::btnActualizarActionPerformed);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
         pnlPie.setLayout(pnlPieLayout);
@@ -253,6 +267,22 @@ public class DialogoInventarioEditar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cargarDatosMedicamento(pe.com.farmacia.app.modelo.Medicamento m) {
+        if (m == null) {
+            return;
+        }
+        this.idMedicamento = m.getId_medicamento();
+        txtId.setText(String.valueOf(m.getId_medicamento()));
+        txtCodigo.setText(m.getCodigo());
+        txtNobregenerico.setText(m.getNombre_generico());
+        txtNombreComercial.setText(m.getNombre_comercial());
+        txtDescripcion.setText(m.getDescripcion());
+        txtQueCura.setText(m.getCura());
+        txtPrecioUnitario.setText(String.valueOf(m.getPreciounitario()));
+        txtPrecioCaja.setText(String.valueOf(m.getPreciocaja()));
+        txtCantidad.setText(String.valueOf(m.getCantidad()));
+    }
+
     private void txtNobregenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNobregenericoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNobregenericoActionPerformed
@@ -269,6 +299,93 @@ public class DialogoInventarioEditar extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // Obtiene los valores de los campos y quita espacios en blanco innecesarios
+        String codigo = txtCodigo.getText().trim();
+        String nombreGenerico = txtNobregenerico.getText().trim();
+        String nombreComercial = txtNombreComercial.getText().trim();
+        String descripcion = txtDescripcion.getText().trim();
+        String cura = txtQueCura.getText().trim();
+        String precioUnitStr = txtPrecioUnitario.getText().trim();
+        String precioCajaStr = txtPrecioCaja.getText().trim();
+        String cantidadStr = txtCantidad.getText().trim();
+
+        // Verifica que todos los campos estén completos
+        if (codigo.isEmpty() || nombreGenerico.isEmpty() || nombreComercial.isEmpty()
+                || descripcion.isEmpty() || cura.isEmpty()
+                || precioUnitStr.isEmpty() || precioCajaStr.isEmpty() || cantidadStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos obligatorios.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        double precioUnitario;
+        double precioCaja;
+        int cantidad;
+
+        // Convierte precios a double y stock a int; avisa si el usuario escribió texto inválido
+        try {
+            precioUnitario = Double.parseDouble(precioUnitStr);
+            precioCaja = Double.parseDouble(precioCajaStr);
+            cantidad = Integer.parseInt(cantidadStr);
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Revisa que Precio Unitario y Precio por Caja sean números válidos y Cantidad un entero.",
+                    "Formato inválido",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        // Evita valores negativos en precios o cantidad
+        if (precioUnitario < 0 || precioCaja < 0 || cantidad < 0) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Los precios y la cantidad no pueden ser negativos.",
+                    "Valor inválido",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Crea el objeto Medicamento con su ID original y los campos editados
+        pe.com.farmacia.app.modelo.Medicamento medicamentoEditado = new pe.com.farmacia.app.modelo.Medicamento(
+                idMedicamento,
+                codigo,
+                nombreComercial,
+                nombreGenerico,
+                descripcion,
+                cantidad,
+                cura,
+                precioUnitario,
+                precioCaja
+        );
+
+        // Llama al DAO para actualizar en la base de datos y cierra el diálogo si salió bien
+        if (medicamentodao.editar(medicamentoEditado)) {
+            actualizado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Medicamento actualizado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo actualizar el medicamento en la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
