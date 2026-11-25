@@ -34,7 +34,12 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
     private final Clientedao clientedao = new Clientedaoimpl();
     private final Facturadao facturadao = new Facturadaoimpl();
     private final DetalleFacturadao detalleFacturadao = new DetalleFacturadaoimpl();
-    
+    private List<Medicamento> listaMedicamentos = new ArrayList<>();
+    private final List<DetalleFactura> itemsFactura = new ArrayList<>();
+    private double totalFactura = 0.0;
+    private int cantidadTotalUnidades = 0;
+    private boolean facturaGuardada = false;
+
     /**
      * Creates new form DialogAgregarFactura
      */
@@ -43,11 +48,10 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         initComponents();
         inicializarFormulario();
     }
-    
-    private List<Medicamento> listaMedicamentos = new ArrayList<>();
-    private final List<DetalleFactura> itemsFactura = new ArrayList<>();
-    private double totalFactura = 0.0;
-    private int cantidadTotalUnidades = 0;
+
+    public boolean isFacturaGuardada() {
+        return facturaGuardada;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -345,13 +349,11 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void inicializarFormulario() {
         ((DefaultTableModel) tblProductosFactura.getModel()).setRowCount(0);
         cargarMedicamentos();
-
-        cmbProductos.addActionListener(e -> actualizarPrecioSeleccionado());
-        btnAgregarProducto.addActionListener(this::btnAgregarProductoActionPerformed);
+        txtPrecioUnitario.setText("0.00");
     }
 
     private void cargarMedicamentos() {
@@ -373,7 +375,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         Medicamento med = listaMedicamentos.get(idx - 1);
         txtPrecioUnitario.setText(String.format("%.2f", med.getPreciounitario()));
     }
-    
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 // Cierra la ventana emergente sin guardar los cambios.
         dispose();
@@ -464,6 +466,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
             }
         }
 
+        facturaGuardada = true;
         JOptionPane.showMessageDialog(
                 this,
                 "Factura " + codigoFactura + " registrada correctamente.",
@@ -561,6 +564,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
     private void cmbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductosActionPerformed
         // TODO add your handling code here:
+        actualizarPrecioSeleccionado();
         if (cmbProductos.getSelectedIndex() > 0) {
             javax.swing.SwingUtilities.invokeLater(() -> {
                 txtCantidad.requestFocusInWindow();

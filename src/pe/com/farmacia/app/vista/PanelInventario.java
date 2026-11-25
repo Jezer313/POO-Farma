@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
 import pe.com.farmacia.app.ventanasEmergentes.DialogoInventarioAgregar;
@@ -368,6 +364,7 @@ public class PanelInventario extends javax.swing.JPanel {
     private void mostrarCaducados() {
         DefaultTableModel modelo = (DefaultTableModel) tblMedicamentos.getModel();
         modelo.setRowCount(0);
+        //Para cambiar fecha solo cambiar el .now, ejemplo: java.time.LocalDate hoy = java.time.LocalDate.of(30, 12, 2026);
         java.time.LocalDate hoy = java.time.LocalDate.now();
         int contador = 0;
 

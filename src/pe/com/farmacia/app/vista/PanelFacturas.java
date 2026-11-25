@@ -486,6 +486,10 @@ public class PanelFacturas extends javax.swing.JPanel {
                 (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
+
+        if (dialog.isFacturaGuardada()) {
+            cargarFacturas();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnImprimirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirFacturaActionPerformed
