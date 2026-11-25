@@ -85,9 +85,11 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         sepVertical = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout(450, 542));
 
         FondoAgregarFactura.setBackground(new java.awt.Color(255, 255, 255));
+        FondoAgregarFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         FondoAgregarFactura.setForeground(new java.awt.Color(255, 255, 255));
         FondoAgregarFactura.setMinimumSize(new java.awt.Dimension(450, 542));
         FondoAgregarFactura.setPreferredSize(new java.awt.Dimension(450, 542));
@@ -98,6 +100,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         lblTotalFactura.setText("S/ 0.00");
 
         txtDniCliente.setForeground(new java.awt.Color(30, 41, 59));
+        txtDniCliente.addActionListener(this::txtDniClienteActionPerformed);
 
         btnCancelar.setBackground(new java.awt.Color(220, 226, 232));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -128,6 +131,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
         cmbProductos.setForeground(new java.awt.Color(30, 41, 59));
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar producto..." }));
+        cmbProductos.addActionListener(this::cmbProductosActionPerformed);
 
         txtPrecioUnitario.setEditable(false);
         txtPrecioUnitario.setBackground(new java.awt.Color(248, 250, 252));
@@ -147,6 +151,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         txtCantidad.setForeground(new java.awt.Color(30, 41, 59));
         txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidad.setText("1");
+        txtCantidad.addActionListener(this::txtCantidadActionPerformed);
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
@@ -194,6 +199,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         lblNombreCliente.setText("Nombre:");
 
         txtNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
+        txtNombreCliente.addActionListener(this::txtNombreClienteActionPerformed);
 
         lblEtiquetaTotal.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblEtiquetaTotal.setForeground(new java.awt.Color(30, 58, 86));
@@ -254,8 +260,8 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
                                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
                                         .addComponent(lblCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(237, 237, 237))
+                                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(167, 167, 167))
                                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
                                         .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
@@ -275,7 +281,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         FondoAgregarFacturaLayout.setVerticalGroup(
             FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,6 +547,32 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         cmbProductos.setSelectedIndex(0);
         txtPrecioUnitario.setText("0.00");
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+        txtDniCliente.requestFocusInWindow();
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
+        // TODO add your handling code here:
+        cmbProductos.requestFocusInWindow();
+        cmbProductos.showPopup();
+    }//GEN-LAST:event_txtDniClienteActionPerformed
+
+    private void cmbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductosActionPerformed
+        // TODO add your handling code here:
+        if (cmbProductos.getSelectedIndex() > 0) {
+            javax.swing.SwingUtilities.invokeLater(() -> {
+                txtCantidad.requestFocusInWindow();
+                txtCantidad.selectAll();
+            });
+        }
+    }//GEN-LAST:event_cmbProductosActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+        btnAgregarProducto.doClick();
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     /**
      * @param args the command line arguments

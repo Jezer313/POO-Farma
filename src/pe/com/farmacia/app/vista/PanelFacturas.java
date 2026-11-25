@@ -389,6 +389,7 @@ public class PanelFacturas extends javax.swing.JPanel {
         btnImprimirFactura.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimirFactura.setText("Imprimir factura");
         btnImprimirFactura.setFocusable(false);
+        btnImprimirFactura.addActionListener(this::btnImprimirFacturaActionPerformed);
 
         javax.swing.GroupLayout pnlVistaPreviaLayout = new javax.swing.GroupLayout(pnlVistaPrevia);
         pnlVistaPrevia.setLayout(pnlVistaPreviaLayout);
@@ -486,6 +487,62 @@ public class PanelFacturas extends javax.swing.JPanel {
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnImprimirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirFacturaActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tblFacturas.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona una factura de la tabla para generar el PDF.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        try {
+            String codigoFactura = tblFacturas.getValueAt(filaSeleccionada, 0).toString();
+            String nombreCliente = tblFacturas.getValueAt(filaSeleccionada, 1).toString();
+            String fechaFactura = tblFacturas.getValueAt(filaSeleccionada, 2).toString();
+
+            Factura facturaPrincipal = new Factura();
+            facturaPrincipal.setCodigo(codigoFactura);
+            facturaPrincipal.setFecha(fechaFactura);
+
+            java.util.List<Factura> detalles = new java.util.ArrayList<>();
+            javax.swing.table.DefaultTableModel modeloDetalle = (javax.swing.table.DefaultTableModel) tblDetalleFactura.getModel();
+
+            for (int i = 0; i < modeloDetalle.getRowCount(); i++) {
+                Factura item = new Factura();
+                item.setDescripcion(modeloDetalle.getValueAt(i, 0).toString());
+                item.setCantidad(Integer.parseInt(modeloDetalle.getValueAt(i, 1).toString()));
+
+                String precioStr = modeloDetalle.getValueAt(i, 2).toString().replace("S/", "").trim();
+                String subtotalStr = modeloDetalle.getValueAt(i, 3).toString().replace("S/", "").trim();
+
+                item.setPreciounitario(Double.parseDouble(precioStr));
+                item.setCostototal(Double.parseDouble(subtotalStr));
+                detalles.add(item);
+            }
+
+            pe.com.farmacia.app.utils.GenerarFactura.generarPDF(
+                    facturaPrincipal,
+                    detalles,
+                    nombreCliente,
+                    "Administrador"
+            );
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo generar la factura en PDF: " + e.getMessage(),
+                    "Error al exportar PDF",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnImprimirFacturaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
