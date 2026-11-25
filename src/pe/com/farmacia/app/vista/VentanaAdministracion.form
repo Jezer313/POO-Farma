@@ -41,7 +41,7 @@
         <Container class="javax.swing.JPanel" name="pnlCabecera">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="28" green="36" red="14" type="rgb"/>
+              <Color blue="73" green="41" red="17" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1100, 100]"/>
@@ -92,7 +92,7 @@
             <Component class="javax.swing.JButton" name="btnCerrarSesion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="1c" green="30" red="f" type="rgb"/>
+                  <Color blue="5f" green="32" red="f" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -112,7 +112,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="980" y="15" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="980" y="30" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -149,7 +149,7 @@
             <Container class="javax.swing.JPanel" name="pnlInventario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -184,7 +184,7 @@
             <Container class="javax.swing.JPanel" name="pnlProveedores">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -219,7 +219,7 @@
             <Container class="javax.swing.JPanel" name="pnlFarmaceuticos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -254,7 +254,7 @@
             <Container class="javax.swing.JPanel" name="pnlListaAdmins">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -289,7 +289,7 @@
             <Container class="javax.swing.JPanel" name="pnlFacturas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -324,7 +324,7 @@
             <Container class="javax.swing.JPanel" name="pnlUsuarios">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="16" green="18" red="12" type="rgb"/>
+                  <Color blue="91" green="55" red="1f" type="rgb"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>

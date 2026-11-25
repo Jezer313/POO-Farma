@@ -64,7 +64,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlBase.setPreferredSize(new java.awt.Dimension(1100, 650));
         pnlBase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlCabecera.setBackground(new java.awt.Color(20, 54, 40));
+        pnlCabecera.setBackground(new java.awt.Color(23, 65, 115));
         pnlCabecera.setPreferredSize(new java.awt.Dimension(1100, 100));
         pnlCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -78,13 +78,13 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         lblSubtitulo.setText("Panel de administración");
         pnlCabecera.add(lblSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 50, -1, -1));
 
-        btnCerrarSesion.setBackground(new java.awt.Color(15, 48, 28));
+        btnCerrarSesion.setBackground(new java.awt.Color(15, 50, 95));
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14));
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
-        pnlCabecera.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 15, -1, -1));
+        pnlCabecera.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
 
         pnlBase.add(pnlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -94,7 +94,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlFondito.setPreferredSize(new java.awt.Dimension(225, 550));
         pnlFondito.setLayout(new java.awt.GridLayout(6, 1, 8, 8));
 
-        pnlInventario.setBackground(new java.awt.Color(18, 24, 22));
+        pnlInventario.setBackground(new java.awt.Color(31, 85, 145));
         pnlInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,7 +110,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlFondito.add(pnlInventario);
 
-        pnlProveedores.setBackground(new java.awt.Color(18, 24, 22));
+        pnlProveedores.setBackground(new java.awt.Color(31, 85, 145));
         pnlProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,7 +126,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlFondito.add(pnlProveedores);
 
-        pnlFarmaceuticos.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFarmaceuticos.setBackground(new java.awt.Color(31, 85, 145));
         pnlFarmaceuticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlFarmaceuticos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,7 +142,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlFondito.add(pnlFarmaceuticos);
 
-        pnlListaAdmins.setBackground(new java.awt.Color(18, 24, 22));
+        pnlListaAdmins.setBackground(new java.awt.Color(31, 85, 145));
         pnlListaAdmins.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlListaAdmins.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,7 +158,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlFondito.add(pnlListaAdmins);
 
-        pnlFacturas.setBackground(new java.awt.Color(18, 24, 22));
+        pnlFacturas.setBackground(new java.awt.Color(31, 85, 145));
         pnlFacturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,7 +174,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         pnlFondito.add(pnlFacturas);
 
-        pnlUsuarios.setBackground(new java.awt.Color(18, 24, 22));
+        pnlUsuarios.setBackground(new java.awt.Color(31, 85, 145));
         pnlUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
