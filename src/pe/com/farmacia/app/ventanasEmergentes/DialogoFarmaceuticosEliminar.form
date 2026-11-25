@@ -134,10 +134,7 @@
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="sepHorizoltal" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                                      <Component id="sepHorizoltal1" min="-2" pref="10" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="sepHorizoltal1" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -173,7 +170,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3a" green="24" red="12" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Eliminar Farmaceuticos"/>
+                <Property name="text" type="java.lang.String" value="Eliminar Farmac&#xe9;uticos"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSubtitulo">
@@ -184,7 +181,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="69" green="55" red="47" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xbf;Esta seguro de eliminar este farmcaeuticos?"/>
+                <Property name="text" type="java.lang.String" value="&#xbf;Esta seguro de eliminar este farmca&#xe9;utico?"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="sepHorizoltal">

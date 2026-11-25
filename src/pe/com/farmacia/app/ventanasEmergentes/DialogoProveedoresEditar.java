@@ -77,7 +77,7 @@ public class DialogoProveedoresEditar extends javax.swing.JDialog {
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
-        lblSubtitulo.setText("Modifique la información del oriveedor.");
+        lblSubtitulo.setText("Modifique la información del proveedor.");
 
         sopHorizontal.setForeground(new java.awt.Color(203, 213, 225));
         sopHorizontal.setPreferredSize(new java.awt.Dimension(130, 34));

@@ -128,7 +128,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="a6" green="63" red="25" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Farmaceuticos"/>
+                <Property name="text" type="java.lang.String" value="Farmace&#xfa;ticos"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSubtitulo">
@@ -139,7 +139,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="78" green="69" red="5a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gestion todos los farmaceuticos resgistrados en el sistema"/>
+                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n todos los farmaceuticos registrados en el sistema"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnAgregar">
@@ -284,7 +284,7 @@
                         <Column editable="false" title="DNI" type="java.lang.Object"/>
                         <Column editable="false" title="Nombre" type="java.lang.Object"/>
                         <Column editable="false" title="Apellido" type="java.lang.Object"/>
-                        <Column editable="false" title="telefono" type="java.lang.Object"/>
+                        <Column editable="false" title="Tel&#xe9;fono" type="java.lang.Object"/>
                         <Column editable="false" title="Direccion" type="java.lang.Object"/>
                       </Table>
                     </Property>

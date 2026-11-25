@@ -101,11 +101,11 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         lbltitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lbltitulo.setForeground(new java.awt.Color(18, 36, 58));
-        lbltitulo.setText("Eliminar Farmaceuticos");
+        lbltitulo.setText("Eliminar Farmacéuticos");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
-        lblSubtitulo.setText("¿Esta seguro de eliminar este farmcaeuticos?");
+        lblSubtitulo.setText("¿Esta seguro de eliminar este farmcaéutico?");
 
         sepHorizoltal.setForeground(new java.awt.Color(203, 213, 225));
 
@@ -156,9 +156,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
                         .addGap(13, 13, 13)
                         .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(11, 11, 11))
         );
 

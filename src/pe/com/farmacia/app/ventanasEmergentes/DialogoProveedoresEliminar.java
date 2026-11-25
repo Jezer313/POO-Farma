@@ -84,7 +84,7 @@ public class DialogoProveedoresEliminar extends javax.swing.JDialog {
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
-        lblSubtitulo.setText("¿Esta seguro de eliminar este medicamento?");
+        lblSubtitulo.setText("¿Esta seguro de eliminar este proveedor?");
 
         sepHorizoltal.setForeground(new java.awt.Color(203, 213, 225));
 

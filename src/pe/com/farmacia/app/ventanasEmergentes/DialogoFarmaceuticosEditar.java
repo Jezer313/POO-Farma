@@ -92,11 +92,11 @@ public class DialogoFarmaceuticosEditar extends javax.swing.JDialog {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(18, 36, 58));
-        lblTitulo.setText("Farmaceutico");
+        lblTitulo.setText("Farmacéutico");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
-        lblSubtitulo.setText("Modifique la información del medicamento.");
+        lblSubtitulo.setText("Modifique la información del farmacéutico.");
 
         sopHorizontal.setForeground(new java.awt.Color(203, 213, 225));
         sopHorizontal.setPreferredSize(new java.awt.Dimension(130, 34));

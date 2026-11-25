@@ -83,11 +83,11 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
-        lblTitulo.setText("Farmaceuticos");
+        lblTitulo.setText("Farmaceúticos");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(90, 105, 120));
-        lblSubtitulo.setText("Gestion todos los farmaceuticos resgistrados en el sistema");
+        lblSubtitulo.setText("Gestión todos los farmaceuticos registrados en el sistema");
 
         btnAgregar.setBackground(new java.awt.Color(37, 99, 166));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -187,7 +187,7 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DNI", "Nombre", "Apellido", "telefono", "Direccion"
+                "ID", "DNI", "Nombre", "Apellido", "Teléfono", "Direccion"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -52,7 +52,7 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         txtApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         pnlPie = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
@@ -75,7 +75,7 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(18, 36, 58));
-        lblTitulo.setText("Agregar Farmaceutico");
+        lblTitulo.setText("Agregar Farmacéutico");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
@@ -177,11 +177,11 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
         txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCampos.add(txtDireccion);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(18, 15, 94));
-        jLabel7.setText("Telefono:");
-        jLabel7.setIconTextGap(10);
-        pnlCampos.add(jLabel7);
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(18, 15, 94));
+        jLabel6.setText("Telefono:");
+        jLabel6.setIconTextGap(10);
+        pnlCampos.add(jLabel6);
 
         txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
         pnlCampos.add(txtTelefono);
@@ -374,7 +374,7 @@ public class DialogoFarmaceuticosAgregar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
