@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
 
 /**
  *
  * @author Playe
  */
 public class DialogoClientesEliminar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoClientesEliminar.class.getName());
+    private final Clientedao clientedao = new Clientedaoimpl();
+    private int idCliente;
+    private boolean eliminado = false;
 
     /**
      * Creates new form DialogoClientesEliminar
@@ -18,6 +20,30 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
     public DialogoClientesEliminar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setCliente(pe.com.farmacia.app.modelo.Cliente cliente) {
+        if (cliente == null) {
+            return;
+        }
+        this.idCliente = cliente.getId_cliente();
+        txtDNI.setText(cliente.getDni());
+        txtNombre.setText(cliente.getNombre());
+        txtApellido.setText(cliente.getApellido());
+        txtCorreoElectronico.setText(cliente.getCorreo() != null ? cliente.getCorreo() : "");
+        txtTelefono.setText(cliente.getTelefono());
+        txtDireccion.setText(cliente.getDireccion());
+
+        txtDNI.setEditable(false);
+        txtNombre.setEditable(false);
+        txtApellido.setEditable(false);
+        txtCorreoElectronico.setEditable(false);
+        txtTelefono.setEditable(false);
+        txtDireccion.setEditable(false);
     }
 
     /**
@@ -264,7 +290,23 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEliminarClienteActionPerformed
-
+        if (clientedao.eliminar(idCliente)) {
+            eliminado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Cliente eliminado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo eliminar el cliente (puede tener registros asociados).",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_btnGuardarEliminarClienteActionPerformed
 
     /**

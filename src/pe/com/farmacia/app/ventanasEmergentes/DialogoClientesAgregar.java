@@ -4,17 +4,27 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
+import pe.com.farmacia.app.modelo.Cliente;
+
 /**
  *
  * @author Playe
  */
 public class DialogoClientesAgregar extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoClientesAgregar.class.getName());
+    private final Clientedao clientedao = new Clientedaoimpl();
+    private boolean guardado;
 
     /**
      * Creates new form DialogoClientesAgregar
      */
+    public boolean isGuardado() {
+        return guardado;
+    }
+
     public DialogoClientesAgregar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -42,8 +52,8 @@ public class DialogoClientesAgregar extends javax.swing.JDialog {
         txtNombre = new javax.swing.JTextField();
         lblApellido = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
-        lblCorreoElectronico = new javax.swing.JLabel();
-        txtCorreoElectronico = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
         lblTelefono = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
@@ -135,13 +145,14 @@ public class DialogoClientesAgregar extends javax.swing.JDialog {
         pnlCentro.add(lblApellido);
         pnlCentro.add(txtApellido);
 
-        lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblCorreoElectronico.setForeground(new java.awt.Color(18, 15, 94));
-        lblCorreoElectronico.setText("Correo electrónico");
-        pnlCentro.add(lblCorreoElectronico);
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(18, 15, 94));
+        lblCorreo.setText("Correo");
+        pnlCentro.add(lblCorreo);
 
-        txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
-        pnlCentro.add(txtCorreoElectronico);
+        txtCorreo.setForeground(new java.awt.Color(30, 41, 59));
+        txtCorreo.addActionListener(this::txtCorreoActionPerformed);
+        pnlCentro.add(txtCorreo);
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTelefono.setForeground(new java.awt.Color(18, 15, 94));
@@ -213,12 +224,53 @@ public class DialogoClientesAgregar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClientesActionPerformed
+        String dni = txtDNI.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String correo = txtCorreo.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String direccion = txtDireccion.getText().trim();
 
+        if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
+                || telefono.isEmpty() || direccion.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa los campos obligatorios del cliente.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Ajusta el constructor de Cliente según el orden y tipos de tus atributos
+        Cliente cliente = new Cliente(0, dni, nombre, apellido, correo, telefono, direccion);
+
+        if (clientedao.agregar(cliente)) {
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Cliente guardado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo guardar el cliente en la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_btnGuardarClientesActionPerformed
 
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDNIActionPerformed
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,7 +314,7 @@ public class DialogoClientesAgregar extends javax.swing.JDialog {
     private javax.swing.JButton btnGuardarClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblCorreoElectronico;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNombre;
@@ -275,7 +327,7 @@ public class DialogoClientesAgregar extends javax.swing.JDialog {
     private javax.swing.JSeparator sepHorizontal;
     private javax.swing.JSeparator sepVertical;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCorreoElectronico;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;

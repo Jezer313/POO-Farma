@@ -4,6 +4,10 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
+import pe.com.farmacia.app.modelo.Cliente;
+
 /**
  *
  * @author Playe
@@ -11,13 +15,35 @@ package pe.com.farmacia.app.ventanasEmergentes;
 public class DialogoClientesEditar extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoClientesEditar.class.getName());
-
+    private final Clientedao clientedao = new Clientedaoimpl();
+    private int idCliente;
+    private boolean guardado = false;
+    
     /**
      * Creates new form DialogoClientesEditar
      */
+    
+    public boolean isGuardado() {
+        return guardado;
+    }
+    
     public DialogoClientesEditar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
+    }
+    
+    public void setCliente(pe.com.farmacia.app.modelo.Cliente cliente) {
+        if (cliente == null) {
+            return;
+        }
+        this.idCliente = cliente.getId_cliente();
+        txtDNI.setText(cliente.getDni());
+        txtNombre.setText(cliente.getNombre());
+        txtApellido.setText(cliente.getApellido());
+        txtCorreoElectronico.setText(cliente.getCorreo() != null ? cliente.getCorreo() : "");
+        txtTelefono.setText(cliente.getTelefono());
+        txtDireccion.setText(cliente.getDireccion());
     }
 
     /**
@@ -243,7 +269,45 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEditarClienteActionPerformed
+        String dni = txtDNI.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String correo = txtCorreoElectronico.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String direccion = txtDireccion.getText().trim();
 
+        if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
+                || telefono.isEmpty() || direccion.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa los campos obligatorios del cliente.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Cliente clienteEditado = new pe.com.farmacia.app.modelo.Cliente(
+                idCliente, dni, nombre, apellido, correo, telefono, direccion
+        );
+
+        if (clientedao.editar(clienteEditado)) {
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Cliente actualizado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo actualizar el cliente en la base de datos.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_btnGuardarEditarClienteActionPerformed
 
     /**
