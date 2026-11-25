@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package pe.com.farmacia.app.ventanasEmergentes;
+
+import pe.com.farmacia.app.dao.Admindao;
+import pe.com.farmacia.app.dao.Administradordao;
+import pe.com.farmacia.app.daoimplement.Admindaoimpl;
+import pe.com.farmacia.app.daoimplement.Administradordaoimpl;
+import pe.com.farmacia.app.modelo.Admin;
+import pe.com.farmacia.app.modelo.Administrador;
 
 /**
  *
@@ -11,6 +14,11 @@ package pe.com.farmacia.app.ventanasEmergentes;
 public class DialogoAdministradorEditar extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoAdministradorEditar.class.getName());
+    private final Administradordao administradordao = new Administradordaoimpl();
+    private final Admindao admindao = new Admindaoimpl();
+    private boolean guardado = false;
+    private int idAdministrador;
+    private String telefonoActual = "";
 
     /**
      * Creates new form DialogEditarAdministrador
@@ -19,6 +27,30 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
+    }
+
+    public boolean isGuardado() {
+        return guardado;
+    }
+
+    public void cargarDatos(Administrador admin) {
+        if (admin == null) {
+            return;
+        }
+        this.idAdministrador = admin.getId_administrador();
+        this.telefonoActual = admin.getTelefono() != null ? admin.getTelefono() : "";
+
+        txtNombre.setText(admin.getNombre());
+        txtApellido.setText(admin.getApellido());
+        txtDNI.setText(admin.getDni());
+        txtDireccion.setText(admin.getDireccion());
+
+        Admin cred = admindao.buscarPorIdAdmin(this.idAdministrador);
+        if (cred != null) {
+            txtUsuario.setText(cred.getUsuario_admin());
+            txtContrasena.setText(cred.getContra_admin());
+            txtConfirmarContrasena.setText(cred.getContra_admin());
+        }
     }
 
     /**
@@ -46,8 +78,8 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         txtDNI = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        lblCorreoElectronico = new javax.swing.JLabel();
-        txtCorreoElectronico = new javax.swing.JTextField();
+        lblDireccion = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
         lblContrasena = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         lblConfirmarContrasena = new javax.swing.JLabel();
@@ -159,14 +191,14 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
         pnlCentro.add(txtUsuario);
 
-        lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblCorreoElectronico.setForeground(new java.awt.Color(18, 15, 94));
-        lblCorreoElectronico.setText("Correo electronico:");
-        pnlCentro.add(lblCorreoElectronico);
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(18, 15, 94));
+        lblDireccion.setText("Dirección:");
+        pnlCentro.add(lblDireccion);
 
-        txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
-        txtCorreoElectronico.addActionListener(this::txtCorreoElectronicoActionPerformed);
-        pnlCentro.add(txtCorreoElectronico);
+        txtDireccion.setForeground(new java.awt.Color(30, 41, 59));
+        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
+        pnlCentro.add(txtDireccion);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblContrasena.setForeground(new java.awt.Color(18, 15, 94));
@@ -206,6 +238,7 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         btnActualizarAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarAdministrador.setText("Actualizar");
         btnActualizarAdministrador.setFocusable(false);
+        btnActualizarAdministrador.addActionListener(this::btnActualizarAdministradorActionPerformed);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
         pnlPie.setLayout(pnlPieLayout);
@@ -257,13 +290,13 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-        txtCorreoElectronico.requestFocusInWindow();
+        txtDireccion.requestFocusInWindow();
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
         txtContrasena.requestFocusInWindow();
-    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
         // TODO add your handling code here:
@@ -275,9 +308,64 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         btnActualizarAdministrador.doClick();
     }//GEN-LAST:event_txtConfirmarContrasenaActionPerformed
 
+    private void btnActualizarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAdministradorActionPerformed
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String dni = txtDNI.getText().trim();
+        String direccion = txtDireccion.getText().trim();
+        String usuario = txtUsuario.getText().trim();
+        String contrasena = new String(txtContrasena.getPassword());
+        String confirmar = new String(txtConfirmarContrasena.getPassword());
+
+        if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty()
+                || direccion.isEmpty() || usuario.isEmpty()
+                || contrasena.isEmpty() || confirmar.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Completa todos los campos obligatorios.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        if (!contrasena.equals(confirmar)) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Las contraseñas no coinciden.",
+                    "Error de contraseña",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+        
+        Administrador adminEditado = new Administrador(
+                idAdministrador, dni, nombre, apellido, telefonoActual, direccion
+        );
+        Admin credEditada = new Admin(idAdministrador, usuario, contrasena);
+
+        if (administradordao.editar(adminEditado) && admindao.actualizar(credEditada)) {
+            guardado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Administrador actualizado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo actualizar el administrador.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnActualizarAdministradorActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -320,7 +408,7 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblConfirmarContrasena;
     private javax.swing.JLabel lblContrasena;
-    private javax.swing.JLabel lblCorreoElectronico;
+    private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSubtitulo;
@@ -334,8 +422,8 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

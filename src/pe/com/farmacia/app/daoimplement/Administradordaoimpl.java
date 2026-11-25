@@ -24,19 +24,28 @@ public class Administradordaoimpl implements Administradordao {
                      INSERT INTO ADMINISTRADOR(DNI, NOMBRE, APELLIDO, TELEFONO, DIRECCION)
                      VALUES(?,?,?,?,?);
                      """;
+        String sqlId = "SELECT last_insert_rowid();";
         try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
             pst.setString(1, admin.getDni());
             pst.setString(2, admin.getNombre());
             pst.setString(3, admin.getApellido());
             pst.setString(4, admin.getTelefono());
             pst.setString(5, admin.getDireccion());
-            pst.executeUpdate();
-            System.out.println("<< SE AGREGÓ UN NUEVO ADMINISTRADOR >>");
+            int filas = pst.executeUpdate();
+
+            if (filas > 0) {
+                try (PreparedStatement pstId = c.prepareStatement(sqlId); ResultSet rs = pstId.executeQuery()) {
+                    if (rs.next()) {
+                        admin.setId_administrador(rs.getInt(1));
+                    }
+                }
+                System.out.println("<< SE AGREGÓ UN NUEVO ADMINISTRADOR >>");
+                return true;
+            }
         } catch (SQLException e) {
             System.out.println("<< NO SE PUDO AGREGAR EL ADMINISTRADOR >>");
-            return false;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -137,5 +146,28 @@ public class Administradordaoimpl implements Administradordao {
             System.out.println("<< ERROR AL BUSCAR ADMINISTRADOR POR DNI >>");
         }
         return lista;
+    }
+    
+    public Administrador obtenerPorId(int id_admin) {
+        String sql = "SELECT * FROM ADMINISTRADOR WHERE ID_ADMINISTRADOR = ?;";
+        try (Connection c = cn.getConnection();
+             PreparedStatement pst = c.prepareStatement(sql)) {
+            pst.setInt(1, id_admin);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return new Administrador(
+                            rs.getInt("ID_ADMINISTRADOR"),
+                            rs.getString("DNI"),
+                            rs.getString("NOMBRE"),
+                            rs.getString("APELLIDO"),
+                            rs.getString("TELEFONO"),
+                            rs.getString("DIRECCION")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("<< ERROR AL OBTENER ADMINISTRADOR POR ID >> " + e.getMessage());
+        }
+        return null;
     }
 }

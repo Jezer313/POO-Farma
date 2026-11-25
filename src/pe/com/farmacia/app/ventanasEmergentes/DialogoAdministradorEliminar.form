@@ -174,7 +174,7 @@
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCorreoElectronico">
+            <Component class="javax.swing.JLabel" name="lblDirecci&#xf3;n">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -182,10 +182,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5e" green="f" red="12" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Correo electronico:"/>
+                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCorreoElectronico">
+            <Component class="javax.swing.JTextField" name="txtDirecci&#xf3;n">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -333,6 +333,9 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarAdministradorActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

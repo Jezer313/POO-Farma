@@ -188,6 +188,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar administrador"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="JScrollPane">
           <Properties>
@@ -231,9 +234,9 @@
                       <Table columnCount="6" rowCount="4">
                         <Column editable="true" title="ID" type="java.lang.Integer"/>
                         <Column editable="true" title="Nombre completo" type="java.lang.String"/>
-                        <Column editable="true" title="Usuario" type="java.lang.String"/>
-                        <Column editable="true" title="Correo electr&#xf3;nico" type="java.lang.String"/>
+                        <Column editable="true" title="Direcci&#xf3;n" type="java.lang.String"/>
                         <Column editable="true" title="DNI" type="java.lang.String"/>
+                        <Column editable="true" title="Usuario" type="java.lang.String"/>
                         <Column editable="true" title="Contrase&#xf1;a" type="java.lang.String"/>
                       </Table>
                     </Property>

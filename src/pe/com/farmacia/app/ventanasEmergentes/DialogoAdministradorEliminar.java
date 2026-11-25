@@ -4,6 +4,13 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import pe.com.farmacia.app.dao.Admindao;
+import pe.com.farmacia.app.dao.Administradordao;
+import pe.com.farmacia.app.daoimplement.Admindaoimpl;
+import pe.com.farmacia.app.daoimplement.Administradordaoimpl;
+import pe.com.farmacia.app.modelo.Admin;
+import pe.com.farmacia.app.modelo.Administrador;
+
 /**
  *
  * @author crai.alumno
@@ -11,7 +18,32 @@ package pe.com.farmacia.app.ventanasEmergentes;
 public class DialogoAdministradorEliminar extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoAdministradorEliminar.class.getName());
+    private final Administradordao administradordao = new Administradordaoimpl();
+    private final Admindao admindao = new Admindaoimpl();
+    private boolean eliminado = false;
+    private int idAdministrador;
+    
+    
+    public boolean isEliminado() {
+        return eliminado;
+    }
+    
+    public void cargarDatos(Administrador admin) {
+        if (admin == null) return;
+        this.idAdministrador = admin.getId_administrador();
+        
+        txtNombre.setText(admin.getNombre());
+        txtApellido.setText(admin.getApellido());
+        txtDNI.setText(admin.getDni());
+        txtDirección.setText(admin.getDireccion());
 
+        Admin cred = admindao.buscarPorIdAdmin(this.idAdministrador);
+        if (cred != null) {
+            txtUsuario.setText(cred.getUsuario_admin());
+            txtContrasena.setText(cred.getContra_admin());
+            txtConfirmarContrasena.setText(cred.getContra_admin());
+        }
+    }
     /**
      * Creates new form DialogoAdministradorEliminar
      */
@@ -40,8 +72,8 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         txtDNI = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        lblCorreoElectronico = new javax.swing.JLabel();
-        txtCorreoElectronico = new javax.swing.JTextField();
+        lblDirección = new javax.swing.JLabel();
+        txtDirección = new javax.swing.JTextField();
         lblContrasena = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         lblConfirmarContrasena = new javax.swing.JLabel();
@@ -112,16 +144,16 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         txtUsuario.setFocusable(false);
         pnlCentro.add(txtUsuario);
 
-        lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        lblCorreoElectronico.setForeground(new java.awt.Color(18, 15, 94));
-        lblCorreoElectronico.setText("Correo electronico:");
-        pnlCentro.add(lblCorreoElectronico);
+        lblDirección.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDirección.setForeground(new java.awt.Color(18, 15, 94));
+        lblDirección.setText("Dirección:");
+        pnlCentro.add(lblDirección);
 
-        txtCorreoElectronico.setEditable(false);
-        txtCorreoElectronico.setBackground(new java.awt.Color(235, 238, 242));
-        txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
-        txtCorreoElectronico.setFocusable(false);
-        pnlCentro.add(txtCorreoElectronico);
+        txtDirección.setEditable(false);
+        txtDirección.setBackground(new java.awt.Color(235, 238, 242));
+        txtDirección.setForeground(new java.awt.Color(30, 41, 59));
+        txtDirección.setFocusable(false);
+        pnlCentro.add(txtDirección);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblContrasena.setForeground(new java.awt.Color(18, 15, 94));
@@ -167,6 +199,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         btnActualizarAdministrador.setText("Guardar");
         btnActualizarAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizarAdministrador.setFocusable(false);
+        btnActualizarAdministrador.addActionListener(this::btnActualizarAdministradorActionPerformed);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
         pnlPie.setLayout(pnlPieLayout);
@@ -294,6 +327,27 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarEditarActionPerformed
 
+    private void btnActualizarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAdministradorActionPerformed
+        admindao.eliminar(idAdministrador);
+        if (administradordao.eliminar(idAdministrador)) {
+            eliminado = true;
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Administrador eliminado correctamente.",
+                    "Éxito",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+            this.dispose();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo eliminar el administrador.",
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnActualizarAdministradorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,7 +394,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
     private javax.swing.JLabel lblAdvertencia;
     private javax.swing.JLabel lblConfirmarContrasena;
     private javax.swing.JLabel lblContrasena;
-    private javax.swing.JLabel lblCorreoElectronico;
+    private javax.swing.JLabel lblDirección;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSubtitulo;
@@ -355,8 +409,8 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtDirección;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

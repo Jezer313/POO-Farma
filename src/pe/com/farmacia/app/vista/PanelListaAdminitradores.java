@@ -1,8 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
+
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Admindao;
+import pe.com.farmacia.app.dao.Administradordao;
+import pe.com.farmacia.app.daoimplement.Admindaoimpl;
+import pe.com.farmacia.app.daoimplement.Administradordaoimpl;
+import pe.com.farmacia.app.modelo.Admin;
+import pe.com.farmacia.app.modelo.Administrador;
 
 /**
  *
@@ -10,11 +15,39 @@ package pe.com.farmacia.app.vista;
  */
 public class PanelListaAdminitradores extends javax.swing.JPanel {
 
+    private final Administradordao administradordao = new Administradordaoimpl();
+    private final Admindao admindao = new Admindaoimpl();
+
     /**
      * Creates new form PanelListaAdminitradores
      */
     public PanelListaAdminitradores() {
         initComponents();
+        cargarTabla();
+    }
+
+    public void cargarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tblAdministradores.getModel();
+        modelo.setRowCount(0);
+
+        List<Administrador> lista = administradordao.listar();
+        for (Administrador a : lista) {
+            String nombreCompleto = (a.getNombre() + " " + a.getApellido()).trim();
+            Admin cred = admindao.buscarPorIdAdmin(a.getId_administrador());
+            String usuario = (cred != null) ? cred.getUsuario_admin() : "";
+            String contra = (cred != null) ? cred.getContra_admin() : "";
+
+            modelo.addRow(new Object[]{
+                a.getId_administrador(),
+                nombreCompleto,
+                a.getDireccion(),
+                a.getDni(),
+                usuario,
+                contra
+            });
+        }
+
+        lblTotalAdministradores.setText("Total de administradores: " + lista.size());
     }
 
     /**
@@ -74,6 +107,7 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar administrador");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         JScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         JScrollPane.setBorder(null);
@@ -92,7 +126,7 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre completo", "Usuario", "Correo electrónico", "DNI", "Contraseña"
+                "ID", "Nombre completo", "Dirección", "DNI", "Usuario", "Contraseña"
             }
         ) {
             Class[] types = new Class [] {
@@ -183,14 +217,66 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorAgregar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorAgregar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorAgregar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.setVisible(true);
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEditar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        int fila = tblAdministradores.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un administrador de la tabla para editar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int idAdmin = Integer.parseInt(tblAdministradores.getValueAt(fila, 0).toString());
+        Administrador seleccionado = ((Administradordaoimpl) administradordao).obtenerPorId(idAdmin);
+
+        pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEditar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEditar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.cargarDatos(seleccionado);
+        dialog.setVisible(true);
+
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tblAdministradores.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un administrador de la tabla para eliminar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int idAdmin = Integer.parseInt(tblAdministradores.getValueAt(fila, 0).toString());
+        Administrador seleccionado = ((Administradordaoimpl) administradordao).obtenerPorId(idAdmin);
+
+        pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEliminar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEliminar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.cargarDatos(seleccionado);
+        dialog.setVisible(true);
+
+        if (dialog.isEliminado()) {
+            cargarTabla();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
