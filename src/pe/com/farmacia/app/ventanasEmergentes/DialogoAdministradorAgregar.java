@@ -116,7 +116,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
                         .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(73, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlcabeceraLayout.setVerticalGroup(
             pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
