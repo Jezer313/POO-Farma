@@ -62,6 +62,7 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         sepLineaVerde = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         pnlCentro = new javax.swing.JPanel();
         scrollTabla = new javax.swing.JScrollPane();
         tblFarmaceuticos = new javax.swing.JTable();
@@ -70,24 +71,25 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        pnlFondoFarmaceuticos.setBackground(new java.awt.Color(248, 250, 252));
+        pnlFondoFarmaceuticos.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoFarmaceuticos.setMinimumSize(new java.awt.Dimension(870, 550));
         pnlFondoFarmaceuticos.setPreferredSize(new java.awt.Dimension(870, 550));
         pnlFondoFarmaceuticos.setLayout(new java.awt.BorderLayout());
 
+        pnlSuperior.setBackground(new java.awt.Color(255, 255, 255));
         pnlSuperior.setPreferredSize(new java.awt.Dimension(870, 155));
 
-        lblIconoFarmaceutico.setText("icono");
+        lblIconoFarmaceutico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoAdministracionFarmaceuticos.png"))); // NOI18N
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(24, 38, 53));
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
         lblTitulo.setText("Farmaceuticos");
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(90, 105, 120));
         lblSubtitulo.setText("Gestion todos los farmaceuticos resgistrados en el sistema");
 
-        btnAgregar.setBackground(new java.awt.Color(18, 152, 112));
+        btnAgregar.setBackground(new java.awt.Color(37, 99, 166));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
@@ -95,76 +97,88 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
         btnAgregar.setPreferredSize(new java.awt.Dimension(135, 36));
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEditar.setForeground(new java.awt.Color(37, 99, 166));
         btnEditar.setText("Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.setPreferredSize(new java.awt.Dimension(135, 36));
         btnEditar.addActionListener(this::btnEditarActionPerformed);
 
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEliminar.setForeground(new java.awt.Color(185, 28, 28));
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(135, 36));
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
-        sepLineaVerde.setBackground(new java.awt.Color(18, 148, 118));
-        sepLineaVerde.setForeground(new java.awt.Color(18, 148, 118));
+        sepLineaVerde.setBackground(new java.awt.Color(89, 92, 94));
+        sepLineaVerde.setForeground(new java.awt.Color(60, 63, 65));
         sepLineaVerde.setPreferredSize(new java.awt.Dimension(160, 42));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
         pnlSuperior.setLayout(pnlSuperiorLayout);
         pnlSuperiorLayout.setHorizontalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addGap(394, 394, 394)
-                        .addComponent(lblTitulo))
+                        .addGap(6, 6, 6)
+                        .addComponent(sepLineaVerde, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(lblIconoFarmaceutico))
-                            .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32)
-                        .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSubtitulo)))
+                        .addGap(88, 88, 88)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(sepLineaVerde, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(lblIconoFarmaceutico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addComponent(lblSubtitulo))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         pnlSuperiorLayout.setVerticalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblTitulo)
-                .addGap(5, 5, 5)
-                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIconoFarmaceutico)
-                    .addComponent(lblSubtitulo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sepLineaVerde, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
+                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo))
+                    .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblIconoFarmaceutico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepLineaVerde, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnlFondoFarmaceuticos.add(pnlSuperior, java.awt.BorderLayout.NORTH);
 
+        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
         pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 25, 0, 25));
         pnlCentro.setLayout(new java.awt.BorderLayout());
 
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        scrollTabla.setBorder(null);
+
+        tblFarmaceuticos.setBackground(new java.awt.Color(255, 255, 255));
+        tblFarmaceuticos.setForeground(new java.awt.Color(24, 38, 53));
         tblFarmaceuticos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -186,8 +200,9 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
         });
         tblFarmaceuticos.setGridColor(new java.awt.Color(226, 232, 240));
         tblFarmaceuticos.setRowHeight(38);
+        tblFarmaceuticos.setSelectionBackground(new java.awt.Color(219, 234, 254));
         tblFarmaceuticos.setSelectionForeground(new java.awt.Color(24, 38, 53));
-        tblFarmaceuticos.setShowVerticalLines(true);
+        tblFarmaceuticos.setShowHorizontalLines(true);
         scrollTabla.setViewportView(tblFarmaceuticos);
         if (tblFarmaceuticos.getColumnModel().getColumnCount() > 0) {
             tblFarmaceuticos.getColumnModel().getColumn(0).setPreferredWidth(55);
@@ -202,9 +217,10 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
 
         pnlFondoFarmaceuticos.add(pnlCentro, java.awt.BorderLayout.CENTER);
 
+        pnlInferior.setBackground(new java.awt.Color(255, 255, 255));
         pnlInferior.setPreferredSize(new java.awt.Dimension(870, 40));
 
-        lblTotalFarmaceuticos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalFarmaceuticos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTotalFarmaceuticos.setForeground(new java.awt.Color(24, 38, 53));
         lblTotalFarmaceuticos.setText("Total de farmacéuticos: 0");
 
@@ -213,14 +229,14 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
         pnlInferiorLayout.setHorizontalGroup(
             pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInferiorLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(26, 26, 26)
                 .addComponent(lblTotalFarmaceuticos)
-                .addContainerGap(708, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
         pnlInferiorLayout.setVerticalGroup(
             pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInferiorLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lblTotalFarmaceuticos)
                 .addContainerGap())
         );
@@ -310,6 +326,7 @@ public class PaneladministracionFarmaceuticos extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblIconoFarmaceutico;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
