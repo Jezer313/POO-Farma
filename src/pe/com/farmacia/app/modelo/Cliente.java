@@ -14,10 +14,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cliente extends Persona {
     private int id_cliente;
+    private String correo;
     
     public Cliente(int id_cliente, String dni, String nombre,
                    String apellido, String telefono, String direccion) {
         super(dni, nombre, apellido, telefono, direccion);
         this.id_cliente = id_cliente;
+    }
+    
+    public Cliente(int id_cliente, String dni, String nombre,
+                   String apellido, String correo, String telefono, String direccion) {
+        super(dni, nombre, apellido, telefono, direccion);
+        this.id_cliente = id_cliente;
+        this.correo = correo;
     }
 }

@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
+
+import java.util.List;
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
+import pe.com.farmacia.app.modelo.Cliente;
 
 /**
  *
@@ -10,11 +11,35 @@ package pe.com.farmacia.app.vista;
  */
 public class PanelClientes extends javax.swing.JPanel {
 
+    private final Clientedao clientedao = new Clientedaoimpl();
+
     /**
      * Creates new form PanelUsuarios
      */
     public PanelClientes() {
         initComponents();
+        cargarTabla();
+    }
+
+    public void cargarTabla() {
+        javax.swing.table.DefaultTableModel modelo
+                = (javax.swing.table.DefaultTableModel) tblClientes.getModel();
+        modelo.setRowCount(0);
+
+        List<Cliente> lista = clientedao.listar();
+        for (Cliente c : lista) {
+            modelo.addRow(new Object[]{
+                c.getId_cliente(),
+                c.getDni(),
+                c.getNombre(),
+                c.getApellido(),
+                c.getCorreo(),
+                c.getTelefono(),
+                c.getDireccion()
+            });
+        }
+
+        lblTotalClientes.setText("Total de clientes: " + lista.size());
     }
 
     /**
@@ -87,7 +112,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DNI", "Nombre", "Apellido", "Correo electrónico", "Teléfono", "Dirección"
+                "ID", "DNI", "Nombre", "Apellido", "Correo", "Teléfono", "Dirección"
             }
         ) {
             Class[] types = new Class [] {
@@ -176,18 +201,88 @@ public class PanelClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar(
-            (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar(
-            (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        int fila = tblClientes.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un cliente de la tabla para editar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int id = Integer.parseInt(tblClientes.getValueAt(fila, 0).toString());
+        String dni = String.valueOf(tblClientes.getValueAt(fila, 1));
+        String nombre = String.valueOf(tblClientes.getValueAt(fila, 2));
+        String apellido = String.valueOf(tblClientes.getValueAt(fila, 3));
+        Object valorCorreo = tblClientes.getValueAt(fila, 4);
+        String correo = valorCorreo != null ? valorCorreo.toString() : "";
+        String telefono = String.valueOf(tblClientes.getValueAt(fila, 5));
+        String direccion = String.valueOf(tblClientes.getValueAt(fila, 6));
+
+        Cliente clienteSeleccionado = new Cliente(
+                id, dni, nombre, apellido, correo, telefono, direccion
+        );
+
+        pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEditar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEditar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.setCliente(clienteSeleccionado);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+
+        if (dialog.isGuardado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEliminar(
-            (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        int fila = tblClientes.getSelectedRow();
+        if (fila == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un cliente de la tabla para eliminar.",
+                    "Sin selección",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int id = Integer.parseInt(tblClientes.getValueAt(fila, 0).toString());
+        String dni = String.valueOf(tblClientes.getValueAt(fila, 1));
+        String nombre = String.valueOf(tblClientes.getValueAt(fila, 2));
+        String apellido = String.valueOf(tblClientes.getValueAt(fila, 3));
+        Object valorCorreo = tblClientes.getValueAt(fila, 4);
+        String correo = valorCorreo != null ? valorCorreo.toString() : "";
+        String telefono = String.valueOf(tblClientes.getValueAt(fila, 5));
+        String direccion = String.valueOf(tblClientes.getValueAt(fila, 6));
+
+        Cliente clienteSeleccionado = new Cliente(
+                id, dni, nombre, apellido, correo, telefono, direccion
+        );
+
+        pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEliminar dialog
+                = new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEliminar(
+                        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.setCliente(clienteSeleccionado);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+
+        if (dialog.isEliminado()) {
+            cargarTabla();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 

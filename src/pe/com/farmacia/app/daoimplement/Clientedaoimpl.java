@@ -22,18 +22,19 @@ public class Clientedaoimpl implements Clientedao {
     public boolean agregar(Cliente cliente) {
         String sql = """
                      INSERT INTO CLIENTE(DNI, NOMBRE, APELLIDO, CORREO, TELEFONO, DIRECCION)
-                     VALUES(?,?,?,?,?);
+                     VALUES(?,?,?,?,?,?);
                      """;
         try (Connection c = cn.getConnection(); PreparedStatement pst = c.prepareStatement(sql);) {
             pst.setString(1, cliente.getDni());
             pst.setString(2, cliente.getNombre());
             pst.setString(3, cliente.getApellido());
-            pst.setString(4, cliente.getTelefono());
-            pst.setString(5, cliente.getDireccion());
+            pst.setString(4, cliente.getCorreo());
+            pst.setString(5, cliente.getTelefono());
+            pst.setString(6, cliente.getDireccion());
             pst.executeUpdate();
             System.out.println("<< SE AGREGÓ UN NUEVO CLIENTE >>");
         } catch (SQLException e) {
-            System.out.println("<< NO SE PUDO AGREGAR EL CLIENTE >>");
+            System.out.println("<< NO SE PUDO AGREGAR EL CLIENTE >> " + e.getMessage());
             return false;
         }
         return true;
@@ -65,6 +66,7 @@ public class Clientedaoimpl implements Clientedao {
                         DNI = ?,
                         NOMBRE = ?,
                         APELLIDO = ?,
+                        CORREO = ?,
                         TELEFONO = ?,
                         DIRECCION = ?
                      WHERE
@@ -74,9 +76,10 @@ public class Clientedaoimpl implements Clientedao {
             pst.setString(1, cliente.getDni());
             pst.setString(2, cliente.getNombre());
             pst.setString(3, cliente.getApellido());
-            pst.setString(4, cliente.getTelefono());
-            pst.setString(5, cliente.getDireccion());
-            pst.setInt(6, cliente.getId_cliente());
+            pst.setString(4, cliente.getCorreo());
+            pst.setString(5, cliente.getTelefono());
+            pst.setString(6, cliente.getDireccion());
+            pst.setInt(7, cliente.getId_cliente());
             pst.executeUpdate();
             System.out.println("<< SE EDITARON LOS DATOS DEL CLIENTE >>");
         } catch (SQLException e) {
@@ -100,6 +103,7 @@ public class Clientedaoimpl implements Clientedao {
                         rs.getString("DNI"),
                         rs.getString("NOMBRE"),
                         rs.getString("APELLIDO"),
+                        rs.getString("CORREO"),
                         rs.getString("TELEFONO"),
                         rs.getString("DIRECCION")
                 ));
@@ -128,6 +132,7 @@ public class Clientedaoimpl implements Clientedao {
                             rs.getString("DNI"),
                             rs.getString("NOMBRE"),
                             rs.getString("APELLIDO"),
+                            rs.getString("CORREO"), 
                             rs.getString("TELEFONO"),
                             rs.getString("DIRECCION")
                     ));

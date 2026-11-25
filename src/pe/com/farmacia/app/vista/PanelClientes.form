@@ -220,7 +220,7 @@
                     <Column editable="true" title="DNI" type="java.lang.String"/>
                     <Column editable="true" title="Nombre" type="java.lang.String"/>
                     <Column editable="true" title="Apellido" type="java.lang.String"/>
-                    <Column editable="true" title="Correo electr&#xf3;nico" type="java.lang.String"/>
+                    <Column editable="true" title="Correo" type="java.lang.String"/>
                     <Column editable="true" title="Tel&#xe9;fono" type="java.lang.String"/>
                     <Column editable="true" title="Direcci&#xf3;n" type="java.lang.String"/>
                   </Table>
