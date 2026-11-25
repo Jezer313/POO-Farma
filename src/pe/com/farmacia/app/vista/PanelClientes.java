@@ -8,12 +8,12 @@ package pe.com.farmacia.app.vista;
  *
  * @author USER
  */
-public class PanelUsuarios extends javax.swing.JPanel {
+public class PanelClientes extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelUsuarios
      */
-    public PanelUsuarios() {
+    public PanelClientes() {
         initComponents();
     }
 
@@ -64,6 +64,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar cliente");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
@@ -80,17 +81,17 @@ public class PanelUsuarios extends javax.swing.JPanel {
         tblClientes.setForeground(new java.awt.Color(24, 38, 53));
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre completo", "DNI", "Teléfono", "1. Correo electrónico"
+                "ID", "DNI", "Nombre", "Apellido", "Correo electrónico", "Teléfono", "Dirección"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -175,14 +176,19 @@ public class PanelUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorAgregar(
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar(
             (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEditar(
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesAgregar(
             (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoClientesEliminar(
+            (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -53,13 +53,13 @@ public class CrearTabla {
             //tabla Clientes toco inventar
             """
             CREATE TABLE IF NOT EXISTS CLIENTE (
-                ID_CLIENTE  INTEGER PRIMARY KEY AUTOINCREMENT,
-                DNI         TEXT NOT NULL,
-                NOMBRE      TEXT NOT NULL,
-                APELLIDO    TEXT NOT NULL,
-                CORREO      TEXT NOT NULL,
-                TELEFONO    TEXT NOT NULL,
-                DIRECCION   TEXT NOT NULL
+                    ID_CLIENTE  INTEGER PRIMARY KEY AUTOINCREMENT,
+                    DNI         TEXT NOT NULL,
+                    NOMBRE      TEXT NOT NULL,
+                    APELLIDO    TEXT NOT NULL,
+                    CORREO      TEXT NOT NULL,
+                    TELEFONO    TEXT NOT NULL,
+                    DIRECCION   TEXT NOT NULL
             );
             """,
 

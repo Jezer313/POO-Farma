@@ -84,7 +84,7 @@
                                   <Component id="lblSubtitulo" min="-2" pref="262" max="-2" attributes="0"/>
                                   <Component id="lblTitulo" min="-2" pref="251" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="73" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

@@ -185,7 +185,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
         lblUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuarios.setText("Usuarios");
+        lblUsuarios.setText("Clientes");
         pnlUsuarios.add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 31, -1, -1));
 
         pnlFondito.add(pnlUsuarios);
@@ -262,7 +262,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
 
     private void pnlUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUsuariosMouseClicked
         marcarSeleccionado(pnlUsuarios);
-        mostrarModulo(new PanelUsuarios());
+        mostrarModulo(new PanelClientes());
     }//GEN-LAST:event_pnlUsuariosMouseClicked
 
     private void mostrarModulo(javax.swing.JPanel nuevoPanel) {
