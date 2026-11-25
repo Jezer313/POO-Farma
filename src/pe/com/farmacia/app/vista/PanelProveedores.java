@@ -38,6 +38,9 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
         pnlCentro = new javax.swing.JPanel();
         scrollTabla = new javax.swing.JScrollPane();
         tblProveedores = new javax.swing.JTable();
@@ -55,9 +58,9 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Proveedores");
 
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(100, 116, 139));
         lblSubtitulo.setText("Gestiona los proveedores y genera facturas de pedido.");
 
@@ -65,65 +68,96 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setOpaque(true);
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
+        btnEditar.setBackground(new java.awt.Color(37, 99, 166));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addActionListener(this::btnEditarActionPerformed);
 
+        btnEliminar.setBackground(new java.awt.Color(220, 53, 69));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(24, 38, 53));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEliminar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.setOpaque(true);
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/Provedores.png"))); // NOI18N
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
         pnlSuperior.setLayout(pnlSuperiorLayout);
         pnlSuperiorLayout.setHorizontalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(lblTitulo))
-                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(lblSubtitulo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 305, Short.MAX_VALUE))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTitulo)
+                    .addComponent(lblSubtitulo))
+                .addContainerGap(125, Short.MAX_VALUE))
+            .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                    .addGap(27, 27, 27)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(28, Short.MAX_VALUE)))
         );
         pnlSuperiorLayout.setVerticalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSubtitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                            .addComponent(lblTitulo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSubtitulo)))
+                    .addComponent(jLabel1))
+                .addGap(19, 19, 19)
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                .addContainerGap())
+            .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlSuperiorLayout.createSequentialGroup()
+                    .addContainerGap(103, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(38, 38, 38)))
         );
 
         pnlFondoProveedores.add(pnlSuperior, java.awt.BorderLayout.NORTH);
 
+        pnlCentro.setBackground(new java.awt.Color(245, 248, 247));
         pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 25, 0, 25));
         pnlCentro.setLayout(new java.awt.BorderLayout());
 
+        scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        scrollTabla.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        tblProveedores.setBackground(new java.awt.Color(255, 255, 255));
+        tblProveedores.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tblProveedores.setForeground(new java.awt.Color(24, 38, 53));
         tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -151,6 +185,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         tblProveedores.setSelectionBackground(new java.awt.Color(224, 242, 254));
         tblProveedores.setSelectionForeground(new java.awt.Color(24, 38, 53));
         tblProveedores.setShowVerticalLines(true);
+        tblProveedores.getTableHeader().setReorderingAllowed(false);
         scrollTabla.setViewportView(tblProveedores);
         if (tblProveedores.getColumnModel().getColumnCount() > 0) {
             tblProveedores.getColumnModel().getColumn(0).setPreferredWidth(60);
@@ -164,12 +199,14 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         pnlFondoProveedores.add(pnlCentro, java.awt.BorderLayout.CENTER);
 
-        pnlInferior.setBackground(new java.awt.Color(248, 250, 252));
+        pnlInferior.setBackground(new java.awt.Color(255, 255, 255));
         pnlInferior.setPreferredSize(new java.awt.Dimension(870, 40));
 
-        lblTotalProveedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalProveedores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTotalProveedores.setForeground(new java.awt.Color(24, 38, 53));
+        lblTotalProveedores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTotalProveedores.setText("Total de proveedores: 0");
+        lblTotalProveedores.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         javax.swing.GroupLayout pnlInferiorLayout = new javax.swing.GroupLayout(pnlInferior);
         pnlInferior.setLayout(pnlInferiorLayout);
@@ -178,14 +215,14 @@ public class PanelProveedores extends javax.swing.JPanel {
             .addGroup(pnlInferiorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTotalProveedores)
-                .addContainerGap(732, Short.MAX_VALUE))
+                .addContainerGap(722, Short.MAX_VALUE))
         );
         pnlInferiorLayout.setVerticalGroup(
             pnlInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInferiorLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblTotalProveedores)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlFondoProveedores.add(pnlInferior, java.awt.BorderLayout.SOUTH);
@@ -313,6 +350,9 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalProveedores;
