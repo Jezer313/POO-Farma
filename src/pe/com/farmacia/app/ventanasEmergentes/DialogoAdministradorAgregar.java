@@ -72,6 +72,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
         btnGuardarAdministrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoAgregarAdministrador.setBackground(new java.awt.Color(225, 225, 225));

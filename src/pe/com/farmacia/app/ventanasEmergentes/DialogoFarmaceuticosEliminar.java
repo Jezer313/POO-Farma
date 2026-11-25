@@ -168,7 +168,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(18, 36, 58));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
@@ -176,7 +176,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 34));
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -228,6 +228,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         txtDNI.setEditable(false);
         txtDNI.setBackground(new java.awt.Color(235, 238, 242));
+        txtDNI.setFocusable(false);
         txtDNI.addActionListener(this::txtDNIActionPerformed);
         pnlCampos.add(txtDNI);
 
@@ -239,6 +240,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         txtNombre.setEditable(false);
         txtNombre.setBackground(new java.awt.Color(235, 238, 242));
+        txtNombre.setFocusable(false);
         txtNombre.addActionListener(this::txtNombreActionPerformed);
         pnlCampos.add(txtNombre);
 
@@ -250,6 +252,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         txtApellido.setEditable(false);
         txtApellido.setBackground(new java.awt.Color(235, 238, 242));
+        txtApellido.setFocusable(false);
         txtApellido.addActionListener(this::txtApellidoActionPerformed);
         pnlCampos.add(txtApellido);
 
@@ -261,6 +264,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         txtDireccion.setEditable(false);
         txtDireccion.setBackground(new java.awt.Color(235, 238, 242));
+        txtDireccion.setFocusable(false);
         txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCampos.add(txtDireccion);
 
@@ -272,6 +276,7 @@ public class DialogoFarmaceuticosEliminar extends javax.swing.JDialog {
 
         txtTelefono.setEditable(false);
         txtTelefono.setBackground(new java.awt.Color(235, 238, 242));
+        txtTelefono.setFocusable(false);
         txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
         pnlCampos.add(txtTelefono);
 

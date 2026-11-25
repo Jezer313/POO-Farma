@@ -89,6 +89,7 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
         btnActualizarAdministrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoEditarAdministrador.setBackground(new java.awt.Color(225, 225, 225));

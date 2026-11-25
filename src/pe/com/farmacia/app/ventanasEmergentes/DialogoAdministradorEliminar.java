@@ -91,6 +91,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         sepHorizoltal1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         FondoEditarAdministrador.setBackground(new java.awt.Color(225, 225, 225));
         FondoEditarAdministrador.setMaximumSize(new java.awt.Dimension(450, 500));

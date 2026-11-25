@@ -39,7 +39,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
         txtContraseñaAdmin.setEchoChar((char) 0);
 
-        setTitle("Video ADN");
+        setTitle("Inicio de Sesion");
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -110,70 +110,38 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     }
 
     private void escenaAND() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                // Comprueba si ya existe un reproductor anterior.
-                if (oracleVid != null) {
-
-                    // Detiene la reproducción anterior.
-                    oracleVid.stop();
-
-                    // Libera los recursos del reproductor anterior.
-                    oracleVid.dispose();
-                }
-                File file = new File("media/iniciarSesion/videos/VideoADN.mp4");
-                // Crea el reproductor de video y lo guarda en el atributo de la clase.
-                oracleVid = new MediaPlayer(
-                        new Media(file.toURI().toString())
-                );
-                // Muestra un mensaje cuando el video presenta un error.
-                oracleVid.setOnError(() -> {
-                    System.out.println("ERROR DEL VIDEO: " + oracleVid.getError());
-                });
-
-// Muestra un mensaje cuando el video termina de prepararse.
-                oracleVid.setOnReady(() -> {
-                    System.out.println("VIDEO LISTO PARA REPRODUCIR");
-                });
-// Muestra el estado del reproductor cuando ocurre un error.
-                oracleVid.setOnError(() -> {
-                    System.out.println("ERROR: " + oracleVid.getError());
-                });
-
-// Muestra cuando el video comienza a reproducirse.
-                oracleVid.setOnPlaying(() -> {
-                    System.out.println("VIDEO REPRODUCIENDOSE");
-                });
-
-// Muestra cuando el video se detiene.
-                oracleVid.setOnStopped(() -> {
-                    System.out.println("VIDEO DETENIDO");
-                });
-// Muestra un mensaje si ocurre un error durante la reproducción.
-                oracleVid.setOnHalted(() -> {
-                    System.out.println("EL REPRODUCTOR SE HA DETENIDO");
-                });
-
-                MediaView mediaView = new MediaView(oracleVid);
-
-                // Ajustar dimensiones del video y mantener proporción centrada
-                mediaView.setFitWidth(600);
-                mediaView.setFitHeight(320);
-                mediaView.setPreserveRatio(true);
-
-                // StackPane centra el video automáticamente dentro del JFXPanel
-                javafx.scene.layout.StackPane root = new javafx.scene.layout.StackPane();
-                root.getChildren().add(mediaView);
-
-                jfxPanel.setScene(new Scene(root));
-
-                oracleVid.setVolume(0.7);
-                oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
-                oracleVid.play();
-                // Muestra el estado actual del reproductor.
-                System.out.println("ESTADO DEL VIDEO: " + oracleVid.getStatus());
+        Platform.runLater(() -> {
+            if (oracleVid != null) {
+                oracleVid.stop();
+                oracleVid.dispose();
             }
+
+            // 1. Busca en POO-Farma/Media/iniciarSesion/videos/Farmacia.mp4
+            File file = new File("Media/iniciarSesion/videos/FarmaciaOK.mp4");
+            
+            if (!file.exists()) {
+                System.out.println("NO SE ENCONTRÓ EL VIDEO EN: " + file.getAbsolutePath());
+                return;
+            }
+
+            oracleVid = new MediaPlayer(new Media(file.toURI().toString()));
+
+            oracleVid.setOnError(() -> System.out.println("ERROR DEL VIDEO: " + oracleVid.getError()));
+            oracleVid.setOnReady(() -> System.out.println("VIDEO LISTO PARA REPRODUCIR"));
+
+            MediaView mediaView = new MediaView(oracleVid);
+            mediaView.setFitWidth(600);
+            mediaView.setFitHeight(320);
+            mediaView.setPreserveRatio(false); // Para que llene todo el fondo 600x320 sin bordes negros
+
+            javafx.scene.layout.StackPane root = new javafx.scene.layout.StackPane();
+            root.getChildren().add(mediaView);
+
+            jfxPanel.setScene(new Scene(root));
+
+            oracleVid.setVolume(0.7);
+            oracleVid.setCycleCount(MediaPlayer.INDEFINITE);
+            oracleVid.play();
         });
     }
 
@@ -293,16 +261,14 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         };
         lblInciarSesion = new javax.swing.JLabel();
         btnContinuarAdmin = new javax.swing.JButton();
-        btnSingUp = new javax.swing.JButton();
-        btnAdmin = new javax.swing.JButton();
         lblContraseña = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         btnVerContrseña = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         FondoAND.setBackground(new java.awt.Color(102, 153, 255));
         FondoAND.setMaximumSize(new java.awt.Dimension(600, 320));
@@ -358,27 +324,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         btnContinuarAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnContinuarAdmin.addActionListener(this::btnContinuarAdminActionPerformed);
 
-        btnSingUp.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        btnSingUp.setForeground(new java.awt.Color(190, 205, 215));
-        btnSingUp.setText("<html><u>Registrarse</u><html>");
-        btnSingUp.setBorderPainted(false);
-        btnSingUp.setContentAreaFilled(false);
-        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSingUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSingUpMouseClicked(evt);
-            }
-        });
-        btnSingUp.addActionListener(this::btnSingUpActionPerformed);
-
-        btnAdmin.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        btnAdmin.setForeground(new java.awt.Color(190, 205, 215));
-        btnAdmin.setText("<html><u>Acceso Admin</u><html>");
-        btnAdmin.setBorderPainted(false);
-        btnAdmin.setContentAreaFilled(false);
-        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAdmin.addActionListener(this::btnAdminActionPerformed);
-
         lblContraseña.setForeground(new java.awt.Color(230, 235, 240));
         lblContraseña.setText("Contraseña");
 
@@ -394,26 +339,18 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         panelLoginLayout.setHorizontalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(33, 33, 33)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLoginLayout.createSequentialGroup()
-                                .addComponent(txtContraseñaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblInciarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(29, Short.MAX_VALUE))
-                    .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+                        .addComponent(txtContraseñaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInciarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,11 +369,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                     .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         FondoAND.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 20, 320, 260));
@@ -470,6 +403,13 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         lblNombre.setText("<html><div style=´txt-aligin: center;´>FARMACIA <br>\"EL TILIN\"</div></html>");
         FondoAND.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(13, 33, 45));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("<html>Gracias por<br>tu visista</html>");
+        jLabel1.setOpaque(true);
+        FondoAND.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 70, -1));
+
         getContentPane().add(FondoAND, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -480,57 +420,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
         logear();
     }//GEN-LAST:event_btnContinuarAdminActionPerformed
-
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-
-        // Oculta el panel de inicio de sesión sin destruirlo.
-        FondoAND.setVisible(false);
-
-        // Crea el panel de administrador y le pasa esta ventana.
-        VentanaIniciarSesionAdministrador ventanaAdmin = new VentanaIniciarSesionAdministrador(this);
-        // Permite ejecutar el botón CONTINUAR al presionar Enter.
-        getRootPane().setDefaultButton(ventanaAdmin.getBtnContinuarAdmin());
-
-        // Establece el tamaño de la ventana para el panel de administrador.
-        setSize(400, 550);
-
-// Centra la ventana en la pantalla.
-        setLocationRelativeTo(null);
-
-// Ajusta el tamaño del panel de administrador.
-        ventanaAdmin.setBounds(0, 0, 400, 550);
-
-        // Agrega el panel de administrador a la ventana.
-        getContentPane().add(ventanaAdmin);
-
-        // Cambia el título de la ventana.
-        setTitle("Administrador - Farmacia El Tilín");
-
-        // Actualiza la distribución y redibuja la ventana.
-        revalidate();
-        repaint();
-    }//GEN-LAST:event_btnAdminActionPerformed
-
-    private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
-        // TODO add your handling code here:
-
-        // Oculta el panel del video/login sin destruirlo para mantener el video vivo
-        FondoAND.setVisible(false);
-
-        // Instancia el panel de registro pasándole esta ventana (InicioDeSesion)
-        VentanaRegistroUsuario ventanaRegistro = new VentanaRegistroUsuario(this);
-        ventanaRegistro.setBounds(0, 0, getWidth(), getHeight());
-
-        // Agrega el panel de registro sobre la ventana actual
-        getContentPane().add(ventanaRegistro);
-
-        //Cambiar el titulo que esta puesto "Video ADN XDD"
-        setTitle("Registro de Usuario - Farmacia El Tilín");
-
-        //Refrescan ventanita para que se haga el nuevo panel
-        revalidate();
-        repaint();
-    }//GEN-LAST:event_btnSingUpActionPerformed
 
     private void txtUsuarioAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioAdminActionPerformed
         // TODO add your handling code here:
@@ -601,10 +490,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVerContrseñaActionPerformed
 
-    private void btnSingUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSingUpMouseClicked
-
-    }//GEN-LAST:event_btnSingUpMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -641,10 +526,9 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAND;
-    private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnContinuarAdmin;
-    private javax.swing.JButton btnSingUp;
     private javax.swing.JButton btnVerContrseña;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblInciarSesion;
     private javax.swing.JLabel lblLogo;
