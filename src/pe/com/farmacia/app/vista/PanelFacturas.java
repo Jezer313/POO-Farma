@@ -1,9 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package pe.com.farmacia.app.vista;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.dao.DetalleFacturadao;
+import pe.com.farmacia.app.dao.Facturadao;
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
+import pe.com.farmacia.app.daoimplement.DetalleFacturadaoimpl;
+import pe.com.farmacia.app.daoimplement.Facturadaoimpl;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
+import pe.com.farmacia.app.modelo.Cliente;
+import pe.com.farmacia.app.modelo.DetalleFactura;
+import pe.com.farmacia.app.modelo.Factura;
 import pe.com.farmacia.app.ventanasEmergentes.DialogoFacturaAgregar;
 
 /**
@@ -11,12 +22,119 @@ import pe.com.farmacia.app.ventanasEmergentes.DialogoFacturaAgregar;
  * @author USER
  */
 public class PanelFacturas extends javax.swing.JPanel {
-
+    
+    private final Facturadao facturadao = new Facturadaoimpl();
+    private final DetalleFacturadao detalleFacturadao = new DetalleFacturadaoimpl();
+    private final Clientedao clientedao = new Clientedaoimpl();
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    private List<Factura> facturasActuales = new ArrayList<>();
+    
     /**
      * Creates new form PanelFacturas
      */
+    
     public PanelFacturas() {
         initComponents();
+        cargarFacturas();
+        configurarSeleccionFactura();
+    }
+    
+    public void cargarFacturas() {
+        javax.swing.table.DefaultTableModel modelo =
+                (javax.swing.table.DefaultTableModel) tblFacturas.getModel();
+        modelo.setRowCount(0);
+
+        facturasActuales = facturadao.listar();
+        java.util.List<pe.com.farmacia.app.modelo.Cliente> clientes = clientedao.listar();
+
+        for (pe.com.farmacia.app.modelo.Factura f : facturasActuales) {
+            modelo.addRow(new Object[]{
+                f.getCodigo(),
+                obtenerNombreCliente(f.getId_cliente(), clientes),
+                f.getFecha(),
+                String.format("S/ %.2f", f.getCostototal())
+            });
+        }
+
+        lblTotalFacturas.setText("Total de facturas: " + facturasActuales.size());
+
+        if (!facturasActuales.isEmpty()) {
+            tblFacturas.setRowSelectionInterval(0, 0);
+            mostrarVistaPrevia(facturasActuales.get(0), clientes);
+        } else {
+            limpiarVistaPrevia();
+        }
+    }
+
+    private void configurarSeleccionFactura() {
+        tblFacturas.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int fila = tblFacturas.getSelectedRow();
+                if (fila >= 0 && fila < facturasActuales.size()) {
+                    mostrarVistaPrevia(facturasActuales.get(fila), clientedao.listar());
+                }
+            }
+        });
+    }
+
+    private String obtenerNombreCliente(int idCliente,
+            java.util.List<pe.com.farmacia.app.modelo.Cliente> clientes) {
+        for (pe.com.farmacia.app.modelo.Cliente c : clientes) {
+            if (c.getId_cliente() == idCliente) {
+                return c.getNombre() + " " + c.getApellido();
+            }
+        }
+        return "Cliente #" + idCliente;
+    }
+
+    private String obtenerNombreMedicamento(int idMedicamento,
+            java.util.List<pe.com.farmacia.app.modelo.Medicamento> medicamentos) {
+        for (pe.com.farmacia.app.modelo.Medicamento m : medicamentos) {
+            if (m.getId_medicamento() == idMedicamento) {
+                return m.getNombre_comercial();
+            }
+        }
+        return "Medicamento #" + idMedicamento;
+    }
+
+    private void mostrarVistaPrevia(pe.com.farmacia.app.modelo.Factura factura,
+            java.util.List<pe.com.farmacia.app.modelo.Cliente> clientes) {
+        if (factura == null) {
+            limpiarVistaPrevia();
+            return;
+        }
+
+        lblNumeroFactura.setText("N.º: " + factura.getCodigo());
+        lblFechaFactura.setText("Fecha: " + factura.getFecha());
+        lblNombreCliente.setText("Cliente: " + obtenerNombreCliente(factura.getId_cliente(), clientes));
+        lblTotalFactura.setText(String.format("S/ %.2f", factura.getCostototal()));
+
+        javax.swing.table.DefaultTableModel modeloDetalle =
+                (javax.swing.table.DefaultTableModel) tblDetalleFactura.getModel();
+        modeloDetalle.setRowCount(0);
+
+        java.util.List<pe.com.farmacia.app.modelo.DetalleFactura> detalles =
+                detalleFacturadao.listarPorFactura(factura.getId_factura());
+        java.util.List<pe.com.farmacia.app.modelo.Medicamento> medicamentos =
+                medicamentodao.listar();
+
+        for (pe.com.farmacia.app.modelo.DetalleFactura d : detalles) {
+            double subtotal = d.getCantidad() * d.getPrecio();
+            modeloDetalle.addRow(new Object[]{
+                obtenerNombreMedicamento(d.getId_medicamento(), medicamentos),
+                String.valueOf(d.getCantidad()),
+                String.format("S/ %.2f", d.getPrecio()),
+                String.format("S/ %.2f", subtotal)
+            });
+        }
+    }
+
+    private void limpiarVistaPrevia() {
+        lblNumeroFactura.setText("N.º: ---");
+        lblFechaFactura.setText("Fecha: ---");
+        lblNombreCliente.setText("Cliente: ---");
+        lblTotalFactura.setText("S/ 0.00");
+        ((javax.swing.table.DefaultTableModel) tblDetalleFactura.getModel()).setRowCount(0);
     }
 
     /**
@@ -32,7 +150,6 @@ public class PanelFacturas extends javax.swing.JPanel {
         lblTitulo = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         pnlListadoFacturas = new javax.swing.JPanel();
         lblTituloListado = new javax.swing.JLabel();
         scrollFacturas = new javax.swing.JScrollPane();
@@ -76,13 +193,6 @@ public class PanelFacturas extends javax.swing.JPanel {
         btnAgregar.setFocusable(false);
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
-        btnEliminar.setBackground(new java.awt.Color(37, 99, 166));
-        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setFocusable(false);
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
-
         pnlListadoFacturas.setBackground(new java.awt.Color(255, 255, 255));
         pnlListadoFacturas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 243, 232)));
 
@@ -106,9 +216,16 @@ public class PanelFacturas extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tblFacturas.setGridColor(new java.awt.Color(223, 243, 232));
@@ -194,9 +311,16 @@ public class PanelFacturas extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tblDetalleFactura.setGridColor(new java.awt.Color(223, 243, 232));
@@ -309,25 +433,25 @@ public class PanelFacturas extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
-                        .addComponent(pnlListadoFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(pnlVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblSubtitulo)
-                                .addComponent(lblTitulo))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
+                        .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                                .addComponent(pnlListadoFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(pnlVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubtitulo)
+                            .addComponent(lblTitulo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))))
         );
         FondoPanelFacturasLayout.setVerticalGroup(
             FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,9 +461,7 @@ public class PanelFacturas extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
                         .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(FondoPanelFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(FondoPanelFacturasLayout.createSequentialGroup()
                                 .addComponent(lblTitulo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -357,21 +479,18 @@ public class PanelFacturas extends javax.swing.JPanel {
 
         add(FondoPanelFacturas, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogoFacturaAgregar(
-        (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
+        DialogoFacturaAgregar dialog = new DialogoFacturaAgregar(
+                (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoPanelFacturas;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimirFactura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;

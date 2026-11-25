@@ -4,6 +4,25 @@
  */
 package pe.com.farmacia.app.ventanasEmergentes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pe.com.farmacia.app.dao.Clientedao;
+import pe.com.farmacia.app.dao.DetalleFacturadao;
+import pe.com.farmacia.app.dao.Facturadao;
+import pe.com.farmacia.app.dao.Medicamentodao;
+import pe.com.farmacia.app.daoimplement.Clientedaoimpl;
+import pe.com.farmacia.app.daoimplement.DetalleFacturadaoimpl;
+import pe.com.farmacia.app.daoimplement.Facturadaoimpl;
+import pe.com.farmacia.app.daoimplement.Medicamentodaoimpl;
+import pe.com.farmacia.app.modelo.Cliente;
+import pe.com.farmacia.app.modelo.DetalleFactura;
+import pe.com.farmacia.app.modelo.Factura;
+import pe.com.farmacia.app.modelo.Medicamento;
+
 /**
  *
  * @author Playe
@@ -11,15 +30,24 @@ package pe.com.farmacia.app.ventanasEmergentes;
 public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoFacturaAgregar.class.getName());
-
+    private final Medicamentodao medicamentodao = new Medicamentodaoimpl();
+    private final Clientedao clientedao = new Clientedaoimpl();
+    private final Facturadao facturadao = new Facturadaoimpl();
+    private final DetalleFacturadao detalleFacturadao = new DetalleFacturadaoimpl();
+    
     /**
      * Creates new form DialogAgregarFactura
      */
     public DialogoFacturaAgregar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicializarFormulario();
     }
     
+    private List<Medicamento> listaMedicamentos = new ArrayList<>();
+    private final List<DetalleFactura> itemsFactura = new ArrayList<>();
+    private double totalFactura = 0.0;
+    private int cantidadTotalUnidades = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,6 +157,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         btnAgregarProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProducto.setText("+ Agregar producto");
         btnAgregarProducto.setFocusable(false);
+        btnAgregarProducto.addActionListener(this::btnAgregarProductoActionPerformed);
 
         lblDatosCliente.setBackground(new java.awt.Color(219, 234, 247));
         lblDatosCliente.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -310,15 +339,208 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void inicializarFormulario() {
+        ((DefaultTableModel) tblProductosFactura.getModel()).setRowCount(0);
+        cargarMedicamentos();
 
+        cmbProductos.addActionListener(e -> actualizarPrecioSeleccionado());
+        btnAgregarProducto.addActionListener(this::btnAgregarProductoActionPerformed);
+    }
+
+    private void cargarMedicamentos() {
+        cmbProductos.removeAllItems();
+        cmbProductos.addItem("Seleccionar producto...");
+        listaMedicamentos = medicamentodao.listar();
+
+        for (Medicamento m : listaMedicamentos) {
+            cmbProductos.addItem(m.getNombre_comercial() + " (" + m.getCodigo() + ")");
+        }
+    }
+
+    private void actualizarPrecioSeleccionado() {
+        int idx = cmbProductos.getSelectedIndex();
+        if (idx <= 0 || idx > listaMedicamentos.size()) {
+            txtPrecioUnitario.setText("0.00");
+            return;
+        }
+        Medicamento med = listaMedicamentos.get(idx - 1);
+        txtPrecioUnitario.setText(String.format("%.2f", med.getPreciounitario()));
+    }
+    
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 // Cierra la ventana emergente sin guardar los cambios.
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFacturaActionPerformed
-        // TODO add your handling code here:
+        String dni = txtDniCliente.getText().trim();
+        String nombreCliente = txtNombreCliente.getText().trim();
+
+        if (dni.isEmpty() || nombreCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Ingresa el DNI y el nombre del cliente.",
+                    "Datos del cliente incompletos",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        if (itemsFactura.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Agrega al menos un producto a la factura.",
+                    "Sin productos",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        List<Cliente> encontrados = clientedao.buscar(dni);
+        if (encontrados.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se encontró un cliente registrado con el DNI: " + dni,
+                    "Cliente no encontrado",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int idCliente = encontrados.get(0).getId_cliente();
+        int idFarmaceutico = 1;
+        String fechaActual = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String codigoFactura = generarSiguienteCodigo();
+
+        StringBuilder descripcionBuilder = new StringBuilder();
+        DefaultTableModel modelo = (DefaultTableModel) tblProductosFactura.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            if (i > 0) {
+                descripcionBuilder.append(", ");
+            }
+            descripcionBuilder.append(modelo.getValueAt(i, 0))
+                    .append(" x")
+                    .append(modelo.getValueAt(i, 1));
+        }
+
+        double precioPromedio = cantidadTotalUnidades > 0
+                ? (totalFactura / cantidadTotalUnidades)
+                : 0.0;
+
+        Factura factura = new Factura(
+                0,
+                codigoFactura,
+                descripcionBuilder.toString(),
+                fechaActual,
+                precioPromedio,
+                totalFactura,
+                cantidadTotalUnidades,
+                idCliente,
+                idFarmaceutico
+        );
+
+        if (!facturadao.agregar(factura)) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo registrar la factura en la base de datos.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+
+        int idFacturaGenerada = obtenerUltimoIdFactura();
+        if (idFacturaGenerada > 0) {
+            for (DetalleFactura det : itemsFactura) {
+                det.setId_factura(idFacturaGenerada);
+                detalleFacturadao.agregar(det);
+            }
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Factura " + codigoFactura + " registrada correctamente.",
+                "Éxito",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        dispose();
+    }
+
+    private String generarSiguienteCodigo() {
+        List<Factura> existentes = facturadao.listar();
+        int siguiente = existentes.size() + 1;
+        return String.format("F001-%06d", siguiente);
+    }
+
+    private int obtenerUltimoIdFactura() {
+        List<Factura> existentes = facturadao.listar();
+        int maxId = 0;
+        for (Factura f : existentes) {
+            if (f.getId_factura() > maxId) {
+                maxId = f.getId_factura();
+            }
+        }
+        return maxId;
     }//GEN-LAST:event_btnGuardarFacturaActionPerformed
+
+    private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
+        int idx = cmbProductos.getSelectedIndex();
+        if (idx <= 0 || idx > listaMedicamentos.size()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un medicamento de la lista.",
+                    "Producto requerido",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        int cantidad;
+        try {
+            cantidad = Integer.parseInt(txtCantidad.getText().trim());
+            if (cantidad <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Ingresa una cantidad válida mayor a 0.",
+                    "Cantidad inválida",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Medicamento med = listaMedicamentos.get(idx - 1);
+        double precioUnitario = med.getPreciounitario();
+        double subtotal = cantidad * precioUnitario;
+
+        DefaultTableModel modelo = (DefaultTableModel) tblProductosFactura.getModel();
+        modelo.addRow(new Object[]{
+            med.getNombre_comercial(),
+            String.valueOf(cantidad),
+            String.format("%.2f", precioUnitario),
+            String.format("%.2f", subtotal)
+        });
+
+        DetalleFactura detalle = new DetalleFactura(
+                0,
+                0,
+                med.getId_medicamento(),
+                cantidad,
+                precioUnitario
+        );
+        itemsFactura.add(detalle);
+
+        totalFactura += subtotal;
+        cantidadTotalUnidades += cantidad;
+        lblTotalFactura.setText(String.format("S/ %.2f", totalFactura));
+
+        txtCantidad.setText("1");
+        cmbProductos.setSelectedIndex(0);
+        txtPrecioUnitario.setText("0.00");
+    }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     /**
      * @param args the command line arguments
