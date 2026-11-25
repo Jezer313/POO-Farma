@@ -53,13 +53,16 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         txtNombreCliente = new javax.swing.JTextField();
         lblEtiquetaTotal = new javax.swing.JLabel();
         lblDniCliente = new javax.swing.JLabel();
+        sopHorizontal = new javax.swing.JSeparator();
+        sepVertical = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
+        getContentPane().setLayout(new java.awt.BorderLayout(450, 542));
 
-        FondoAgregarFactura.setBackground(new java.awt.Color(225, 225, 225));
-        FondoAgregarFactura.setMinimumSize(new java.awt.Dimension(450, 500));
-        FondoAgregarFactura.setPreferredSize(new java.awt.Dimension(450, 500));
+        FondoAgregarFactura.setBackground(new java.awt.Color(255, 255, 255));
+        FondoAgregarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        FondoAgregarFactura.setMinimumSize(new java.awt.Dimension(450, 542));
+        FondoAgregarFactura.setPreferredSize(new java.awt.Dimension(450, 542));
 
         lblTotalFactura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTotalFactura.setForeground(new java.awt.Color(51, 153, 0));
@@ -107,7 +110,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         lblCantidad.setForeground(new java.awt.Color(30, 41, 59));
         lblCantidad.setText("Cantidad:");
 
-        jLabel1.setText("Imagen");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoAgregarFactura.png"))); // NOI18N
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
@@ -170,6 +173,12 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
         lblDniCliente.setForeground(new java.awt.Color(30, 41, 59));
         lblDniCliente.setText("DNI:");
 
+        sopHorizontal.setForeground(new java.awt.Color(203, 213, 225));
+        sopHorizontal.setPreferredSize(new java.awt.Dimension(130, 34));
+
+        sepVertical.setForeground(new java.awt.Color(100, 116, 139));
+        sepVertical.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
         javax.swing.GroupLayout FondoAgregarFacturaLayout = new javax.swing.GroupLayout(FondoAgregarFactura);
         FondoAgregarFactura.setLayout(FondoAgregarFacturaLayout);
         FondoAgregarFacturaLayout.setHorizontalGroup(
@@ -191,7 +200,16 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
                                 .addGap(19, 19, 19)
                                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSeccionProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblTitulo)
+                                            .addComponent(lblSubtitulo)))
+                                    .addComponent(sopHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -221,35 +239,33 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
                                                 .addComponent(lblSeleccionarProducto)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
-                            .addGap(34, 34, 34)
-                            .addComponent(jLabel1)
-                            .addGap(49, 49, 49)
-                            .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTitulo)
-                                .addComponent(lblSubtitulo))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         FondoAgregarFacturaLayout.setVerticalGroup(
             FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(lblSubtitulo)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoAgregarFacturaLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
-                        .addGap(29, 29, 29)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoAgregarFacturaLayout.createSequentialGroup()
+                        .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(lblSubtitulo))
+                            .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
+                .addComponent(sopHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDatosCliente)
                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FondoAgregarFacturaLayout.createSequentialGroup()
@@ -287,7 +303,7 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
                 .addGroup(FondoAgregarFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(FondoAgregarFactura, java.awt.BorderLayout.CENTER);
@@ -360,6 +376,8 @@ public class DialogoFacturaAgregar extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalFactura;
     private javax.swing.JScrollPane scrollProductosFactura;
+    private javax.swing.JSeparator sepVertical;
+    private javax.swing.JSeparator sopHorizontal;
     private javax.swing.JTable tblProductosFactura;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtDniCliente;

@@ -156,7 +156,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         btnCancelarEditar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnCancelarEditar.setForeground(new java.awt.Color(30, 41, 59));
         btnCancelarEditar.setText("Cancelar");
-        btnCancelarEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelarEditar.setFocusable(false);
         btnCancelarEditar.setPreferredSize(new java.awt.Dimension(130, 343));
         btnCancelarEditar.addActionListener(this::btnCancelarEditarActionPerformed);
@@ -165,7 +165,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         btnActualizarAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnActualizarAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarAdministrador.setText("Guardar");
-        btnActualizarAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizarAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizarAdministrador.setFocusable(false);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
@@ -194,7 +194,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         pnlEncabezado.setBackground(new java.awt.Color(255, 255, 255));
         pnlEncabezado.setPreferredSize(new java.awt.Dimension(400, 75));
 
-        lblIcono.setText("imagen");
+        lblIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pe/com/farmacia/app/media/imagenes/LogoAdministradorEliminar.png"))); // NOI18N
         lblIcono.setPreferredSize(new java.awt.Dimension(48, 48));
 
         sepVertical.setForeground(new java.awt.Color(100, 116, 139));
@@ -222,23 +222,21 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                         .addComponent(lblAdvertencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbltitulo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addComponent(lbltitulo)
+                    .addComponent(lblSubtitulo))
                 .addGap(20, 20, 20))
         );
         pnlEncabezadoLayout.setVerticalGroup(
@@ -247,20 +245,21 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblSubtitulo)
+                                .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                         .addComponent(lbltitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSubtitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(27, 27, 27)
                         .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblAdvertencia)))
-                    .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAdvertencia))))
                 .addGap(11, 11, 11))
         );
 
