@@ -22,7 +22,7 @@
     <Container class="javax.swing.JPanel" name="FondoPanelFacturas">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f7" green="f8" red="f5" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[850, 550]"/>
@@ -199,7 +199,7 @@
                       <Component id="lblTituloListado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollFacturas" min="-2" pref="320" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblTotalFacturas" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -213,7 +213,7 @@
                   <Font name="Segoe UI" size="16" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="36" green="4e" red="6" type="rgb"/>
+                  <Color blue="a6" green="63" red="25" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Facturas registradas"/>
               </Properties>
@@ -282,10 +282,10 @@
             <Component class="javax.swing.JLabel" name="lblTotalFacturas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="36" green="4e" red="6" type="rgb"/>
+                  <Color blue="35" green="26" red="18" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Total de facturas: 0"/>
               </Properties>
@@ -295,7 +295,7 @@
         <Container class="javax.swing.JPanel" name="pnlVistaPrevia">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fa" green="f1" red="e8" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
 

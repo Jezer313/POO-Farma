@@ -57,7 +57,7 @@ public class PanelFacturas extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout(850, 550));
 
-        FondoPanelFacturas.setBackground(new java.awt.Color(245, 248, 247));
+        FondoPanelFacturas.setBackground(new java.awt.Color(255, 255, 255));
         FondoPanelFacturas.setMinimumSize(new java.awt.Dimension(850, 550));
         FondoPanelFacturas.setPreferredSize(new java.awt.Dimension(850, 550));
 
@@ -87,7 +87,7 @@ public class PanelFacturas extends javax.swing.JPanel {
         pnlListadoFacturas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 243, 232)));
 
         lblTituloListado.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblTituloListado.setForeground(new java.awt.Color(6, 78, 54));
+        lblTituloListado.setForeground(new java.awt.Color(37, 99, 166));
         lblTituloListado.setText("Facturas registradas");
 
         tblFacturas.setBackground(new java.awt.Color(255, 255, 255));
@@ -117,8 +117,8 @@ public class PanelFacturas extends javax.swing.JPanel {
         tblFacturas.setSelectionForeground(new java.awt.Color(6, 78, 54));
         scrollFacturas.setViewportView(tblFacturas);
 
-        lblTotalFacturas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblTotalFacturas.setForeground(new java.awt.Color(6, 78, 54));
+        lblTotalFacturas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTotalFacturas.setForeground(new java.awt.Color(24, 38, 53));
         lblTotalFacturas.setText("Total de facturas: 0");
 
         javax.swing.GroupLayout pnlListadoFacturasLayout = new javax.swing.GroupLayout(pnlListadoFacturas);
@@ -140,12 +140,12 @@ public class PanelFacturas extends javax.swing.JPanel {
                 .addComponent(lblTituloListado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTotalFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlVistaPrevia.setBackground(new java.awt.Color(232, 241, 250));
+        pnlVistaPrevia.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTituloVistaPrevia.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblTituloVistaPrevia.setForeground(new java.awt.Color(37, 99, 166));

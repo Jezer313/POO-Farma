@@ -79,7 +79,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        pnlFondoInventario.setBackground(new java.awt.Color(245, 248, 247));
+        pnlFondoInventario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFondoInventario.setMinimumSize(new java.awt.Dimension(870, 550));
         pnlFondoInventario.setPreferredSize(new java.awt.Dimension(870, 550));
         pnlFondoInventario.setLayout(new java.awt.BorderLayout());
@@ -91,7 +91,8 @@ public class PanelInventario extends javax.swing.JPanel {
         lblTitulo.setForeground(new java.awt.Color(37, 99, 166));
         lblTitulo.setText("INVENTARIO DE MEDICAMENTOS");
 
-        lblTotal.setForeground(new java.awt.Color(6, 78, 54));
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(24, 38, 53));
         lblTotal.setText("Total de medicamentos en el inventario (((insertar numero)");
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -175,9 +176,10 @@ public class PanelInventario extends javax.swing.JPanel {
         btnMalos.addActionListener(this::btnMalosActionPerformed);
 
         scrollTabla.setBackground(new java.awt.Color(255, 255, 255));
+        scrollTabla.setBorder(null);
 
-        tblMedicamentos.setBackground(new java.awt.Color(236, 253, 245));
-        tblMedicamentos.setForeground(new java.awt.Color(15, 23, 42));
+        tblMedicamentos.setBackground(new java.awt.Color(255, 255, 255));
+        tblMedicamentos.setForeground(new java.awt.Color(24, 38, 53));
         tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -194,7 +196,7 @@ public class PanelInventario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblMedicamentos.setGridColor(new java.awt.Color(241, 245, 249));
+        tblMedicamentos.setGridColor(new java.awt.Color(255, 255, 255));
         tblMedicamentos.setRowHeight(38);
         tblMedicamentos.setShowGrid(true);
         scrollTabla.setViewportView(tblMedicamentos);
