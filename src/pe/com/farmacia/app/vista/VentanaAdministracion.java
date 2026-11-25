@@ -16,7 +16,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         configurarCursoresMenu();
         //para que se muestre lo de inventario al principio
         marcarSeleccionado(pnlInventario);
-    mostrarModulo(new PanelInventario());
+        mostrarModulo(new PanelInventario());
     }
 
     public VentanaAdministracion(FrameInicioSesion ventanaLogin) {
@@ -64,7 +64,7 @@ public class VentanaAdministracion extends javax.swing.JPanel {
         pnlBase.setPreferredSize(new java.awt.Dimension(1100, 650));
         pnlBase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlCabecera.setBackground(new java.awt.Color(23, 65, 115));
+        pnlCabecera.setBackground(new java.awt.Color(45, 105, 175));
         pnlCabecera.setPreferredSize(new java.awt.Dimension(1100, 100));
         pnlCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -211,8 +211,8 @@ public class VentanaAdministracion extends javax.swing.JPanel {
             pnlUsuarios
         };
 
-        java.awt.Color colorNormal = new java.awt.Color(18, 24, 22);
-        java.awt.Color colorActivo = new java.awt.Color(28, 72, 54);
+        java.awt.Color colorNormal = new java.awt.Color(18, 35, 55);
+        java.awt.Color colorActivo = new java.awt.Color(23, 65, 115);
 
         for (javax.swing.JPanel panel : panelesMenu) {
             panel.setBackground(panel == panelActivo ? colorActivo : colorNormal);
