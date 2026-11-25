@@ -80,6 +80,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         btnGuardarEditarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         pnlcabecera.setBackground(new java.awt.Color(255, 255, 255));
@@ -153,12 +154,16 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         lblNombre.setForeground(new java.awt.Color(18, 15, 94));
         lblNombre.setText("Nombre");
         pnlCentro.add(lblNombre);
+
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
         pnlCentro.add(txtNombre);
 
         lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(18, 15, 94));
         lblApellido.setText("Apellido");
         pnlCentro.add(lblApellido);
+
+        txtApellido.addActionListener(this::txtApellidoActionPerformed);
         pnlCentro.add(txtApellido);
 
         lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -167,6 +172,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         pnlCentro.add(lblCorreoElectronico);
 
         txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
+        txtCorreoElectronico.addActionListener(this::txtCorreoElectronicoActionPerformed);
         pnlCentro.add(txtCorreoElectronico);
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -175,6 +181,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         pnlCentro.add(lblTelefono);
 
         txtTelefono.setForeground(new java.awt.Color(30, 41, 59));
+        txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
         pnlCentro.add(txtTelefono);
 
         lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -183,6 +190,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         pnlCentro.add(lblDireccion);
 
         txtDireccion.setForeground(new java.awt.Color(30, 41, 59));
+        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCentro.add(txtDireccion);
 
         pnlPie.setBackground(new java.awt.Color(218, 248, 255));
@@ -200,7 +208,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
         btnGuardarEditarCliente.setBackground(new java.awt.Color(51, 153, 0));
         btnGuardarEditarCliente.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnGuardarEditarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarEditarCliente.setText("Guardar");
+        btnGuardarEditarCliente.setText("Editar");
         btnGuardarEditarCliente.setFocusable(false);
         btnGuardarEditarCliente.setPreferredSize(new java.awt.Dimension(130, 34));
         btnGuardarEditarCliente.addActionListener(this::btnGuardarEditarClienteActionPerformed);
@@ -261,6 +269,7 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
 
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
         // TODO add your handling code here:
+        txtNombre.requestFocusInWindow();
     }//GEN-LAST:event_txtDNIActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -309,6 +318,31 @@ public class DialogoClientesEditar extends javax.swing.JDialog {
             );
         }
     }//GEN-LAST:event_btnGuardarEditarClienteActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        txtApellido.requestFocusInWindow();
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+        txtCorreoElectronico.requestFocusInWindow();
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
+        // TODO add your handling code here:
+        txtTelefono.requestFocusInWindow();
+    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+        txtDireccion.requestFocusInWindow();
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+        btnGuardarEditarCliente.doClick();
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     /**
      * @param args the command line arguments

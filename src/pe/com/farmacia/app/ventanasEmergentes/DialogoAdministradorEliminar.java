@@ -194,10 +194,10 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         btnCancelarEditar.setPreferredSize(new java.awt.Dimension(130, 343));
         btnCancelarEditar.addActionListener(this::btnCancelarEditarActionPerformed);
 
-        btnActualizarAdministrador.setBackground(new java.awt.Color(51, 153, 0));
+        btnActualizarAdministrador.setBackground(new java.awt.Color(255, 0, 0));
         btnActualizarAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnActualizarAdministrador.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizarAdministrador.setText("Guardar");
+        btnActualizarAdministrador.setText("Eliminar");
         btnActualizarAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizarAdministrador.setFocusable(false);
         btnActualizarAdministrador.addActionListener(this::btnActualizarAdministradorActionPerformed);
