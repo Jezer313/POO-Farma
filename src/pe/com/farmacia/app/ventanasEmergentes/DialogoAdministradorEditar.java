@@ -125,6 +125,7 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
 
         FondoEditarAdministrador.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
+        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
         pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
         pnlCentro.setLayout(new java.awt.GridLayout(7, 2, 0, 16));
 
@@ -193,6 +194,7 @@ public class DialogoAdministradorEditar extends javax.swing.JDialog {
 
         FondoEditarAdministrador.add(pnlCentro, java.awt.BorderLayout.CENTER);
 
+        pnlPie.setBackground(new java.awt.Color(218, 248, 255));
         pnlPie.setPreferredSize(new java.awt.Dimension(450, 53));
 
         btnCancelarEditar.setBackground(new java.awt.Color(220, 226, 232));

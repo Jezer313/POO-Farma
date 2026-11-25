@@ -79,6 +79,7 @@ import pe.com.farmacia.app.modelo.Administrador;
         FondoAgregarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
         FondoAgregarAdministrador.setLayout(new java.awt.BorderLayout());
 
+        pnlcabecera.setBackground(new java.awt.Color(255, 255, 255));
         pnlcabecera.setPreferredSize(new java.awt.Dimension(450, 100));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -107,14 +108,11 @@ import pe.com.farmacia.app.modelo.Administrador;
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
-                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
-                                .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43))))))
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))))
         );
         pnlcabeceraLayout.setVerticalGroup(
             pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +137,7 @@ import pe.com.farmacia.app.modelo.Administrador;
 
         FondoAgregarAdministrador.add(pnlcabecera, java.awt.BorderLayout.NORTH);
 
+        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
         pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
         pnlCentro.setLayout(new java.awt.GridLayout(7, 2, 0, 16));
 
@@ -198,6 +197,7 @@ import pe.com.farmacia.app.modelo.Administrador;
 
         FondoAgregarAdministrador.add(pnlCentro, java.awt.BorderLayout.CENTER);
 
+        pnlPie.setBackground(new java.awt.Color(218, 248, 255));
         pnlPie.setPreferredSize(new java.awt.Dimension(450, 52));
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N

@@ -81,10 +81,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnContinuar" min="-2" pref="256" max="-2" attributes="0"/>
-                                  <Component id="txtIngresarUsuario" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnContinuarAdmin" min="-2" pref="256" max="-2" attributes="0"/>
+                                  <Component id="txtUsuarioAdmin" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="txtContraseña" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Component id="txtContraseñaAdmin" min="-2" pref="222" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnVerContrseña" min="-2" pref="28" max="-2" attributes="0"/>
                                   </Group>
@@ -112,16 +112,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblUsuario" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtIngresarUsuario" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="txtUsuarioAdmin" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblContraseña" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtContraseña" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="txtContraseñaAdmin" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="btnVerContrseña" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnContinuar" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnContinuarAdmin" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtIngresarUsuario">
+            <Component class="javax.swing.JTextField" name="txtUsuarioAdmin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5f" green="52" red="41" type="rgb"/>
@@ -151,15 +151,15 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIngresarUsuarioFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIngresarUsuarioFocusLost"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIngresarUsuarioActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUsuarioAdminFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUsuarioAdminFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioAdminActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField(){&#xa;    {&#xa;        setOpaque(false);&#xa;        setBorder(null);&#xa;        setForeground(new java.awt.Color(160, 175, 185));&#xa;        setCaretColor(java.awt.Color.WHITE);&#xa;        setMargin(new java.awt.Insets(0, 10, 0, 10));&#xa;    }&#xa;    @Override&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xa;        java.awt.Graphics2D g2d = (java.awt.Graphics2D) g.create();&#xa;        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        g2d.setColor(new java.awt.Color(30, 41, 59));&#xa;        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);&#xa;        g2d.dispose();&#xa;        super.paintComponent(g);&#xa;    }&#xa;}"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;a">
+            <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;aAdmin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5f" green="52" red="41" type="rgb"/>
@@ -178,9 +178,9 @@
                 <Property name="echoChar" type="char" value="*"/>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtContrase&#xf1;aFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtContrase&#xf1;aFocusLost"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContrase&#xf1;aActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtContrase&#xf1;aAdminFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtContrase&#xf1;aAdminFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContrase&#xf1;aAdminActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPasswordField(){&#xa;    {&#xa;        setOpaque(false);&#xa;        setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));&#xa;        setForeground(java.awt.Color.WHITE);&#xa;    }&#xa;    @Override&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xa;        java.awt.Graphics2D g2d = (java.awt.Graphics2D) g.create();&#xa;        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);&#xa;        g2d.setColor(new java.awt.Color(30, 41, 59, 180));&#xa;        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);&#xa;        g2d.dispose();&#xa;        super.paintComponent(g);&#xa;    }&#xa;}"/>
@@ -201,7 +201,7 @@
                 <Property name="text" type="java.lang.String" value="Iniciar Sesi&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnContinuar">
+            <Component class="javax.swing.JButton" name="btnContinuarAdmin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="71" green="9e" red="b" type="rgb"/>
@@ -215,11 +215,11 @@
                 <Property name="text" type="java.lang.String" value="Continuar"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContinuarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContinuarAdminActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSingUp">
@@ -234,7 +234,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -254,7 +254,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -281,7 +281,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ver"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor de Mano"/>
+                  <Color id="Default Cursor"/>
                 </Property>
               </Properties>
               <Events>

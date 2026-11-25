@@ -31,12 +31,6 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
     private void initComponents() {
 
         FondoEditarAdministrador = new javax.swing.JPanel();
-        pnlEncabezado = new javax.swing.JPanel();
-        sepVertical = new javax.swing.JSeparator();
-        lblTitulo = new javax.swing.JLabel();
-        lblSubtitulo = new javax.swing.JLabel();
-        sopHorizontal = new javax.swing.JSeparator();
-        lblIcono = new javax.swing.JLabel();
         pnlCentro = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -55,6 +49,14 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         pnlPie = new javax.swing.JPanel();
         btnCancelarEditar = new javax.swing.JButton();
         btnActualizarAdministrador = new javax.swing.JButton();
+        pnlEncabezado = new javax.swing.JPanel();
+        lblIcono = new javax.swing.JLabel();
+        sepVertical = new javax.swing.JSeparator();
+        lbltitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
+        sepHorizoltal = new javax.swing.JSeparator();
+        lblAdvertencia = new javax.swing.JLabel();
+        sepHorizoltal1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,66 +66,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         FondoEditarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
         FondoEditarAdministrador.setLayout(new java.awt.BorderLayout());
 
-        pnlEncabezado.setBackground(new java.awt.Color(255, 255, 255));
-
-        sepVertical.setForeground(new java.awt.Color(100, 116, 139));
-        sepVertical.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(18, 36, 58));
-        lblTitulo.setText("Editar Administradores");
-
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
-        lblSubtitulo.setText("Modifique la información del administrador.");
-
-        sopHorizontal.setForeground(new java.awt.Color(203, 213, 225));
-        sopHorizontal.setPreferredSize(new java.awt.Dimension(130, 34));
-
-        lblIcono.setText("imagen");
-
-        javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
-        pnlEncabezado.setLayout(pnlEncabezadoLayout);
-        pnlEncabezadoLayout.setHorizontalGroup(
-            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(lblIcono)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(sopHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        pnlEncabezadoLayout.setVerticalGroup(
-            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(lblIcono))
-                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                                .addComponent(lblTitulo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblSubtitulo))
-                            .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(16, 16, 16)
-                .addComponent(sopHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        FondoEditarAdministrador.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
-
+        pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
         pnlCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 20));
         pnlCentro.setLayout(new java.awt.GridLayout(7, 2, 0, 16));
 
@@ -132,19 +75,30 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         lblNombre.setText("Nombre:");
         pnlCentro.add(lblNombre);
 
+        txtNombre.setEditable(false);
+        txtNombre.setBackground(new java.awt.Color(235, 238, 242));
         txtNombre.setForeground(new java.awt.Color(30, 41, 59));
+        txtNombre.setFocusable(false);
         pnlCentro.add(txtNombre);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(18, 15, 94));
         jLabel2.setText("Apellido:");
         pnlCentro.add(jLabel2);
+
+        txtApellido.setEditable(false);
+        txtApellido.setBackground(new java.awt.Color(235, 238, 242));
+        txtApellido.setFocusable(false);
         pnlCentro.add(txtApellido);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(18, 15, 94));
         jLabel3.setText("DNI:");
         pnlCentro.add(jLabel3);
+
+        txtDNI.setEditable(false);
+        txtDNI.setBackground(new java.awt.Color(235, 238, 242));
+        txtDNI.setFocusable(false);
         pnlCentro.add(txtDNI);
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -152,7 +106,10 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         lblUsuario.setText("Usuario:");
         pnlCentro.add(lblUsuario);
 
+        txtUsuario.setEditable(false);
+        txtUsuario.setBackground(new java.awt.Color(235, 238, 242));
         txtUsuario.setForeground(new java.awt.Color(30, 41, 59));
+        txtUsuario.setFocusable(false);
         pnlCentro.add(txtUsuario);
 
         lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -160,7 +117,10 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         lblCorreoElectronico.setText("Correo electronico:");
         pnlCentro.add(lblCorreoElectronico);
 
+        txtCorreoElectronico.setEditable(false);
+        txtCorreoElectronico.setBackground(new java.awt.Color(235, 238, 242));
         txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
+        txtCorreoElectronico.setFocusable(false);
         pnlCentro.add(txtCorreoElectronico);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -168,8 +128,11 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         lblContrasena.setText("Contraseña:");
         pnlCentro.add(lblContrasena);
 
+        txtContrasena.setEditable(false);
+        txtContrasena.setBackground(new java.awt.Color(235, 238, 242));
         txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(30, 41, 59));
+        txtContrasena.setFocusable(false);
         pnlCentro.add(txtContrasena);
 
         lblConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -177,18 +140,23 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         lblConfirmarContrasena.setText("Confirmar contraseña:");
         pnlCentro.add(lblConfirmarContrasena);
 
+        txtConfirmarContrasena.setEditable(false);
+        txtConfirmarContrasena.setBackground(new java.awt.Color(235, 238, 242));
         txtConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtConfirmarContrasena.setForeground(new java.awt.Color(30, 41, 59));
+        txtConfirmarContrasena.setFocusable(false);
         pnlCentro.add(txtConfirmarContrasena);
 
         FondoEditarAdministrador.add(pnlCentro, java.awt.BorderLayout.CENTER);
 
+        pnlPie.setBackground(new java.awt.Color(218, 248, 255));
         pnlPie.setPreferredSize(new java.awt.Dimension(450, 53));
 
         btnCancelarEditar.setBackground(new java.awt.Color(220, 226, 232));
         btnCancelarEditar.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnCancelarEditar.setForeground(new java.awt.Color(30, 41, 59));
         btnCancelarEditar.setText("Cancelar");
+        btnCancelarEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarEditar.setFocusable(false);
         btnCancelarEditar.setPreferredSize(new java.awt.Dimension(130, 343));
         btnCancelarEditar.addActionListener(this::btnCancelarEditarActionPerformed);
@@ -197,6 +165,7 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         btnActualizarAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         btnActualizarAdministrador.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarAdministrador.setText("Guardar");
+        btnActualizarAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizarAdministrador.setFocusable(false);
 
         javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
@@ -221,6 +190,81 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
         );
 
         FondoEditarAdministrador.add(pnlPie, java.awt.BorderLayout.PAGE_END);
+
+        pnlEncabezado.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEncabezado.setPreferredSize(new java.awt.Dimension(400, 75));
+
+        lblIcono.setText("imagen");
+        lblIcono.setPreferredSize(new java.awt.Dimension(48, 48));
+
+        sepVertical.setForeground(new java.awt.Color(100, 116, 139));
+        sepVertical.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        lbltitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lbltitulo.setForeground(new java.awt.Color(18, 36, 58));
+        lbltitulo.setText("Eliminar Administrador");
+
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblSubtitulo.setForeground(new java.awt.Color(71, 85, 105));
+        lblSubtitulo.setText("¿Esta seguro de eliminar este administrdor?");
+
+        sepHorizoltal.setForeground(new java.awt.Color(203, 213, 225));
+
+        lblAdvertencia.setForeground(new java.awt.Color(204, 0, 0));
+        lblAdvertencia.setText("Esta accion no se puede deshacer.");
+
+        sepHorizoltal1.setForeground(new java.awt.Color(203, 213, 225));
+
+        javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
+        pnlEncabezado.setLayout(pnlEncabezadoLayout);
+        pnlEncabezadoLayout.setHorizontalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lblAdvertencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubtitulo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbltitulo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(20, 20, 20))
+        );
+        pnlEncabezadoLayout.setVerticalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lblIcono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(sepHorizoltal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lbltitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSubtitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(sepHorizoltal1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAdvertencia)))
+                    .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
+        );
+
+        FondoEditarAdministrador.add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,19 +338,21 @@ public class DialogoAdministradorEliminar extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelarEditar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblAdvertencia;
     private javax.swing.JLabel lblConfirmarContrasena;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblCorreoElectronico;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSubtitulo;
-    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lbltitulo;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlEncabezado;
     private javax.swing.JPanel pnlPie;
+    private javax.swing.JSeparator sepHorizoltal;
+    private javax.swing.JSeparator sepHorizoltal1;
     private javax.swing.JSeparator sepVertical;
-    private javax.swing.JSeparator sopHorizontal;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JPasswordField txtContrasena;

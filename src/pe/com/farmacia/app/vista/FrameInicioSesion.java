@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import pe.com.farmacia.app.dao.Admindao;
+import pe.com.farmacia.app.daoimplement.Admindaoimpl;
+import pe.com.farmacia.app.modelo.Admin;
 
 /**
  *
@@ -16,6 +19,10 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameInicioSesion.class.getName());
 
+    // Guarda la cantidad de intentos fallidos permitidos para el administrador.
+    private int intentosRestantes = 3;
+    //Validar admin con SQLite
+    private final Admindao admindao = new Admindaoimpl();
     /*
     JFXPanel es una libreia externa, sirve para insertar videos en el JFrame
      */
@@ -30,7 +37,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         configurarPanelVideo();
         escenaAND();
 
-        txtContraseña.setEchoChar((char) 0);
+        txtContraseñaAdmin.setEchoChar((char) 0);
 
         setTitle("Video ADN");
         setResizable(false);
@@ -59,7 +66,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         setTitle("Video ADN");
 
         // Restaura el tamaño original del login y lo centra
-        setResizable(true); 
+        setResizable(true);
         setSize(613, 357);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -100,29 +107,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
             revalidate();
             repaint();
         });
-    }
-
-    public void volverDesdeAdmin() {
-
-        // Obtiene la distribución de tarjetas de la ventana.
-        java.awt.CardLayout tarjetas
-                = (java.awt.CardLayout) getContentPane().getLayout();
-
-        // Muestra nuevamente la pantalla de inicio de sesión.
-        tarjetas.show(getContentPane(), "LOGIN");
-
-        // Restablece el título de la ventana.
-        setTitle("Video ADN");
-
-        // Recupera el tamaño original de la ventana.
-        setSize(600, 320);
-
-        // Centra la ventana en la pantalla.
-        setLocationRelativeTo(null);
-
-        // Actualiza la distribución y redibuja la ventana.
-        revalidate();
-        repaint();
     }
 
     private void escenaAND() {
@@ -193,6 +177,68 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         });
     }
 
+    public javax.swing.JButton getBtnContinuarAdmin() {
+        return btnContinuarAdmin;
+    }
+
+    public void logear() {
+        String usuario = txtUsuarioAdmin.getText().trim();
+        String contraseña = new String(txtContraseñaAdmin.getPassword());
+
+        if (usuario.isEmpty() || usuario.equals("Ingresa tu usuario")
+                || contraseña.isEmpty() || contraseña.equals("Ingresa tu contraseña")) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Ingresa usuario y contraseña",
+                    "Error: Campos vacíos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        Admin admin = new Admin(usuario, contraseña);
+        boolean accesoValido = admindao.iniciarsesion(admin);
+
+        if (accesoValido) {
+            intentosRestantes = 3;
+            txtContraseñaAdmin.setText("");
+            FondoAND.setVisible(false);
+
+            VentanaAdministracion panelAdministracion = new VentanaAdministracion(this);
+
+            setResizable(true);
+            setSize(1110, 685);
+            setLocationRelativeTo(null);
+            setResizable(false);
+            setTitle("Administracion de farmacia \"El Tilin\"");
+
+            getContentPane().add(panelAdministracion, java.awt.BorderLayout.CENTER);
+            revalidate();
+            repaint();
+        } else {
+            txtContraseñaAdmin.setText("");
+            intentosRestantes--;
+
+            if (intentosRestantes > 0) {
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Usuario o contraseña incorrectos.\nIntentos restantes: " + intentosRestantes,
+                        "Acceso denegado",
+                        javax.swing.JOptionPane.WARNING_MESSAGE
+                );
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Has agotado los 3 intentos. El acceso ha sido bloqueado.",
+                        "Acceso bloqueado",
+                        javax.swing.JOptionPane.ERROR_MESSAGE
+                );
+                txtUsuarioAdmin.setEnabled(false);
+                txtContraseñaAdmin.setEnabled(false);
+                btnContinuarAdmin.setEnabled(false);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -211,7 +257,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                 g.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        txtIngresarUsuario = new javax.swing.JTextField(){
+        txtUsuarioAdmin = new javax.swing.JTextField(){
             {
                 setOpaque(false);
                 setBorder(null);
@@ -229,7 +275,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                 super.paintComponent(g);
             }
         };
-        txtContraseña = new javax.swing.JPasswordField(){
+        txtContraseñaAdmin = new javax.swing.JPasswordField(){
             {
                 setOpaque(false);
                 setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
@@ -246,7 +292,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
             }
         };
         lblInciarSesion = new javax.swing.JLabel();
-        btnContinuar = new javax.swing.JButton();
+        btnContinuarAdmin = new javax.swing.JButton();
         btnSingUp = new javax.swing.JButton();
         btnAdmin = new javax.swing.JButton();
         lblContraseña = new javax.swing.JLabel();
@@ -256,6 +302,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         FondoAND.setBackground(new java.awt.Color(102, 153, 255));
         FondoAND.setMaximumSize(new java.awt.Dimension(600, 320));
@@ -268,34 +315,34 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         panelLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 120, 140)));
         panelLogin.setOpaque(false);
 
-        txtIngresarUsuario.setBackground(new java.awt.Color(65, 82, 95));
-        txtIngresarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtIngresarUsuario.setText("Ingresa tu usuario");
-        txtIngresarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
-        txtIngresarUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtUsuarioAdmin.setBackground(new java.awt.Color(65, 82, 95));
+        txtUsuarioAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuarioAdmin.setText("Ingresa tu usuario");
+        txtUsuarioAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
+        txtUsuarioAdmin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtIngresarUsuarioFocusGained(evt);
+                txtUsuarioAdminFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtIngresarUsuarioFocusLost(evt);
+                txtUsuarioAdminFocusLost(evt);
             }
         });
-        txtIngresarUsuario.addActionListener(this::txtIngresarUsuarioActionPerformed);
+        txtUsuarioAdmin.addActionListener(this::txtUsuarioAdminActionPerformed);
 
-        txtContraseña.setBackground(new java.awt.Color(65, 82, 95));
-        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
-        txtContraseña.setText("Ingresa tu contraseña");
-        txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
-        txtContraseña.setEchoChar('*');
-        txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtContraseñaAdmin.setBackground(new java.awt.Color(65, 82, 95));
+        txtContraseñaAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        txtContraseñaAdmin.setText("Ingresa tu contraseña");
+        txtContraseñaAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(130, 150, 165)));
+        txtContraseñaAdmin.setEchoChar('*');
+        txtContraseñaAdmin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtContraseñaFocusGained(evt);
+                txtContraseñaAdminFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtContraseñaFocusLost(evt);
+                txtContraseñaAdminFocusLost(evt);
             }
         });
-        txtContraseña.addActionListener(this::txtContraseñaActionPerformed);
+        txtContraseñaAdmin.addActionListener(this::txtContraseñaAdminActionPerformed);
 
         lblInciarSesion.setBackground(new java.awt.Color(0, 0, 0));
         lblInciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -303,20 +350,20 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         lblInciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInciarSesion.setText("Iniciar Sesión");
 
-        btnContinuar.setBackground(new java.awt.Color(11, 158, 113));
-        btnContinuar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
-        btnContinuar.setText("Continuar");
-        btnContinuar.setBorderPainted(false);
-        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnContinuar.addActionListener(this::btnContinuarActionPerformed);
+        btnContinuarAdmin.setBackground(new java.awt.Color(11, 158, 113));
+        btnContinuarAdmin.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnContinuarAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuarAdmin.setText("Continuar");
+        btnContinuarAdmin.setBorderPainted(false);
+        btnContinuarAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnContinuarAdmin.addActionListener(this::btnContinuarAdminActionPerformed);
 
         btnSingUp.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnSingUp.setForeground(new java.awt.Color(190, 205, 215));
         btnSingUp.setText("<html><u>Registrarse</u><html>");
         btnSingUp.setBorderPainted(false);
         btnSingUp.setContentAreaFilled(false);
-        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSingUp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSingUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSingUpMouseClicked(evt);
@@ -329,7 +376,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         btnAdmin.setText("<html><u>Acceso Admin</u><html>");
         btnAdmin.setBorderPainted(false);
         btnAdmin.setContentAreaFilled(false);
-        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdmin.addActionListener(this::btnAdminActionPerformed);
 
         lblContraseña.setForeground(new java.awt.Color(230, 235, 240));
@@ -339,7 +386,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         lblUsuario.setText("Usuario");
 
         btnVerContrseña.setText("ver");
-        btnVerContrseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerContrseña.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVerContrseña.addActionListener(this::btnVerContrseñaActionPerformed);
 
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
@@ -352,10 +399,10 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIngresarUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelLoginLayout.createSequentialGroup()
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtContraseñaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -376,15 +423,15 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContraseñaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerContrseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContinuarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -428,35 +475,11 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+    private void btnContinuarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarAdminActionPerformed
         // TODO add your handling code here:
 
-        /*
-        ojo aca se uso un txt tipo password field, se usa ya que la clve lo va
-        convertir en un arreglo de caracteres
-         */
-        String usuario = txtIngresarUsuario.getText().trim();
-        String contraseña = new String(txtContraseña.getPassword()).trim();
-
-        if (usuario.equals("roska") && contraseña.equals("1234")
-                || usuario.equals("Ingresa tu usuario") && contraseña.equals("Ingresa tu contraseña")) {
-            FondoAND.setVisible(false);
-            VentanaVentas panelVentas = new VentanaVentas(this);
-
-            getContentPane().add(panelVentas, java.awt.BorderLayout.CENTER);
-            setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-
-            revalidate();
-            repaint();
-
-        } else {
-            txtContraseña.setEchoChar((char) 0);
-            txtContraseña.setForeground(java.awt.Color.RED);
-            txtContraseña.setText("¡Usuario o Contraseña Incorrecto!");
-
-        }
-
-    }//GEN-LAST:event_btnContinuarActionPerformed
+        logear();
+    }//GEN-LAST:event_btnContinuarAdminActionPerformed
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
 
@@ -509,72 +532,72 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_btnSingUpActionPerformed
 
-    private void txtIngresarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioActionPerformed
+    private void txtUsuarioAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioAdminActionPerformed
         // TODO add your handling code here:
-        txtContraseña.requestFocusInWindow();
-    }//GEN-LAST:event_txtIngresarUsuarioActionPerformed
+        txtContraseñaAdmin.requestFocusInWindow();
+    }//GEN-LAST:event_txtUsuarioAdminActionPerformed
 
-    private void txtIngresarUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioFocusGained
+    private void txtUsuarioAdminFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioAdminFocusGained
         // TODO add your handling code here:
-        if (txtIngresarUsuario.getText().equals("Ingresa tu usuario")) {
-            txtIngresarUsuario.setForeground(java.awt.Color.WHITE);
-            txtIngresarUsuario.setText("");
+        if (txtUsuarioAdmin.getText().equals("Ingresa tu usuario")) {
+            txtUsuarioAdmin.setForeground(java.awt.Color.WHITE);
+            txtUsuarioAdmin.setText("");
         }
-    }//GEN-LAST:event_txtIngresarUsuarioFocusGained
+    }//GEN-LAST:event_txtUsuarioAdminFocusGained
 
-    private void txtContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusLost
+    private void txtContraseñaAdminFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaAdminFocusLost
         // TODO add your handling code here:
-        String contra = new String(txtContraseña.getPassword());
+        String contra = new String(txtContraseñaAdmin.getPassword());
         if (contra.trim().isEmpty()) {
-            txtContraseña.setForeground(java.awt.Color.gray);
-            txtContraseña.setText("Ingresa tu contraseña");
-            txtContraseña.setEchoChar((char) 0);
+            txtContraseñaAdmin.setForeground(java.awt.Color.gray);
+            txtContraseñaAdmin.setText("Ingresa tu contraseña");
+            txtContraseñaAdmin.setEchoChar((char) 0);
         }
-    }//GEN-LAST:event_txtContraseñaFocusLost
+    }//GEN-LAST:event_txtContraseñaAdminFocusLost
 
-    private void txtContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusGained
+    private void txtContraseñaAdminFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaAdminFocusGained
         // TODO add your handling code here:
-        String contra = new String(txtContraseña.getPassword());
+        String contra = new String(txtContraseñaAdmin.getPassword());
 
         if (contra.equals("Ingresa tu contraseña") || contra.equals("¡Usuario o Contraseña Incorrecto!")) {
-            txtContraseña.setForeground(java.awt.Color.WHITE);
-            txtContraseña.setText("");
-            txtContraseña.setEchoChar('*');
+            txtContraseñaAdmin.setForeground(java.awt.Color.WHITE);
+            txtContraseñaAdmin.setText("");
+            txtContraseñaAdmin.setEchoChar('*');
         }
-    }//GEN-LAST:event_txtContraseñaFocusGained
+    }//GEN-LAST:event_txtContraseñaAdminFocusGained
 
-    private void txtIngresarUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresarUsuarioFocusLost
+    private void txtUsuarioAdminFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioAdminFocusLost
         // TODO add your handling code here:
-        if (txtIngresarUsuario.getText().trim().isEmpty()) {
-            txtIngresarUsuario.setForeground(java.awt.Color.GRAY);
-            txtIngresarUsuario.setText("Ingresa tu usuario");
+        if (txtUsuarioAdmin.getText().trim().isEmpty()) {
+            txtUsuarioAdmin.setForeground(java.awt.Color.GRAY);
+            txtUsuarioAdmin.setText("Ingresa tu usuario");
         }
-    }//GEN-LAST:event_txtIngresarUsuarioFocusLost
+    }//GEN-LAST:event_txtUsuarioAdminFocusLost
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void txtContraseñaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaAdminActionPerformed
         // TODO add your handling code here:
-        btnContinuar.requestFocusInWindow();
-        btnContinuar.doClick();
+        btnContinuarAdmin.requestFocusInWindow();
+        btnContinuarAdmin.doClick();
 
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    }//GEN-LAST:event_txtContraseñaAdminActionPerformed
 
     private boolean contraseñaVisible = false;
     private void btnVerContrseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerContrseñaActionPerformed
         // TODO add your handling code here:
         char contraOculta = '*';
-        String contra = new String(txtContraseña.getPassword());
+        String contra = new String(txtContraseñaAdmin.getPassword());
 
         if (contra.equals("Ingresa tu contraseña")) {
-            txtContraseña.setEchoChar((char) 0);
+            txtContraseñaAdmin.setEchoChar((char) 0);
             return;
         }
 
         contraseñaVisible = !contraseñaVisible;
 
         if (contraseñaVisible) {
-            txtContraseña.setEchoChar((char) 0);
+            txtContraseñaAdmin.setEchoChar((char) 0);
         } else {
-            txtContraseña.setEchoChar(contraOculta);
+            txtContraseñaAdmin.setEchoChar(contraOculta);
         }
     }//GEN-LAST:event_btnVerContrseñaActionPerformed
 
@@ -619,7 +642,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAND;
     private javax.swing.JButton btnAdmin;
-    private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnContinuarAdmin;
     private javax.swing.JButton btnSingUp;
     private javax.swing.JButton btnVerContrseña;
     private javax.swing.JLabel lblContraseña;
@@ -628,7 +651,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelLogin;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtIngresarUsuario;
+    private javax.swing.JPasswordField txtContraseñaAdmin;
+    private javax.swing.JTextField txtUsuarioAdmin;
     // End of variables declaration//GEN-END:variables
 }
