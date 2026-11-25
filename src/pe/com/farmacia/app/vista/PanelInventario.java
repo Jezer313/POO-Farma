@@ -48,7 +48,7 @@ public class PanelInventario extends javax.swing.JPanel {
                 m.getFecha_caducidad()
             });
         }
-
+        lblTitulo.setText("INVENTARIO DE MEDICAMENTOS");
         lblTotal.setText("Total de medicamentos en el inventario: " + lista.size());
     }
 
@@ -357,7 +357,7 @@ public class PanelInventario extends javax.swing.JPanel {
 
     private void btnBuenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuenosActionPerformed
         // TODO add your handling code here:
-        mostrarDisponibles();
+        cargarMedicamentos();
     }//GEN-LAST:event_btnBuenosActionPerformed
 
     private void btnMalosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMalosActionPerformed
@@ -365,79 +365,51 @@ public class PanelInventario extends javax.swing.JPanel {
         mostrarCaducados();
     }//GEN-LAST:event_btnMalosActionPerformed
 
-        private void mostrarDisponibles() {
-            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tblMedicamentos.getModel();
-            modelo.setRowCount(0);
-            java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            java.time.LocalDate hoy = java.time.LocalDate.now();
-            int contador = 0;
+    private void mostrarCaducados() {
+        DefaultTableModel modelo = (DefaultTableModel) tblMedicamentos.getModel();
+        modelo.setRowCount(0);
+        java.time.LocalDate hoy = java.time.LocalDate.now();
+        int contador = 0;
 
-            for (pe.com.farmacia.app.modelo.Medicamento m : medicamentodao.listar()) {
-                String fechaStr = m.getFecha_caducidad();
-                boolean vigente = true;
-
-                if (fechaStr != null && !fechaStr.isBlank()) {
-                    try {
-                        java.time.LocalDate fechaCad = java.time.LocalDate.parse(fechaStr.trim(), fmt);
-                        vigente = !fechaCad.isBefore(hoy);
-                    } catch (java.time.format.DateTimeParseException ignored) {
-                        vigente = true;
-                    }
-                }
-
-                if (vigente) {
-                    modelo.addRow(new Object[]{
-                        m.getId_medicamento(),
-                        m.getCodigo(),
-                        m.getNombre_generico(),
-                        m.getNombre_comercial(),
-                        m.getCura(),
-                        m.getPreciounitario(),
-                        m.getPreciocaja(),
-                        m.getCantidad(),
-                        m.getDescripcion(),
-                        m.getFecha_caducidad()
-                    });
-                    contador++;
-                }
+        for (Medicamento m : medicamentodao.listar()) {
+            java.time.LocalDate fechaCad = parsearFecha(m.getFecha_caducidad());
+            
+            if (fechaCad != null && fechaCad.isBefore(hoy)) {
+                modelo.addRow(new Object[]{
+                    m.getId_medicamento(),
+                    m.getCodigo(),
+                    m.getNombre_generico(),
+                    m.getNombre_comercial(),
+                    m.getCura(),
+                    m.getPreciounitario(),
+                    m.getPreciocaja(),
+                    m.getCantidad(),
+                    m.getDescripcion(),
+                    m.getFecha_caducidad()
+                });
+                contador++;
             }
-            lblTotal.setText("Total de medicamentos disponibles: " + contador);
         }
 
-        private void mostrarCaducados() {
-            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tblMedicamentos.getModel();
-            modelo.setRowCount(0);
-            java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            java.time.LocalDate hoy = java.time.LocalDate.now();
-            int contador = 0;
-
-            for (pe.com.farmacia.app.modelo.Medicamento m : medicamentodao.listar()) {
-                String fechaStr = m.getFecha_caducidad();
-                if (fechaStr == null || fechaStr.isBlank()) {
-                    continue;
-                }
-                try {
-                    java.time.LocalDate fechaCad = java.time.LocalDate.parse(fechaStr.trim(), fmt);
-                    if (fechaCad.isBefore(hoy)) {
-                        modelo.addRow(new Object[]{
-                            m.getId_medicamento(),
-                            m.getCodigo(),
-                            m.getNombre_generico(),
-                            m.getNombre_comercial(),
-                            m.getCura(),
-                            m.getPreciounitario(),
-                            m.getPreciocaja(),
-                            m.getCantidad(),
-                            m.getDescripcion(),
-                            m.getFecha_caducidad()
-                        });
-                        contador++;
-                    }
-                } catch (java.time.format.DateTimeParseException ignored) {
-                }
-            }
-            lblTitulo.setText("Total de medicamentos caducados: " + contador);
+        lblTitulo.setText("MEDICAMENTOS CADUCADOS");
+        lblTotal.setText("Total de medicamentos caducados: " + contador);
+    }
+    
+    private java.time.LocalDate parsearFecha(String fechaStr) {
+        if (fechaStr == null || fechaStr.isBlank()) {
+            return null;
         }
+        String limpia = fechaStr.trim();
+        try {
+            return java.time.LocalDate.parse(limpia, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        } catch (java.time.format.DateTimeParseException e) {
+            try {
+                return java.time.LocalDate.parse(limpia);
+            } catch (java.time.format.DateTimeParseException ex) {
+                return null;
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
