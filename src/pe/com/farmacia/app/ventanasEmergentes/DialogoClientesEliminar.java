@@ -82,6 +82,7 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         btnGuardarEliminarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         pnlCentro.setBackground(new java.awt.Color(255, 255, 255));
@@ -93,7 +94,10 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         lblDNI.setText("DNI");
         pnlCentro.add(lblDNI);
 
+        txtDNI.setEditable(false);
+        txtDNI.setBackground(new java.awt.Color(235, 238, 242));
         txtDNI.setForeground(new java.awt.Color(30, 41, 59));
+        txtDNI.setFocusable(false);
         txtDNI.addActionListener(this::txtDNIActionPerformed);
         pnlCentro.add(txtDNI);
 
@@ -101,12 +105,20 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         lblNombre.setForeground(new java.awt.Color(18, 15, 94));
         lblNombre.setText("Nombre");
         pnlCentro.add(lblNombre);
+
+        txtNombre.setEditable(false);
+        txtNombre.setBackground(new java.awt.Color(235, 238, 242));
+        txtNombre.setFocusable(false);
         pnlCentro.add(txtNombre);
 
         lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(18, 15, 94));
         lblApellido.setText("Apellido");
         pnlCentro.add(lblApellido);
+
+        txtApellido.setEditable(false);
+        txtApellido.setBackground(new java.awt.Color(235, 238, 242));
+        txtApellido.setFocusable(false);
         pnlCentro.add(txtApellido);
 
         lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -114,7 +126,10 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         lblCorreoElectronico.setText("Correo electrónico");
         pnlCentro.add(lblCorreoElectronico);
 
+        txtCorreoElectronico.setEditable(false);
+        txtCorreoElectronico.setBackground(new java.awt.Color(235, 238, 242));
         txtCorreoElectronico.setForeground(new java.awt.Color(30, 41, 59));
+        txtCorreoElectronico.setFocusable(false);
         pnlCentro.add(txtCorreoElectronico);
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -122,7 +137,10 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         lblTelefono.setText("Teléfono");
         pnlCentro.add(lblTelefono);
 
+        txtTelefono.setEditable(false);
+        txtTelefono.setBackground(new java.awt.Color(235, 238, 242));
         txtTelefono.setForeground(new java.awt.Color(30, 41, 59));
+        txtTelefono.setFocusable(false);
         pnlCentro.add(txtTelefono);
 
         lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -130,7 +148,10 @@ public class DialogoClientesEliminar extends javax.swing.JDialog {
         lblDireccion.setText("Dirección");
         pnlCentro.add(lblDireccion);
 
+        txtDireccion.setEditable(false);
+        txtDireccion.setBackground(new java.awt.Color(235, 238, 242));
         txtDireccion.setForeground(new java.awt.Color(30, 41, 59));
+        txtDireccion.setFocusable(false);
         pnlCentro.add(txtDireccion);
 
         pnlcabecera.setBackground(new java.awt.Color(255, 255, 255));

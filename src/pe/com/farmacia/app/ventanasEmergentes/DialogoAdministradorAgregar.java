@@ -148,18 +148,23 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
         pnlCentro.add(lblNombre);
 
         txtNombre.setForeground(new java.awt.Color(30, 41, 59));
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
         pnlCentro.add(txtNombre);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(18, 15, 94));
         jLabel2.setText("Apellido:");
         pnlCentro.add(jLabel2);
+
+        txtApellido.addActionListener(this::txtApellidoActionPerformed);
         pnlCentro.add(txtApellido);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(18, 15, 94));
         jLabel3.setText("DNI:");
         pnlCentro.add(jLabel3);
+
+        txtDNI.addActionListener(this::txtDNIActionPerformed);
         pnlCentro.add(txtDNI);
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -168,6 +173,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
         pnlCentro.add(lblUsuario);
 
         txtUsuario.setForeground(new java.awt.Color(30, 41, 59));
+        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
         pnlCentro.add(txtUsuario);
 
         lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -176,6 +182,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
         pnlCentro.add(lblDireccion);
 
         txtDireccion.setForeground(new java.awt.Color(30, 41, 59));
+        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
         pnlCentro.add(txtDireccion);
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -185,6 +192,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
 
         txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(30, 41, 59));
+        txtContrasena.addActionListener(this::txtContrasenaActionPerformed);
         pnlCentro.add(txtContrasena);
 
         lblConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -194,6 +202,7 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
 
         txtConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtConfirmarContrasena.setForeground(new java.awt.Color(30, 41, 59));
+        txtConfirmarContrasena.addActionListener(this::txtConfirmarContrasenaActionPerformed);
         pnlCentro.add(txtConfirmarContrasena);
 
         FondoAgregarAdministrador.add(pnlCentro, java.awt.BorderLayout.CENTER);
@@ -311,6 +320,41 @@ public class DialogoAdministradorAgregar extends javax.swing.JDialog {
             );
         }
     }//GEN-LAST:event_btnGuardarAdministradorActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        txtApellido.requestFocusInWindow();
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+        txtDNI.requestFocusInWindow();
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
+        // TODO add your handling code here:
+        txtUsuario.requestFocusInWindow();
+    }//GEN-LAST:event_txtDNIActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+        txtDireccion.requestFocusInWindow();
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+        txtContrasena.requestFocusInWindow();
+    }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+        txtConfirmarContrasena.requestFocusInWindow();
+    }//GEN-LAST:event_txtContrasenaActionPerformed
+
+    private void txtConfirmarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarContrasenaActionPerformed
+        // TODO add your handling code here:
+        btnGuardarAdministrador.doClick();;
+    }//GEN-LAST:event_txtConfirmarContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
