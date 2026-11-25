@@ -8,14 +8,14 @@ package pe.com.farmacia.app.ventanasEmergentes;
  *
  * @author Playe
  */
-public class DialogAgregarFactura extends javax.swing.JDialog {
+public class DialogoFacturaAgregar extends javax.swing.JDialog {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarFactura.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoFacturaAgregar.class.getName());
 
     /**
      * Creates new form DialogAgregarFactura
      */
-    public DialogAgregarFactura(java.awt.Frame parent, boolean modal) {
+    public DialogoFacturaAgregar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -66,7 +66,6 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         lblTotalFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalFactura.setText("S/ 0.00");
 
-        txtDniCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtDniCliente.setForeground(new java.awt.Color(30, 41, 59));
 
         btnCancelar.setBackground(new java.awt.Color(220, 226, 232));
@@ -96,7 +95,6 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         lblPrecioUnitario.setForeground(new java.awt.Color(30, 41, 59));
         lblPrecioUnitario.setText("Precio (S/):");
 
-        cmbProductos.setBackground(new java.awt.Color(255, 255, 255));
         cmbProductos.setForeground(new java.awt.Color(30, 41, 59));
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar producto..." }));
 
@@ -109,14 +107,12 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         lblCantidad.setForeground(new java.awt.Color(30, 41, 59));
         lblCantidad.setText("Cantidad:");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Imagen");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(30, 58, 86));
         lblTitulo.setText("Agregar Factura");
 
-        txtCantidad.setBackground(new java.awt.Color(255, 255, 255));
         txtCantidad.setForeground(new java.awt.Color(30, 41, 59));
         txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidad.setText("1");
@@ -138,7 +134,6 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         lblDatosCliente.setText("Datos del cliente");
         lblDatosCliente.setOpaque(true);
 
-        tblProductosFactura.setBackground(new java.awt.Color(255, 255, 255));
         tblProductosFactura.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         tblProductosFactura.setForeground(new java.awt.Color(30, 41, 59));
         tblProductosFactura.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,7 +161,6 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         lblNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
         lblNombreCliente.setText("Nombre:");
 
-        txtNombreCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreCliente.setForeground(new java.awt.Color(30, 41, 59));
 
         lblEtiquetaTotal.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -335,7 +329,7 @@ public class DialogAgregarFactura extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                DialogAgregarFactura dialog = new DialogAgregarFactura(new javax.swing.JFrame(), true);
+                DialogoFacturaAgregar dialog = new DialogoFacturaAgregar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

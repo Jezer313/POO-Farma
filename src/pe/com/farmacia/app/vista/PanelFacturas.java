@@ -4,7 +4,7 @@
  */
 package pe.com.farmacia.app.vista;
 
-import pe.com.farmacia.app.ventanasEmergentes.DialogAgregarFactura;
+import pe.com.farmacia.app.ventanasEmergentes.DialogoFacturaAgregar;
 
 /**
  *
@@ -363,7 +363,7 @@ public class PanelFacturas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarFactura(
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoFacturaAgregar(
         (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 

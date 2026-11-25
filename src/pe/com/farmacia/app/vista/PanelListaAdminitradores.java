@@ -179,12 +179,12 @@ public class PanelListaAdminitradores extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogAgregarAdministrador(
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorAgregar(
         (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        new pe.com.farmacia.app.ventanasEmergentes.DialogEditarAdministrador(
+        new pe.com.farmacia.app.ventanasEmergentes.DialogoAdministradorEditar(
         (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), true).setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 

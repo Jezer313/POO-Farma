@@ -14,9 +14,9 @@ import pe.com.farmacia.app.modelo.Administrador;
  */
   
 
-    public class DialogAgregarAdministrador extends javax.swing.JDialog {
+    public class DialogoAdministradorAgregar extends javax.swing.JDialog {
 
-        private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogAgregarAdministrador.class.getName());
+        private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogoAdministradorAgregar.class.getName());
 
         /**
          * Creates new form DialogAgregarAdministrador
@@ -24,9 +24,10 @@ import pe.com.farmacia.app.modelo.Administrador;
         private final Administradordao administradordao = new Administradordaoimpl();
         private boolean guardado = false;
 
-        public DialogAgregarAdministrador(java.awt.Frame parent, boolean modal) {
+        public DialogoAdministradorAgregar(java.awt.Frame parent, boolean modal) {
             super(parent, modal);
             initComponents();
+            setLocationRelativeTo(parent);
         }
 
         public boolean isGuardado() {
@@ -47,6 +48,8 @@ import pe.com.farmacia.app.modelo.Administrador;
         lblTitulo = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        sepHorizontal = new javax.swing.JSeparator();
+        sepVertical = new javax.swing.JSeparator();
         pnlCentro = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -70,7 +73,8 @@ import pe.com.farmacia.app.modelo.Administrador;
         getContentPane().setLayout(new java.awt.BorderLayout(450, 500));
 
         FondoAgregarAdministrador.setBackground(new java.awt.Color(225, 225, 225));
-        FondoAgregarAdministrador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(15, 6, 47), 2));
+        FondoAgregarAdministrador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(24, 38, 53), 2)
+        );
         FondoAgregarAdministrador.setMinimumSize(new java.awt.Dimension(450, 500));
         FondoAgregarAdministrador.setPreferredSize(new java.awt.Dimension(450, 500));
         FondoAgregarAdministrador.setLayout(new java.awt.BorderLayout());
@@ -87,35 +91,50 @@ import pe.com.farmacia.app.modelo.Administrador;
 
         jLabel1.setText("Imagen");
 
+        sepVertical.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
         javax.swing.GroupLayout pnlcabeceraLayout = new javax.swing.GroupLayout(pnlcabecera);
         pnlcabecera.setLayout(pnlcabeceraLayout);
         pnlcabeceraLayout.setHorizontalGroup(
             pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlcabeceraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
-                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))))
+                    .addGroup(pnlcabeceraLayout.createSequentialGroup()
+                        .addComponent(sepHorizontal)
+                        .addContainerGap())
+                    .addGroup(pnlcabeceraLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlcabeceraLayout.createSequentialGroup()
+                                .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43))))))
         );
         pnlcabeceraLayout.setVerticalGroup(
             pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlcabeceraLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlcabeceraLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlcabeceraLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGroup(pnlcabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlcabeceraLayout.createSequentialGroup()
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlcabeceraLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(sepVertical, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         FondoAgregarAdministrador.add(pnlcabecera, java.awt.BorderLayout.NORTH);
@@ -203,7 +222,7 @@ import pe.com.farmacia.app.modelo.Administrador;
         pnlPieLayout.setHorizontalGroup(
             pnlPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPieLayout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardarAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +328,7 @@ import pe.com.farmacia.app.modelo.Administrador;
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                DialogAgregarAdministrador dialog = new DialogAgregarAdministrador(new javax.swing.JFrame(), true);
+                DialogoAdministradorAgregar dialog = new DialogoAdministradorAgregar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -338,6 +357,8 @@ import pe.com.farmacia.app.modelo.Administrador;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlPie;
     private javax.swing.JPanel pnlcabecera;
+    private javax.swing.JSeparator sepHorizontal;
+    private javax.swing.JSeparator sepVertical;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JPasswordField txtContrasena;
